@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C17
+Chapitre 17 : Auditer la gouvernance et la fonction informatique
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Sur quoi porte l'audit de la gouvernance des SI ?
+      a) L'opportunité des choix stratégiques
+      b) Les décisions : qui décide, comment, avec quelle information, avec quel suivi
+      c) La performance technique des serveurs
+      d) Le seul budget informatique
+
+ 2. Qu'est-ce que le « contenant » d'un schéma directeur ?
+      a) Ses priorités
+      b) Son alignement stratégique
+      c) La manière dont il a été élaboré, validé et mis à jour
+      d) La liste de ses projets
+
+ 3. Comment se juge le contenu d'un document de gouvernance ?
+      a) Par rapprochement avec d'autres documents
+      b) Par sa signature
+      c) Par sa date
+      d) Par entretien seul
+
+ 4. En combien de sous-domaines le domaine A est-il décomposé ?
+      a) Trois
+      b) Quatre
+      c) Sept
+      d) Cinq
+
+ 5. Où est traité le cadre légal, sixième axe de la fiche du CHAI ?
+      a) Dans le sous-domaine A.1
+      b) Dans les domaines où chaque obligation s'applique
+      c) Il n'est pas traité
+      d) Dans le sous-domaine A.5
+
+ 6. Scénario. Quel sous-domaine du domaine A de LiZbiZ est localement opaque ?
+      a) A.1
+      b) A.2
+      c) A.3
+      d) A.5
+
+ 7. Scénario. Sur quoi porte le NEK du sous-domaine A.3 ?
+      a) Le bilan économique des projets
+      b) Le schéma directeur
+      c) Les engagements de service
+      d) Le plan de formation
+
+ 8. Scénario. Sur quoi porte le NON du sous-domaine A.5 ?
+      a) L'organigramme
+      b) Le plan de formation
+      c) La séparation études et exploitation
+      d) La dépendance à une seule personne
+
+ 9. Quel est le premier point de la procédure d'évaluation d'un organe de gouvernance ?
+      a) La décision
+      b) Le mandat
+      c) Le suivi
+      d) L'information
+
+10. Scénario. Quel point est coté NON pour le comité des risques de la BANQUE SANAGA ?
+      a) Le mandat
+      b) Le fonctionnement
+      c) L'information
+      d) Le quorum
+
+11. Scénario. Que vise la recommandation sur le comité des risques de la BANQUE SANAGA ?
+      a) Le circuit de remontée des risques et l'échelle commune de cotation
+      b) La dissolution du comité
+      c) Le remplacement du DSI
+      d) Le commissaire aux comptes
+
+12. Des procès-verbaux qui ne contiennent que des « points d'information » révèlent un défaut de :
+      a) Mandat
+      b) Quorum
+      c) Fréquence
+      d) Décision
+
+13. Quel objectif de COBIT 2019 traite du budget et des coûts ?
+      a) APO02
+      b) APO06
+      c) APO07
+      d) MEA01
+
+14. Que signale un projet en cours absent du schéma directeur ?
+      a) Un plan déconnecté des moyens
+      b) Une bonne agilité
+      c) Une décision prise hors du circuit
+      d) Une erreur de l'auditeur
+
+15. Selon le guide du CHAI, comment manier les ratios de coûts informatiques ?
+      a) Avec précaution
+      b) Comme preuve suffisante
+      c) Jamais
+      d) À la place du budget
+
+16. Scénario. L'organigramme sépare l'administration des droits, mais la matrice donne tout à M. KOUNOU. Quel document dit ce qui se passe ?
+      a) L'organigramme
+      b) La fiche de poste
+      c) La charte informatique
+      d) La matrice des droits
+
+17. Pour l'auditeur, un indicateur publié dans un tableau de bord est :
+      a) Une preuve
+      b) Une affirmation de la direction, à vérifier
+      c) Un critère
+      d) Une conclusion
+
+18. En quoi consiste l'étape de reproduction d'un indicateur ?
+      a) Lire la fiche de l'indicateur
+      b) Interroger son responsable
+      c) Extraire les données sources et recalculer
+      d) Comparer la valeur à la cible
+
+19. Scénario. Quelle est la disponibilité recalculée de l'application de LiZbiZ en avril 2026 ?
+      a) 98,9 %
+      b) 99,6 %
+      c) 99,5 %
+      d) 97,8 %
+
+20. Scénario. Après la correction du contrôle A.4.2, comment le domaine A est-il coté ?
+      a) 16 / 3 / 1
+      b) 14 / 5 / 1
+      c) 16 / 4 / 0
+      d) 15 / 4 / 1
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'auditeur juge si LiZbiZ aurait dû choisir un autre progiciel.
+      Vrai / Faux
+
+22. Agréger un domaine peut masquer une opacité locale.
+      Vrai / Faux
+
+23. Un comité qui se réunit à la fréquence prévue par sa charte est forcément efficace.
+      Vrai / Faux
+
+24. Le schéma directeur 2025-2028 de LiZbiZ a été revu chaque année.
+      Vrai / Faux
+
+25. Un indicateur faux est pire que l'absence d'indicateur.
+      Vrai / Faux
+
+26. L'écart sur la disponibilité de LiZbiZ vient d'une erreur de calcul.
+      Vrai / Faux
+
+27. La séparation entre études et exploitation interdit aux développeurs l'accès aux données de production.
+      Vrai / Faux
+
+28. La gouvernance des SI elle-même est enseignée en détail dans ce chapitre.
+      Vrai / Faux
+
+29. La remontée des risques informatiques au conseil suppose une échelle commune de cotation.
+      Vrai / Faux
+
+30. L'auditeur présente l'écart sur un indicateur à son responsable avant de conclure.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Pour un document de gouvernance, on distingue le contenant et le ______.
+
+32. Le guide dont la fiche 3.1 inspire la décomposition est celui du ______.
+
+33. L'objectif de COBIT 2019 qui traite de la stratégie est APO______.
+
+34. Le plan stratégique du SI s'appelle le schéma ______.
+
+35. La disponibilité affichée pour avril 2026 est de 99,______ %.
+
+36. Le nombre d'heures classées « maintenance planifiée » et exclues est de ______.
+
+37. Le responsable informatique de LiZbiZ qui détient tous les droits est M. ______.
+
+38. La DSI de la BANQUE SANAGA avait coté le risque de panne « 3 sur ______ ».
+
+39. Un organe de gouvernance s'évalue par la trace de ses ______.
+
+40. Le sous-domaine A.4 couvre la performance et les ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,918 @@
+% ============================================================================
+% Fichier  : partie1/P01_C02_grandes_defaillances.tex
+% Titre    : Grandes Défaillances et Naissance de l'Audit des SI
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Chapitre-cas. Sources vérifiées le 01/11/2026 :
+% - Enron : 8-K du 8/11/2001 (retraitement, -586 M$ de résultats 1997-2001
+%   S1, +2,59 Md$ de dettes) ; faillite le 2/12/2001 ; rapport Powers du
+%   1/2/2002 ; condamnation d'Andersen en juin 2002 pour entrave (destruction
+%   de documents), annulée par la Cour suprême le 31/05/2005 ; SOX du
+%   30/07/2002, section 404 (15 U.S.C. 7262, texte lu sur law.cornell.edu).
+% - Société Générale : document de la banque « Les 10 points clés » (juin
+%   2016 : 18-20/01/2008, positions de près de 50 Md EUR, perte 4,9 Md EUR =
+%   gain dissimulé 1,4 Md - pertes de débouclage 6,3 Md ; limite de l'équipe
+%   125 M EUR ; « 75 alertes » ; contrôles dispersés ; plan Fighting Back ;
+%   décisions du 5/10/2010, 24/10/2012, 19/03/2014) ; Commission bancaire,
+%   blâme et 4 M EUR, 4/07/2008 (presse concordante).
+% - Equifax : GAO-18-559 (texte lu) : vulnérabilité Apache Struts publiée
+%   le 8/03/2017, scan des attaquants le 10/03, accès à partir du 13/05,
+%   découverte le 29/07, environ 76 jours, 3 + 48 bases, environ 9 000
+%   requêtes, certificat expiré environ 10 mois avant, liste de diffusion
+%   périmée, scan inefficace ; au moins 145,5 M de personnes ; règlement
+%   jusqu'à 700 M$ (CFPB, 22/07/2019). Le rapport de la Chambre (déc. 2018)
+%   donne 19 mois pour le certificat : divergence signalée dans le texte.
+% - Wirecard : rapport KPMG remis le 28/04/2020 (communiqué de la société) ;
+%   refus d'EY le 18/06/2020 ; 1,9 Md EUR ; déclaration du 22/06 ;
+%   insolvabilité le 25/06/2020 ; interdiction des ventes à découvert par la
+%   BaFin en février 2019 ; commission d'enquête du Bundestag (2020).
+% Knight Capital (2012) et TSB (2018) sont traités dans le cours GCI.
+% Corrigés : corriges/Corr_C02.tex.
+% ============================================================================
+
+\chapter[Grandes Défaillances et Naissance de l'Audit des SI]{Grandes Défaillances et Naissance de l'Audit des SI}
+\label{chap:defaillances}
+\chaptermark{Grandes défaillances}
+
+\epigraph{%
+    « Chaque catastrophe a eu ses contrôles.\\
+    Ils existaient sur le papier~; personne n'a vérifié qu'ils fonctionnaient. »%
+}{Leçon commune des quatre affaires de ce chapitre}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise du Chapitre~\ref{chap:audit-auditologie} (critère, preuve,
+    constatation~; assurance~; trois lignes)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Lire une affaire réelle avec méthode~: séparer les faits établis,
+          leurs sources et leur interprétation.
+    \item Distinguer une source primaire d'une source secondaire, et une
+          source neutre d'une source partie au litige.
+    \item Analyser quatre affaires documentées (Enron, Société Générale,
+          Equifax, Wirecard)~: le mécanisme, le contrôle qui a manqué,
+          l'audit qui ne l'a pas vu, la réforme qui a suivi.
+    \item Expliquer pourquoi la loi Sarbanes-Oxley a fait des contrôles
+          informatiques un objet d'audit, et ce que dit sa section~404.
+    \item Reconnaître cinq schémas de défaillance qui reviennent d'une
+          affaire à l'autre, et les retrouver dans le cas LiZbiZ.
+    \item Relier chaque schéma à la réponse \NEK{}~: une alerte fermée par
+          une déclaration est un \NEK{} déguisé en \OUI{}.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : pourquoi étudier des catastrophes~?}
+% ============================================================================
+
+Un ingénieur en génie civil étudie les ponts qui se sont effondrés~; un
+ingénieur aéronautique, les rapports d'accident. Ils n'y cherchent pas
+des coupables, mais des mécanismes~: ce qui a cédé, pourquoi les
+protections n'ont pas joué, ce que l'on a changé ensuite. L'auditeur fait
+de même. Les grandes affaires de l'histoire récente ne sont pas des
+anecdotes~: chacune a laissé une règle, une norme ou une loi que l'auditeur
+applique aujourd'hui.
+
+Ce chapitre en étudie quatre, choisies pour couvrir des terrains
+différents~: un montage comptable (Enron, 2001), une fraude interne dans une
+salle de marchés (Société Générale, 2008), une cyberattaque (Equifax,
+2017), une fraude comptable dans une société de paiement (Wirecard, 2020).
+Deux autres affaires, Knight Capital (2012) et la migration informatique
+de la banque TSB (2018), sont étudiées dans le cours MSN-2S3-MSI03 sous
+l'angle de la gouvernance.
+
+Le chapitre commence par une méthode de lecture
+(section~\ref{sec:c02-methode}), raconte les quatre affaires
+(sections~\ref{sec:c02-enron} à~\ref{sec:c02-wirecard}), puis en tire les
+schémas communs (section~\ref{sec:c02-schemas}).
+
+\separateur
+
+% ============================================================================
+\section{Lire une Affaire avec Méthode}
+\label{sec:c02-methode}
+% ============================================================================
+
+\subsection{Six questions}
+
+Une affaire se lit comme une mission d'audit~: avec une grille, et en
+séparant ce qui est établi de ce que l'on en pense. Le cours utilise six
+questions.
+
+\begin{tableaucours}{cL{4.2cm}L{7.4cm}}{%
+    \tableauHeader{N°} &
+    \tableauHeader{Question} &
+    \tableauHeader{Ce qu'on cherche}
+}
+1 & Que s'est-il passé~? & Les faits datés, chiffrés, sourcés \\
+2 & Quel était le mécanisme~? & Comment la perte, la fraude ou la fuite
+s'est produite techniquement \\
+3 & Quel contrôle a manqué~? & Le contrôle absent, mal conçu, ou conçu mais
+inopérant \\
+4 & Quel signal a été ignoré~? & L'alerte, le doute, la question qui aurait
+permis de voir \\
+5 & Pourquoi l'audit n'a-t-il pas vu~? & Indépendance, preuve, périmètre,
+méthode \\
+6 & Qu'est-ce qui a changé ensuite~? & Loi, norme, pratique de la
+profession \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.1. La grille de lecture d'une
+affaire}\end{center}
+
+\subsection{La critique des sources}
+
+Une affaire célèbre est racontée par des centaines de sources, qui ne
+disent pas toutes la même chose. L'auditeur applique aux sources la même
+discipline qu'aux preuves (Chapitre~\ref{chap:preuve}).
+
+\begin{boxdef}
+\termecle{Source primaire}\index{source primaire}~: document produit par
+l'acteur ou l'autorité qui a établi le fait~: décision de justice, rapport
+d'une autorité de contrôle, déclaration réglementaire de l'entreprise,
+texte de loi.
+
+\medskip
+\termecle{Source secondaire}\index{source secondaire}~: document qui
+rapporte ou commente une source primaire~: article de presse, ouvrage,
+encyclopédie en ligne.
+
+\medskip
+\termecle{Source partie}\index{source partie}~: source primaire produite par
+un acteur qui a un intérêt dans l'affaire (l'entreprise, l'accusé). Elle
+établit ce que cet acteur affirme~; elle ne suffit pas à établir que c'est
+vrai.
+\end{boxdef}
+
+Dans ce chapitre, chaque fait est rattaché à une source primaire, citée en
+bibliographie. Quand une source est partie au litige, le texte le dit
+(«~selon la banque~»). Quand deux sources divergent, le texte le signale au
+lieu de choisir en silence.
+
+\begin{boxalert}
+\textbf{Violation typique.} Reprendre dans un rapport ou un mémoire un
+chiffre lu dans un article, sans remonter à la source, puis le voir repris
+par d'autres.
+
+\smallskip
+\textbf{Règle~:} un chiffre n'est cité que si l'on a lu sa source
+primaire. À défaut, on écrit «~selon la presse~» ou «~à vérifier~», comme
+on cote \NEK{} une réponse que l'on ne peut pas prouver.
+\end{boxalert}
+
+% ============================================================================
+\section{Enron (2001) : le Montage que Personne ne Lisait}
+\label{sec:c02-enron}
+% ============================================================================
+
+\subsection{Les faits}
+
+Enron était, à la fin des années~1990, l'une des plus grandes entreprises
+américaines, active dans le négoce de l'énergie. Le 8~novembre 2001, elle
+déclare à l'autorité boursière américaine (\sigle{SEC}) qu'elle retraite
+ses comptes de 1997 au premier semestre 2001~: les résultats publiés sont
+réduits d'environ 586~millions de dollars, et ses dettes augmentées
+d'environ 2,59~milliards, principalement parce que des sociétés partenaires
+auraient dû être consolidées~\cite{enron2001restatement}. Le 2~décembre
+2001, Enron se place sous la protection de la loi sur les faillites.
+
+Le conseil d'administration avait créé, fin octobre~2001, un comité
+spécial d'enquête, présidé par William Powers. Son rapport, rendu public le
+1\textsuperscript{er}~février 2002, décrit les opérations conclues avec ces
+sociétés partenaires et les défaillances qui les ont
+permises~\cite{powers2002enron}.
+
+\subsection{Le mécanisme}
+
+Les sociétés partenaires étaient des \termecle{entités ad
+hoc}\index{entité ad hoc}~: des structures créées pour une opération
+précise, et que les règles comptables de l'époque permettaient, sous
+conditions, de ne pas consolider. Enron leur cédait des actifs ou concluait
+avec elles des couvertures, enregistrait des résultats, et laissait les
+dettes hors de son bilan. Plusieurs de ces entités étaient gérées par des
+dirigeants d'Enron, dont le directeur financier~: l'entreprise traitait,
+de fait, avec elle-même.
+
+\subsection{Les contrôles qui ont manqué}
+
+Le rapport Powers met en cause plusieurs niveaux~\cite{powers2002enron}.
+\begin{itemize}
+    \item \textbf{La gouvernance}~: le conseil a autorisé le directeur
+          financier à diriger des entités qui traitaient avec Enron, ce qui
+          supposait de déroger au code de conduite, sans mettre en place une
+          surveillance à la hauteur du conflit d'intérêts.
+    \item \textbf{Le contrôle des opérations}~: les contrôles prévus sur ces
+          opérations (revues, approbations) n'ont pas fonctionné comme
+          prévu, et n'ont pas été vérifiés.
+    \item \textbf{L'information du conseil}~: le comité d'audit recevait des
+          présentations trop générales pour comprendre des montages d'une
+          grande complexité.
+\end{itemize}
+
+\subsection{L'audit qui n'a pas vu}
+
+Le commissaire aux comptes d'Enron était Arthur Andersen, alors l'un des
+cinq grands cabinets mondiaux. Le cabinet a approuvé la comptabilisation de
+plusieurs de ces montages. En juin~2002, il a été condamné pour entrave à
+la justice, pour avoir détruit des documents liés à Enron~; condamnation
+annulée en mai~2005 par la Cour suprême des États-Unis pour un défaut des
+instructions données au jury. Entre-temps, le cabinet avait cessé ses
+activités d'audit et disparu. La faute d'audit la plus souvent analysée est
+celle de l'indépendance~: un cabinet qui tirait aussi d'Enron d'importants
+honoraires de conseil était mal placé pour contredire son client.
+
+\subsection{Ce qui a changé~: la loi Sarbanes-Oxley}
+
+Le 30~juillet 2002, les États-Unis adoptent la loi
+Sarbanes-Oxley~\cite{sox2002}. Trois de ses dispositions concernent
+directement l'audit.
+\begin{itemize}
+    \item Elle crée un organe de supervision des auditeurs des sociétés
+          cotées, le \sigle{PCAOB}, qui fixe leurs normes et les inspecte.
+    \item Elle interdit à l'auditeur de fournir à son client certains
+          services autres que l'audit.
+    \item Sa section~404 impose un rapport sur le contrôle interne.
+\end{itemize}
+
+\begin{boxjuris}
+\textbf{Sarbanes-Oxley Act, section~404 (a) et (b)} (15 U.S.C.~7262,
+traduction résumée)~: le rapport annuel de chaque société cotée contient un
+rapport sur le contrôle interne, qui (1) affirme la responsabilité de la
+direction dans la mise en place et le maintien d'un dispositif de contrôle
+interne et de procédures adaptés pour l'information financière, et (2)
+évalue, à la clôture de l'exercice, l'efficacité de ce dispositif. Le
+cabinet qui audite les comptes atteste l'évaluation faite par la direction
+et en rend compte.
+
+\medskip
+\textbf{Portée pour l'audit des SI.} L'information financière est produite
+par des applications. Évaluer le contrôle interne sur l'information
+financière, c'est donc évaluer les contrôles informatiques~: qui peut
+modifier un programme, qui peut accéder aux données, comment
+l'exploitation est surveillée. Les \emph{contrôles généraux
+informatiques} sont devenus, depuis, un passage obligé de l'audit
+(Chapitre~\ref{chap:controle-interne}).
+\end{boxjuris}
+
+\begin{boiteRemarque}{Et hors des États-Unis~?}
+La loi Sarbanes-Oxley ne s'applique qu'aux sociétés cotées aux États-Unis.
+Mais elle a inspiré, dans de nombreux pays, des règles sur le comité
+d'audit, l'indépendance des commissaires aux comptes et le rapport sur le
+contrôle interne. Le droit OHADA et la réglementation bancaire de la CEMAC
+en portent la marque, à leur manière (Chapitre~\ref{chap:droit}).
+\end{boiteRemarque}
+
+% ============================================================================
+\section{Société Générale (2008) : les Alertes Éteintes}
+\label{sec:c02-socgen}
+% ============================================================================
+
+\subsection{Les faits}
+
+Les faits ci-dessous sont ceux qu'établit la banque, partie au litige,
+dans un document publié en 2016~\cite{sg2016kerviel}~; les décisions de
+justice qu'il cite ont confirmé la culpabilité de l'auteur de la fraude.
+
+\begin{tableaucours}{L{2.8cm}L{9.4cm}}{%
+    \tableauHeader{Date} &
+    \tableauHeader{Fait (selon la banque)}
+}
+2007 & Un trader de l'équipe dite \emph{Delta One} prend des positions non
+autorisées qui atteignent environ 30~milliards d'euros~; à la fin de
+l'année, elles dégagent un gain latent de 1,4~milliard, dissimulé \\
+Janvier 2008 & Nouvelles positions non autorisées, de près de 50~milliards
+d'euros, plus que les fonds propres de la banque \\
+18 janvier 2008 & Une alerte conduit à une enquête interne~; les 19 et
+20~janvier, les positions dissimulées sont découvertes \\
+21-23 janvier & Débouclage des positions, en trois jours \\
+24 janvier 2008 & Annonce publique~: perte de 4,9~milliards d'euros (pertes
+de débouclage de 6,3~milliards, moins le gain dissimulé de 1,4) \\
+4 juillet 2008 & La Commission bancaire inflige à la banque un blâme et une
+amende de 4~millions d'euros pour des carences de son contrôle interne \\
+2010-2014 & Le trader est condamné, notamment pour faux et usage de faux et
+pour introduction frauduleuse de données dans un système de traitement
+automatisé (jugement du 5~octobre 2010, arrêts du 24~octobre 2012 et du
+19~mars 2014) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.2. L'affaire de la Société Générale
+(d'après~\cite{sg2016kerviel} et la décision de la Commission bancaire)}\end{center}
+
+La limite de risque de l'équipe, huit traders, était de 125~millions
+d'euros en fin de journée~\cite{sg2016kerviel}. Les positions découvertes
+la dépassaient d'environ quatre cents fois.
+
+\subsection{Le mécanisme}
+
+Pour masquer ses positions, le trader saisissait des \emph{opérations
+fictives}~: des opérations de sens inverse, qui faisaient apparaître dans
+les systèmes une position nette faible. Selon la banque, il en a enregistré
+plusieurs centaines, qu'il annulait et remplaçait avant qu'elles ne
+déclenchent les contrôles de confirmation~\cite{sg2016kerviel}. Il avait
+été assistant pendant plus de deux ans dans les fonctions de suivi des
+opérations, et connaissait de l'intérieur les contrôles qu'il déjouait.
+
+\subsection{Le contrôle qui a manqué~: les alertes}
+
+C'est ici que l'affaire intéresse le plus l'auditeur. Les contrôles
+\emph{ont} réagi. La banque évoque elle-même \textbf{75~alertes} sur la
+période. Chacune a été fermée~: le trader fournissait une explication, et
+parfois un faux, par exemple de faux courriels (la banque en mentionne
+sept), et les services de contrôle acceptaient l'explication. La banque
+reconnaît que ses contrôles étaient «~dispersés au sein de plusieurs
+directions différentes sans vision transversale~»~\cite{sg2016kerviel}.
+
+\begin{boxscenario}{Une alerte, trois réponses}
+\textbf{Situation.} Un contrôle de second niveau signale une opération sans
+contrepartie confirmée. Le trader répond par courriel qu'il s'agit d'une
+erreur de saisie, corrigée le jour même.
+
+\medskip
+\textbf{Réponse 1 (acceptée en 2007).} L'explication est plausible~:
+l'alerte est close, cotée de fait \OUI{}.
+
+\textbf{Réponse 2.} L'explication n'est pas prouvée~: l'alerte reste
+ouverte, cotée \NEK{}, jusqu'à confirmation par la contrepartie.
+
+\textbf{Réponse 3.} La confirmation est demandée directement à la
+contrepartie, sans passer par le trader~: la réponse établit l'opération,
+ou révèle qu'elle n'existe pas.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La réponse~1 transforme une
+déclaration en preuve~: c'est exactement l'erreur de la première mission
+de LiZbiZ. Une alerte fermée par une explication non vérifiée est un
+\NEK{} déguisé en \OUI{}. La réponse~3 est celle de l'auditeur~: elle
+obtient la preuve auprès d'une source indépendante de la personne
+contrôlée.
+\end{boxscenario}
+
+\subsection{Ce qui a changé}
+
+Selon la banque, le plan de remédiation a porté sur le suivi des risques en
+montant nominal (et non seulement en position nette), le suivi des
+annulations d'opérations, le suivi de la prise des congés, et la création
+d'un département transversal de supervision de la sécurité des
+opérations~\cite{sg2016kerviel}. Chacune de ces mesures répond à un
+mécanisme de la fraude~:
+\begin{itemize}
+    \item le \emph{nominal} rend visibles des positions que le net
+          masquait~;
+    \item le suivi des \emph{annulations} détecte les opérations fictives
+          remplacées en chaîne~;
+    \item les \emph{congés} obligatoires interrompent une fraude qui exige
+          une présence continue pour être entretenue~;
+    \item la \emph{centralisation} des alertes permet de voir qu'une même
+          personne en génère beaucoup.
+\end{itemize}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Ce que l'affaire lui apprend}
+\begin{enumerate}
+    \item Une alerte n'est fermée que sur preuve, jamais sur explication.
+    \item Les alertes se centralisent et se comptent par personne~: dix
+          alertes « expliquées » chez le même opérateur forment un signal.
+    \item Un ancien du suivi des opérations qui passe à la prise de risque
+          connaît les contrôles~: c'est un facteur de risque à suivre, pas
+          une garantie de rigueur.
+    \item Les congés obligatoires sont un contrôle, et leur respect se
+          vérifie.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Equifax (2017) : le Correctif qui n'est pas Arrivé}
+\label{sec:c02-equifax}
+% ============================================================================
+
+\subsection{Les faits}
+
+Equifax est l'une des trois grandes agences américaines d'évaluation du
+crédit des particuliers. Elle détient des données personnelles sur la
+majorité des adultes du pays. Le rapport de l'office de contrôle du
+Congrès américain (\sigle{GAO}) retrace l'attaque d'après les déclarations
+de l'entreprise~\cite{gao2018equifax}.
+
+\begin{tableaucours}{L{2.8cm}L{9.4cm}}{%
+    \tableauHeader{Date (2017)} &
+    \tableauHeader{Fait (d'après le rapport GAO-18-559)}
+}
+8 mars & L'organisme fédéral d'alerte en cybersécurité publie une
+vulnérabilité du cadriciel Apache Struts, qui permet d'exécuter des
+commandes à distance \\
+10 mars & Des inconnus balaient les systèmes d'Equifax à la recherche de
+cette vulnérabilité, et la trouvent sur le portail de contestation en ligne
+des consommateurs \\
+Mi-mars & Equifax diffuse l'alerte à ses administrateurs~; un balayage
+interne, une semaine plus tard, ne détecte pas la vulnérabilité sur ce
+portail \\
+13 mai & Début de l'attaque proprement dite \\
+13 mai -- 29 juillet & Les attaquants passent de 3 bases de données à 48
+autres, lancent environ 9\,000 requêtes et extraient les données par
+petites quantités \\
+29 juillet & Un administrateur remplace un certificat expiré~; l'inspection
+du trafic reprend et révèle l'intrusion, après environ 76 jours \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.3. La chronologie de l'attaque
+d'Equifax (d'après~\cite{gao2018equifax})}\end{center}
+
+Les données d'au moins 145,5~millions de personnes ont été
+atteintes~\cite{gao2018equifax}. En juillet~2019, l'entreprise a conclu avec
+les autorités fédérales et les États un accord pouvant atteindre
+700~millions de dollars~\cite{cfpb2019equifax}.
+
+\subsection{Les contrôles qui ont manqué}
+
+L'entreprise a elle-même identifié, après enquête, quatre facteurs, plus un
+cinquième~\cite{gao2018equifax}. Ils se traduisent en contrôles que tout
+auditeur de sécurité sait nommer.
+
+\begin{tableaucours}{L{2.8cm}L{5.0cm}L{4.4cm}}{%
+    \tableauHeader{Facteur} &
+    \tableauHeader{Ce qui s'est passé} &
+    \tableauHeader{Contrôle défaillant}
+}
+Identification & La liste de diffusion de l'alerte était périmée~; ceux qui
+devaient corriger ne l'ont pas reçue~; le balayage n'a pas vu la faille &
+Gestion des vulnérabilités et des correctifs~; inventaire des actifs \\
+Détection & Un certificat expiré empêchait l'outil d'inspecter le trafic
+chiffré & Surveillance~; gestion des certificats \\
+Segmentation & Les bases n'étaient pas isolées les unes des autres &
+Cloisonnement du réseau et des données \\
+Gouvernance des données & Une base contenait des identifiants en clair
+donnant accès à d'autres bases & Gestion des secrets et des accès \\
+Fréquence des requêtes & Aucune limite~: 9\,000 requêtes sans alarme &
+Détection d'anomalies \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.4. Les facteurs de l'attaque
+d'Equifax et les contrôles correspondants}\end{center}
+
+\subsection{Un contrôle en place, qui ne fonctionnait pas}
+
+Le facteur «~détection~» mérite une attention particulière. Equifax
+\emph{avait} installé un outil d'inspection du trafic~: sur le papier, le
+contrôle existait. Mais, selon le GAO, le certificat qui lui permettait de
+lire le trafic chiffré avait expiré environ dix mois avant
+l'attaque~\cite{gao2018equifax}. Pendant tout ce temps, l'outil ne voyait
+rien, et personne ne s'en était aperçu.
+
+C'est la distinction fondamentale entre la \emph{conception} d'un contrôle
+(il existe, il est adapté au risque) et son \emph{efficacité de
+fonctionnement} (il a réellement fonctionné sur la période). Un auditeur
+qui aurait vérifié l'existence de l'outil aurait coté \OUI{}~; celui qui
+aurait vérifié qu'il produisait des alertes sur la période aurait coté
+\NON{}. Le Chapitre~\ref{chap:controle-interne} développe cette
+distinction.
+
+\begin{boiteRemarque}{Dix mois ou dix-neuf mois~?}
+Le rapport du GAO indique que le certificat avait expiré environ dix mois
+avant l'attaque~\cite{gao2018equifax}. Le rapport de la commission de
+contrôle de la Chambre des représentants, publié en décembre~2018, indique
+pour sa part que le dispositif de surveillance était inactif depuis
+dix-neuf mois~\cite{house2018equifax}. Les deux rapports ne décrivent
+peut-être pas le même équipement, ni le même point de départ. Un auditeur
+ne tranche pas entre deux sources primaires sans pièce supplémentaire~: il
+cite les deux, et dit que l'écart reste à expliquer. Ici, la conclusion
+ne dépend pas de l'écart~: dans les deux cas, la surveillance était aveugle
+pendant toute l'attaque.
+\end{boiteRemarque}
+
+\begin{boxmetier}{RSSI}
+\textbf{Les questions que l'affaire lui pose}
+\begin{enumerate}
+    \item Ma liste de diffusion des alertes de sécurité est-elle à jour, et
+          qui vérifie qu'un correctif critique a été installé partout~?
+    \item Mon inventaire des applications exposées sur Internet est-il
+          complet~? Le balayage couvre-t-il tout l'inventaire~?
+    \item Qui suit la date d'expiration des certificats de mes outils de
+          surveillance, et qui s'aperçoit qu'un outil ne voit plus rien~?
+    \item Une base compromise donne-t-elle accès aux autres~?
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Wirecard (2020) : la Trésorerie qui n'Existait pas}
+\label{sec:c02-wirecard}
+% ============================================================================
+
+\subsection{Les faits}
+
+Wirecard était une société allemande de traitement des paiements, entrée
+en 2018 dans le principal indice boursier allemand. Une partie
+importante de son activité passait par des partenaires tiers en Asie, et
+les fonds correspondants étaient présentés comme déposés sur des comptes
+fiduciaires.
+
+\begin{tableaucours}{L{2.8cm}L{9.4cm}}{%
+    \tableauHeader{Date} &
+    \tableauHeader{Fait}
+}
+2015-2019 & Des articles de presse et des vendeurs à découvert mettent en
+doute les comptes de la société \\
+Février 2019 & L'autorité allemande de surveillance financière (BaFin)
+interdit pour deux mois les ventes à découvert de l'action~; des plaintes
+visent des journalistes et des vendeurs à découvert \\
+Octobre 2019 & Sous la pression des investisseurs, la société confie une
+enquête spéciale au cabinet KPMG \\
+28 avril 2020 & Rapport de KPMG~: le cabinet n'a pas pu vérifier les
+revenus tirés des partenaires tiers, ni une partie importante des soldes
+de trésorerie~; il n'a reçu, presque toujours, que des copies
+électroniques de documents dont il ne pouvait pas vérifier
+l'authenticité~\cite{wirecard2020kpmg} \\
+18 juin 2020 & Le commissaire aux comptes, EY, refuse de certifier les
+comptes 2019~: il ne peut pas confirmer l'existence de 1,9~milliard
+d'euros de soldes bancaires \\
+22 juin 2020 & La société déclare qu'il est probable que ces soldes
+n'existent pas \\
+25 juin 2020 & Demande d'ouverture d'une procédure d'insolvabilité \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.5. La chute de Wirecard (d'après le
+rapport de KPMG~\cite{wirecard2020kpmg} et les communiqués de la société,
+rapportés par la presse)}\end{center}
+
+\subsection{Le mécanisme et l'audit}
+
+La trésorerie déclarée reposait sur des confirmations et des relevés
+fournis par des intermédiaires, et non obtenus directement des banques.
+Selon la presse, deux banques philippines dont les noms figuraient sur ces
+documents ont déclaré n'avoir jamais eu de relation avec la société pour
+ces comptes. Le commissaire aux comptes avait certifié les comptes
+pendant plusieurs années~; c'est l'enquête spéciale, puis le refus de
+certifier, qui ont fait apparaître que la preuve de l'existence de la
+trésorerie n'avait jamais été établie de façon indépendante.
+
+La règle d'audit en cause est ancienne~: la \termecle{confirmation
+directe}\index{confirmation directe}. Pour s'assurer qu'un solde bancaire
+existe, l'auditeur demande lui-même à la banque de le confirmer, et reçoit
+la réponse directement, sans qu'elle passe par l'entité auditée. Un relevé
+remis par l'audité, ou par un tiers qu'il désigne, ne vaut pas
+confirmation.
+
+\subsection{Ce qui a changé}
+
+L'affaire a conduit à la démission des dirigeants de l'autorité de
+surveillance financière, à une commission d'enquête du Bundestag ouverte en
+2020, et à une réforme du contrôle de l'information financière et de la
+supervision des auditeurs en Allemagne. Elle a aussi rappelé que le
+régulateur lui-même peut se tromper de cible~: en 2019, il protégeait la
+société contre ceux qui l'accusaient.
+
+\begin{boxscenario}{Opération LIZBIZ. Un relevé de trop}
+\textbf{Situation.} Pour justifier la trésorerie de son agence de
+Bafoussam, LiZbiZ remet à AUDIX CONSEIL un relevé bancaire au format PDF,
+envoyé par courriel par le comptable de l'agence.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le relevé est une copie électronique
+remise par l'audité~: c'est exactement le type de pièce que KPMG n'a pas
+pu authentifier chez Wirecard. Tant que la banque n'a pas confirmé le
+solde directement à l'auditeur, la cote est \NEK{}, et non \OUI{}. La
+confirmation est demandée par AUDIX CONSEIL, sur papier à en-tête de
+LiZbiZ signé par le directeur financier, et la banque répond à l'adresse du
+cabinet.
+\end{boxscenario}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Authentifier une pièce numérique}
+\begin{enumerate}
+    \item Préférer la pièce obtenue directement à la source (extraction
+          réalisée en présence de l'auditeur, confirmation de la banque) à
+          la pièce remise par l'audité.
+    \item Pour un fichier remis, consigner sa provenance, sa date et son
+          empreinte, et rechercher une corroboration indépendante.
+    \item Coter \NEK{} tant que l'authenticité n'est pas établie~; ne
+          jamais coter \OUI{} sur une copie seule.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Cinq Schémas qui Reviennent}
+\label{sec:c02-schemas}
+% ============================================================================
+
+\subsection{La synthèse des quatre affaires}
+
+\begin{tableaucours}{L{2.0cm}L{3.4cm}L{3.4cm}L{3.4cm}}{%
+    \tableauHeader{Affaire} &
+    \tableauHeader{Contrôle qui a manqué} &
+    \tableauHeader{Ce que l'on a cru} &
+    \tableauHeader{Ce qui a changé}
+}
+Enron & Surveillance du conflit d'intérêts~; information du conseil &
+Que les montages étaient approuvés et compris & Loi Sarbanes-Oxley,
+indépendance, rapport sur le contrôle interne \\
+Société Générale & Fermeture des alertes sur preuve~; suivi en nominal &
+Les explications du trader & Suivi du nominal, des annulations, des
+congés~; supervision transversale \\
+Equifax & Correctifs, inventaire, surveillance, segmentation & Qu'un outil
+installé était un outil qui fonctionne & Accord de 2019, exigences de
+sécurité renforcées \\
+Wirecard & Confirmation directe de la trésorerie & Des copies de
+documents remises par des tiers & Réforme de la supervision en
+Allemagne \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.6. Quatre affaires lues avec la même
+grille}\end{center}
+
+\subsection{Cinq schémas}
+
+Lues ensemble, ces affaires font apparaître cinq schémas de défaillance.
+Ils se retrouvent dans les audits ordinaires, à une autre échelle.
+
+\begin{enumerate}
+    \item \textbf{Le contrôle écrit, non appliqué.} Il existe une règle, une
+          procédure, un outil~; personne ne vérifie qu'il fonctionne
+          (Equifax, Enron).
+    \item \textbf{L'alerte fermée par une déclaration.} Le contrôle a
+          réagi, mais une explication non prouvée a suffi à le faire taire
+          (Société Générale).
+    \item \textbf{La preuve fournie par l'intéressé.} L'auditeur accepte une
+          pièce remise par la personne ou l'entité qu'il contrôle, sans
+          confirmation indépendante (Wirecard).
+    \item \textbf{L'indépendance compromise.} Celui qui évalue a intérêt à
+          ne pas voir~: honoraires, proximité, relations (Enron).
+    \item \textbf{La surveillance aveugle.} Le dispositif de détection
+          existe mais ne voit plus rien, et personne ne surveille la
+          surveillance (Equifax).
+\end{enumerate}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} Les schémas~2 et~3 illustrent l'axiome
+d'\emph{interaction stratégique} de l'article \emph{Vers
+l'auditologie}~\cite{minka2026auditologie}~: l'audité n'est pas une source
+neutre, il a intérêt à la réponse. Les schémas~1 et~5 illustrent
+l'\emph{observabilité partielle}~: l'auditeur ne voit le système qu'à
+travers des traces, et une trace absente (un outil qui ne journalise plus)
+ne dit pas que tout va bien. Dans les quatre affaires, ce qui aurait dû
+être coté \NEK{} a été traité comme un \OUI{}.
+\end{boxinfo}
+
+\subsection{Les mêmes schémas chez LiZbiZ}
+
+Les cinq schémas se retrouvent, à leur échelle, dans le cas fil rouge.
+Les chapitres suivants les instruiront un à un.
+
+\begin{tableaucours}{L{3.6cm}L{6.0cm}c}{%
+    \tableauHeader{Schéma} &
+    \tableauHeader{Chez LiZbiZ} &
+    \tableauHeader{Chapitre}
+}
+Contrôle écrit, non appliqué & La procédure de désactivation des comptes
+sous 48~heures~: 5 comptes d'agents partis encore actifs &
+\ref{chap:preuve} \\
+Alerte fermée par une déclaration & La première mission retient les
+réponses majoritaires, sans preuve & \ref{chap:prologue} \\
+Preuve fournie par l'intéressé & Les explications des ajustements de stock
+de fin de mois, données par celui qui les saisit & \ref{chap:fraude} \\
+Indépendance compromise & La première mission conduite par une équipe
+dépendant de la direction évaluée & \ref{chap:audit-auditologie} \\
+Surveillance aveugle & Aucun journal des revues de droits~; le
+responsable informatique détient tous les droits de l'application &
+\ref{chap:controle-interne} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~2.7. Les cinq schémas dans le cas
+LiZbiZ}\end{center}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Les risques que les affaires rendent visibles}
+
+Aucune de ces affaires n'était imprévisible au sens strict~: le conflit
+d'intérêts, la fraude interne, la faille non corrigée, la trésorerie non
+confirmée sont des risques connus. Ce qui a manqué, c'est la vérification
+que les mesures de traitement fonctionnaient. Le gestionnaire de risques
+en retient qu'un risque n'est « traité » que lorsque l'efficacité de sa
+mesure a été démontrée (Chapitre~\ref{chap:gestion-risques}).
+\end{boxmetier}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Le coût de la non-conformité}
+
+L'accord conclu par Equifax en 2019 rappelle que la protection des données
+personnelles a un coût, et que les autorités peuvent l'exiger a
+posteriori. Au Cameroun, la loi n°~2024/017 sur les données personnelles
+fait de la sécurité des traitements une obligation légale~; le
+Chapitre~\ref{chap:audit-conformite} montre comment l'auditer.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Et les affaires africaines~?} Les défaillances survenues en
+Afrique centrale sont rarement documentées par des sources publiques
+complètes~: rapports d'enquête non publiés, procédures confidentielles. Le
+cours ne cite que des affaires dont les sources primaires sont accessibles.
+L'exercice~2.10 invite à en rechercher une, avec la même exigence.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Une affaire se lit avec une grille}~: faits, mécanisme,
+          contrôle manquant, signal ignoré, défaut d'audit, réforme.
+    \item \textbf{Les sources se critiquent}~: primaire ou secondaire,
+          neutre ou partie~; une divergence se signale, ne se tranche pas en
+          silence.
+    \item \textbf{Enron} a conduit à la loi Sarbanes-Oxley~: sa section~404
+          impose un rapport sur le contrôle interne, et a fait des
+          contrôles informatiques un objet d'audit.
+    \item \textbf{Société Générale}~: 75 alertes, toutes fermées par des
+          explications~; une alerte ne se ferme que sur preuve.
+    \item \textbf{Equifax}~: un correctif non installé, une surveillance
+          aveugle depuis des mois~; un contrôle installé n'est pas un
+          contrôle qui fonctionne.
+    \item \textbf{Wirecard}~: une trésorerie jamais confirmée
+          directement~; une copie remise par l'audité ne prouve pas.
+    \item \textbf{Cinq schémas}~: contrôle écrit non appliqué, alerte
+          fermée par une déclaration, preuve fournie par l'intéressé,
+          indépendance compromise, surveillance aveugle. Tous reviennent à
+          traiter un \NEK{} comme un \OUI{}.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle.} Vous avez compris ce chapitre si vous savez~:
+\begin{itemize}
+    \item appliquer la grille des six questions à une affaire que vous ne
+          connaissiez pas~;
+    \item dire si une source est primaire ou secondaire, neutre ou partie~;
+    \item expliquer, en trois phrases, pourquoi la section~404 a changé
+          l'audit des systèmes d'information~;
+    \item distinguer la conception d'un contrôle de son efficacité de
+          fonctionnement, sur l'exemple d'Equifax~;
+    \item reconnaître les cinq schémas dans une situation nouvelle.
+\end{itemize}
+\end{boxinfo}
+
+% ============================================================================
+\section*{Exercices}
+% ============================================================================
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.1. Primaire ou secondaire~? \niveaubase}]
+Classez chacune des sources suivantes (primaire, secondaire, partie) et
+dites ce qu'elle permet d'établir.
+\begin{enumerate}[(a)]
+    \item Le rapport GAO-18-559 sur l'attaque d'Equifax.
+    \item Un article d'encyclopédie en ligne sur Wirecard.
+    \item Le document de la Société Générale sur l'affaire de 2008.
+    \item Le texte de la section~404 de la loi Sarbanes-Oxley.
+    \item Le communiqué par lequel Wirecard publie le rapport de KPMG.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.2. La perte de la Société Générale \niveaubase}]
+\begin{enumerate}[(a)]
+    \item Retrouvez, à partir du Tableau~2.2, comment se forme la perte de
+          4,9~milliards d'euros.
+    \item Combien de fois les positions de janvier~2008 dépassaient-elles
+          la limite de l'équipe~?
+    \item Pourquoi une limite exprimée en position nette ne pouvait-elle
+          pas révéler la fraude~? Quel indicateur l'aurait révélée~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.3. La chronologie d'Equifax \niveaumoyen}]
+À partir du Tableau~2.3~:
+\begin{enumerate}[(a)]
+    \item Combien de jours se sont écoulés entre la publication de la
+          vulnérabilité et le début de l'attaque proprement dite~? Qu'aurait
+          dû permettre ce délai~?
+    \item Pour chacun des cinq facteurs du Tableau~2.4, rédigez une question
+          d'audit atomique, cotable \OUI{}, \NON{} ou \NEK{}, et la preuve
+          attendue.
+    \item Lequel de ces contrôles, s'il avait fonctionné, aurait le plus
+          réduit la durée de l'attaque~? Justifiez.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.4. Conception ou fonctionnement~? \niveaumoyen}]
+Pour chacune des situations suivantes, dites si le défaut porte sur la
+conception du contrôle ou sur son fonctionnement, et quel test l'aurait
+révélé.
+\begin{enumerate}[(a)]
+    \item L'outil d'inspection du trafic d'Equifax, avec un certificat
+          expiré.
+    \item Une procédure de LiZbiZ qui prévoit la désactivation des comptes
+          sous 48~heures, mais que les ressources humaines n'informent pas
+          des départs.
+    \item Une limite de risque exprimée en position nette, alors que les
+          positions peuvent être compensées par des opérations fictives.
+    \item Un comité d'audit qui reçoit des présentations trop générales
+          pour comprendre les montages qu'on lui soumet.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.5. Fermer une alerte \niveaumoyen}]
+Le contrôle des paiements de LiZbiZ signale, sur l'exercice 2025,
+vingt-trois paiements de 4,9~millions FCFA au même fournisseur, juste sous
+le seuil de double signature de 5~millions. Mme~OWONA, qui les a saisis, explique
+qu'il s'agit de livraisons fractionnées à la demande du fournisseur.
+\begin{enumerate}[(a)]
+    \item Comment l'alerte aurait-elle été traitée selon la « réponse 1 »
+          de la Société Générale~? Selon la « réponse 3 »~?
+    \item Quelles preuves indépendantes de Mme~OWONA faut-il obtenir avant
+          de fermer l'alerte~?
+    \item Quelle est la cote tant que ces preuves manquent~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.6. La confirmation directe \niveaumoyen}]
+\begin{enumerate}[(a)]
+    \item Décrivez, étape par étape, une procédure de confirmation directe
+          d'un solde bancaire, en précisant qui envoie, qui reçoit et par
+          quel canal.
+    \item Pourquoi un relevé PDF remis par l'audité ne suffit-il pas, même
+          s'il porte le logo de la banque~?
+    \item Proposez deux autres situations, en audit des SI, où une
+          confirmation directe auprès d'un tiers remplace une pièce remise
+          par l'audité.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.7. Section 404 et contrôles informatiques \niveaumoyen}]
+Une société cotée utilise un progiciel de gestion intégré pour produire
+ses états financiers.
+\begin{enumerate}[(a)]
+    \item Citez quatre contrôles informatiques dont le commissaire aux
+          comptes devra évaluer l'efficacité pour attester le rapport de la
+          direction.
+    \item Pour chacun, indiquez la preuve que l'auditeur demandera.
+    \item Pourquoi la section~404 a-t-elle accru la demande d'auditeurs des
+          systèmes d'information~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.8. Les cinq schémas \niveaumoyen}]
+Pour chacune des situations suivantes, identifiez le ou les schémas du
+chapitre, et proposez le contrôle qui manque.
+\begin{enumerate}[(a)]
+    \item Le pare-feu de l'ANPP journalise les connexions, mais le disque
+          des journaux est plein depuis quatre mois.
+    \item L'auditeur interne de la BANQUE SANAGA évalue une procédure qu'il
+          a rédigée.
+    \item Le prestataire de LiZbiZ fournit lui-même le rapport mensuel sur
+          sa disponibilité, sans autre source.
+    \item Les écarts d'inventaire de l'agence de Garoua sont expliqués
+          chaque mois par le chef d'agence, et l'explication est acceptée.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.9. Analyser une affaire \niveauexpert}]
+Choisissez l'une des affaires du chapitre et rédigez une note de deux pages
+qui~:
+\begin{enumerate}[(a)]
+    \item applique les six questions du Tableau~2.1, en rattachant chaque
+          fait à une source primaire~;
+    \item rédige, pour le contrôle qui a manqué, une fiche d'assertion
+          complète (objectif, critère, question, risque, conséquence), avec
+          le test, la preuve et la trace~;
+    \item dit ce qu'un auditeur, appliquant la règle « déclaration seule =
+          \NEK{} », aurait vu, et à quel moment.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~2.10. Une affaire africaine \niveauexpert}]
+Recherchez une défaillance de contrôle interne ou de sécurité survenue en
+Afrique, documentée par au moins une source primaire accessible (rapport
+d'une juridiction des comptes, décision d'un régulateur, décision de
+justice, rapport officiel).
+\begin{enumerate}[(a)]
+    \item Présentez la source et son statut (primaire, partie, neutre).
+    \item Appliquez la grille des six questions, en distinguant ce que la
+          source établit de ce qu'elle laisse ouvert (\NEK{}).
+    \item Rattachez l'affaire à l'un des cinq schémas, ou montrez qu'elle en
+          révèle un sixième.
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Le rapport GAO-18-559~\cite{gao2018equifax}~: une quarantaine de
+          pages, un modèle de rapport d'enquête factuel.
+    \item Le rapport du comité spécial d'Enron~\cite{powers2002enron}, pour
+          voir comment un conseil d'administration enquête sur lui-même.
+    \item Le texte de la loi Sarbanes-Oxley~\cite{sox2002}, sections~201,
+          302 et~404.
+    \item Le rapport de KPMG sur Wirecard~\cite{wirecard2020kpmg}, pour voir
+          ce qu'un auditeur écrit quand il ne peut pas conclure.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les quatre affaires ont un point commun~: un
+dispositif de contrôle interne qui existait sur le papier et n'a pas
+fonctionné. Le Chapitre~\ref{chap:controle-interne} définit ce dispositif,
+ses composantes et ses principes, et montre comment le concevoir pour qu'il
+fonctionne réellement.
+\end{boxinfo}

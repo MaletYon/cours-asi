@@ -1,0 +1,137 @@
+# Généré par gen_specs.py à partir du livre ASI (INF3226) ; retouches possibles à la main.
+SPEC = [{'k': 'title',
+  'tag': 'Jour 18 / 30 · Séance de 2 heures',
+  'title': 'Auditer la gouvernance et la fonction informatique',
+  'sub': "L'informatique de LiZbiZ est-elle bien gouvernée ?",
+  'right': 'Partie IV · Chapitre 17'},
+ {'k': 'synthese',
+  'title': 'Rappel de la séance précédente',
+  'kicker': "Jour 17 · Déontologie et profession de l'auditeur",
+  'items': ["**Trois codes** (IIA, ISACA, IESBA) convergent sur l'intégrité, l'objectivité, la compétence…",
+            "**L'indépendance** est de fait et d'apparence ; cinq menaces (intérêt personnel, autorévision…",
+            '**La déontologie est une condition de la preuve** : un auditeur dépendant produit des '
+            'conclusions…']},
+ {'k': 'agenda',
+  'items': [('25 min', "**Décomposer l'Audit de la Fonction…** ; Rôle, Positionnement et Organes de…"),
+            ('25 min', '**Planification Stratégique et Budgets** ; Organisation et Compétences'),
+            ('25 min', '**Auditer un Indicateur de Pilotage** ; Auditer un Engagement de Service'),
+            ('20 min', '**Exercice** en séance'),
+            ('10 min', '**À retenir**, travail à la maison')]},
+ {'k': 'chapitre',
+  'num': 'C17',
+  'short': 'Chapitre 17',
+  'part': "PARTIE IV · PRATIQUE DE L'AUDIT DES SI",
+  'title': 'Auditer la Gouvernance et la Fonction Informatique',
+  'question': "L'informatique de LiZbiZ est-elle bien gouvernée ?"},
+ {'k': 'objectifs',
+  'items': ["Décomposer l'audit de la fonction informatique en sous-domaines : rôle et organes, "
+            'planification stratégique, budgets…',
+            'Distinguer, pour chaque document de gouvernance, le contrôle du contenant (processus '
+            "d'élaboration et de validation) et…",
+            'Évaluer les organes de gouvernance des SI à partir de la trace de leurs décisions.',
+            'Auditer un indicateur de pilotage : définition, source, calcul, reproduction.']},
+ {'k': 'table',
+  'title': 'Décomposition du domaine A, gouvernance et fonction informatique',
+  'kicker': 'Section 17.1',
+  'head': ['Code', 'Sous-domaine', 'Contrôles', 'Critères COBIT'],
+  'widths': [1.88, 3.19, 5.07, 2.25],
+  'rows': [['A.1',
+            'Rôle, positionnement et organes',
+            'Rattachement de la DSI à la direction générale ; mission écrite…',
+            'EDM01, APO01'],
+           ['A.2',
+            'Planification stratégique',
+            'Schéma directeur approuvé ; revue annuelle…',
+            'APO02, APO05'],
+           ['A.3',
+            'Budgets et coûts',
+            'Processus budgétaire écrit ; budget exhaustif ; suivi des écarts…',
+            'APO06'],
+           ['A.4',
+            'Performance et indicateurs',
+            'Objectifs assignés à la DSI ; tableau de bord…',
+            'MEA01, APO09'],
+           ['A.5',
+            'Organisation et compétences',
+            'Organigramme et fiches de poste ; séparation études et exploitation…',
+            'APO07']]},
+ {'k': 'definition',
+  'title': 'Contenant et contenu',
+  'kicker': 'Définition · Section 17.1',
+  'items': [('Définition',
+             'pour un document de gouvernance (schéma directeur, budget, tableau de bord), le contenant est '
+             "la manière dont il a été élaboré, validé et mis à jour ; le contenu est ce qu'il dit, et sa "
+             "cohérence avec les objectifs de l'organisation…")]},
+ {'k': 'scenario',
+  'title': 'Rôle, Positionnement et Organes de Gouvernance',
+  'label': 'Opération SANAGA. Le comité des risques et la bascule',
+  'text': ['**Faits.** Mme EKAMBI lit les procès-verbaux du comité des risques de la BANQUE SANAGA pour 2025 '
+           "et le premier trimestre 2026. Le comité s'est réuni quatre fois, conformément à sa charte…",
+           '**Cotation.** Mandat : OUI. Fonctionnement : OUI. Information : NON. Décision et suivi sur le '
+           "risque informatique : sans objet faute d'information, donc NON au regard du critère « le comité "
+           'statue sur les risques majeurs…',
+           "**Analyse** (confiance élevée). L'organe existe et fonctionne, mais il n'a jamais été saisi du "
+           "risque qui s'est réalisé. La défaillance n'est pas dans le comité : elle est dans le circuit qui "
+           "aurait dû l'informer…"]},
+ {'k': 'table',
+  'title': 'Auditer un schéma directeur',
+  'kicker': 'Section 17.3',
+  'head': ['Angle', 'Questions', 'Preuves'],
+  'widths': [2.44, 5.08, 4.88],
+  'rows': [['Contenant',
+            "Qui l'a élaboré ? Qui l'a approuvé ? Est-il revu au moins une fois par an ?",
+            "Versions datées, procès-verbal d'approbation, comptes rendus de revue"],
+           ['Contenu',
+            'Les projets en cours y figurent-ils ? Les priorités correspondent-elles à la stratégie de…',
+            "Rapprochement avec le portefeuille de projets, le plan stratégique de l'entreprise, le "
+            'budget']]},
+ {'k': 'points',
+  'title': 'Organisation et Compétences',
+  'kicker': 'Section 17.4',
+  'items': ["L'organisation de la DSI s'audite avec les outils du Chapitre 3 : organigramme, fiches de "
+            'poste, séparation des tâches.']},
+ {'k': 'scenario',
+  'title': 'Auditer un Indicateur de Pilotage',
+  'label': 'Disponibilité affichée',
+  'text': ['Le tableau de bord de la DSI de LiZbiZ affiche, pour avril 2026, une disponibilité de '
+           "l'application intégrée de 99,6 %, au-dessus de la cible de 99,5 %. Avril compte 720 heures…",
+           '**Calcul.** Valeur publiée : (720 - 2,9) / 720 ≈ 99,6 %. Valeur recalculée selon la définition '
+           '(seules les maintenances annoncées sont exclues) : (720 - 7,9) / 720 ≈ 98,9 %, sous la cible.',
+           "**Analyse** (confiance élevée). L'indicateur n'est pas faux par erreur de calcul : il est faussé "
+           'par un classement. Le contrôle A.4.2 (« le tableau de bord est fiable ») passe de OUI à NON…']},
+ {'k': 'definition',
+  'title': 'Engagement de service',
+  'kicker': 'Définition · Section 17.6',
+  'items': [('Définition',
+             'accord écrit entre un fournisseur de service (la DSI, ou un prestataire) et ses utilisateurs, '
+             'qui fixe des niveaux mesurables (disponibilité, délai de résolution), la manière de les '
+             "mesurer et les conséquences d'un manquement.")]},
+ {'k': 'synthese',
+  'title': 'À retenir',
+  'kicker': 'Chapitre 17',
+  'items': ["**L'audit de la gouvernance** porte sur les décisions : qui décide, comment, avec quelle "
+            'information, avec quel suivi…',
+            '**Cinq sous-domaines** : rôle et organes, planification, budgets, performance, organisation…',
+            '**Contenant, puis contenu** : la manière dont un document a été élaboré et approuvé, puis sa '
+            'pertinence.',
+            "**Un organe s'évalue** par la trace de ses décisions : mandat, fonctionnement, information, "
+            'décision, suivi.',
+            '**Un indicateur est une affirmation** : on le recalcule à partir des données sources, et on '
+            'explique chaque écart.']},
+ {'k': 'exercice',
+  'title': 'Recalculer un délai de résolution',
+  'duree': '20 minutes, en binôme',
+  'text': 'Le tableau de bord de la DSI de LiZbiZ annonce que 92 % des incidents de mai 2026 ont été résolus '
+          'en moins de 8 heures. Le journal compte 150 incidents : 126 résolus en moins de 8 heures, 11 '
+          'résolus en plus de 8 heures…',
+  'questions': ['Retrouvez la valeur publiée.',
+                "Recalculez l'indicateur en réintégrant les incidents reclassés.",
+                'Que faut-il demander pour savoir si le reclassement est justifié ? Quelle cotation retenir '
+                'en attendant ?',
+                "Rédigez la constatation et l'analyse de l'observation."]},
+ {'k': 'maison', 'lecture': ['Chapitre 17, à relire avec ses exercices', 'Préparer : chapitre 18']},
+ {'k': 'fin',
+  'next': 'Jour 19 · Auditer une application en service',
+  'items': ["Distinguer l'audit de fiabilité et l'audit d'efficacité d'une…",
+            "Décomposer l'audit d'une application selon le modèle…",
+            "Tester un contrôle d'application, après avoir vérifié les contrôles…"]}]

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C18
+Chapitre 18 : Auditer une application en service
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quelles sont les deux visées de l'audit d'une application selon le guide du CHAI ?
+      a) Sécurité et conformité
+      b) Fiabilité et sécurité ; efficacité et performance
+      c) Coûts et délais
+      d) Gouvernance et risques
+
+ 2. Que signale un tableur tenu en parallèle de l'application ?
+      a) Une bonne maîtrise
+      b) Une sauvegarde utile
+      c) Des besoins mal couverts et des opérations hors contrôles
+      d) Une conformité renforcée
+
+ 3. À quel sous-domaine appartiennent les seuils et les fiches fournisseurs ?
+      a) AP.5
+      b) AP.1
+      c) AP.3
+      d) AP.4
+
+ 4. Le rapprochement des volumes entre deux modules relève de :
+      a) AP.1
+      b) AP.2
+      c) AP.3
+      d) AP.4
+
+ 5. De quoi relèvent les habilitations de l'application ?
+      a) Du sous-domaine AP.1
+      b) Du domaine D et de la matrice des droits
+      c) Du sous-domaine AP.3
+      d) D'aucun domaine
+
+ 6. Avant de tester le blocage des paiements de plus de 5 millions, que vérifie l'auditeur ?
+      a) L'ergonomie des écrans
+      b) Le budget du projet
+      c) Qui peut modifier le seuil, et si la modification laisse une trace
+      d) Le nombre d'utilisateurs
+
+ 7. Quel test dit si un contrôle programmé a fonctionné sur toute la période ?
+      a) Le test sur les données de production
+      b) L'inspection du paramétrage
+      c) La ré-exécution en recette
+      d) L'entretien avec le DSI
+
+ 8. Où réalise-t-on la ré-exécution d'un contrôle ?
+      a) En production
+      b) Sur le poste du DSI
+      c) Chez le prestataire
+      d) En environnement de recette, sur autorisation écrite
+
+ 9. Quel est l'avantage des tests substantifs sur la population entière ?
+      a) Ils coûtent moins cher
+      b) Ils suppriment le risque d'échantillonnage
+      c) Ils évitent l'extraction
+      d) Ils remplacent le contradictoire
+
+10. Pourquoi normaliser les références de facture avant de chercher les doublons ?
+      a) Pour accélérer la requête
+      b) Pour la lisibilité du rapport
+      c) Parce qu'une variante « FA-102 » / « FA102 » échappe à la comparaison exacte
+      d) Par obligation légale
+
+11. Que vérifie le test de l'équilibre des journaux ?
+      a) Le total des débits égal au total des crédits, par pièce et par journal
+      b) La continuité des numéros de factures
+      c) L'unicité des fournisseurs
+      d) Les montants inférieurs au seuil
+
+12. Quel test contrôle l'interface entre l'expédition et la facturation ?
+      a) Le test des doublons
+      b) Le test des séquences
+      c) Le test des seuils
+      d) Le rapprochement des expéditions livrées et des factures
+
+13. Scénario. Combien de factures ont été payées deux fois en 2025 ?
+      a) 4
+      b) 6
+      c) 14
+      d) 23
+
+14. Scénario. Combien de paiements de 2025 se situent entre 4,5 et 5 millions FCFA ?
+      a) 23
+      b) 14
+      c) 41
+      d) 6
+
+15. Scénario. Qu'est-il arrivé au contrôle du seuil de 5 millions ?
+      a) Il a été contourné par fractionnement
+      b) Il a été désactivé
+      c) Il a été respecté sans anomalie
+      d) Il a été modifié en base
+
+16. Scénario. Combien d'expéditions livrées n'ont pas de facture ?
+      a) 6
+      b) 23
+      c) 41
+      d) 14
+
+17. Scénario. Que valait U pour le cycle achats-paiements avant les tests sur données ?
+      a) 0
+      b) 0,25
+      c) 0,15
+      d) 0,60
+
+18. Scénario. Comment le cycle est-il coté après les tests sur données ?
+      a) 12 / 3 / 5
+      b) 16 / 4 / 0
+      c) 14 / 6 / 0
+      d) 15 / 5 / 0
+
+19. Sur quoi porte la recommandation d'une observation d'audit d'application ?
+      a) Sur le contrôle défaillant, pas seulement sur les opérations découvertes
+      b) Sur la seule récupération des sommes
+      c) Sur la sanction des agents
+      d) Sur le changement d'application
+
+20. Scénario. Après le contradictoire, quel montant de doublons reste à récupérer ?
+      a) 31,4 millions FCFA
+      b) 4,9 millions FCFA
+      c) 9,8 millions FCFA
+      d) 10,6 millions FCFA
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'inspection et la ré-exécution établissent que le contrôle a fonctionné toute l'année.
+      Vrai / Faux
+
+22. Un seuil modifiable sans trace ne protège rien.
+      Vrai / Faux
+
+23. Les tests sur données reposent sur une extraction tracée, avec lettre et empreinte.
+      Vrai / Faux
+
+24. Aucune pièce comptable de 2025 n'est déséquilibrée.
+      Vrai / Faux
+
+25. Un paiement de plus de 5 millions sans seconde signature a été trouvé.
+      Vrai / Faux
+
+26. Le taux de conformité ne peut pas monter quand le nombre de NON augmente.
+      Vrai / Faux
+
+27. L'auditeur peut saisir une transaction réelle en production pour tester un contrôle.
+      Vrai / Faux
+
+28. La numérotation des factures de 2025 est continue.
+      Vrai / Faux
+
+29. Une modification d'une donnée permanente peut changer le traitement de milliers d'opérations.
+      Vrai / Faux
+
+30. Le contrôle des doublons de LiZbiZ compare le fournisseur, le montant et la date.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le sigle anglais des techniques d'audit assistées par ordinateur est ______.
+
+32. La clause SQL qui filtre les groupes après un GROUP BY est ______.
+
+33. Le seuil de double validation de LiZbiZ vaut ______ millions FCFA.
+
+34. Le fournisseur aux 23 paiements de 4,9 millions est TRANSLOG ______.
+
+35. Le sous-domaine AP.4 couvre les ______.
+
+36. Le contournement d'un seuil par plusieurs paiements s'appelle le ______.
+
+37. Le test qui vérifie débit = crédit est le test d'______ des journaux.
+
+38. En production, l'auditeur lit et ______ ; il ne saisit pas.
+
+39. Les doublons de 2025 représentent 31,______ millions FCFA.
+
+40. La jointure SQL qui retrouve les expéditions sans facture est une LEFT ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

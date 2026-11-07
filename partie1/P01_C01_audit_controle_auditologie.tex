@@ -1,0 +1,1185 @@
+% ============================================================================
+% Fichier  : partie1/P01_C01_audit_controle_auditologie.tex
+% Titre    : Auditer, Contrôler, Donner une Assurance : du Métier à l'Auditologie
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Sources : CRIPP 2017 de l'IIA (définition de l'audit interne, paraphrasée) ;
+% Normes mondiales de l'IIA (2024) ; modèle des trois lignes (IIA, 2020, six
+% principes, paraphrasés) ; ISO 19011:2018 (vocabulaire : audit, critères,
+% preuves, constatations, conclusions ; paraphrasé) ; guide d'audit des SI du
+% CHAI (2014), typologie ; INTOSAI GUID 5100 ; loi n° 2010/012, texte
+% français officiel, art. 4 (9) et 13 (1), cités comme dans ACSI C12 ;
+% article A0 (HAL hal-05701007). Dates de l'ISACA (1969, 1978) et de COBIT
+% (1996, 2007, 2012, 2018-2019) : présentations publiques de l'ISACA.
+% Faits LiZbiZ communs avec ACSI C01 : 2,4 millions de mouvements de stock
+% annuels ; lettre de mission d'AUDIX CONSEIL (Douala + 4 agences sur 12).
+% Corrigés : corriges/Corr_C01.tex.
+% ============================================================================
+
+\chapter[Auditer, Contrôler, Donner une Assurance]{Auditer, Contrôler, Donner une Assurance : du Métier à l'Auditologie}
+\label{chap:audit-auditologie}
+\chaptermark{Du métier à l'auditologie}
+
+\epigraph{%
+    « L'auditeur ne dit pas que tout va bien.\\
+    Il dit ce qu'il sait, comment il le sait, et ce qu'il ignore. »%
+}{Adage de la profession, reformulé}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise du Chapitre~\ref{chap:prologue} (impression, constatation,
+    opinion~; réponse \NEK{}~; mesures $\mu$, $U$, $H$)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer audit, contrôle, inspection, conseil, certification et
+          expertise, par la question posée, l'acteur et le livrable.
+    \item Utiliser correctement le vocabulaire de l'audit~: critère, preuve,
+          constatation, conclusion, opinion.
+    \item Définir l'assurance raisonnable et l'assurance limitée, rédiger une
+          conclusion dans chacune des deux formes, et expliquer pourquoi
+          aucune assurance n'est absolue.
+    \item Estimer, par un calcul simple, le risque de ne pas voir une
+          anomalie quand on travaille sur un échantillon.
+    \item Situer l'audit interne, l'audit externe et l'audit public, et
+          appliquer le modèle des trois lignes à une organisation.
+    \item Retracer les grandes étapes de l'audit informatique et de sa
+          profession.
+    \item Classer une mission selon plusieurs critères (objet, objectif,
+          moment, niveau d'assurance) et choisir le type d'audit adapté à un
+          problème.
+    \item Présenter l'audit comme réduction de l'incertitude sur un système
+          sociotechnique, et ce que cette lecture change pour la pratique.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : qu'achète-t-on quand on paie un audit~?}
+% ============================================================================
+
+Après l'échec de la première mission (Chapitre~\ref{chap:prologue}),
+M.~ETEME, directeur général de LiZbiZ, reçoit M.~BEYALA, chef de mission
+d'AUDIX CONSEIL. Sa question est simple~: «~Si je vous paie, pouvez-vous me
+garantir qu'il n'y a plus de fraude dans mes entrepôts~?~» M.~BEYALA répond
+non. Il peut garantir une démarche, des preuves et une opinion motivée sur
+ce qu'il aura examiné. Il ne peut pas garantir l'absence de toute fraude.
+
+Cette réponse déçoit souvent les dirigeants. Elle est pourtant au cœur du
+métier, et ce chapitre l'explique. Il définit ce qu'est un audit et le
+distingue des activités voisines (section~\ref{sec:c01-notions}), fixe son
+vocabulaire (section~\ref{sec:c01-vocabulaire}), dit ce qu'il garantit et ce
+qu'il ne garantit pas (section~\ref{sec:c01-assurance}), présente ceux qui
+auditent (section~\ref{sec:c01-acteurs}), retrace l'histoire de l'audit
+informatique (section~\ref{sec:c01-histoire}), classe les missions
+(section~\ref{sec:c01-types}), situe le cadre camerounais
+(section~\ref{sec:c01-cadre}), et propose enfin de lire l'audit comme une
+\emph{réduction de l'incertitude} (section~\ref{sec:c01-auditologie}).
+
+\separateur
+
+% ============================================================================
+\section{Audit, Contrôle, Inspection, Conseil}
+\label{sec:c01-notions}
+% ============================================================================
+
+\subsection{Six activités voisines}
+
+Dans une organisation, plusieurs activités examinent le fonctionnement des
+systèmes. Elles se ressemblent, emploient parfois les mêmes personnes et
+les mêmes outils, mais elles ne posent pas la même question et ne
+produisent pas le même livrable. Les confondre est la source de la plupart
+des malentendus entre auditeurs et audités.
+
+\begin{boxdef}
+\termecle{Audit}\index{audit}~: examen méthodique, indépendant et documenté,
+qui confronte une situation à des critères connus à l'avance, et conduit à
+une opinion motivée sur cette situation, fondée sur des preuves.
+
+\medskip
+\termecle{Contrôle}\index{contrôle}~: dispositif ou action, intégré au
+fonctionnement de l'organisation, qui vise à maîtriser une activité au fil
+de l'eau (vérifier une saisie, approuver un paiement, rapprocher deux
+comptes). Le contrôle est exercé par l'organisation elle-même.
+
+\medskip
+\termecle{Inspection}\index{inspection}~: vérification ponctuelle de la
+conformité d'un objet ou d'une opération à une règle, souvent par une
+autorité de tutelle, et souvent à visée de sanction.
+
+\medskip
+\termecle{Conseil}\index{conseil}~: accompagnement qui aide l'organisation à
+concevoir ou à améliorer un dispositif. Le conseiller propose~; il ne donne
+pas d'opinion indépendante sur ce qu'il a contribué à concevoir.
+
+\medskip
+\termecle{Certification}\index{certification}~: attestation, par un
+organisme tiers accrédité, qu'un système de management est conforme aux
+exigences d'une norme, sur un périmètre et pour une durée donnés.
+
+\medskip
+\termecle{Expertise}\index{expertise}~: avis technique donné par un
+spécialiste sur une question précise, souvent à la demande d'un juge ou
+d'une partie à un litige. L'expert répond à la question posée~; il ne
+porte pas d'opinion d'ensemble sur un dispositif.
+\end{boxdef}
+
+\begin{tableaucours}{L{2.3cm}L{3.6cm}L{3.0cm}L{3.3cm}}{%
+    \tableauHeader{Activité} &
+    \tableauHeader{Question posée} &
+    \tableauHeader{Qui l'exerce} &
+    \tableauHeader{Livrable}
+}
+Audit & La situation est-elle conforme aux critères, et dans quelle mesure
+le sait-on~? & Auditeur indépendant de l'activité & Rapport et opinion
+motivée \\
+Contrôle & L'opération en cours est-elle correcte~? & Les opérationnels,
+la hiérarchie & Une opération validée ou rejetée \\
+Inspection & La règle est-elle respectée ici et maintenant~? & Une autorité
+de tutelle & Procès-verbal, sanction éventuelle \\
+Conseil & Comment faire mieux~? & Consultant, expert & Recommandations,
+dispositif conçu \\
+Certification & Le système satisfait-il la norme~? & Organisme accrédité &
+Certificat, pour une durée donnée \\
+Expertise & Que s'est-il passé techniquement~? & Expert désigné & Rapport
+d'expertise \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.1. Six activités d'examen à ne pas
+confondre}\end{center}
+
+Une même personne peut, au fil de sa carrière, exercer plusieurs de ces
+activités. Elle ne peut pas les exercer \emph{sur le même objet}. Celui qui
+a conseillé la conception d'un dispositif ne peut pas l'auditer ensuite~;
+celui qui exécute un contrôle ne peut pas en évaluer l'efficacité.
+
+\begin{boxscenario}{Opération LIZBIZ. Qui fait quoi~?}
+\textbf{Faits.} Au printemps 2026, cinq examens portent sur le
+système d'information de LiZbiZ.
+\begin{itemize}
+    \item Chaque soir, le chef d'agence de Garoua vérifie que les bons de
+          sortie de l'entrepôt sont signés.
+    \item Mme~NKENG, contrôleuse interne, revoit chaque mois un échantillon
+          d'ajustements de stock.
+    \item AUDIX CONSEIL conduit la seconde mission.
+    \item Le cabinet NDONGO \& ASSOCIÉS certifie les comptes de l'exercice.
+    \item Un éditeur aide le service informatique à paramétrer le nouveau
+          module de facturation.
+\end{itemize}
+
+\textbf{Analyse} (confiance élevée). Le chef d'agence exerce un
+\emph{contrôle} de premier niveau~; Mme~NKENG, un contrôle de second niveau
+(surveillance)~; AUDIX CONSEIL, un \emph{audit} contractuel~; NDONGO \&
+ASSOCIÉS, un audit légal des comptes, qui s'appuie en partie sur les
+contrôles informatiques~; l'éditeur, du \emph{conseil}. Si l'éditeur était
+ensuite chargé d'auditer le module qu'il a paramétré, son opinion ne
+vaudrait rien~: il se jugerait lui-même.
+\end{boxscenario}
+
+\subsection{L'audit interne selon l'IIA}
+
+L'Institut des auditeurs internes (\sigle{IIA}) définit l'audit interne
+comme une activité indépendante et objective, qui donne à une organisation
+une assurance sur le degré de maîtrise de ses opérations, lui apporte des
+conseils pour les améliorer et contribue à créer de la valeur. Il y parvient
+en évaluant, par une approche systématique et méthodique, ses processus de
+gouvernance, de management des risques et de contrôle~\cite{iia2017cripp}.
+Les Normes mondiales de l'IIA, publiées en 2024, reprennent cette mission
+et l'organisent en principes et en exigences~\cite{iia2024gias}~; le
+Chapitre~\ref{chap:normes} les présente.
+
+Trois mots de la définition méritent l'attention.
+\begin{itemize}
+    \item \emph{Assurance}~: l'audit produit un degré de confiance, pas une
+          garantie (section~\ref{sec:c01-assurance}).
+    \item \emph{Conseil}~: l'audit interne peut aussi conseiller, à
+          condition de ne pas auditer ensuite ce qu'il a conçu
+          (Chapitre~\ref{chap:deontologie}).
+    \item \emph{Systématique}~: l'audit suit une méthode, que la
+          Partie~\ref{part:methode} enseigne.
+\end{itemize}
+
+\begin{boxalert}
+\textbf{Violation typique.} La contrôleuse interne de LiZbiZ rédige la
+procédure de désactivation des comptes, la met en place, puis est chargée
+«~d'auditer~» son application.
+
+\smallskip
+\textbf{Règle~:} on n'audite pas ce qu'on a conçu ou ce qu'on exécute. Le
+contrôle relève de l'organisation~; l'audit doit en être indépendant.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Vocabulaire de l'Audit}
+\label{sec:c01-vocabulaire}
+% ============================================================================
+
+La norme ISO~19011, qui donne les lignes directrices de l'audit des
+systèmes de management, fixe un vocabulaire que ce cours
+adopte~\cite{iso19011_2018}. Elle définit l'audit comme un processus
+méthodique, indépendant et documenté, qui permet d'obtenir des preuves
+objectives et de les évaluer objectivement, pour déterminer dans quelle
+mesure les critères d'audit sont satisfaits. Cinq notions s'enchaînent.
+
+\begin{boxdef}
+\termecle{Critère d'audit}\index{critère d'audit}~: exigence de référence à
+laquelle on compare ce que l'on observe~: une procédure interne, une
+norme, un article de loi, un contrat.
+
+\medskip
+\termecle{Preuve d'audit}\index{preuve d'audit}~: information vérifiable,
+pertinente pour le critère, sur laquelle l'auditeur fonde son appréciation
+(document, extraction, observation, réponse corroborée).
+
+\medskip
+\termecle{Constatation d'audit}\index{constatation}~: résultat de la
+comparaison des preuves avec le critère~: conformité, non-conformité, ou,
+dans ce cours, impossibilité de conclure (\NEK{}).
+
+\medskip
+\termecle{Conclusion d'audit}\index{conclusion d'audit}~: résultat de la
+mission, tiré de l'ensemble des constatations, au regard des objectifs de
+la mission.
+
+\medskip
+\termecle{Opinion d'audit}\index{opinion d'audit}~: forme que prend la
+conclusion lorsqu'elle est exprimée avec un niveau d'assurance
+(section~\ref{sec:c01-assurance}).
+\end{boxdef}
+
+\begin{center}
+\begin{tikzpicture}[
+    noeud/.style={draw=CouleurPrimaire, thick, rounded corners,
+                  fill=CouleurPrimaire!8, minimum width=2.3cm,
+                  minimum height=0.9cm, align=center, font=\small},
+    fleche/.style={-latex, thick, color=CouleurPrimaire}]
+\node[noeud] (crit) at (0,1.2) {Critère};
+\node[noeud] (preu) at (0,-0.2) {Preuve};
+\node[noeud] (cons) at (3.4,0.5) {Constatation\\ \scriptsize\OUI{} / \NON{} / \NEK{}};
+\node[noeud] (conc) at (6.8,0.5) {Conclusion};
+\node[noeud] (opin) at (10.0,0.5) {Opinion\\ \scriptsize avec assurance};
+\draw[fleche] (crit) -- (cons);
+\draw[fleche] (preu) -- (cons);
+\draw[fleche] (cons) -- (conc);
+\draw[fleche] (conc) -- (opin);
+\end{tikzpicture}
+
+\smallskip
+{\small\itshape Figure~1.1. De la preuve à l'opinion}
+\end{center}
+
+L'enchaînement a une conséquence pratique~: \emph{aucune constatation sans
+critère}. Une observation qui n'est rapportée à aucun critère reste une
+description~; elle ne dit ni conforme ni non conforme. C'était le
+deuxième défaut de la première mission de LiZbiZ.
+
+\begin{boxscenario}{Opération LIZBIZ. Du critère à l'opinion}
+\textbf{Critère.} Procédure interne~: le compte d'un agent parti est
+désactivé sous 48~heures.
+
+\textbf{Preuve.} Extraction des départs signée par les ressources
+humaines, journal des désactivations, avec leurs empreintes (PT-14).
+
+\textbf{Constatation.} Sur 31~départs, 19 comptes désactivés sous
+48~heures, 7 plus tard, 5 encore actifs~: \NON{}.
+
+\textbf{Conclusion.} Le contrôle de désactivation des comptes (D.2.1) n'est
+pas efficace sur la période.
+
+\textbf{Opinion.} Elle portera sur l'ensemble du domaine~D, après le test
+de ses autres contrôles~; une constatation isolée ne fait pas une opinion
+sur un domaine.
+\end{boxscenario}
+
+% ============================================================================
+\section{Ce que l'Audit Garantit, et ce qu'il ne Garantit pas}
+\label{sec:c01-assurance}
+% ============================================================================
+
+\subsection{Assurance raisonnable et assurance limitée}
+
+\begin{boxdef}
+\termecle{Assurance raisonnable}\index{assurance raisonnable}~: niveau élevé,
+mais non absolu, de confiance que l'auditeur exprime sous une forme
+positive («~nous estimons que le dispositif est efficace~»), après des
+travaux étendus.
+
+\medskip
+\termecle{Assurance limitée}\index{assurance limitée}~: niveau de confiance
+plus faible, exprimé sous une forme négative («~nous n'avons rien relevé
+qui laisse penser que\ldots~»), après des travaux moins étendus, comme une
+revue documentaire et des entretiens.
+\end{boxdef}
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{4.8cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Assurance raisonnable} &
+    \tableauHeader{Assurance limitée}
+}
+Travaux & Tests étendus des contrôles, tests sur les données &
+Entretiens, revue documentaire, procédures analytiques \\
+Forme de l'opinion & Positive & Négative \\
+Exemple de formulation & « À notre avis, les contrôles d'accès de
+l'application ont fonctionné efficacement de janvier à avril~2026, au
+regard de la procédure interne. » & « Nous n'avons rien relevé qui nous
+conduise à penser que les contrôles d'accès n'ont pas fonctionné
+efficacement de janvier à avril~2026. » \\
+Coût et durée & Élevés & Modérés \\
+Usage typique & Audit légal des comptes, audit de contrôle interne & Revue
+de conformité, examen préliminaire \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.2. Deux niveaux d'assurance}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Écrire « nous n'avons rien relevé
+d'anormal » après avoir seulement interrogé le responsable informatique,
+puis laisser le lecteur comprendre que les contrôles sont efficaces.
+
+\smallskip
+\textbf{Règle~:} la forme de l'opinion dit le niveau d'assurance. Une
+opinion négative doit être lue comme telle, et le rapport doit dire quels
+travaux l'ont fondée.
+\end{boxalert}
+
+\subsection{Pourquoi l'assurance n'est jamais absolue}
+
+Quatre raisons tiennent à la nature même de l'audit.
+
+\begin{enumerate}
+    \item \textbf{L'auditeur échantillonne.} Il n'examine pas toutes les
+          opérations~: une anomalie peut se trouver hors de l'échantillon.
+    \item \textbf{Les contrôles peuvent être contournés}, notamment par
+          collusion entre plusieurs personnes, ou par un dirigeant qui passe
+          outre.
+    \item \textbf{L'auditeur juge.} Le choix des critères, des tests et du
+          seuil de signification repose sur un jugement professionnel.
+    \item \textbf{L'auditeur ne voit pas tout.} Une partie de l'information
+          est absente, cachée ou contradictoire. C'est là que la réponse
+          \NEK{} prend sa place (section~\ref{sec:c01-auditologie}).
+\end{enumerate}
+
+\subsection{Le risque de ne pas voir~: un calcul}
+
+La première raison se chiffre. Supposons qu'une proportion $t$ des
+opérations d'une population soient anormales, et que l'auditeur en tire au
+hasard un échantillon de $n$ opérations. Si la population est grande devant
+l'échantillon, chaque opération tirée est anormale avec la probabilité $t$,
+indépendamment des autres. La probabilité de ne tirer \emph{aucune}
+anomalie, donc de ne rien voir, vaut
+\[
+    P(\text{aucune anomalie vue}) = (1 - t)^{n}.
+\]
+
+\begin{tableaucours}{cccc}{%
+    \tableauHeader{Taux d'anomalies $t$} &
+    \tableauHeader{$n = 25$} &
+    \tableauHeader{$n = 100$} &
+    \tableauHeader{$n = 230$}
+}
+5~\% & 0,28 & 0,006 & $< 10^{-5}$ \\
+2~\% & 0,60 & 0,13 & 0,010 \\
+1~\% & 0,78 & 0,37 & 0,099 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.3. Probabilité de ne voir aucune
+anomalie dans un échantillon aléatoire}\end{center}
+
+Avec 25 opérations tirées et 2~\% d'anomalies, l'auditeur a six chances sur
+dix de ne rien voir. Pour ramener ce risque à 10~\% avec 1~\% d'anomalies,
+il faut $n$ tel que $0{,}99^{n} \leq 0{,}10$, soit
+\[
+    n \geq \frac{\ln 0{,}10}{\ln 0{,}99} \approx 229{,}1,
+    \qquad\text{donc}\qquad n = 230.
+\]
+Ce calcul simple est le cœur de l'échantillonnage statistique par
+attributs~; le Chapitre~\ref{chap:preuve} le développera (tailles
+d'échantillon, niveaux de confiance, erreurs tolérables). Il montre déjà
+pourquoi l'assurance ne peut pas être absolue~: pour être \emph{certain} de
+voir une anomalie rare, il faudrait tout examiner.
+
+\begin{boiteRemarque}{Pourquoi ne pas tout vérifier~?}
+Parce que le coût serait démesuré, et que le résultat ne serait pas
+meilleur~: vérifier les 2,4~millions de mouvements de stock annuels de
+LiZbiZ ne dirait rien des mouvements qui n'ont \emph{pas} été enregistrés.
+L'exhaustivité porte sur ce qui est enregistré~; l'audit porte aussi sur ce
+qui manque. Les outils d'analyse de données permettent aujourd'hui
+d'examiner des populations entières (Chapitre~\ref{chap:audit-continu}),
+mais ils ne voient, eux aussi, que ce que le système a enregistré.
+\end{boiteRemarque}
+
+\subsection{L'écart d'attentes}
+
+On appelle \termecle{écart d'attentes}\index{écart d'attentes}
+(\textit{expectation gap}) la différence entre ce que le public, ou le
+commanditaire, croit qu'un audit garantit, et ce qu'il garantit réellement.
+La question de M.~ETEME en est l'exemple type~: il attend une garantie
+d'absence de fraude, qu'aucun audit ne peut donner. Le seul remède est
+d'écrire, avant la mission, ce qu'elle fera et ce qu'elle ne fera pas.
+
+\begin{boxscenario}{Opération LIZBIZ. La lettre de mission}
+\textbf{Faits.} Le directeur général demande une garantie d'absence de
+fraude.
+
+\medskip
+\textbf{Réponse du chef de mission.} La lettre de mission proposée par
+AUDIX CONSEIL précise~:
+\begin{itemize}
+    \item l'objectif~: donner une assurance raisonnable sur l'efficacité des
+          contrôles d'accès et des contrôles de gestion des stocks de
+          l'application intégrée, sur la période de janvier à avril~2026~;
+    \item le périmètre~: le centre de données de Douala et quatre agences
+          sur douze, choisies sur la base des écarts d'inventaire~;
+    \item ce que la mission ne fera pas~: elle ne recherche pas
+          systématiquement la fraude, et ne remplace pas une enquête si des
+          indices sérieux apparaissent~;
+    \item les obligations de LiZbiZ~: accès aux personnes, aux documents et
+          aux systèmes, et désignation d'un interlocuteur.
+\end{itemize}
+
+\textbf{Analyse} (confiance élevée). La lettre transforme une attente
+irréaliste (« plus de fraude ») en un objectif vérifiable. Elle protège
+l'auditeur, et elle protège aussi le directeur général, qui sait ce qu'il
+achète.
+\end{boxscenario}
+
+% ============================================================================
+\section{Qui Audite~? Interne, Externe, Public}
+\label{sec:c01-acteurs}
+% ============================================================================
+
+\subsection{Les familles d'auditeurs}
+
+\begin{tableaucours}{L{2.6cm}L{3.8cm}L{2.9cm}L{2.9cm}}{%
+    \tableauHeader{Famille} &
+    \tableauHeader{Rôle} &
+    \tableauHeader{Commanditaire} &
+    \tableauHeader{Exemple}
+}
+Audit interne & Assurance et conseil sur la maîtrise des opérations &
+Organe de gouvernance (comité d'audit) & Direction de l'audit interne de la
+BANQUE SANAGA \\
+Audit externe légal & Certification des comptes & Assemblée des associés,
+la loi & Le commissaire aux comptes de LiZbiZ \\
+Audit externe contractuel & Mission ponctuelle sur un sujet défini & La
+direction & AUDIX CONSEIL chez LiZbiZ \\
+Audit de certification & Attestation de conformité à une norme de
+management & L'organisation qui veut être certifiée & Certification ISO/IEC
+27001 d'un centre de données \\
+Audit réglementaire de sécurité & Audit de sécurité imposé par la loi &
+La loi, l'autorité de régulation & Audit de sécurité au titre de la loi
+n°~2010/012 \\
+Audit public & Contrôle de l'emploi des fonds publics & La loi, la
+juridiction & La juridiction des comptes à l'ANPP \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.4. Les familles d'auditeurs}\end{center}
+
+Dans le secteur public, l'audit externe relève des institutions supérieures
+de contrôle des finances publiques, qui appliquent les normes de
+l'INTOSAI. Le GUID~5100 de l'INTOSAI fournit le cadre général de la
+vérification des systèmes d'information~\cite{intosai2019guid5100}. Au
+Cameroun, la Chambre des comptes de la Cour suprême exerce le contrôle
+juridictionnel des comptes publics~; le Contrôle Supérieur de l'État exerce
+le contrôle administratif des services publics. Le
+Chapitre~\ref{chap:droit} précise leurs compétences.
+
+\subsection{Le modèle des trois lignes}
+
+L'IIA a publié en 2020 le \termecle{modèle des trois lignes}\index{modèle des
+trois lignes}~\cite{iia2020troislignes}. Il remplace un modèle plus ancien,
+dit des «~trois lignes de défense~», dont il abandonne la métaphore
+militaire~: les lignes ne sont plus des remparts successifs, mais des rôles
+complémentaires. Le modèle repose sur six principes, que l'on peut
+résumer ainsi~:
+\begin{enumerate}
+    \item la gouvernance exige des structures et des processus qui
+          permettent de rendre compte, d'agir et de donner une assurance~;
+    \item l'organe de gouvernance rend compte aux parties prenantes et
+          supervise~;
+    \item le management porte la maîtrise des risques~: la première ligne
+          dans les activités, la deuxième en appui et en surveillance~;
+    \item l'audit interne, troisième ligne, donne une assurance et des
+          conseils indépendants et objectifs~;
+    \item l'indépendance de la troisième ligne à l'égard du management est
+          une condition de son objectivité~;
+    \item tous les rôles concourent à créer et à protéger la valeur.
+\end{enumerate}
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{2.4cm}L{2.4cm}}{%
+    \tableauHeader{Acteur} &
+    \tableauHeader{Rôle} &
+    \tableauHeader{LiZbiZ} &
+    \tableauHeader{BANQUE SANAGA}
+}
+Organe de gouvernance & Fixe la direction, supervise, rend compte aux
+parties prenantes & Conseil d'administration & Conseil, comité d'audit,
+comité des risques \\
+Première ligne & Porte et maîtrise les risques dans ses activités &
+Responsable informatique, chefs d'agence & DSI, agences, opérations \\
+Deuxième ligne & Expertise, appui, surveillance des risques & Contrôleuse
+interne & Direction des risques, RSSI, conformité \\
+Troisième ligne & Assurance et conseil indépendants & Audit interne (à
+créer) & Direction de l'audit interne \\
+Prestataires externes & Assurance complémentaire & Commissaire aux
+comptes, AUDIX CONSEIL & Commissaire aux comptes, régulateur \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.5. Le modèle des trois lignes
+appliqué aux deux cas privés}\end{center}
+
+\begin{boiteRemarque}{LiZbiZ n'a pas d'audit interne~: est-ce grave~?}
+Pas nécessairement~: une entreprise de taille moyenne peut confier la
+troisième ligne à un cabinet mandaté. Mais l'affaire du prologue montre le
+risque de la situation actuelle~: la première mission a été conduite par
+une équipe qui dépendait de la direction qu'elle évaluait, sans méthode ni
+indépendance. Le modèle ne prescrit pas une structure~; il prescrit des
+rôles, et l'indépendance de celui qui donne l'assurance.
+\end{boiteRemarque}
+
+\subsection{Les métiers du cours dans ce paysage}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Se situer en deuxième ligne}
+\begin{enumerate}
+    \item Concevoir et documenter les contrôles avec la première ligne,
+          sans les exécuter à sa place.
+    \item Surveiller leur fonctionnement par des contrôles de second niveau
+          (revue d'échantillons, indicateurs).
+    \item Remonter les anomalies à la direction et au comité d'audit, sans
+          filtre.
+    \item Laisser l'audit, interne ou externe, évaluer le dispositif de façon
+          indépendante~: le contrôleur interne ne s'audite pas lui-même.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Deuxième ligne, côté risques}
+
+Il tient la cartographie et le registre des risques, aide la première ligne
+à les évaluer et suit les plans de traitement. Il est un interlocuteur
+majeur de l'auditeur, qui part de sa cartographie pour orienter la
+mission (Chapitre~\ref{chap:planifier}), mais il n'est pas auditeur~: il
+est lui-même audité sur la qualité de son dispositif.
+\end{boxmetier}
+
+\begin{boxmetier}{RSSI}
+\textbf{Entre deux lignes}
+
+Le responsable de la sécurité des systèmes d'information est placé, selon
+les organisations, sous la DSI (première ligne) ou sous la direction des
+risques (deuxième ligne). Le second rattachement préserve mieux sa capacité
+à contredire la DSI. Pour l'auditeur, la question n'est pas formelle~: il
+vérifie que le RSSI peut effectivement alerter la direction.
+\end{boxmetier}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Un auditeur, pas un administrateur}
+
+L'auditeur de sécurité intervient en troisième ligne ou comme prestataire
+externe. Il évalue la sécurité~; il ne la met pas en œuvre. S'il corrige
+lui-même une configuration pendant l'audit, il cesse d'être auditeur pour
+devenir administrateur, et son rapport perd sa valeur.
+\end{boxmetier}
+
+% ============================================================================
+\section{D'où Vient l'Audit Informatique}
+\label{sec:c01-histoire}
+% ============================================================================
+
+\subsection{Trois manières d'auditer avec l'ordinateur}
+
+Lorsque l'informatique entre dans les services comptables, dans les années
+1960, les auditeurs l'abordent d'abord comme une boîte noire. Trois
+approches se succèdent, puis coexistent.
+
+\begin{tableaucours}{L{3.2cm}L{5.0cm}L{4.0cm}}{%
+    \tableauHeader{Approche} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Limite}
+}
+Autour de l'ordinateur & On rapproche les entrées et les sorties sans
+examiner les traitements & Aveugle aux traitements automatisés et aux
+volumes \\
+À travers l'ordinateur & On teste les contrôles programmés et la logique
+des traitements & Demande des compétences techniques \\
+Avec l'ordinateur & On utilise des outils pour analyser l'ensemble des
+données (techniques d'audit assistées par ordinateur) & Demande des
+extractions fiables \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.6. Les approches de l'audit
+informatique}\end{center}
+
+Un exemple les distingue. Pour s'assurer que l'application de LiZbiZ
+calcule correctement les factures, l'auditeur «~autour de l'ordinateur~»
+recalcule à la main quelques factures à partir des bons de livraison.
+L'auditeur «~à travers l'ordinateur~» examine la table des tarifs et la
+règle de calcul programmée, et vérifie qui peut les modifier. L'auditeur
+«~avec l'ordinateur~» extrait les 18\,340 expéditions de l'année et les
+rapproche toutes des factures par une requête~; le Chapitre~\ref{chap:audit-applications}
+montrera qu'une telle requête révèle quatorze expéditions livrées et jamais
+facturées.
+
+\subsection{Une profession qui s'organise}
+
+\begin{tableaucours}{cL{10.4cm}}{%
+    \tableauHeader{Année} &
+    \tableauHeader{Événement}
+}
+1969 & Fondation d'une association d'auditeurs du traitement électronique
+des données, qui deviendra l'ISACA \\
+1978 & Première certification d'auditeur des systèmes d'information
+(\sigle{CISA}) \\
+1996 & Première édition du référentiel COBIT \\
+2002 & Loi Sarbanes-Oxley aux États-Unis~: les dirigeants des sociétés
+cotées rendent compte de l'efficacité du contrôle interne sur
+l'information financière~\cite{sox2002} \\
+2007 & COBIT~4.1, très utilisé dans l'audit~\cite{itgi2007cobit41} \\
+2012 & COBIT~5, qui distingue gouvernance et gestion \\
+2018 & COBIT~2019 (publication en novembre 2018)~\cite{isaca2018cobitintro} \\
+2020 & Modèle des trois lignes de l'IIA~; quatrième édition de l'ITAF de
+l'ISACA~\cite{isaca2020itaf} \\
+2024 & Normes mondiales de l'audit interne de l'IIA~\cite{iia2024gias} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.7. Quelques jalons (d'après les
+présentations publiques de l'ISACA et de l'IIA)}\end{center}
+
+La loi Sarbanes-Oxley a joué un rôle particulier. En obligeant les
+dirigeants à attester l'efficacité du contrôle interne, et les auditeurs à
+l'évaluer, elle a fait des contrôles informatiques (accès, changements,
+exploitation) un objet d'audit à part entière~: ce sont les
+\emph{contrôles généraux informatiques}, présentés au
+Chapitre~\ref{chap:controle-interne}. Le Chapitre~\ref{chap:defaillances}
+raconte l'affaire qui a conduit à cette loi.
+
+\subsection{Vers l'audit continu}
+
+Avec les volumes de données actuels, l'audit ponctuel montre ses limites~:
+une anomalie peut durer des mois entre deux missions. L'\termecle{audit
+continu}\index{audit continu} analyse les données et les contrôles de façon
+répétée, voire en permanence. Il ne remplace pas la mission~: il la nourrit
+d'alertes et lui laisse le jugement. Le Chapitre~\ref{chap:audit-continu} y
+est consacré.
+
+% ============================================================================
+\section{Classer les Missions}
+\label{sec:c01-types}
+% ============================================================================
+
+\subsection{Quatre critères de classement}
+
+Une mission d'audit se décrit selon plusieurs critères indépendants. Les
+nommer avant de commencer évite de promettre ce que l'on ne fera pas.
+
+\begin{tableaucours}{L{2.6cm}L{4.4cm}L{5.2cm}}{%
+    \tableauHeader{Critère} &
+    \tableauHeader{Modalités} &
+    \tableauHeader{Exemple}
+}
+Objet & Gouvernance, application, projet, sécurité, production, continuité,
+tiers & Les contrôles d'accès de l'application de LiZbiZ \\
+Objectif & Conformité (la règle est-elle respectée~?), efficacité (le
+dispositif atteint-il son but~?), performance (au meilleur coût~?) &
+Efficacité des contrôles d'accès \\
+Moment & A priori (avant la mise en œuvre), en cours, a posteriori &
+A posteriori, sur janvier-avril~2026 \\
+Niveau d'assurance & Raisonnable, limitée & Raisonnable \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.8. Quatre critères de classement
+d'une mission}\end{center}
+
+\subsection{Les types d'audit des SI selon leur objet}
+
+Le guide d'audit des systèmes d'information du Comité d'harmonisation de
+l'audit interne (\sigle{CHAI}) distingue plusieurs thèmes
+d'audit~\cite{chai2014guide}. Le cours les reprend et les complète~; chacun
+est traité dans la Partie~\ref{part:pratique}.
+
+\begin{tableaucours}{L{4.0cm}L{6.2cm}c}{%
+    \tableauHeader{Type d'audit} &
+    \tableauHeader{Question centrale} &
+    \tableauHeader{Chapitre}
+}
+Gouvernance et fonction informatique & La fonction informatique sert-elle les
+objectifs de l'organisation~? & \ref{chap:audit-gouvernance} \\
+Application en service et données & L'application produit-elle des données
+exactes et complètes~? & \ref{chap:audit-applications} \\
+Projets et marchés & Le projet livrera-t-il ce qui est attendu, dans les
+délais et le budget~? & \ref{chap:audit-projets} \\
+Système de management de la sécurité & La sécurité est-elle pilotée, et ce
+pilotage fonctionne-t-il~? & \ref{chap:audit-smsi} \\
+Sécurité technique & L'architecture et les configurations protègent-elles
+le système~? & \ref{chap:audit-technique} \\
+Test d'intrusion, audit de code & Un attaquant peut-il compromettre le
+système~? & \ref{chap:intrusion} \\
+Production et continuité & L'exploitation est-elle fiable, et le service
+survivra-t-il à un sinistre~? & \ref{chap:audit-continuite} \\
+Tiers et nuage & Les prestataires sont-ils maîtrisés~? &
+\ref{chap:audit-tiers} \\
+Conformité & Les obligations légales et réglementaires sont-elles
+respectées~? & \ref{chap:audit-conformite} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.9. Les types d'audit des SI
+(d'après le guide du CHAI, complété)}\end{center}
+
+\begin{boxscenario}{Opération LIZBIZ. Quel type d'audit~?}
+\textbf{Faits.} Écart de stock de 186~millions FCFA, réserve du
+commissaire aux comptes, réponses incohérentes sur le contrôle d'accès.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La demande initiale («~tout le
+système d'information~») n'est pas un type d'audit. La seconde mission
+combine deux types~: un audit d'\emph{application en service}, centré sur
+la gestion des stocks de l'application intégrée, et un audit de
+\emph{sécurité technique}, limité au contrôle d'accès (domaine~D). Son
+objectif est l'efficacité des contrôles, a posteriori, avec une assurance
+raisonnable. Ce découpage détermine les référentiels, les compétences de
+l'équipe et la durée.
+\end{boxscenario}
+
+% ============================================================================
+\section{Le Cadre Camerounais en un Coup d'Œil}
+\label{sec:c01-cadre}
+% ============================================================================
+
+Au Cameroun, plusieurs textes rendent l'audit ou le contrôle interne
+obligatoires pour certaines organisations. Ils seront étudiés au
+Chapitre~\ref{chap:droit}~; en voici les principaux.
+
+\begin{itemize}
+    \item La loi n°~2010/012 relative à la cybersécurité et à la
+          cybercriminalité définit l'audit de sécurité et prévoit un audit
+          obligatoire et périodique des systèmes d'information de certaines
+          organisations~\cite{loi2010012}.
+    \item Le règlement COBAC R-2016/04 fixe les exigences minimales du
+          contrôle interne des établissements de crédit de la
+          CEMAC~\cite{cobac2016r04}.
+    \item Le droit OHADA des sociétés commerciales organise la mission du
+          commissaire aux comptes et, pour certaines sociétés, le comité
+          d'audit~\cite{ohada2014auscgie}.
+    \item La loi n°~2024/017 sur la protection des données à caractère
+          personnel crée des obligations que l'audit de conformité vérifie
+          (Chapitre~\ref{chap:audit-conformite}).
+\end{itemize}
+
+\begin{boxjuris}
+\textbf{\loicam{n°~2010/012}, article~4, point~9}~: \textit{« Audit de
+sécurité~: examen méthodique des composantes et des acteurs de la sécurité,
+de la politique, des mesures, des solutions, des procédures et des moyens
+mis en oeuvre par une organisation, pour sécuriser son environnement,
+effectuer des contrôles de conformité, des contrôles d'évaluation de
+l'adéquation des moyens (organisationnels, techniques, humains,
+financiers) investis au regard des risques encourus, d'optimisation, de
+rationalité et de performance. »}
+
+\medskip
+\textbf{Article~13, alinéa~1}~: \textit{« Sont soumis à un audit de sécurité
+obligatoire, les réseaux de communications électroniques et les systèmes
+d'information, des opérateurs, des autorités de certification et des
+fournisseurs de services de communications électroniques. »}
+
+\medskip
+\textbf{Portée pour l'audit.} La définition légale couvre trois des
+objectifs du Tableau~1.8~: la conformité, l'efficacité (adéquation des
+moyens aux risques) et la performance (optimisation, rationalité). Un
+audit de sécurité au sens de la loi n'est donc pas une simple liste de
+contrôles~: il apprécie aussi si les moyens sont proportionnés aux
+risques.
+\end{boxjuris}
+
+% ============================================================================
+\section{L'Audit comme Réduction de l'Incertitude}
+\label{sec:c01-auditologie}
+% ============================================================================
+
+\subsection{Un constat~: un métier sans socle scientifique}
+
+L'audit des SI s'apprend par compagnonnage, se codifie dans des
+référentiels professionnels et se pratique par jugement d'expert. Ces
+pratiques sont précieuses, mais, comme le soutient l'article fondateur de
+ce cours~\cite{minka2026auditologie}, il manque à la discipline un socle
+scientifique unificateur~: des axiomes explicites, des propositions
+réfutables et des mesures communes pour son objet central.
+
+\subsection{Une proposition~: l'auditologie}
+
+\begin{boxdef}
+\termecle{Mission auditologique}\index{mission auditologique}~: ensemble
+formé par cinq éléments~: le \emph{système audité}~$\mathcal{S}$ (personnes,
+technologies, flux d'information, règles)~; l'\emph{auditeur}~$\mathcal{A}$,
+ou l'équipe d'audit, avec ses limites de traitement, de mémoire et
+d'attention~; le \emph{canal d'information}~$\mathcal{I}$ par lequel les
+preuves parviennent à l'auditeur~; la \emph{structure stratégique}~$\mathcal{G}$
+des relations entre auditeur, audité et tiers~; la \emph{trajectoire}~$\mathcal{T}$
+du système au fil des missions.
+
+\medskip
+\termecle{Auditologie}\index{auditologie}~: science appliquée de la
+réduction de l'incertitude sur les missions
+auditologiques~\cite{minka2026auditologie}.
+\end{boxdef}
+
+\begin{boxscenario}{Opération LIZBIZ. Les cinq éléments}
+\begin{tableaucours}{cL{3.6cm}L{7.6cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Élément} &
+    \tableauHeader{Seconde mission de LiZbiZ}
+}
+$\mathcal{S}$ & Système audité & L'application intégrée, ses utilisateurs
+des douze agences, ses quatre centres de données, ses procédures \\
+$\mathcal{A}$ & Auditeur & L'équipe d'AUDIX CONSEIL, ses compétences et ses
+limites (temps, attention) \\
+$\mathcal{I}$ & Canal d'information & Entretiens, extractions, journaux,
+documents~; certains sont absents ou contradictoires \\
+$\mathcal{G}$ & Structure stratégique & Les intérêts du DG, du responsable
+informatique, des chefs d'agence, du commissaire aux comptes \\
+$\mathcal{T}$ & Trajectoire & La première mission, la seconde, le cycle de
+novembre~2026 \\
+\end{tableaucours}
+\end{boxscenario}
+
+L'article pose six axiomes ontologiques, présentés en détail au
+Chapitre~\ref{chap:auditologie}. Trois d'entre eux éclairent dès maintenant
+la pratique.
+
+\begin{itemize}
+    \item[] \textbf{Axiome~1 (Observabilité partielle).} L'auditeur n'a accès
+          qu'à une partie des états pertinents du système audité, et cette
+          partie est elle-même partiellement opaque.
+    \item[] \textbf{Axiome~4 (Interaction stratégique).} L'auditeur et l'audité
+          poursuivent des intérêts distincts~; leurs actions se comprennent
+          comme des coups dans un jeu à information imparfaite.
+    \item[] \textbf{Axiome~6 (Opposabilité).} Toute conclusion d'une mission
+          doit pouvoir être défendue devant un tiers qui a autorité pour la
+          contester.
+\end{itemize}
+
+{\small\itshape Axiomes reformulés d'après~\cite{minka2026auditologie}, avec
+la numérotation de l'article~; les six axiomes figurent au
+Chapitre~\ref{chap:auditologie}.}
+
+\subsection{Mesurer ce que l'audit réduit}
+
+Si l'audit réduit l'incertitude, on doit pouvoir mesurer cette réduction.
+Le prologue en a donné l'exemple. Sur le sous-domaine D.2 (cycle de vie
+des comptes), les quatre interlocuteurs avaient répondu 1~\OUI{}, 1~\NON{}
+et 2~\NEK{}~: $U = 0{,}50$, $H = 1{,}5$~bit. Le test du contrôle D.2.1 a
+établi un \NON{} sur la population entière. Sur ce contrôle, l'auditeur ne
+dépend plus des déclarations~: l'incertitude est levée, et c'est une
+non-conformité \emph{connue} qui la remplace.
+
+C'est ce que l'on attend d'un test~: qu'il transforme un \NEK{} en \OUI{}
+ou en \NON{} prouvés. Un test qui laisse l'incertitude entière n'a rien
+appris. Le Chapitre~\ref{chap:preuve} en tire une règle de conduite~:
+diriger les tests là où $U$ est élevé, comme M.~BEYALA l'a fait sur D.2,
+D.4 et D.5.
+
+\subsection{Ce que cette lecture change pour la pratique}
+
+\begin{tableaucours}{L{4.4cm}L{7.8cm}}{%
+    \tableauHeader{Lecture classique} &
+    \tableauHeader{Lecture auditologique}
+}
+L'audit vérifie la conformité & L'audit réduit l'incertitude~; la
+conformité à un référentiel est un \emph{choix d'objectif}, pas un
+fondement \\
+Une question appelle OUI ou NON & L'observabilité partielle impose une
+troisième réponse, \NEK{} (Chapitre~\ref{chap:preuve}) \\
+L'indépendance est une règle déontologique & L'indépendance se déduit de
+l'interaction stratégique et de l'opposabilité
+(Chapitre~\ref{chap:deontologie}) \\
+Le taux de conformité résume un domaine & Un domaine se lit par trois
+mesures, $\mu$, $U$ et $H$ (Chapitre~\ref{chap:conclure}) \\
+Une grille longue est une grille complète & La grille doit respecter les
+limites cognitives de l'auditeur~: on décompose
+(Chapitre~\ref{chap:decomposition}) \\
+Une mission est un événement isolé & Un système se suit dans le temps~;
+on compare les cycles (Chapitre~\ref{chap:suivi}) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~1.10. Deux lectures de
+l'audit}\end{center}
+
+\begin{boiteRemarque}{L'auditologie remplace-t-elle les normes professionnelles~?}
+Non. Elle ne prescrit pas le «~bon audit~» et n'invalide pas les cadres
+existants~\cite{minka2026auditologie}. Les normes de l'IIA, de l'ISACA ou de
+l'INTOSAI disent ce que l'auditeur doit faire~; l'auditologie cherche à
+expliquer \emph{pourquoi} les méthodes fonctionnent ou échouent, et à le
+vérifier par l'expérience. Ce cours enseigne les deux.
+\end{boiteRemarque}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'article \emph{Vers l'auditologie} (A0)
+propose de traiter l'audit comme un objet scientifique~: des axiomes
+explicites, des propositions qui peuvent être réfutées par l'expérience,
+des mesures communes. Il range explicitement sa démarche dans la science du
+design, qui construit des artefacts (ici, des instruments et des méthodes
+d'audit) et les évalue. L'article sur l'incertitude épistémique (A1) en
+donne le premier instrument mesurable. La validation empirique de ces
+propositions est en cours~; le cours dit, à chaque fois, ce qui est établi
+et ce qui reste à valider (Chapitre~\ref{chap:incertitude}).
+\end{boxinfo}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Appliquer la lecture auditologique dès la première réunion}
+\begin{enumerate}
+    \item Annoncer à l'audité que la réponse \NEK{} est admise, et qu'elle
+          sera documentée comme telle.
+    \item Distinguer, dans le plan de travail, ce qui sera prouvé, ce qui
+          sera seulement déclaré, et ce qui restera inconnu.
+    \item Prévoir, pour chaque domaine, le calcul de $\mu$, $U$ et $H$.
+    \item Rédiger chaque conclusion de façon qu'un tiers puisse la refaire à
+          partir des papiers de travail.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Ce que l'audit lui apporte}
+
+Le responsable de la conformité (et, pour les données personnelles, le
+délégué à la protection des données) doit pouvoir démontrer aux autorités
+que les obligations sont respectées. L'audit lui fournit cette
+démonstration, à condition qu'elle soit opposable~: des critères tirés des
+textes, des preuves conservées, des \NEK{} déclarés plutôt que dissimulés.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Audit, contrôle, inspection, conseil, certification,
+          expertise} sont six activités distinctes~; l'audit est
+          indépendant et conclut sur des preuves au regard de critères.
+    \item \textbf{Le vocabulaire}~: critère et preuve donnent une
+          constatation~; les constatations donnent une conclusion~; la
+          conclusion exprimée avec un niveau d'assurance est une opinion.
+          Pas de constatation sans critère.
+    \item \textbf{L'assurance n'est jamais absolue}~: l'auditeur
+          échantillonne (probabilité de ne rien voir $(1-t)^n$), juge, ne
+          voit pas tout, et les contrôles peuvent être contournés.
+    \item \textbf{Assurance raisonnable} (opinion positive, travaux étendus)
+          ou \textbf{limitée} (opinion négative, travaux restreints)~; la
+          lettre de mission réduit l'écart d'attentes.
+    \item \textbf{Familles d'auditeurs}~: interne, externe légal ou
+          contractuel, de certification, réglementaire, public~; et
+          \textbf{trois lignes} de maîtrise des risques sous l'organe de
+          gouvernance.
+    \item \textbf{L'audit informatique} est passé de l'audit autour de
+          l'ordinateur à l'audit avec l'ordinateur, puis à l'audit continu~;
+          la loi Sarbanes-Oxley a fait des contrôles informatiques un objet
+          d'audit.
+    \item \textbf{Une mission se classe} par son objet, son objectif, son
+          moment et son niveau d'assurance.
+    \item \textbf{L'auditologie} lit l'audit comme une réduction de
+          l'incertitude sur un système partiellement observable, peuplé
+          d'acteurs stratégiques~; un bon test transforme un \NEK{} en
+          \OUI{} ou en \NON{} prouvés.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle.} Vous avez compris ce chapitre si vous savez~:
+\begin{itemize}
+    \item dire, pour une situation donnée, de laquelle des six activités
+          elle relève~;
+    \item rédiger une même conclusion sous forme d'assurance raisonnable et
+          d'assurance limitée~;
+    \item calculer la probabilité de ne voir aucune anomalie dans un
+          échantillon, et la taille d'échantillon qui la ramène sous un
+          seuil~;
+    \item placer les acteurs d'une organisation dans le modèle des trois
+          lignes~;
+    \item classer une mission selon ses quatre critères~;
+    \item expliquer pourquoi un test est utile quand $U$ est élevé.
+\end{itemize}
+\end{boxinfo}
+
+% ============================================================================
+\section*{Exercices}
+% ============================================================================
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.1. Quelle activité~? \niveaubase}]
+Pour chacune des situations suivantes, indiquez s'il s'agit d'un audit,
+d'un contrôle, d'une inspection, d'un conseil, d'une certification ou d'une
+expertise, et justifiez.
+\begin{enumerate}[(a)]
+    \item Le chef d'agence de Garoua vérifie chaque soir que les bons de
+          sortie de l'entrepôt sont signés.
+    \item La COBAC se rend dans une agence de la BANQUE SANAGA pour vérifier
+          le respect d'une règle de conservation des pièces.
+    \item AUDIX CONSEIL donne une opinion sur l'efficacité des contrôles
+          d'accès de LiZbiZ.
+    \item Un cabinet aide l'ANPP à rédiger sa politique de sécurité.
+    \item Un organisme accrédité délivre à un centre de données un
+          certificat ISO/IEC~27001 valable trois ans.
+    \item Un tribunal désigne un spécialiste pour dire comment un fichier a
+          été modifié.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.2. Critère, preuve, constatation, conclusion \niveaubase}]
+Classez chacun des éléments suivants, tirés du dossier de la seconde
+mission de LiZbiZ, dans l'une des quatre catégories, et justifiez.
+\begin{enumerate}[(a)]
+    \item « La revue des comptes d'administration est réalisée chaque
+          trimestre par le responsable de la sécurité. » (procédure interne)
+    \item L'extraction des comptes d'administration du 15~mai~2026, avec son
+          empreinte SHA-256.
+    \item « Aucun compte rendu de revue n'a été produit pour le premier
+          trimestre~2026. »
+    \item « Le contrôle des comptes à privilèges n'est pas efficace sur la
+          période. »
+    \item Le journal des connexions de l'application, de janvier à
+          avril~2026.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.3. Le risque de ne pas voir \niveaumoyen}]
+Une population de 6\,000 bons de sortie contient une proportion inconnue
+$t$ de bons non signés.
+\begin{enumerate}[(a)]
+    \item Calculez la probabilité de ne voir aucun bon non signé dans un
+          échantillon aléatoire de 50 bons, si $t = 3~\%$.
+    \item Quelle taille d'échantillon ramène cette probabilité sous 5~\%,
+          pour $t = 3~\%$~?
+    \item L'auditeur tire 50 bons et n'en trouve aucun non signé. Peut-il
+          conclure que tous les bons sont signés~? Que peut-il dire~?
+    \item Pourquoi le calcul suppose-t-il que la population est grande
+          devant l'échantillon~? Que se passe-t-il si l'on tire 50 bons sur
+          60~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.4. Raisonnable ou limitée \niveaumoyen}]
+Après une semaine d'entretiens et de revue documentaire sur la sauvegarde
+des centres de données de LiZbiZ, sans aucun test de restauration,
+l'équipe propose la conclusion~: « Les sauvegardes sont efficaces. »
+\begin{enumerate}[(a)]
+    \item Quel niveau d'assurance les travaux permettent-ils~? Justifiez.
+    \item Réécrivez la conclusion dans la forme qui convient.
+    \item Quels travaux faudrait-il ajouter pour pouvoir donner une
+          assurance raisonnable~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.5. Les trois lignes de la BANQUE SANAGA \niveaumoyen}]
+La BANQUE SANAGA compte une DSI, un RSSI rattaché au directeur des
+risques, une direction de l'audit interne dirigée par Mme~EKAMBI, un
+comité d'audit et un commissaire aux comptes.
+\begin{enumerate}[(a)]
+    \item Placez chacun de ces acteurs dans le modèle des trois lignes.
+    \item Mme~EKAMBI a participé, en 2025, à la rédaction de la procédure de
+          gestion des changements. Quel problème cela pose-t-il pour un
+          audit de cette procédure~?
+    \item Proposez une solution conforme à l'indépendance de l'audit.
+    \item Le directeur général propose de rattacher le RSSI à la DSI « pour
+          simplifier ». Quel est le risque pour la maîtrise de la
+          sécurité~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.6. Classer cinq missions \niveaumoyen}]
+Classez chacune des missions suivantes selon les quatre critères du
+Tableau~1.8, et indiquez son type selon le Tableau~1.9.
+\begin{enumerate}[(a)]
+    \item Avant le lancement du nouveau système central de la BANQUE
+          SANAGA, vérifier que la recette a été conduite selon la procédure.
+    \item À la demande du ministère de tutelle, vérifier que l'ANPP a
+          appliqué le code des marchés publics pour l'achat de ses serveurs.
+    \item Pour LiZbiZ, dire si le prestataire d'hébergement respecte les
+          clauses de son contrat.
+    \item Pour un opérateur de télécommunications, réaliser l'audit de
+          sécurité prévu par la loi n°~2010/012.
+    \item Pour la BANQUE SANAGA, dire si le coût de l'exploitation
+          informatique est maîtrisé.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.7. Approches de l'audit informatique \niveaumoyen}]
+On veut s'assurer que l'application de l'ANPP ne paie aucun agent après la
+date de son départ.
+\begin{enumerate}[(a)]
+    \item Décrivez ce que ferait un auditeur «~autour de l'ordinateur~»,
+          «~à travers l'ordinateur~» et «~avec l'ordinateur~».
+    \item Quelle approche donne la preuve la plus forte~? À quelle
+          condition~?
+    \item Écrivez, en pseudo-code ou en SQL, la requête que lancerait
+          l'auditeur «~avec l'ordinateur~», à partir d'une table des paiements
+          et d'une table des agents.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.8. Deux lectures de l'audit \niveaumoyen}]
+Pour chacun des énoncés suivants, dites s'il relève de la lecture
+classique ou de la lecture auditologique, et ce qu'il changerait à la
+mission.
+\begin{enumerate}[(a)]
+    \item « Il faut au moins 80~\% de réponses positives pour déclarer un
+          domaine conforme. »
+    \item « Un domaine où un quart des réponses sont \NEK{} ne peut pas être
+          déclaré conforme, quel que soit le taux de \OUI{}. »
+    \item « Notre grille de 300 questions couvre tout le système. »
+    \item « Nous reviendrons dans six mois pour voir si la situation a
+          changé, et nous comparerons. »
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.9. Une lettre de mission publique \niveauexpert}]
+La juridiction des comptes annonce un audit des systèmes d'information de
+l'ANPP.
+\begin{enumerate}[(a)]
+    \item Rédigez l'objectif, le périmètre et les limites de la mission, sur
+          le modèle de la lettre d'AUDIX CONSEIL.
+    \item Indiquez le niveau d'assurance visé (raisonnable ou limitée) et
+          justifiez.
+    \item Identifiez deux situations dans lesquelles l'équipe devra répondre
+          \NEK{}, et expliquez ce que ces réponses apprendront à la
+          juridiction.
+    \item Montrez en quoi l'axiome d'opposabilité s'applique avec une force
+          particulière à un audit public.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~1.10. De la loi aux critères \niveauexpert}]
+Partez de la définition légale de l'audit de sécurité (loi n°~2010/012,
+article~4, point~9).
+\begin{enumerate}[(a)]
+    \item Repérez les objets que la définition demande d'examiner, et les
+          trois natures de contrôle qu'elle mentionne.
+    \item Pour un centre de données de LiZbiZ, déduisez-en trois critères
+          d'audit, un par nature de contrôle, et formulez pour chacun une
+          question atomique cotable \OUI{}, \NON{} ou \NEK{}.
+    \item Lequel des trois critères est le plus difficile à rendre
+          objectif~? Pourquoi, et comment le rendre vérifiable~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item La norme ISO~19011~\cite{iso19011_2018}, articles~3 et~4~: le
+          vocabulaire et les principes de l'audit.
+    \item Le modèle des trois lignes de l'IIA~\cite{iia2020troislignes}~:
+          un document court, qui se lit en une heure.
+    \item Le guide d'audit des SI du CHAI~\cite{chai2014guide}, pour la
+          typologie des missions et leurs fiches.
+    \item L'article \emph{Vers l'auditologie}~\cite{minka2026auditologie},
+          sections~1 à~3~: le constat, la définition et les axiomes.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} L'audit évalue un dispositif~: le contrôle interne.
+Avant d'apprendre à l'auditer, il faut voir ce qui arrive quand il manque.
+Le Chapitre~\ref{chap:defaillances} raconte quatre grandes défaillances, et
+ce qu'elles ont changé dans la profession.
+\end{boxinfo}

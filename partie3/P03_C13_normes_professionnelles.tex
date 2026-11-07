@@ -1,0 +1,798 @@
+% ============================================================================
+% Fichier  : partie3/P03_C10_normes_professionnelles.tex
+% Titre    : Les Normes Professionnelles de l'Audit
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C10, repris et développé pour INF3226
+% ============================================================================
+% Sources : IIA, CRIPP 2017 (édition française, dossier Normes) et Normes
+% mondiales d'audit interne (2024 ; 5 domaines, 15 principes, 52 normes ;
+% applicables depuis le 9 janvier 2025) ; ISACA, ITAF 4e édition (2020),
+% numérotation des normes 1000/1200/1400 ; ISO 19011:2018 (voir C05) ;
+% ISO/IEC 27007:2020 ; ISO/IEC 27006 : le dossier Normes contient une
+% édition scannée (2015) ; la norme est désormais publiée en plusieurs
+% parties (27006-1:2024), à vérifier au catalogue ISO ; IAASB, ISA 315
+% révisée (2019) et ISAE 3402 (2011) ; INTOSAI, ISSAI 100, 400, 4000 et
+% GUID 5100 (2019) ; IDI, manuel d'audit de conformité (2021), dont la
+% relation tripartite (ISSAI 400.35) et la règle de référence (ISSAI
+% 4000.14). Indépendance déduite des axiomes 4 et 6 d'A0.
+% ============================================================================
+
+\chapter{Les Normes Professionnelles de l'Audit}
+\label{chap:normes}
+
+\epigraph{%
+    « Dire selon quelle norme on a travaillé,\\
+    c'est dire au lecteur comment vous contester. »%
+}{Adage des réviseurs}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise du Chapitre~\ref{chap:mission} (principes, charte, cycle de
+    la mission)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Situer les cinq familles de normes qui encadrent l'audit des SI,
+          et dire laquelle s'applique à une mission donnée.
+    \item Présenter les Normes mondiales d'audit interne de l'IIA (2024) et
+          leur filiation avec le CRIPP de 2017.
+    \item Présenter ITAF (ISACA), puis l'ISO~19011 et les ISO/IEC~27007 et
+          27006 pour l'audit des systèmes de management.
+    \item Situer les normes de l'audit légal (ISA~315 révisée, ISAE~3402)
+          et celles de l'audit public (ISSAI, GUID~5100).
+    \item Analyser une situation de conflit d'intérêts, et montrer que
+          l'indépendance découle des axiomes~4 et~6 de l'auditologie.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : selon quelle norme travaille-t-on~?}
+% ============================================================================
+
+À Douala, le comité d'audit de la BANQUE SANAGA a trois demandes. Il veut
+que Mme~EKAMBI, directrice de l'audit interne, audite la gestion des
+changements après la panne de mars~2026. Le commissaire aux comptes, lui,
+veut savoir s'il peut s'appuyer sur le rapport que l'intégrateur DIGICORE
+AFRIQUE a remis sur ses propres contrôles. Enfin, la COBAC attend une
+évaluation du contrôle interne. Trois travaux, trois lecteurs, et autant
+de normes.
+
+À Yaoundé, la Chambre des comptes ouvre au même moment un audit de
+conformité de l'ANPP. Le magistrat vérificateur, M.~NJOYA, ne suit ni les
+normes de l'IIA ni celles du commissaire aux comptes~: il applique les
+normes de l'INTOSAI.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item La carte des normes (section~\ref{sec:c13-carte}).
+    \item L'audit interne~: les Normes mondiales de l'IIA
+          (section~\ref{sec:c13-iia}).
+    \item L'audit des SI~: ITAF (section~\ref{sec:c13-itaf}).
+    \item Les systèmes de management~: ISO~19011, ISO/IEC~27007 et 27006
+          (section~\ref{sec:c13-iso}).
+    \item L'audit légal~: ISA~315 et ISAE~3402 (section~\ref{sec:c13-legal}).
+    \item L'audit public~: l'INTOSAI (section~\ref{sec:c13-public}).
+    \item La méthode du cours et les normes
+          (section~\ref{sec:c13-correspondance}).
+    \item L'indépendance, lue par l'auditologie
+          (section~\ref{sec:c13-deontologie})~; la déontologie est
+          développée au Chapitre~\ref{chap:deontologie}.
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{La Carte des Normes}
+\label{sec:c13-carte}
+% ============================================================================
+
+\subsection{Pourquoi des normes~?}
+
+Une norme professionnelle dit ce que l'auditeur doit faire pour que son
+travail soit reconnu par ses pairs. Elle a une fonction moins visible~:
+elle fixe la règle selon laquelle une conclusion pourra être contestée.
+Un rapport qui déclare « nous avons conduit nos travaux conformément
+à… » donne au lecteur le moyen de vérifier que l'auditeur a fait ce qu'il
+devait. C'est l'axiome d'opposabilité (axiome~6) traduit en pratique
+professionnelle~\cite{minka2026auditologie}.
+
+\begin{boxdef}
+\termecle{Norme professionnelle d'audit}\index{norme professionnelle
+d'audit}~: ensemble d'exigences, émis par une organisation professionnelle
+ou normative, qui encadre la conduite d'un audit, la compétence et
+l'éthique de l'auditeur, ainsi que la forme de ses conclusions. Elle se
+distingue du \emph{référentiel de contrôle} (COSO, COBIT, ISO/IEC~27002),
+qui dit \emph{par rapport à quoi} on audite (Chapitre~\ref{chap:referentiels}),
+et de la \emph{loi}, qui dit \emph{qui} doit être audité
+(Chapitre~\ref{chap:droit}).
+\end{boxdef}
+
+\subsection{Cinq familles}
+
+\begin{tableaucours}{L{2.4cm}L{2.3cm}L{3.4cm}L{4.0cm}}{%
+    \tableauHeader{Famille} &
+    \tableauHeader{Émetteur} &
+    \tableauHeader{Textes principaux} &
+    \tableauHeader{Dans nos cas}
+}
+Audit interne & IIA & Normes mondiales (2024)~; CRIPP (2017) & Mme~EKAMBI,
+BANQUE SANAGA \\
+Audit des SI & ISACA & ITAF (2020)~; Code de déontologie & AUDIX CONSEIL
+chez LiZbiZ \\
+Systèmes de management & ISO, ISO/IEC & ISO~19011~; ISO/IEC~27007 et
+27006 & Audit interne d'un SMSI~; certification \\
+Audit légal & IAASB (IFAC) & Normes ISA~; norme ISAE~3402 & Commissaire
+aux comptes de la BANQUE SANAGA \\
+Audit public & INTOSAI & ISSAI~100, 400, 4000~; GUID~5100 & Chambre des
+comptes, audit de l'ANPP \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.1. Les cinq familles de normes de
+l'audit des SI}\end{center}
+
+Ces familles ne s'excluent pas. Un auditeur SI certifié par l'ISACA, qui
+travaille dans une direction d'audit interne, applique les Normes mondiales
+de l'IIA et s'appuie sur ITAF pour les questions techniques. Le choix se
+fait d'après le \emph{commanditaire} et le \emph{lecteur} du rapport~: qui
+a mandaté la mission, et qui va s'appuyer sur ses conclusions.
+
+% ============================================================================
+\section{L'Audit Interne : les Normes Mondiales de l'IIA}
+\label{sec:c13-iia}
+% ============================================================================
+
+\subsection{Du CRIPP de 2017 aux Normes mondiales de 2024}
+
+Jusqu'en 2024, l'audit interne se référait au \emph{Cadre de référence
+international des pratiques professionnelles} (\sigle{CRIPP}), dans son
+édition de 2017~\cite{iia2017cripp}. Il comprenait notamment une mission,
+des principes fondamentaux, une définition de l'audit interne, un Code de
+déontologie en quatre principes et des normes réparties entre normes de
+qualification (série~1000) et normes de fonctionnement (série~2000).
+
+En janvier~2024, l'IIA a publié les \textbf{Normes mondiales d'audit
+interne} (\textit{Global Internal Audit Standards}), applicables depuis
+le 9~janvier~2025~\cite{iia2024gias}. Elles fusionnent dans un seul texte
+ce que le CRIPP dispersait, et s'organisent en cinq domaines, quinze
+principes et cinquante-deux normes. Chaque norme comporte des exigences,
+des considérations de mise en œuvre et des exemples de preuves de
+conformité.
+
+\begin{tableaucours}{cL{3.6cm}cL{6.2cm}}{%
+    \tableauHeader{Dom.} &
+    \tableauHeader{Intitulé} &
+    \tableauHeader{Princ.} &
+    \tableauHeader{Contenu (notre résumé)}
+}
+I & Raison d'être de l'audit interne & -- & Ce que l'audit interne apporte
+à l'organisation \\
+II & Éthique et professionnalisme & 1 à 5 & Intégrité, objectivité,
+compétence, conscience professionnelle, confidentialité \\
+III & Gouvernance de la fonction d'audit interne & 6 à 8 & Mandat donné
+par le conseil, positionnement indépendant, supervision par le conseil \\
+IV & Management de la fonction d'audit interne & 9 à 12 & Stratégie,
+ressources, communication, qualité \\
+V & Réalisation des missions & 13 à 15 & Planification, conduite,
+communication des conclusions et suivi des plans d'action \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.2. Les cinq domaines des Normes
+mondiales d'audit interne (2024, notre traduction)}\end{center}
+
+\subsection{Ce qui change pour l'auditeur des SI}
+
+\begin{tableaucours}{L{4.6cm}L{7.6cm}}{%
+    \tableauHeader{CRIPP 2017} &
+    \tableauHeader{Normes mondiales 2024}
+}
+Code de déontologie, quatre principes & Domaine~II, cinq principes~: la
+conscience professionnelle, qui était une norme de qualification, devient
+un principe éthique \\
+Charte et indépendance (normes 1000 et 1100) & Domaine~III~: le conseil
+approuve le mandat, la charte, le plan et les moyens de la fonction \\
+Programme d'assurance et d'amélioration de la qualité (normes 1300) &
+Principe~12~: évaluation interne continue, évaluation externe au moins
+tous les cinq ans \\
+Normes de fonctionnement (séries 2000 à 2600) & Domaines~IV et~V,
+réorganisés autour de la stratégie de la fonction et du cycle de la
+mission \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.3. Filiation entre le CRIPP et les
+Normes mondiales (notre lecture)}\end{center}
+
+Les Normes mondiales s'accompagnent d'\emph{exigences thématiques}, qui
+précisent ce qu'un auditeur doit couvrir lorsqu'il traite un sujet donné.
+La première publiée porte sur la cybersécurité~: l'auditeur des SI d'une
+fonction d'audit interne doit s'y reporter.
+
+\begin{boxalert}
+\textbf{Violation typique.} La charte d'audit interne de la BANQUE SANAGA,
+datée de 2015, renvoie aux « normes de l'IIA » sans préciser l'édition, et
+le plan d'audit est approuvé par le directeur général.
+
+\smallskip
+\textbf{Règle~:} la charte se réfère aux Normes mondiales de 2024~; le
+conseil, ou le comité d'audit qui agit pour lui, approuve la charte, le
+plan et les moyens de la fonction (Chapitre~\ref{chap:mission}).
+\end{boxalert}
+
+% ============================================================================
+\section{L'Audit des SI : ITAF}
+\label{sec:c13-itaf}
+% ============================================================================
+
+L'ISACA, qui délivre la certification CISA, publie ITAF (\textit{IT Audit
+Framework}), cadre de pratiques professionnelles pour l'audit et
+l'assurance des SI, dont la quatrième édition date de
+2020~\cite{isaca2020itaf}. Ses normes se répartissent en trois séries.
+
+\begin{tableaucours}{L{2.6cm}L{5.0cm}L{4.6cm}}{%
+    \tableauHeader{Série} &
+    \tableauHeader{Normes (intitulés traduits)} &
+    \tableauHeader{Dans ce cours}
+}
+1000, normes générales & Charte d'audit~; indépendance
+organisationnelle~; objectivité~; attente raisonnable~; diligence
+professionnelle~; compétence~; assertions~; critères & Chapitre~\ref{chap:mission}~;
+fiche d'assertion et critère (Chapitre~\ref{chap:decomposition}) \\
+1200, normes de réalisation & Évaluation des risques~; programmation~;
+planification de la mission~; réalisation et supervision~; preuves~;
+recours aux travaux d'experts~; irrégularités et actes illégaux &
+Chapitres~\ref{chap:planifier}, \ref{chap:preuve} et~\ref{chap:fraude} \\
+1400, normes de rapport & Rapport~; suivi & Chapitre~\ref{chap:conclure} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.4. Les trois séries de normes
+d'ITAF (4\textsuperscript{e} édition, notre traduction)}\end{center}
+
+Deux normes générales intéressent directement la méthode du cours. La
+norme sur les \emph{assertions} demande à l'auditeur d'identifier ce qu'il
+vérifie, et la norme sur les \emph{critères} de choisir des critères
+pertinents, objectifs et accessibles au lecteur. La fiche d'assertion du
+Chapitre~\ref{chap:decomposition} y répond~: chaque contrôle y reçoit un
+critère explicite et une question atomique.
+
+\begin{boxinfo}
+\textbf{ITAF et l'audit interne.} ITAF ne remplace pas les Normes
+mondiales de l'IIA. Un auditeur SI qui travaille dans une direction
+d'audit interne applique les Normes mondiales pour l'organisation de la
+fonction et le cycle de la mission, et ITAF pour les aspects propres aux
+SI~: preuves numériques, recours à des experts techniques, tests sur les
+systèmes.
+\end{boxinfo}
+
+% ============================================================================
+\section{L'Audit des Systèmes de Management}
+\label{sec:c13-iso}
+% ============================================================================
+
+\subsection{Trois parties, trois audits}
+
+L'ISO~19011:2018, dont le Chapitre~\ref{chap:mission} a présenté les sept
+principes, distingue trois situations d'audit selon la relation entre
+l'auditeur et l'audité~\cite{iso19011_2018}.
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{4.8cm}}{%
+    \tableauHeader{Audit} &
+    \tableauHeader{Qui audite qui~?} &
+    \tableauHeader{Exemple}
+}
+Première partie & L'organisation s'audite elle-même (audit interne) &
+L'audit interne du SMSI exigé par l'ISO/IEC~27001 (§~9.2) \\
+Seconde partie & Un client audite son fournisseur & La BANQUE SANAGA audite
+DIGICORE AFRIQUE, en vertu de son contrat \\
+Tierce partie & Un organisme indépendant, accrédité, audite pour certifier
+& La certification ISO/IEC~27001 d'un centre de données \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.5. Les trois parties de l'audit
+des systèmes de management}\end{center}
+
+\subsection{ISO/IEC 27007 et ISO/IEC 27006}
+
+L'\textbf{ISO/IEC~27007:2020} donne des lignes directrices pour auditer un
+système de management de la sécurité de l'information (\sigle{SMSI})~:
+elle reprend la structure de l'ISO~19011 et ajoute, clause par clause, ce
+qui est propre à la sécurité~\cite{iso27007_2020}. Elle s'applique aux
+audits de première et de seconde partie, et guide les auditeurs de
+certification.
+
+L'\textbf{ISO/IEC~27006} fixe les exigences applicables aux organismes qui
+auditent et certifient des SMSI~; elle complète l'ISO/IEC~17021-1, commune
+à toutes les certifications de systèmes de management. Elle ne s'adresse
+pas à l'auditeur interne, mais elle lui dit ce qu'un certificat garantit, et
+ce qu'il ne garantit pas.
+
+\begin{boxinfo}
+\textbf{Édition à vérifier.} Le dossier \texttt{Normes} contient une
+édition scannée de l'ISO/IEC~27006. La norme est désormais publiée en
+plusieurs parties~; avant de la citer dans un rapport, vérifiez l'édition en
+vigueur au catalogue de l'ISO, comme pour l'ISO/IEC~27005
+(Chapitre~\ref{chap:risque}).
+\end{boxinfo}
+
+\begin{boiteRemarque}{Un certificat ISO/IEC 27001 suffit-il~?}
+Non. Un certificat atteste qu'un organisme accrédité a jugé le SMSI
+conforme, sur un \emph{périmètre} donné, à la date de l'audit. L'auditeur
+lit d'abord la déclaration de périmètre et la déclaration d'applicabilité~:
+un centre de données certifié peut exclure l'application qui intéresse la
+mission. Hors du périmètre, le contrôle reste à coter, et sans autre
+preuve, il est \NEK{}.
+\end{boiteRemarque}
+
+% ============================================================================
+\section{L'Audit Légal : ISA 315 et ISAE 3402}
+\label{sec:c13-legal}
+% ============================================================================
+
+\subsection{Le commissaire aux comptes et les SI}
+
+Le commissaire aux comptes certifie les états financiers. Ses normes
+d'exercice dépendent de l'ordre professionnel national~; les normes
+internationales d'audit (\sigle{ISA}) de l'IAASB en sont la référence
+mondiale. Son mandat, dans l'espace OHADA, est fixé par
+l'AUSCGIE~\cite{ohada2014auscgie} (Chapitre~\ref{chap:droit}).
+
+La norme \textbf{ISA~315}, révisée en 2019, porte sur l'identification et
+l'évaluation des risques d'anomalies significatives~\cite{iaasb2019isa315}.
+La révision a renforcé ce qu'elle demande sur l'informatique~: l'auditeur
+financier doit comprendre l'environnement informatique de l'entité,
+identifier les risques qui découlent de l'usage de l'informatique et les
+\termecle{contrôles généraux informatiques}\index{contrôles généraux
+informatiques} qui y répondent (accès, changements, exploitation). C'est
+là que l'auditeur des SI intervient dans la mission légale.
+
+\subsection{Le rapport ISAE 3402}
+
+Lorsqu'une entité confie une partie de ses traitements à un prestataire,
+son auditeur ne peut pas toujours aller tester les contrôles chez ce
+prestataire. La norme \textbf{ISAE~3402} organise alors un rapport
+d'assurance délivré par l'auditeur du prestataire, sur les contrôles de
+celui-ci~\cite{iaasb2011isae3402}.
+
+\begin{boxdef}
+\termecle{Rapport ISAE~3402}\index{rapport ISAE 3402}~: rapport d'assurance
+sur les contrôles d'une société de services, destiné à ses clients et à
+leurs auditeurs.
+\begin{itemize}
+    \item \textbf{Type~1}~: la description du système et la \emph{conception}
+          des contrôles, à une date donnée.
+    \item \textbf{Type~2}~: la même chose, plus l'\emph{efficacité} des
+          contrôles sur une période, avec les tests réalisés et leurs
+          résultats.
+\end{itemize}
+\end{boxdef}
+
+Le rapport énumère aussi les \emph{contrôles complémentaires} que le client
+doit mettre en place de son côté~: si le prestataire suppose que le client
+revoit chaque trimestre les accès qu'il a demandés, cette revue reste à
+tester chez le client.
+
+\begin{boxlecture}{Le rapport de DIGICORE AFRIQUE}
+DIGICORE AFRIQUE remet à la BANQUE SANAGA un rapport de type~1, daté du
+31~décembre~2025, sur douze contrôles de son service de maintenance du
+système central. Le commissaire aux comptes veut conclure sur
+l'exercice~2026.
+
+\medskip
+\textbf{Constatation.} Le rapport établit la conception des douze contrôles
+à une date~; il ne dit rien de leur fonctionnement en 2026.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Pour l'efficacité en 2026, les douze
+contrôles sont \NEK{}~: le rapport n'est pas faux, il est muet. Le
+commissaire aux comptes demande un rapport de type~2 sur la période, ou
+réalise ses propres tests. Les trois contrôles complémentaires attendus de
+la banque sont à tester chez elle.
+
+\medskip
+\hfill\lecture{0{,}00}{1{,}00}{0{,}00}
+\end{boxlecture}
+
+Cette lecture rappelle le cas limite du Chapitre~\ref{chap:conclure}~:
+une ignorance unanime donne $H = 0$ et $U = 1$. Une entropie nulle n'est
+pas une certitude.
+
+\begin{boxinfo}
+\textbf{Le commissaire aux comptes.}
+\textbf{S'appuyer sur le rapport d'un prestataire}
+\begin{enumerate}
+    \item Vérifier le type du rapport, la période couverte et le périmètre~:
+          les traitements de l'entité y figurent-ils~?
+    \item Lire l'opinion de l'auditeur du prestataire et les écarts relevés
+          lors de ses tests.
+    \item Couvrir la période qui sépare la fin du rapport de la clôture,
+          par une lettre de confirmation ou par des tests.
+    \item Tester chez l'entité les contrôles complémentaires énumérés dans
+          le rapport.
+    \item Documenter la conclusion~: ce que le rapport couvre, ce qu'il
+          laisse \NEK{}.
+\end{enumerate}
+\end{boxinfo}
+
+% ============================================================================
+\section{L'Audit Public : INTOSAI}
+\label{sec:c13-public}
+% ============================================================================
+\section{La Méthode du Cours et les Normes}
+\label{sec:c13-correspondance}
+% ============================================================================
+
+La méthode enseignée dans la Partie~\ref{part:methode} n'est pas une norme
+de plus~: elle s'inscrit dans les normes existantes. Le Tableau~13.6 montre,
+pour chaque étape, l'exigence normative qu'elle met en œuvre. Un rapport
+d'audit qui applique la méthode cite la norme du commanditaire, et peut
+préciser que la cotation \OUI{}, \NON{}, \NEK{} est la manière dont
+l'auditeur documente le caractère suffisant et approprié de ses preuves.
+
+\begin{tableaucours}{L{3.4cm}L{4.6cm}L{4.2cm}}{%
+    \tableauHeader{Étape de la méthode} &
+    \tableauHeader{Exigence normative} &
+    \tableauHeader{Source}
+}
+Lettre de mission, critères & Objectifs, périmètre et critères définis
+avant le terrain & IIA (domaine V)~; ISSAI~4000~; ISO~19011 \\
+Décomposition, fiche d'assertion & Identifier l'objet, les critères et les
+assertions & ITAF (normes sur les assertions et les critères) \\
+Cotation \OUI{}, \NON{}, \NEK{} & Preuves suffisantes et appropriées~;
+limitation d'étendue signalée & IIA~; ITAF~; ISSAI~100 \\
+Papiers de travail & Documentation permettant à un tiers de refaire le
+raisonnement & IIA~; ITAF~; GUID~5100 \\
+Contradictoire & Communication des constats et des réponses de la
+direction & IIA~; ISSAI~4000 \\
+Suivi & Suivi des actions de la direction ou de l'acceptation du risque &
+IIA (domaine V) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.6. La méthode du cours et les
+exigences normatives}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Écrire dans un rapport « audit réalisé selon la
+méthode \NEK{} », sans citer la norme professionnelle applicable.
+
+\smallskip
+\textbf{Règle~:} le rapport cite la norme du commanditaire (IIA, ITAF,
+ISO~19011, ISSAI). La méthode du cours est la manière de l'appliquer, pas
+un référentiel qui la remplace.
+\end{boxalert}
+
+% ============================================================================
+
+\subsection{Le cadre des normes de l'INTOSAI}
+
+Les institutions supérieures de contrôle des finances publiques
+(\sigle{ISC}), comme la Chambre des comptes au Cameroun, appliquent le cadre
+des prises de position professionnelles de l'INTOSAI. Il comprend trois
+niveaux~:
+\begin{itemize}
+    \item les \textbf{principes} (INTOSAI-P), dont la Déclaration de Lima
+          sur les principes du contrôle des finances publiques~;
+    \item les \textbf{normes} (\sigle{ISSAI})~: l'ISSAI~100 pose les
+          principes fondamentaux et reconnaît trois types d'audit, financier,
+          de conformité et de performance~; l'ISSAI~400 énonce les principes
+          de l'audit de conformité, et l'ISSAI~4000 en est la norme~;
+    \item les \textbf{lignes directrices} (GUID), dont le GUID~5100 sur la
+          vérification des systèmes d'information~\cite{intosai2019guid5100}.
+\end{itemize}
+
+\subsection{L'audit de conformité}
+
+\begin{boxdef}
+\termecle{Audit de conformité}\index{audit de conformité} (ISSAI~400)~:
+audit qui évalue si les activités, les transactions et les informations
+d'une entité publique sont conformes, dans tous leurs aspects
+significatifs, aux autorités qui la régissent (lois, règlements,
+décisions, politiques et conditions convenues). Il repose sur une relation
+à trois parties~: l'auditeur, la \emph{partie responsable} du sujet et les
+\emph{utilisateurs prévus} du rapport~\cite{idi2021conformite}.
+\end{boxdef}
+
+Le manuel de l'IDI distingue deux types de missions. Dans une \emph{mission
+d'attestation}, l'auditeur se prononce sur une information produite par la
+partie responsable. Dans une \emph{mission d'information directe}, il
+mesure lui-même le sujet par rapport aux critères. L'assurance donnée peut
+être \emph{raisonnable} ou \emph{limitée}~\cite{idi2021conformite}. Les
+critères, pertinents, complets, fiables, neutres et compréhensibles, doivent
+figurer dans le rapport ou y être référencés~: sans eux, une conclusion
+reste ouverte à l'interprétation de chacun.
+
+\begin{boxscenario}{Opération MEFOU. La lettre de la Chambre des comptes}
+\textbf{Faits.} M.~NJOYA ouvre un audit de conformité des paiements de
+l'ANPP. La partie responsable est le directeur général, M.~ESSOMBA~;
+l'utilisateur prévu, le Parlement, destinataire du rapport public. Les
+critères sont le régime financier de l'État et les procédures de dépense
+de l'agence~\cite{minfi2023regimefinancier}.
+
+\medskip
+\textbf{Question de méthode.} Le système de paiement est informatisé. Le
+GUID~5100 conduit M.~NJOYA à vérifier d'abord les contrôles généraux
+informatiques~: si les comptes des agents partis restent actifs, les
+paiements tirés du système ne peuvent être réputés réguliers sans tests
+complémentaires. Le Chapitre~\ref{chap:droit} et le ACSI-LAB-06 reprennent ce
+cas.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Écrire dans un rapport « conformément aux
+ISSAI » alors que certaines exigences n'ont pas été suivies.
+
+\smallskip
+\textbf{Règle~:} l'ISSAI~4000 interdit de se référer à la norme sans
+signaler les exigences non suivies et leurs conséquences~; la même règle
+vaut pour toute norme dont on se réclame~\cite{idi2021conformite}.
+\end{boxalert}
+
+% ============================================================================
+\section{Déontologie et Indépendance}
+\label{sec:c13-deontologie}
+% ============================================================================
+
+\subsection{Ce que les codes demandent}
+
+Les codes de l'IIA, de l'ISACA et de l'INTOSAI convergent~: intégrité,
+objectivité, compétence, conscience professionnelle et confidentialité.
+Le Chapitre~\ref{chap:mission} les a présentés à travers les principes de
+l'ISO~19011. Le point le plus délicat en pratique est l'indépendance, et
+l'atteinte la plus fréquente, le conflit d'intérêts.
+
+\begin{tableaucours}{L{4.4cm}L{3.0cm}L{4.8cm}}{%
+    \tableauHeader{Situation} &
+    \tableauHeader{Menace} &
+    \tableauHeader{Réponse}
+}
+L'auditrice audite une procédure qu'elle a elle-même conçue & Autorévision
+& Déclarer au comité d'audit~; faire évaluer la conception par un tiers \\
+L'auditeur est rémunéré au succès de la mission & Intérêt personnel &
+Refuser~: les honoraires ne dépendent pas des conclusions \\
+L'auditeur audite depuis huit ans le même DSI & Familiarité & Rotation de
+l'équipe ou revue par un pair \\
+Le directeur général menace de réduire le budget de l'audit & Intimidation
+& Saisir le comité d'audit, à qui la fonction rend compte \\
+L'auditeur défend publiquement le projet qu'il doit auditer & Défense
+d'intérêts & Se retirer de la mission \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~13.7. Cinq menaces sur
+l'indépendance, et la réponse attendue}\end{center}
+
+\subsection{Pourquoi l'indépendance~? La lecture auditologique}
+
+Les normes posent l'indépendance comme une exigence. L'article A0 montre
+qu'elle n'est pas une convention~: elle se déduit de deux
+axiomes~\cite{minka2026auditologie}.
+
+\begin{boiteTheoreme}{Indépendance (lecture du cours, d'après A0)}
+\textbf{Axiome~4 (Interaction stratégique).} L'auditeur et l'audité
+poursuivent des intérêts distincts~; l'audité peut retenir l'information,
+ou répondre \NEK{} de manière stratégique.
+
+\smallskip
+\textbf{Axiome~6 (Opposabilité).} Toute conclusion doit pouvoir être
+défendue devant un tiers qui a autorité pour la contester.
+
+\smallskip
+\textbf{Conséquence.} Si l'auditeur partage les intérêts de l'audité, le
+jeu de l'axiome~4 disparaît~: personne ne conteste l'information retenue.
+Le tiers de l'axiome~6 n'a plus alors qu'à montrer cet intérêt commun pour
+rendre la conclusion inopposable. L'indépendance est donc une condition
+nécessaire de l'opposabilité.
+\end{boiteTheoreme}
+
+Cette lecture a une conséquence pratique, qui se mesure. Un \OUI{} donné
+par un auditeur en situation de conflit n'est pas opposable~: il ne vaut
+pas mieux qu'une réponse inconnue, et se cote \NEK{} jusqu'à ce qu'un tiers
+l'ait confirmé.
+
+\begin{boxlecture}{Gestion des changements, SANAGA}
+Mme~EKAMBI cote douze contrôles de la gestion des changements~: 9~\OUI{},
+1~\NON{}, 2~\NEK{}. Cinq des neuf \OUI{} portent sur la conception de la
+procédure qu'elle a rédigée en 2025. Elle le déclare au comité d'audit.
+
+\medskip
+\begin{tableaucours}{L{4.4cm}cccccc}{%
+    \tableauHeader{Moment} &
+    \tableauHeader{\OUI{}} & \tableauHeader{\NON{}} & \tableauHeader{\NEK{}} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$}
+}
+Cotation de l'auditrice & 9 & 1 & 2 & 0,75 & 0,17 & 1,04 \\
+Cinq \OUI{} non opposables & 4 & 1 & 7 & 0,33 & 0,58 & 1,28 \\
+Après revue par un tiers & 7 & 3 & 2 & 0,58 & 0,17 & 1,38 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} La déclaration fait passer le domaine de la
+conformité claire à la non-conformité opaque. La revue par un auditeur
+externe confirme trois des cinq contrôles et en infirme deux.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). La première cotation surestimait la
+conformité de 0,17. Le conflit d'intérêts n'est pas une faute morale à
+taire~: c'est une source d'incertitude à mesurer, puis à lever.
+
+\medskip
+\hfill\lecture{0{,}58}{0{,}17}{1{,}38}
+\end{boxlecture}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Déclarer ses normes et ses limites}
+\begin{enumerate}
+    \item Indiquer dans la lettre de mission, puis dans le rapport, les
+          normes appliquées et leur édition.
+    \item Signaler toute exigence non suivie, et sa conséquence sur les
+          conclusions.
+    \item Déclarer par écrit, avant la mission, toute situation de conflit
+          d'intérêts, et la mesure retenue.
+    \item Coter \NEK{} un contrôle que l'on ne peut pas évaluer en toute
+          indépendance, jusqu'à la revue par un tiers.
+    \item Conserver au dossier la déclaration et la revue~: elles font
+          partie de la preuve.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Cinq familles de normes}~: audit interne (IIA), audit des
+          SI (ISACA), systèmes de management (ISO), audit légal (IAASB),
+          audit public (INTOSAI)~; le commanditaire et le lecteur du
+          rapport décident de celle qui s'applique.
+    \item \textbf{Les Normes mondiales de l'IIA (2024)} remplacent le CRIPP
+          de 2017~: cinq domaines, quinze principes, cinquante-deux normes.
+    \item \textbf{ITAF} encadre l'audit des SI en trois séries~; ses normes
+          sur les assertions et les critères fondent la fiche d'assertion.
+    \item \textbf{L'ISO/IEC~27007} guide l'audit d'un SMSI~; l'ISO/IEC~27006
+          encadre les organismes de certification~; un certificat ne vaut
+          que sur son périmètre.
+    \item \textbf{Un rapport ISAE~3402} de type~1 ne dit rien de
+          l'efficacité~; seul le type~2 couvre une période.
+    \item \textbf{L'audit de conformité public} repose sur trois parties et
+          des critères explicites (ISSAI~400 et 4000).
+    \item \textbf{L'indépendance} se déduit des axiomes~4 et~6~: un \OUI{}
+          donné en situation de conflit se cote \NEK{} jusqu'à la revue par
+          un tiers.
+    \item \textbf{La méthode du cours} met en œuvre les exigences de ces
+          normes~; le rapport cite la norme du commanditaire.
+\end{itemize}
+\end{boxresume}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.1. Quelle norme~? \niveaubase}]
+Pour chaque mission, indiquez la famille de normes applicable et le texte
+principal.
+\begin{enumerate}[(a)]
+    \item La Chambre des comptes vérifie la régularité des paiements de
+          l'ANPP.
+    \item L'audit interne de la BANQUE SANAGA audite le plan de continuité.
+    \item Un organisme accrédité certifie le SMSI d'un centre de données de
+          LiZbiZ.
+    \item Le commissaire aux comptes de LiZbiZ évalue les contrôles généraux
+          informatiques de l'application intégrée.
+    \item LiZbiZ audite les contrôles de son hébergeur, en vertu du contrat.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.2. Lire un rapport ISAE 3402 \niveaumoyen}]
+DIGICORE AFRIQUE remet en juin~2026 un rapport de type~2 couvrant la
+période du 1\textsuperscript{er}~janvier au 31~mars~2026. Sur douze
+contrôles, l'auditeur du prestataire relève un écart sur le contrôle des
+changements d'urgence. Le rapport attend de la banque trois contrôles
+complémentaires.
+\begin{enumerate}[(a)]
+    \item Quelle partie de l'exercice~2026 le rapport couvre-t-il~?
+    \item Comment le commissaire aux comptes couvre-t-il le reste de
+          l'exercice~?
+    \item Quelle cotation retenir pour le contrôle des changements
+          d'urgence, et pour les trois contrôles complémentaires avant tout
+          test à la banque~?
+    \item Le contrôle des changements d'urgence est au cœur de la panne de
+          mars~2026. Quelle conséquence en tirez-vous pour la mission de
+          Mme~EKAMBI~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.3. L'indépendance à l'épreuve \niveauexpert}]
+LiZbiZ envisage de confier à AUDIX CONSEIL, qui vient d'auditer son
+contrôle d'accès, la refonte de ses profils de droits, puis l'audit de
+suivi l'année suivante.
+\begin{enumerate}[(a)]
+    \item Quelles menaces sur l'indépendance cette double mission
+          fait-elle naître~?
+    \item À l'aide des axiomes~4 et~6, montrez pourquoi les conclusions de
+          l'audit de suivi seraient contestables.
+    \item Proposez une organisation qui permette à LiZbiZ de bénéficier de
+          la connaissance d'AUDIX CONSEIL sans perdre l'opposabilité du
+          suivi.
+    \item Comment coteriez-vous, dans l'audit de suivi, les contrôles de
+          conception des profils si la mission était malgré tout confiée à
+          AUDIX CONSEIL~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.4. Type 1 ou type 2~? \niveaubase}]
+Expliquez en trois phrases à un directeur financier pourquoi un rapport
+ISAE~3402 de type~1 ne lui permet pas de conclure que les contrôles de son
+prestataire ont fonctionné en 2026.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.5. Un certificat ISO/IEC 27001 \niveaumoyen}]
+DIGICORE AFRIQUE présente un certificat ISO/IEC~27001 dont le périmètre est
+« hébergement du centre de données de Douala ». La banque lui a aussi
+confié l'exploitation de son système central. Que vaut le certificat pour
+l'auditrice de la banque~? Quelles questions pose-t-elle~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.6. Les trois parties \niveaumoyen}]
+Pour l'audit de conformité des paiements de l'ANPP, identifiez la partie
+responsable, l'auditeur et les utilisateurs prévus. Pourquoi l'ISSAI~400
+exige-t-elle que les critères soient connus de la partie responsable~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.7. Citer la norme \niveaumoyen}]
+Rédigez le paragraphe « Normes appliquées » du rapport d'AUDIX CONSEIL chez
+LiZbiZ, puis celui du rapport de Mme~EKAMBI à la BANQUE SANAGA.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.8. La correspondance \niveaumoyen}]
+À l'aide du Tableau~13.6, montrez qu'un auditeur qui coterait \OUI{} un
+contrôle sur la seule déclaration d'un responsable méconnaîtrait au moins
+deux exigences normatives. Lesquelles~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.9. Le conflit à la BANQUE SANAGA \niveauexpert}]
+Reprenez la lecture « Gestion des changements, SANAGA » de la
+section~\ref{sec:c13-deontologie}. Une partie de l'équipe d'audit interne a
+travaillé à la DSI pendant la migration. Proposez une organisation de la
+mission qui respecte les Normes mondiales de l'IIA, et dites comment
+évoluent les cotes après la revue par un tiers.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~13.10. Un audit, trois lecteurs \niveauexpert}]
+Le comité d'audit de la BANQUE SANAGA veut un seul audit de la gestion des
+changements, utilisable à la fois par lui-même, par le commissaire aux
+comptes et par la COBAC. Est-ce possible~? Quelles normes, quels livrables,
+quelles précautions sur l'indépendance et sur la communication des
+résultats~?
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: nommer les cinq familles
+de normes et dire laquelle s'applique~; citer les cinq domaines des Normes
+mondiales~; distinguer ISO/IEC~27007 et 27006~; lire un rapport ISAE~3402
+de type~1 ou~2~; décrire la relation à trois parties~; relier chaque étape
+de la méthode à une exigence normative.
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item IIA, Normes mondiales d'audit interne~\cite{iia2024gias}.
+    \item ISACA, ITAF, 4\textsuperscript{e} édition~\cite{isaca2020itaf}.
+    \item ISO/IEC~27007:2020~\cite{iso27007_2020}~: l'audit d'un SMSI.
+    \item IAASB, ISAE~3402~\cite{iaasb2011isae3402}~: les rapports sur les
+          contrôles d'un prestataire.
+    \item INTOSAI, GUID~5100~\cite{intosai2019guid5100} et IDI, manuel
+          d'audit de conformité~\cite{idi2021conformite}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les normes disent comment auditer~; il reste à dire
+par rapport à quoi. Le Chapitre~\ref{chap:referentiels} présente les
+référentiels de contrôle (COSO, COBIT, ISO/IEC~27002, NIST) et la manière
+de les choisir pour une mission.
+\end{boxinfo}

@@ -1,0 +1,518 @@
+% ============================================================================
+% Fichier  : partie4/P04_C23_audit_production_continuite.tex
+% Titre    : Auditer la Production et la Continuité
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C17, sections production, sauvegardes et continuité (PX.1 à
+% PX.5 ; SANAGA DMIA 8 h, RTO 4 h, RPO 15 min, plan 2022 jamais testé ;
+% panne du 9 mars 7 h 30 au 12 mars 8 h, 72,5 h ; dix contrôles 2/7/1).
+% Données du journal du premier trimestre 2026 (base des labs ACSI-LAB-09
+% et ASI-LAB-13) : 90 jours, 88 lignes, 84 succès, absences les 14 février
+% et 8 mars, un échec sans ticket le 27 février ; restaurations 2025 :
+% deux tests sur quatre, 3 h 40 et 5 h 10 ; site de secours de Bonabéri ;
+% plan approuvé le 12 mai 2022 ; ancien système SIBANK 4.
+% Sources : guide du CHAI (fiches 3.3 et 3.5) ; COBIT 2019 (DSS01, DSS02,
+% DSS04, BAI09) ; ISO 22301:2019 ; COBAC R-2016/04 (risque opérationnel).
+% Corrigés : corriges/Corr_C23.tex.
+% ============================================================================
+
+\chapter{Auditer la Production et la Continuité}
+\label{chap:audit-continuite}
+\chaptermark{Production et continuité}
+
+\epigraph{%
+    « Une sauvegarde qu'on n'a jamais restaurée\\
+    est une hypothèse, pas une sauvegarde. »%
+}{Adage des exploitants}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise du Chapitre~\ref{chap:audit-technique} (infrastructure) et du
+    Chapitre~\ref{chap:preuve} (tests sur population)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décomposer l'audit de la production~: exploitation, sauvegardes et
+          restaurations, support, parc, maintenance.
+    \item Auditer des sauvegardes par un rapprochement jour par jour, puis
+          par leurs restaurations.
+    \item Calculer et interpréter les écarts entre RTO, RPO et durées
+          constatées.
+    \item Auditer un plan de continuité selon l'ISO~22301~: analyse
+          d'impact, objectifs, stratégie, plan, exercices, revue.
+    \item Assister à un test de restauration et en tirer une preuve.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : la banque pouvait-elle reprendre en quatre heures~?}
+% ============================================================================
+
+Le plan de continuité de la BANQUE SANAGA, approuvé le 12~mai~2022, fixe
+pour le système central une durée maximale d'interruption admissible de
+8~heures, un objectif de reprise (RTO) de 4~heures et une perte de données
+maximale (RPO) de 15~minutes. Le 9~mars~2026, les agences ouvrent sans
+système à 7~h~30~; le service revient le 12~mars à 8~h. Personne n'a ouvert
+le plan.
+
+La COBAC demande à Mme~EKAMBI si le dispositif de continuité était
+capable, avant la panne, de tenir ses objectifs.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Décomposer l'audit de la production (section~\ref{sec:c23-production}).
+    \item Auditer les sauvegardes (section~\ref{sec:c23-sauvegardes}).
+    \item Les objectifs de reprise, en chiffres (section~\ref{sec:c23-objectifs}).
+    \item Auditer la continuité selon l'ISO~22301 (section~\ref{sec:c23-continuite}).
+    \item Le dispositif de la BANQUE SANAGA (section~\ref{sec:c23-sanaga}).
+\end{enumerate}
+Les prestataires et le nuage, dont dépend souvent la continuité, font
+l'objet du Chapitre~\ref{chap:audit-tiers}.
+
+\separateur
+
+% ============================================================================
+\section{Décomposer l'Audit de la Production}
+\label{sec:c23-production}
+% ============================================================================
+
+La production, ou exploitation, fait fonctionner chaque jour les systèmes
+que les projets ont livrés. Le guide du CHAI en propose deux fiches, l'une
+pour la production, l'autre pour le support et le parc~\cite{chai2014guide}.
+
+\begin{tableaucours}{cL{3.0cm}L{5.6cm}L{2.2cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{Contrôles (d'après le guide du CHAI)} &
+    \tableauHeader{COBIT}
+}
+PX.1 & Exploitation & Traitements planifiés et suivis~; alertes remontées
+en temps réel~; livraisons en production contrôlées par la production~;
+guides d'exploitation à jour & DSS01 \\
+PX.2 & Sauvegardes et restaurations & Sauvegardes conformes aux besoins~;
+comptes rendus contrôlés~; supports externalisés~; restaurations testées
+selon un planning & DSS04 \\
+PX.3 & Support & Centre de services~; tickets qualifiés et escaladés~;
+délais de clôture suivis~; satisfaction mesurée & DSS02 \\
+PX.4 & Parc & Inventaire du matériel et des logiciels~; licences~;
+installation à partir d'une configuration standard & BAI09 \\
+PX.5 & Maintenance & Contrats de maintenance des matériels critiques et des
+logiciels de base~; obsolescence suivie & DSS01, BAI09 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~23.1. Décomposition de l'audit de la
+production}\end{center}
+
+Chez LiZbiZ, les domaines~B (sauvegardes) et~E (exploitation) du
+Chapitre~\ref{chap:conclure} relèvent de cette décomposition~: le
+domaine~E, en non-conformité opaque ($U = 0{,}30$, puis $0{,}40$ au second
+cycle), appelle d'abord la recherche des preuves manquantes, notamment les
+comptes rendus des traitements de nuit.
+
+\begin{boxprocedure}
+\textbf{Auditer les traitements de nuit (PX.1)}
+\begin{enumerate}
+    \item Obtenir le plan d'ordonnancement (liste des traitements, ordre,
+          heures, dépendances).
+    \item Obtenir les comptes rendus d'exécution de la période.
+    \item Rapprocher, nuit par nuit, le planifié et l'exécuté~; repérer les
+          traitements absents, en échec ou relancés.
+    \item Pour chaque échec, retrouver le ticket et l'action~; vérifier
+          qu'une relance manuelle a été validée.
+    \item Vérifier qu'une personne contrôle les comptes rendus chaque matin
+          (visa, ticket, alerte).
+\end{enumerate}
+\end{boxprocedure}
+
+% ============================================================================
+\section{Auditer les Sauvegardes}
+\label{sec:c23-sauvegardes}
+% ============================================================================
+
+\subsection{Le journal ne suffit pas}
+
+Un journal de sauvegarde dit qu'une copie a été écrite. Il ne dit pas
+qu'elle est complète, lisible, ni qu'on saura la remonter dans le délai
+voulu. Le guide du CHAI demande donc à l'auditeur de croiser les
+sauvegardes avec les besoins, de vérifier le suivi des comptes rendus et
+des supports, puis de se concentrer sur la restauration~: procédures
+écrites, planning de tests, comptes rendus et actions qui en découlent.
+
+\begin{tableaucours}{L{3.6cm}L{4.4cm}L{4.2cm}}{%
+    \tableauHeader{Question} &
+    \tableauHeader{Preuve} &
+    \tableauHeader{Test}
+}
+Toutes les sauvegardes prévues ont-elles eu lieu~? & Journal de
+sauvegarde, plan de sauvegarde & Rapprocher jour par jour le planifié et
+l'exécuté \\
+Les échecs sont-ils traités~? & Tickets, comptes rendus & Pour chaque échec,
+retrouver l'action et sa date \\
+Les supports sont-ils externalisés~? & Bordereaux de sortie & Rapprocher
+les dates d'externalisation \\
+Sait-on restaurer, et en combien de temps~? & Comptes rendus de
+restauration & Comparer la durée constatée au RTO \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~23.2. Auditer les sauvegardes}\end{center}
+
+\subsection{Le rapprochement jour par jour}
+
+\begin{boxoutils}{Rapprocher le planifié et l'exécuté}
+\begin{lstlisting}[language=SQL]
+-- calendrier(jour) : tous les jours de la période
+-- journal(jour, statut, ticket) : une ligne par sauvegarde exécutée
+SELECT c.jour,
+       COALESCE(j.statut, 'ABSENTE') AS statut,
+       j.ticket
+FROM   calendrier c
+LEFT JOIN journal j ON j.jour = c.jour
+WHERE  j.statut IS NULL OR j.statut <> 'SUCCES'
+ORDER  BY c.jour;
+\end{lstlisting}
+La jointure externe fait apparaître les jours \emph{sans} ligne de
+journal~: une sauvegarde absente n'a, par définition, laissé aucune trace
+d'échec.
+\end{boxoutils}
+
+\begin{boxscenario}{Opération SANAGA. Le premier trimestre 2026}
+\textbf{Données.} 90~jours du 1\textsuperscript{er}~janvier au
+31~mars~2026~; 88~lignes de journal~; 84~sauvegardes en succès.
+
+\medskip
+\textbf{Constatations.} Deux jours sans ligne (14~février et 8~mars)~;
+quatre échecs, dont un, le 27~février, sans ticket. Taux de réussite~:
+$84/90 \approx 93~\%$, pour un seuil de 98~\% fixé par la procédure.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le contrôle « sauvegardes quotidiennes
+réussies » est \NON{}. La sauvegarde du 8~mars, absente, est celle de la
+veille de la panne~: le RPO de 15~minutes n'aurait de toute façon pas pu
+être tenu par la seule sauvegarde quotidienne.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Conclure que les sauvegardes sont efficaces
+parce que le journal affiche « succès » chaque nuit.
+
+\smallskip
+\textbf{Règle~:} une sauvegarde est efficace quand une restauration
+récente, documentée, a réussi dans le délai visé. Sans test de
+restauration, le contrôle « on sait restaurer » est \NEK{}, quel que soit
+le journal.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Objectifs de Reprise, en Chiffres}
+\label{sec:c23-objectifs}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{DMIA}\index{durée maximale d'interruption admissible}~: durée au
+delà de laquelle l'interruption d'un service met en danger l'organisation.
+
+\medskip
+\termecle{RTO}\index{RTO} (\textit{recovery time objective})~: durée visée
+pour rétablir le service après une interruption~; il doit être inférieur à
+la DMIA.
+
+\medskip
+\termecle{RPO}\index{RPO} (\textit{recovery point objective})~: perte de
+données maximale admise, exprimée en durée~: les données des dernières
+minutes ou heures qui peuvent être perdues.
+\end{boxdef}
+
+\subsection{Mesurer les écarts}
+
+\begin{tableaucours}{L{4.6cm}cccc}{%
+    \tableauHeader{Événement} &
+    \tableauHeader{Objectif} &
+    \tableauHeader{Constaté} &
+    \tableauHeader{Écart} &
+    \tableauHeader{Cote}
+}
+Restauration de test, 2025 (1) & RTO 4~h & 3~h~40 & $-20$~min & \OUI{} \\
+Restauration de test, 2025 (2) & RTO 4~h & 5~h~10 & $+70$~min & \NON{} \\
+Panne de mars~2026 & RTO 4~h & 72~h~30 & $+68$~h~30 & \NON{} \\
+Panne de mars~2026 & DMIA 8~h & 72~h~30 & $\times 9$ & \NON{} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~23.3. Objectifs et durées constatées,
+BANQUE SANAGA}\end{center}
+
+\begin{boxinfo}
+\textbf{Le RPO ne se juge pas avec une sauvegarde quotidienne.} Un RPO de
+15~minutes suppose une réplication continue (ou des journaux de
+transactions copiés toutes les quinze minutes au plus) vers le site de
+secours. L'auditeur vérifie le dispositif de réplication, son retard
+constaté (en minutes) et ses alertes~; une restauration de la sauvegarde de
+la nuit ne prouve rien sur le RPO.
+\end{boxinfo}
+
+% ============================================================================
+\section{Auditer la Continuité selon l'ISO 22301}
+\label{sec:c23-continuite}
+% ============================================================================
+
+\subsection{La démarche}
+
+L'ISO~22301 formule les exigences d'un système de management de la
+continuité d'activité, sur la même structure que l'ISO/IEC~27001 (clauses
+4 à 10)~\cite{iso22301_2019}. Son cœur opérationnel (clause~8) enchaîne
+l'analyse d'impact, l'appréciation des risques, la stratégie de
+continuité, les plans, puis les exercices. Le cours de gouvernance
+(MSN-2S3-MSI03) en présente la conception~; l'auditeur suit la même chaîne,
+et cherche à chaque maillon la pièce qui le prouve.
+
+\begin{boxprocedure}
+\textbf{Auditer un plan de continuité}
+\begin{enumerate}
+    \item \textbf{Analyse d'impact}~: datée, revue après chaque changement
+          majeur, approuvée par les métiers.
+    \item \textbf{Objectifs}~: DMIA, RTO et RPO fixés pour chaque service
+          critique, et cohérents (RTO inférieur à la DMIA).
+    \item \textbf{Stratégie et moyens}~: le site de secours héberge la
+          version en production, et les données y sont répliquées au rythme
+          du RPO.
+    \item \textbf{Plan}~: il décrit le système \emph{actuel}, les
+          personnes à joindre, les procédures de bascule et de retour.
+    \item \textbf{Exercices}~: au moins une fois par an pour chaque service
+          critique, avec un compte rendu, la durée constatée et les actions.
+    \item \textbf{Écart et revue}~: la durée constatée, en exercice ou lors
+          d'un incident réel, est comparée au RTO~; une revue après incident
+          est formalisée.
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{Quatre types d'exercices}
+
+\begin{tableaucours}{L{3.2cm}L{5.2cm}L{3.8cm}}{%
+    \tableauHeader{Exercice} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Ce qu'il prouve}
+}
+Revue sur table & Les responsables déroulent le plan sur un scénario,
+autour d'une table & Que le plan est compris et cohérent \\
+Test technique partiel & On restaure un système sur le site de secours &
+Que la restauration est possible, et sa durée \\
+Bascule réelle planifiée & On fait tourner un service depuis le site de
+secours & Que la reprise tient le RTO \\
+Exercice inopiné & Déclenchement sans préavis & Que l'organisation réagit
+sans préparation \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~23.4. Les exercices de continuité}\end{center}
+
+Une revue sur table ne prouve pas que le RTO est tenable~; seule une
+bascule réelle le prouve. L'auditeur cote donc le contrôle « RTO tenu en
+exercice » à partir de la nature de l'exercice.
+
+% ============================================================================
+\section{Le Dispositif de la BANQUE SANAGA}
+\label{sec:c23-sanaga}
+% ============================================================================
+
+\begin{boxlecture}{Continuité, système central}
+Mme~EKAMBI cote dix contrôles de continuité du système central, à partir
+du plan de 2022, des journaux de sauvegarde du premier trimestre~2026, des
+comptes rendus de restauration de 2025 et de la chronologie de la panne.
+
+\medskip
+\begin{tableaucours}{L{7.0cm}c}{%
+    \tableauHeader{Contrôle} &
+    \tableauHeader{Cote}
+}
+Analyse d'impact revue depuis 2022 & \NON{} \\
+RTO et RPO fixés et approuvés & \OUI{} \\
+Plan à jour du système central actuel & \NON{} \\
+Site de secours à la version de production & \NON{} \\
+Plan testé dans l'année & \NON{} \\
+RTO tenu lors du dernier incident & \NON{} \\
+Sauvegardes quotidiennes réussies (seuil~: 98~\%) & \NON{} \\
+Supports de sauvegarde externalisés & \OUI{} \\
+Restauration testée chaque trimestre & \NON{} \\
+Revue après la reprise formalisée & \NEK{} \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} $\mu = 0{,}20$~; $U = 0{,}10$~; $H \approx 1{,}16$~bit.
+Le service a été indisponible 72,5~heures pour un RTO de 4~heures. Sur les
+90~jours du premier trimestre, 84~sauvegardes ont réussi (93~\%). En 2025,
+deux des quatre tests de restauration prévus ont eu lieu, dont un a
+dépassé le RTO.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Non-conformité claire~: la banque ne
+pouvait pas tenir ses objectifs. Les objectifs existaient, les moyens ne
+suivaient plus le système~: le plan et le site de secours de Bonabéri
+décrivaient l'ancien système central (SIBANK~4). Le seul \NEK{} porte sur
+la revue après reprise~: le rapport à la COBAC existe, mais aucune revue
+interne formalisée n'a été retrouvée.
+
+\medskip
+\hfill\lecture{0{,}20}{0{,}10}{1{,}16}
+\end{boxlecture}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Assister à un test de restauration}
+\begin{enumerate}
+    \item Choisir soi-même la sauvegarde à restaurer, et la date, dans la
+          période auditée.
+    \item Noter l'heure de début, les incidents, l'heure à laquelle le
+          service est utilisable.
+    \item Faire vérifier par un utilisateur métier que les données
+          restaurées sont complètes (quelques opérations connues).
+    \item Comparer la durée au RTO, et la date des dernières données
+          restaurées au RPO.
+    \item Conserver le compte rendu, signé, au dossier.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Relier continuité et changements.} La leçon de la BANQUE SANAGA
+est qu'un changement majeur (la migration) a rendu le plan obsolète sans
+que personne ne le voie. Le gestionnaire de risques inscrit au registre une
+règle~: tout changement majeur déclenche la revue de l'analyse d'impact, du
+plan et du site de secours, avant la mise en production.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'axiome d'individuation temporelle
+d'A0~\cite{minka2026auditologie} rappelle que l'objet audité change~: un
+plan de continuité exact en 2022 peut être faux en 2026 sans qu'aucune de
+ses lignes n'ait changé. L'auditeur date donc chaque preuve, et vérifie
+qu'elle décrit le système de la période auditée.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Cinq sous-domaines de production}~: exploitation,
+          sauvegardes et restaurations, support, parc, maintenance.
+    \item \textbf{Les sauvegardes} se rapprochent jour par jour (une
+          sauvegarde absente ne laisse pas d'échec), puis s'auditent par
+          leur restauration.
+    \item \textbf{RTO, RPO, DMIA}~: on mesure l'écart entre objectif et
+          constaté~; le RPO ne se juge pas avec une sauvegarde quotidienne.
+    \item \textbf{La continuité est une chaîne} (ISO~22301)~: analyse
+          d'impact, objectifs, stratégie et moyens, plan, exercices, revue.
+    \item \textbf{Un plan qui décrit l'ancien système} ne protège pas le
+          nouveau~: tout changement majeur déclenche sa revue.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: décomposer la production
+en cinq sous-domaines~; écrire le rapprochement jour par jour~; calculer
+les écarts à RTO et DMIA~; dire ce qu'il faut pour juger un RPO~; auditer un
+plan de continuité en six maillons~; distinguer les quatre types
+d'exercices.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.1. Rattacher les contrôles \niveaubase}]
+Rattachez chaque contrôle à un sous-domaine (PX.1 à PX.5).
+\begin{enumerate}[(a)]
+    \item Les licences installées sont rapprochées des licences acquises.
+    \item Les traitements de nuit ont un compte rendu contrôlé chaque matin.
+    \item Le serveur de base de données est couvert par un contrat de
+          maintenance avec intervention en quatre heures.
+    \item Les tickets de priorité 1 sont escaladés en moins de 30~minutes.
+    \item Un test de restauration est mené chaque trimestre.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.2. RTO et RPO \niveaumoyen}]
+Lors d'un test de restauration du système central de la BANQUE SANAGA, la
+restauration commence à 9~h~00 et le service est utilisable à 14~h~10. La
+dernière opération présente dans les données restaurées date de la veille
+à 23~h~50~; la sauvegarde testée avait été lancée à 23~h~30.
+\begin{enumerate}[(a)]
+    \item Le RTO de 4~heures est-il tenu~? Calculez l'écart.
+    \item Pourquoi ce test ne permet-il pas de juger le RPO de
+          15~minutes~?
+    \item Quel dispositif le RPO de 15~minutes suppose-t-il, et comment
+          l'auditer~?
+    \item Cotez le contrôle « RTO tenu en test » et rédigez la
+          constatation.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.3. Le rapprochement \niveaumoyen}]
+Exécutez à la main la requête de rapprochement sur la semaine du 6 au
+12~mars~2026, sachant que le journal contient des succès les 6, 7, 9, 10,
+11 et 12, et rien le 8. Que rend la requête~? Pourquoi la jointure externe
+est-elle indispensable~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.4. Le taux de réussite \niveaubase}]
+Recalculez le taux de réussite du premier trimestre de la BANQUE SANAGA
+(a) en comptant les deux jours absents comme des échecs, (b) en ne
+comptant que les lignes du journal. Lequel est juste, et pourquoi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.5. Quel exercice~? \niveaumoyen}]
+Le plan de continuité de LiZbiZ prévoit « un exercice annuel ». Le compte
+rendu de 2025 décrit une réunion de deux heures où les responsables ont lu
+le plan. Le contrôle « RTO tenu en exercice » est-il \OUI{}, \NON{} ou
+\NEK{}~? Justifiez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.6. Les traitements de nuit \niveaumoyen}]
+Le plan d'ordonnancement de LiZbiZ prévoit 12~traitements chaque nuit. Sur
+30~nuits, les comptes rendus montrent 348~exécutions réussies, 6~échecs
+relancés le matin sans validation, et 6~absences. Calculez les taux,
+rédigez la constatation et cotez PX.1.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.7. La revue après incident \niveaumoyen}]
+Rédigez la fiche d'assertion du contrôle « une revue après reprise est
+formalisée », et dites ce qui permettrait à Mme~EKAMBI de lever le \NEK{}.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.8. Les dix contrôles \niveaumoyen}]
+Recalculez $H$ pour la lecture de la continuité de la BANQUE SANAGA (2/7/1)
+et décomposez-la en ignorance et en désaccord. Que montre la
+décomposition~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.9. Le rapport à la COBAC \niveauexpert}]
+Rédigez l'observation en sept éléments relative au plan de continuité
+obsolète, et la réponse de Mme~EKAMBI à la question de la COBAC (« le
+dispositif était-il capable de tenir ses objectifs~? »), en une page.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~23.10. Un programme d'exercices \niveauexpert}]
+Proposez à la BANQUE SANAGA un programme d'exercices de continuité sur deux
+ans, pour le système central, la messagerie et la monétique, avec le type
+d'exercice, la fréquence, ce qu'il prouve, et la manière dont l'audit
+interne en utilisera les comptes rendus.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item ISO~22301:2019~\cite{iso22301_2019}~: le système de management de
+          la continuité.
+    \item Le guide du CHAI~\cite{chai2014guide}~: les fiches
+          « production » et « support et parc ».
+    \item ISACA, COBIT~2019~\cite{isaca2018cobitobjectifs}~: DSS01, DSS02
+          et DSS04.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La continuité de la BANQUE SANAGA dépend aussi de son
+prestataire, DIGICORE AFRIQUE. Le Chapitre~\ref{chap:audit-tiers} audite
+les tiers et le nuage~: contrats, droit d'audit, rapports d'assurance,
+responsabilité partagée, localisation des données, réversibilité.
+\end{boxinfo}

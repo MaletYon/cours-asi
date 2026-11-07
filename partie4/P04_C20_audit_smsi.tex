@@ -1,0 +1,588 @@
+% ============================================================================
+% Fichier  : partie4/P04_C20_audit_smsi.tex
+% Titre    : Auditer un Système de Management de la Sécurité de l'Information
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C16 (trois audits de sécurité ; chaîne du SMSI ; « une mesure
+% déclarée n'est pas une mesure en place »).
+% Sources : ISO/IEC 27001:2022 (clauses 4 à 10, annexe A, déclaration
+% d'applicabilité) ; ISO/IEC 27002:2022 (93 mesures en 4 thèmes) ;
+% ISO/IEC 27007:2020 (audit d'un SMSI) ; ISO 19011:2018 ; ISO/IEC 27006
+% (organismes de certification, édition à vérifier) ; loi n° 2010/012,
+% art. 13 (audit de sécurité obligatoire), texte officiel lu le 06/11/2026.
+% Faits nouveaux (SANAGA) : périmètre « centre de données de Douala » ;
+% déclaration d'applicabilité 93 mesures, 81 retenues, 12 exclues dont 3
+% non justifiées ; lecture de la chaîne du SMSI 7/2/3.
+% Corrigés : corriges/Corr_C20.tex.
+% ============================================================================
+
+\chapter{Auditer un Système de Management de la Sécurité}
+\label{chap:audit-smsi}
+\chaptermark{Auditer un SMSI}
+
+\epigraph{%
+    « Un SMSI ne promet pas qu'il n'y aura pas d'incident.\\
+    Il promet qu'on saura pourquoi, et qu'on corrigera. »%
+}{Principe du management de la sécurité}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise des Chapitres~\ref{chap:gestion-risques} (appréciation des
+    risques), \ref{chap:normes} (ISO/IEC~27007) et
+    \ref{chap:referentiels} (ISO/IEC~27002)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer trois audits de sécurité~: l'audit légal, l'audit d'un
+          SMSI et l'audit technique.
+    \item Lire l'ISO/IEC~27001 clause par clause et savoir quelle preuve
+          demander pour chacune.
+    \item Auditer une déclaration d'applicabilité et la justification des
+          exclusions.
+    \item Conduire un audit interne de SMSI selon l'ISO~19011 et
+          l'ISO/IEC~27007, et distinguer les étapes d'une certification.
+    \item Coter les maillons de la chaîne du SMSI et lire le résultat.
+    \item Rédiger un écart d'audit de SMSI (non-conformité majeure ou
+          mineure) et le relier à l'observation en sept éléments.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : la banque gère-t-elle sa sécurité, ou la subit-elle~?}
+% ============================================================================
+
+À Douala, la BANQUE SANAGA prépare à la fois l'audit de sécurité annuel de
+l'ANTIC et la certification ISO/IEC~27001 de son centre de données. Sa
+directrice générale a reçu du RSSI un classeur de 300~pages~: politique,
+analyse de risques, déclaration d'applicabilité, procédures. Elle demande à
+Mme~EKAMBI, directrice de l'audit interne~: «~Sommes-nous prêts~?~»
+
+Mme~EKAMBI sait qu'un classeur ne prouve rien~: elle doit vérifier que
+chaque document est appliqué, et que la banque sait corriger ce qui ne
+l'est pas.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Trois audits de sécurité (section~\ref{sec:c20-trois}).
+    \item L'ISO/IEC~27001, clause par clause (section~\ref{sec:c20-clauses}).
+    \item La déclaration d'applicabilité (section~\ref{sec:c20-dda}).
+    \item Conduire l'audit d'un SMSI (section~\ref{sec:c20-conduire}).
+    \item Coter la chaîne du SMSI de la BANQUE SANAGA
+          (section~\ref{sec:c20-sanaga}).
+    \item Rédiger un écart (section~\ref{sec:c20-ecart}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Trois Audits de Sécurité}
+\label{sec:c20-trois}
+% ============================================================================
+
+\begin{tableaucours}{L{2.4cm}L{3.2cm}L{3.4cm}L{3.2cm}}{%
+    \tableauHeader{Audit} &
+    \tableauHeader{Fondement} &
+    \tableauHeader{Objet} &
+    \tableauHeader{Destinataire}
+}
+Audit de sécurité légal & Loi n°~2010/012, art.~13 et~32 & Politique,
+mesures, procédures et moyens, au regard des risques & Autorité
+compétente~; rapport confidentiel \\
+Audit d'un SMSI & ISO/IEC~27001 (§~9.2) et 27007~; certification par un
+organisme accrédité & Le système de management~: risques, mesures,
+amélioration & Direction~; organisme de certification \\
+Audit technique & Lettre de mission et note d'autorisation & Configurations,
+vulnérabilités, flux, comptes & RSSI, DSI \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~20.1. Trois audits de sécurité}\end{center}
+
+Les trois se complètent. L'audit d'un SMSI vérifie que l'organisation
+\emph{gère} sa sécurité~; l'audit technique (Chapitres~\ref{chap:audit-technique}
+et~\ref{chap:intrusion}) vérifie que les mesures sont \emph{effectivement
+en place}~; l'audit légal couvre les deux.
+
+\begin{boxjuris}
+\textbf{\loicam{n°~2010/012}, article~13, alinéa~1} (texte officiel)~:
+\textit{« Sont soumis à un audit de sécurité obligatoire, les réseaux de
+communications électroniques et les systèmes d'information, des
+opérateurs, des autorités de certification et des fournisseurs de
+services de communications électroniques. »}
+
+\medskip
+\textbf{Article~32, alinéas~1 et~2} (texte officiel)~: \textit{« Les réseaux
+de communications électroniques et les systèmes d'information sont soumis
+à un régime d'audit de sécurité obligatoire et périodique de leurs
+systèmes de sécurité par l'Agence. L'audit de sécurité et les mesures
+d'impact de gravité sont effectués chaque année ou lorsque les
+circonstances l'exigent. »}
+
+\medskip
+\textbf{Analyse.} L'article~13 désigne des catégories d'acteurs~;
+l'article~32 vise plus largement les systèmes d'information, avec un
+audit annuel conduit par l'Agence, dont les modalités sont fixées par voie
+réglementaire (texte d'application à vérifier). Pour une banque s'ajoute
+la réglementation COBAC (Chapitre~\ref{chap:droit}). L'auditeur vérifie le
+fondement exact avant de qualifier un audit d'« obligatoire ».
+\end{boxjuris}
+
+% ============================================================================
+\section{L'ISO/IEC 27001, Clause par Clause}
+\label{sec:c20-clauses}
+% ============================================================================
+
+\subsection{La structure de la norme}
+
+L'ISO/IEC~27001 suit la structure commune des normes de systèmes de
+management~: sept clauses d'exigences (4 à 10), et une annexe~A qui
+énumère les 93~mesures de sécurité de l'ISO/IEC~27002:2022~\cite{iso27001_2022,iso27002_2022}.
+
+\begin{tableaucours}{cL{3.2cm}L{4.4cm}L{4.0cm}}{%
+    \tableauHeader{Clause} &
+    \tableauHeader{Thème} &
+    \tableauHeader{Exigence principale (reformulée)} &
+    \tableauHeader{Preuve à demander}
+}
+4 & Contexte & Comprendre l'organisation, les parties intéressées~;
+définir le périmètre & Déclaration de périmètre, analyse du contexte \\
+5 & Leadership & Engagement de la direction~; politique~; rôles &
+Politique signée, nominations \\
+6 & Planification & Apprécier et traiter les risques~; objectifs de
+sécurité & Méthode et registre des risques, plan de traitement,
+déclaration d'applicabilité \\
+7 & Support & Ressources, compétences, sensibilisation, communication,
+documentation & Plan de formation, maîtrise des documents \\
+8 & Fonctionnement & Mettre en œuvre le traitement, réapprécier les risques
+& Preuves d'exécution des mesures, mises à jour du registre \\
+9 & Évaluation & Surveiller, mesurer, auditer (§~9.2), revue de direction
+(§~9.3) & Indicateurs, programme et rapports d'audit interne, compte
+rendu de revue \\
+10 & Amélioration & Traiter les non-conformités, améliorer en continu &
+Registre des non-conformités et actions correctives \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~20.2. Les clauses 4 à 10 de
+l'ISO/IEC~27001:2022 et leurs preuves}\end{center}
+
+\subsection{La chaîne du SMSI}
+
+Pour l'auditeur, le SMSI est une chaîne, et chaque maillon laisse une
+pièce. Un maillon manquant rompt la chaîne~: des mesures sans appréciation
+des risques sont arbitraires~; une appréciation sans mesures est un
+exercice de papier~; des mesures sans évaluation ne s'améliorent pas.
+
+\begin{tableaucours}{L{3.6cm}L{4.4cm}L{4.2cm}}{%
+    \tableauHeader{Maillon} &
+    \tableauHeader{Pièce} &
+    \tableauHeader{Question d'audit}
+}
+Périmètre & Déclaration de périmètre & Les systèmes critiques y
+figurent-ils~? \\
+Appréciation des risques & Registre des risques de sécurité & Est-elle
+datée, revue, cohérente avec les actifs~? \\
+Traitement & Plan de traitement, déclaration d'applicabilité & Chaque
+exclusion de mesure est-elle justifiée~? \\
+Mesures & Procédures, configurations, journaux & Chaque mesure retenue
+fonctionne-t-elle~? \\
+Évaluation & Rapports d'audit interne, revue de direction & Les écarts
+sont-ils suivis jusqu'à leur clôture~? \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~20.3. La chaîne du SMSI et ses
+preuves}\end{center}
+
+\begin{boxinfo}
+\textbf{Une mesure déclarée n'est pas une mesure en place.} La déclaration
+d'applicabilité dit qu'une mesure est retenue~; elle ne dit pas qu'elle
+fonctionne. Sans preuve de fonctionnement, l'auditeur cote \NEK{}, et le
+taux d'incertitude du SMSI mesure la distance entre le papier et la
+réalité.
+\end{boxinfo}
+
+% ============================================================================
+\section{La Déclaration d'Applicabilité}
+\label{sec:c20-dda}
+% ============================================================================
+
+\subsection{Ce qu'elle contient}
+
+\begin{boxdef}
+\termecle{Déclaration d'applicabilité}\index{déclaration
+d'applicabilité}~: document exigé par l'ISO/IEC~27001 qui liste les mesures
+de l'annexe~A, indique pour chacune si elle est retenue ou exclue, justifie
+ce choix, et précise si la mesure est mise en œuvre.
+\end{boxdef}
+
+L'auditeur en fait trois lectures~: \emph{complétude} (les 93~mesures
+sont-elles toutes traitées~?), \emph{justification} (chaque exclusion
+s'appuie-t-elle sur l'appréciation des risques ou sur l'absence de
+l'activité concernée~?) et \emph{réalité} (chaque mesure dite « mise en
+œuvre » l'est-elle~?).
+
+\subsection{La déclaration de la BANQUE SANAGA}
+
+\begin{boxscenario}{Opération SANAGA. Douze exclusions}
+\textbf{Faits.} La déclaration d'applicabilité du centre de données de
+Douala traite les 93~mesures~: 81 sont retenues, 12 exclues. Mme~EKAMBI
+examine les douze justifications.
+
+\medskip
+\begin{tableaucours}{L{5.2cm}L{4.2cm}c}{%
+    \tableauHeader{Exclusion (exemples)} &
+    \tableauHeader{Justification donnée} &
+    \tableauHeader{Justifiée~?}
+}
+Travail à distance & Aucun télétravail autorisé & \OUI{} \\
+Sécurité du développement & « La banque ne développe pas » & \NON{} \\
+Test de sécurité dans le développement & Idem & \NON{} \\
+Sécurité des services en nuage & « Aucun service en nuage » & \NON{} \\
+Huit autres exclusions & Activité absente, vérifiée & \OUI{} \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Trois exclusions sur douze ne sont pas justifiées~:
+DIGICORE AFRIQUE paramètre et modifie le système central (activité de
+développement), et la messagerie de la banque est un service en nuage
+souscrit en 2025.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Les trois exclusions portent
+exactement sur les zones où le risque s'est réalisé (changements du
+système central) ou peut se réaliser (données dans le nuage). Une
+exclusion injustifiée est un trou dans la chaîne, au maillon
+« traitement ».
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Exclure une mesure parce qu'elle est difficile à
+mettre en œuvre.
+
+\smallskip
+\textbf{Règle~:} une mesure ne s'exclut que si le risque qu'elle traite
+n'existe pas dans le périmètre, ou s'il est accepté par une décision
+écrite de la direction, fondée sur l'appréciation des risques. La
+difficulté n'est pas une justification.
+\end{boxalert}
+
+% ============================================================================
+\section{Conduire l'Audit d'un SMSI}
+\label{sec:c20-conduire}
+% ============================================================================
+
+\subsection{Audit interne, audit de certification}
+
+\begin{tableaucours}{L{3.0cm}L{4.4cm}L{4.8cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Audit interne (§~9.2)} &
+    \tableauHeader{Audit de certification}
+}
+Par qui & L'organisation, ou un prestataire pour son compte & Un organisme
+de certification accrédité (ISO/IEC~27006) \\
+Pour quoi & Vérifier la conformité et l'efficacité, alimenter la revue de
+direction & Délivrer, maintenir ou renouveler un certificat \\
+Rythme & Programme planifié, au moins sur le cycle du certificat & Étape~1
+(revue documentaire), étape~2 (évaluation sur site), puis audits de
+surveillance et de renouvellement \\
+Résultat & Constats et actions correctives & Non-conformités majeures ou
+mineures, décision de certification \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~20.4. Audit interne et audit de
+certification d'un SMSI}\end{center}
+
+L'ISO/IEC~27007 complète l'ISO~19011 pour les SMSI~: elle précise ce qu'il
+faut vérifier pour chaque clause et comment échantillonner les mesures de
+l'annexe~A~\cite{iso27007_2020,iso19011_2018}.
+
+\subsection{Échantillonner les mesures}
+
+Tester les 81~mesures retenues dans une seule mission est rarement
+possible. L'auditeur les échantillonne selon le risque, en s'assurant que
+le programme couvre toutes les mesures sur le cycle de trois ans du
+certificat.
+
+\begin{boxprocedure}
+\textbf{Programme d'audit interne d'un SMSI sur trois ans}
+\begin{enumerate}
+    \item Chaque année~: clauses 4 à 10 (le système), mesures liées aux
+          risques élevés du registre, mesures qui ont connu un incident.
+    \item Sur trois ans~: toutes les mesures retenues de la déclaration
+          d'applicabilité, réparties par thème.
+    \item À chaque changement majeur (nouveau système, nouveau prestataire)~:
+          audit ciblé des mesures concernées.
+    \item Pour chaque mesure testée~: une fiche d'assertion, une preuve de
+          fonctionnement sur la période, une cote.
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{Interroger la direction}
+
+La clause~5 (leadership) et la clause~9.3 (revue de direction) se
+vérifient auprès de la direction, pas du RSSI. L'auditeur demande le
+compte rendu de la dernière revue de direction et y cherche les éléments
+d'entrée exigés (résultats d'audit, incidents, objectifs, risques) et les
+décisions prises.
+
+\begin{boxmetier}{RSSI}
+\textbf{Préparer l'audit d'un SMSI}
+\begin{enumerate}
+    \item Tenir la déclaration d'applicabilité à jour à chaque changement
+          de périmètre (nouveau service en nuage, nouveau prestataire).
+    \item Conserver, pour chaque mesure retenue, une preuve de
+          fonctionnement datée.
+    \item Présenter à la revue de direction les résultats des audits et
+          l'état des actions correctives.
+    \item Traiter les écarts de l'audit interne avant l'audit de
+          certification, et pouvoir le montrer.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{La Chaîne du SMSI de la BANQUE SANAGA}
+\label{sec:c20-sanaga}
+% ============================================================================
+
+\begin{boxlecture}{Le SMSI du centre de données}
+Mme~EKAMBI cote douze contrôles répartis sur les cinq maillons de la
+chaîne.
+
+\medskip
+\begin{tableaucours}{L{3.2cm}L{6.2cm}c}{%
+    \tableauHeader{Maillon} &
+    \tableauHeader{Contrôle} &
+    \tableauHeader{Cote}
+}
+Périmètre & Le périmètre est écrit et approuvé & \OUI{} \\
+ & Les systèmes critiques y figurent (système central) & \OUI{} \\
+Risques & La méthode d'appréciation est écrite & \OUI{} \\
+ & Le registre est revu depuis la migration de 2026 & \NON{} \\
+Traitement & La déclaration d'applicabilité traite les 93~mesures &
+\OUI{} \\
+ & Les exclusions sont justifiées & \NON{} \\
+Mesures & Les mesures d'accès fonctionnent (échantillon) & \OUI{} \\
+ & Les mesures de journalisation fonctionnent & \NEK{} \\
+ & Les mesures de gestion des changements fonctionnent & \NEK{} \\
+Évaluation & Un audit interne du SMSI a eu lieu dans l'année & \OUI{} \\
+ & Ses écarts sont suivis jusqu'à clôture & \NEK{} \\
+ & Une revue de direction a eu lieu dans l'année & \OUI{} \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} 7~\OUI{}, 2~\NON{}, 3~\NEK{}~: $\mu \approx 0{,}58$~;
+$U = 0{,}25$~; $H \approx 1{,}38$~bit.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Conformité opaque~: le système est
+bien construit sur le papier, mais un quart des contrôles, tous dans les
+maillons « mesures » et « évaluation », ne peut pas être établi. Les deux
+\NON{} (registre non revu, exclusions injustifiées) sont liés~: la
+migration n'a pas été répercutée dans le SMSI. La réponse à la directrice
+générale est~: \emph{pas encore prêts}, et l'on sait où agir.
+
+\medskip
+\hfill\lecture{0{,}58}{0{,}25}{1{,}38}
+\end{boxlecture}
+
+% ============================================================================
+\section{Rédiger un Écart}
+\label{sec:c20-ecart}
+% ============================================================================
+
+\subsection{Majeure ou mineure}
+
+Dans un audit de certification, les écarts se classent en deux niveaux.
+
+\begin{boxdef}
+\termecle{Non-conformité majeure}\index{non-conformité majeure}~: absence
+ou défaillance d'une exigence qui remet en cause la capacité du système à
+atteindre ses résultats (par exemple, aucune appréciation des risques, ou
+aucun audit interne). Elle empêche la certification tant qu'elle n'est pas
+corrigée.
+
+\medskip
+\termecle{Non-conformité mineure}~: défaillance ponctuelle qui ne remet pas
+en cause le système (une procédure non mise à jour, un compte rendu non
+signé).
+\end{boxdef}
+
+La gradation ressemble à celle des observations du cours
+(Chapitre~\ref{chap:conclure}), mais sa règle est fixée par l'organisme de
+certification. L'auditeur interne qui prépare une certification adopte la
+même grille, pour que la direction sache ce qui bloquera.
+
+\subsection{Un écart de la BANQUE SANAGA}
+
+\begin{boxobjet}{Exclusions injustifiées}
+\textbf{Norme~:} ISO/IEC~27001:2022, clause~6.1.3 (déclaration
+d'applicabilité, justification des exclusions).
+
+\textbf{Constatation~:} trois des douze exclusions ne sont pas justifiées~:
+sécurité du développement, test de sécurité dans le développement, sécurité
+des services en nuage~; or DIGICORE AFRIQUE paramètre le système central et
+la messagerie est hébergée en nuage depuis 2025 (contrat DIGICORE~;
+contrat de messagerie).
+
+\textbf{Risques~:} des changements du système central sans exigences de
+sécurité~; des données de messagerie hors du périmètre de maîtrise.
+
+\textbf{Classement~:} non-conformité majeure si l'organisme considère que
+le traitement des risques est défaillant sur des activités critiques~;
+mineure sinon. L'auditrice recommande de la traiter comme majeure.
+
+\textbf{Recommandations~:} réviser la déclaration d'applicabilité~;
+réapprécier les risques après la migration~; intégrer DIGICORE et la
+messagerie au périmètre des mesures.
+\end{boxobjet}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Relier l'audit du SMSI et l'audit technique.} L'auditeur de
+sécurité qui teste les configurations (Chapitre~\ref{chap:audit-technique})
+transmet ses constats au maillon « mesures » du SMSI~: une mesure
+déclarée en place et trouvée défaillante en test est un \NON{} dans les
+deux audits. Les deux audits partagent les preuves, et se renforcent.
+\end{boxmetier}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Ne pas confondre certificat et conformité.} Un certificat
+ISO/IEC~27001 atteste que le SMSI du périmètre déclaré respecte la norme à
+la date de l'audit. Il ne dit pas que la banque respecte le règlement
+COBAC, ni la loi sur les données personnelles. Le responsable de la
+conformité tient son propre registre des obligations
+(Chapitre~\ref{chap:audit-conformite}).
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} Le cours lit la chaîne du SMSI avec
+$\mu$, $U$ et $H$~\cite{minka2026nek}. L'intérêt est de distinguer un SMSI
+dont les mesures échouent (\NON{} nombreux) d'un SMSI dont on ne sait pas si
+elles fonctionnent (\NEK{} nombreux)~: le second est plus fréquent dans les
+organisations qui préparent une certification, et c'est lui qui expose aux
+non-conformités majeures.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Trois audits de sécurité}~: légal, d'un SMSI, technique~;
+          ils se complètent et partagent leurs preuves.
+    \item \textbf{L'ISO/IEC~27001} a sept clauses d'exigences (4 à 10) et une
+          annexe~A de 93~mesures~; chaque clause a sa preuve.
+    \item \textbf{Le SMSI est une chaîne}~: périmètre, risques, traitement,
+          mesures, évaluation~; une mesure déclarée sans preuve de
+          fonctionnement est \NEK{}.
+    \item \textbf{La déclaration d'applicabilité} s'audite en complétude,
+          justification et réalité~; la difficulté n'est pas une
+          justification.
+    \item \textbf{L'audit interne} échantillonne les mesures selon le risque,
+          et les couvre toutes sur trois ans~; la certification procède en
+          deux étapes, puis par surveillance.
+    \item \textbf{Un écart} est majeur s'il remet en cause le système,
+          mineur sinon.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer les trois
+audits de sécurité~; citer les clauses 4 à 10 et une preuve pour
+chacune~; auditer une exclusion~; construire un programme d'audit sur
+trois ans~; coter la chaîne du SMSI~; classer un écart.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.1. Quel audit~? \niveaubase}]
+Pour chaque demande, indiquez l'audit de sécurité correspondant.
+\begin{enumerate}[(a)]
+    \item L'ANTIC annonce son passage annuel chez un opérateur de
+          téléphonie.
+    \item Le RSSI veut savoir si les règles des pare-feu de Garoua
+          correspondent à la matrice de flux.
+    \item La BANQUE SANAGA veut un certificat pour son centre de données.
+    \item Le comité d'audit demande si les écarts du dernier audit interne
+          du SMSI ont été clos.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.2. Quelle clause~? \niveaubase}]
+Rattachez à une clause de l'ISO/IEC~27001~: (a) la politique de sécurité
+n'est pas signée~; (b) aucune revue de direction depuis deux ans~; (c) le
+registre des risques n'a pas été mis à jour après la migration~; (d) les
+agents n'ont reçu aucune sensibilisation~; (e) une non-conformité de
+l'audit précédent n'a pas d'action corrective.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.3. Auditer une exclusion \niveaumoyen}]
+LiZbiZ prépare son propre SMSI et exclut la mesure sur la sécurité des
+fournisseurs, « car nos fournisseurs ne touchent pas au SI ». Or un
+prestataire installe et exploite les centres de Garoua et de Bafoussam.
+Analysez, cotez et rédigez la recommandation.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.4. Le programme sur trois ans \niveaumoyen}]
+Proposez le programme d'audit interne du SMSI de la BANQUE SANAGA pour
+2026, 2027 et 2028~: ce qui est audité chaque année, ce qui est réparti, ce
+qui est déclenché par un événement.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.5. Recalculer la lecture \niveaumoyen}]
+Recalculez $\mu$, $U$ et $H$ de la chaîne du SMSI de la BANQUE SANAGA (posez
+le calcul). Après un mois de travail, les trois \NEK{} deviennent deux
+\OUI{} et un \NON{}. Recalculez, situez dans le quadrant et commentez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.6. Majeure ou mineure~? \niveaumoyen}]
+Classez et justifiez~: (a) aucun audit interne depuis la certification
+initiale~; (b) une procédure de sauvegarde datée de 2021~; (c) la
+déclaration d'applicabilité ne traite que 80 des 93~mesures~; (d) le
+compte rendu d'une revue de direction n'est pas signé.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.7. Le certificat d'un prestataire \niveaumoyen}]
+DIGICORE AFRIQUE présente un certificat ISO/IEC~27001 dont le périmètre
+est « hébergement ». Que vérifiez-vous sur le certificat (organisme,
+accréditation, dates, périmètre, déclaration d'applicabilité)~? Que vaut-il
+pour l'exploitation du système central~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.8. Interroger la direction \niveaumoyen}]
+Rédigez cinq questions pour l'entretien de Mme~EKAMBI avec la directrice
+générale sur la clause~5 et la revue de direction, et la pièce attendue
+pour chaque réponse.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.9. Le SMSI après la migration \niveauexpert}]
+Rédigez l'observation en sept éléments relative au registre des risques
+non revu depuis la migration, et expliquez comment elle s'articule avec
+l'écart sur les exclusions.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~20.10. Prêts pour la certification~? \niveauexpert}]
+Rédigez la note de Mme~EKAMBI à la directrice générale (une page)~: état
+de la chaîne, écarts qui bloqueraient une certification, plan d'action et
+calendrier réaliste avant l'étape~1.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item ISO/IEC~27001:2022~\cite{iso27001_2022} et
+          ISO/IEC~27002:2022~\cite{iso27002_2022}.
+    \item ISO/IEC~27007:2020~\cite{iso27007_2020}~: l'audit d'un SMSI.
+    \item ISO~19011:2018~\cite{iso19011_2018}~: le programme d'audit.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} L'audit du SMSI dit si la banque gère sa sécurité~;
+il reste à vérifier que les mesures techniques sont réellement en place.
+Le Chapitre~\ref{chap:audit-technique} audite l'infrastructure~:
+segmentation, durcissement, protocoles, vulnérabilités et journalisation.
+\end{boxinfo}

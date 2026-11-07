@@ -1,0 +1,555 @@
+% ============================================================================
+% Fichier  : partie3/P03_C16_deontologie_profession.tex
+% Titre    : Déontologie et Profession de l'Auditeur
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Chapitre propre à INF3226 (pas d'équivalent dans ACSI).
+% Sources : IIA, Normes mondiales d'audit interne (2024), domaine II
+% (éthique et professionnalisme : intégrité, objectivité, compétence,
+% diligence professionnelle, confidentialité) ; ISACA, Code of Professional
+% Ethics ; IESBA, Code international de déontologie des professionnels
+% comptables (cinq principes fondamentaux et cinq menaces) ; ISACA,
+% exigences de formation continue des certifiés (CPE). Les règles nationales
+% (ONECCA, textes sur l'expertise judiciaire) sont présentées sans citation,
+% à vérifier.
+% Corrigés : corriges/Corr_C16.tex.
+% ============================================================================
+
+\chapter{Déontologie et Profession de l'Auditeur}
+\label{chap:deontologie}
+\chaptermark{Déontologie et profession}
+
+\epigraph{%
+    « La compétence fait un bon auditeur.\\
+    La déontologie fait un auditeur qu'on peut croire. »%
+}{Principe de la profession}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise des Chapitres~\ref{chap:normes} (normes, indépendance) et
+    \ref{chap:droit} (responsabilité, secret)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Énoncer les principes déontologiques communs aux codes de l'IIA,
+          de l'ISACA et de l'IESBA.
+    \item Reconnaître les cinq menaces sur l'indépendance et choisir une
+          sauvegarde adaptée.
+    \item Résoudre un dilemme déontologique par une méthode écrite.
+    \item Distinguer les responsabilités civile, pénale et disciplinaire de
+          l'auditeur.
+    \item Situer les certifications professionnelles de l'audit des SI et
+          leurs obligations de formation continue.
+    \item Décrire le marché de l'audit et les risques qu'il fait peser sur
+          l'indépendance.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : que faire quand le client a raison de vouloir autre chose~?}
+% ============================================================================
+
+Le 12~juin~2026, M.~ETEME, directeur général de LiZbiZ, reçoit la note
+d'AUDIX CONSEIL sur les ajustements de stock de Douala et les paiements de
+TRANSLOG SERVICES. Il appelle M.~BEYALA~: « Votre note me met dans une
+position impossible. Le conseil se réunit dans dix jours, nous sommes en
+pleine levée de fonds. Retirez ces deux points du rapport, je m'en occupe en
+interne. Et, bien sûr, nous avons d'autres missions pour vous à
+l'automne. »
+
+M.~ETEME n'a pas tort de vouloir protéger son entreprise. Mais M.~BEYALA ne
+peut pas accepter. Ce chapitre explique pourquoi, et comment refuser sans
+rompre.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les codes de la profession (section~\ref{sec:c16-codes}).
+    \item L'indépendance et ses menaces (section~\ref{sec:c16-menaces}).
+    \item Résoudre un dilemme (section~\ref{sec:c16-dilemme}).
+    \item La responsabilité de l'auditeur (section~\ref{sec:c16-responsabilite}).
+    \item Les certifications et la compétence (section~\ref{sec:c16-certif}).
+    \item Le marché de l'audit (section~\ref{sec:c16-marche}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Codes de la Profession}
+\label{sec:c16-codes}
+% ============================================================================
+
+\subsection{Trois codes, des principes communs}
+
+Trois codes encadrent la conduite des auditeurs des SI, selon leur
+appartenance.
+
+\begin{tableaucours}{L{2.8cm}L{3.6cm}L{5.8cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Qui y est tenu} &
+    \tableauHeader{Principes (reformulés)}
+}
+IIA, Normes mondiales, domaine~II & Auditeurs internes, membres et certifiés
+de l'IIA & Intégrité, objectivité, compétence, diligence
+professionnelle, confidentialité~\cite{iia2024gias} \\
+ISACA, code de déontologie & Certifiés et membres de l'ISACA (CISA, CISM,
+CRISC\ldots) & Soutenir les normes, agir avec diligence et intégrité,
+servir l'intérêt des parties, préserver la confidentialité, maintenir
+sa compétence, informer des résultats, promouvoir la
+profession~\cite{isaca2024ethique} \\
+IESBA, code international & Professionnels comptables, dont les
+commissaires aux comptes & Intégrité, objectivité, compétence et
+diligence, confidentialité, comportement professionnel~\cite{iesba2018code} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.1. Trois codes de déontologie}\end{center}
+
+Les trois codes convergent sur cinq exigences~: être honnête (intégrité),
+juger sans parti pris (objectivité), savoir faire ce qu'on accepte
+(compétence), travailler avec soin (diligence), et protéger ce qu'on
+apprend (confidentialité).
+
+\subsection{Les principes au quotidien}
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{4.8cm}}{%
+    \tableauHeader{Principe} &
+    \tableauHeader{Ce qu'il exige} &
+    \tableauHeader{Manquement typique}
+}
+Intégrité & Ne rien affirmer de faux, ne rien taire d'important & Retirer
+un constat à la demande du client \\
+Objectivité & Juger sur les preuves, sans influence & Adoucir une
+conclusion pour conserver une mission \\
+Compétence & N'accepter que ce qu'on sait faire, ou s'entourer & Auditer
+un système central bancaire sans en connaître l'architecture \\
+Diligence & Respecter les normes et le plan, documenter & Conclure sur un
+échantillon trop petit pour finir à temps \\
+Confidentialité & Ne divulguer ni utiliser l'information hors mission &
+Évoquer les failles d'un client devant un autre \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.2. Les principes au
+quotidien}\end{center}
+
+\subsection{Pourquoi la déontologie est une condition de la preuve}
+
+L'auditologie pose que les conclusions d'un audit doivent pouvoir être
+défendues devant un tiers (axiome~6, opposabilité), et que l'audité et
+l'auditeur poursuivent des intérêts distincts (axiome~4, interaction
+stratégique)~\cite{minka2026auditologie}. Un auditeur qui dépend de
+l'audité, ou qui tait un fait sous pression, produit des conclusions qu'un
+tiers peut contester sur ce seul fondement~: la déontologie n'est pas une
+morale ajoutée à la technique, c'est une condition de la valeur de la
+preuve.
+
+% ============================================================================
+\section{L'Indépendance et ses Menaces}
+\label{sec:c16-menaces}
+% ============================================================================
+
+\subsection{Indépendance de fait, indépendance apparente}
+
+\begin{boxdef}
+\termecle{Indépendance de fait}\index{indépendance}~: état d'esprit qui
+permet de formuler une conclusion sans être influencé.
+
+\medskip
+\termecle{Indépendance apparente}~: absence de circonstances qui
+conduiraient un tiers informé à douter de l'indépendance de fait.
+\end{boxdef}
+
+La seconde compte autant que la première~: un auditeur parfaitement
+honnête, mais qui audite le système qu'il a conçu, ne convaincra pas un
+tiers. C'est l'apparence qui fonde l'opposabilité.
+
+\subsection{Cinq menaces, des sauvegardes}
+
+Le code de l'IESBA classe les menaces en cinq catégories~\cite{iesba2018code}~;
+le Chapitre~\ref{chap:normes} les a présentées. Le Tableau~16.3 les relie
+aux sauvegardes possibles.
+
+\begin{tableaucours}{L{2.6cm}L{4.2cm}L{5.4cm}}{%
+    \tableauHeader{Menace} &
+    \tableauHeader{Exemple} &
+    \tableauHeader{Sauvegarde}
+}
+Intérêt personnel & Honoraires futurs promis par M.~ETEME & Refus
+explicite~; information de l'associé~; plafonnement de la part d'un client
+dans le chiffre d'affaires \\
+Autorévision & AUDIX CONSEIL audite les profils qu'il a conçus & Confier
+l'audit à une autre équipe ou un autre cabinet \\
+Représentation & L'auditeur défend la position du client devant la COBAC &
+Refuser le rôle de défenseur pendant une mission d'assurance \\
+Familiarité & Même chef de mission depuis huit ans chez le même client &
+Rotation des responsables de mission \\
+Intimidation & Menace de rompre le contrat si le constat reste & Escalade
+au comité d'audit~; trace écrite \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.3. Menaces sur l'indépendance et
+sauvegardes}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Considérer qu'une menace n'existe pas parce que
+l'auditeur se sait honnête.
+
+\smallskip
+\textbf{Règle~:} la menace s'apprécie du point de vue d'un tiers informé.
+Elle est soit éliminée, soit ramenée à un niveau acceptable par une
+sauvegarde écrite~; à défaut, l'auditeur refuse ou quitte la mission.
+\end{boxalert}
+
+\subsection{La lecture du cours}
+
+Le Chapitre~\ref{chap:normes} en a tiré une règle de cotation~: un \OUI{}
+donné par un auditeur en situation de conflit se cote \NEK{} jusqu'à la
+revue par un tiers. L'indépendance n'est donc pas seulement une question
+morale~: son défaut se voit dans les mesures, par une hausse de $U$.
+
+% ============================================================================
+\section{Résoudre un Dilemme}
+\label{sec:c16-dilemme}
+% ============================================================================
+
+\subsection{Une méthode en six étapes}
+
+Un dilemme déontologique ne se résout pas par l'intuition, sous pression,
+au téléphone. On le résout par écrit.
+
+\begin{boxprocedure}
+\textbf{Résoudre un dilemme déontologique}
+\begin{enumerate}
+    \item \textbf{Établir les faits}~: qui demande quoi, par quel moyen, à
+          quelle date~? (Une demande orale est consignée dans une note.)
+    \item \textbf{Identifier les principes en jeu} (Tableau~16.2) et les
+          menaces (Tableau~16.3).
+    \item \textbf{Identifier les parties}~: le client, les tiers qui se
+          fieront au rapport, le public.
+    \item \textbf{Lister les options}, y compris refuser et quitter la
+          mission.
+    \item \textbf{Consulter}~: l'associé, le responsable de la qualité du
+          cabinet, et si besoin un avocat ou l'ordre professionnel.
+    \item \textbf{Décider et documenter}~: la décision, ses motifs, les
+          personnes consultées, classées au dossier.
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{Le dilemme de M.~BEYALA}
+
+\begin{boxscenario}{Opération LIZBIZ. Retirer deux constats~?}
+\textbf{Faits.} Appel du DG le 12~juin~: demande de retrait de deux
+observations majeures, et promesse de missions futures. M.~BEYALA consigne
+l'appel dans une note le jour même.
+
+\medskip
+\textbf{Principes et menaces.} Intégrité (ne pas taire un fait
+important)~; objectivité~; menaces d'intérêt personnel (missions promises)
+et d'intimidation implicite.
+
+\medskip
+\textbf{Parties.} Le DG~; le conseil d'administration, commanditaire
+ultime~; le commissaire aux comptes~; les investisseurs de la levée de
+fonds, qui se fieront aux comptes.
+
+\medskip
+\textbf{Options.} (a) Retirer les constats~: exclu (intégrité). (b) Les
+maintenir et transmettre le rapport au seul DG~: insuffisant si la lettre de
+mission désigne le conseil. (c) Les maintenir, rappeler au DG la lettre de
+mission et la conduite à tenir devant des indices de fraude
+(Chapitre~\ref{chap:fraude}), et adresser le rapport au destinataire prévu.
+(d) Quitter la mission~: seulement si (c) est rendu impossible.
+
+\medskip
+\textbf{Décision.} Option (c). Courrier au DG, copie à l'associée du
+cabinet~; refus écrit de toute discussion sur les missions futures tant que
+la mission en cours n'est pas close.
+\end{boxscenario}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Refuser sans rompre}
+\begin{enumerate}
+    \item Répondre par écrit, sur un ton factuel, sans jugement sur
+          l'intention du demandeur.
+    \item Rappeler la lettre de mission (destinataires, périmètre) et les
+          normes appliquées.
+    \item Proposer ce qui est possible~: un délai pour la réponse de
+          l'audité, une présentation au conseil avec la direction.
+    \item Ne jamais négocier un constat contre un avantage.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{La Responsabilité de l'Auditeur}
+\label{sec:c16-responsabilite}
+% ============================================================================
+
+\subsection{Trois responsabilités}
+
+\begin{tableaucours}{L{2.6cm}L{4.4cm}L{5.2cm}}{%
+    \tableauHeader{Responsabilité} &
+    \tableauHeader{Fondement} &
+    \tableauHeader{Exemple}
+}
+Civile & Faute dans l'exécution du contrat ou envers un tiers, causant un
+préjudice & Un investisseur perd de l'argent sur la foi d'un rapport qui a
+omis un constat connu \\
+Pénale & Infraction (complicité, faux, violation du secret
+professionnel) & Un auditeur divulgue les failles d'un client à un
+concurrent \\
+Disciplinaire & Manquement au code d'un ordre ou d'une association
+professionnelle & Retrait de la certification CISA pour violation du code
+de l'ISACA \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.4. Les trois responsabilités de
+l'auditeur (principes généraux~; les textes applicables au Cameroun sont à
+vérifier)}\end{center}
+
+\subsection{Une obligation de moyens}
+
+L'auditeur ne garantit pas l'absence d'anomalie~: il s'engage à mettre en
+œuvre les diligences que la norme exige (Chapitre~\ref{chap:droit}). Sa
+meilleure défense est son dossier~: un papier de travail qui montre que le
+test a été conçu, exécuté et revu selon la norme protège l'auditeur, même
+si une fraude n'a pas été vue. À l'inverse, un \OUI{} sans preuve est
+indéfendable.
+
+\begin{boxinfo}
+\textbf{L'expert judiciaire.} Un auditeur des SI peut être désigné par un
+juge comme expert. Son rôle change alors~: il répond aux questions posées
+par le juge, dans le respect du contradictoire judiciaire, et son rapport
+devient une pièce de procédure. Les règles de la preuve numérique
+(Chapitre~\ref{chap:audit-preuve}) et celles de l'expertise, propres à
+chaque juridiction, s'appliquent (textes camerounais à vérifier).
+\end{boxinfo}
+
+% ============================================================================
+\section{Certifications et Compétence}
+\label{sec:c16-certif}
+% ============================================================================
+
+\subsection{Les certifications du métier}
+
+\begin{tableaucours}{L{2.6cm}L{2.6cm}L{6.8cm}}{%
+    \tableauHeader{Certification} &
+    \tableauHeader{Organisme} &
+    \tableauHeader{Domaine}
+}
+CISA & ISACA & Audit, contrôle et assurance des SI \\
+CISM & ISACA & Management de la sécurité de l'information \\
+CRISC & ISACA & Risques informatiques et contrôles \\
+CGEIT & ISACA & Gouvernance des SI \\
+CDPSE & ISACA & Protection des données dès la conception \\
+CIA & IIA & Audit interne \\
+Auditeur principal ISO/IEC~27001 & Organismes de formation accrédités &
+Audit de SMSI selon l'ISO~19011 et l'ISO/IEC~27007 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~16.5. Les principales certifications
+de l'audit et de la sécurité des SI}\end{center}
+
+Une certification n'est ni un diplôme ni une licence d'exercer~: elle
+atteste un niveau de connaissance à une date, et engage son titulaire à
+respecter un code et à se former. L'ISACA exige ainsi de ses certifiés un
+volume minimal annuel et triennal d'heures de formation professionnelle
+continue~\cite{isaca2024ethique}.
+
+\subsection{La compétence, principe déontologique}
+
+Accepter une mission qu'on ne sait pas mener est un manquement, pas une
+simple erreur. Le chef de mission vérifie, avant d'accepter, que l'équipe
+réunit les compétences nécessaires (bases de données, réseau, système
+central bancaire, droit applicable)~; à défaut, il s'adjoint un expert,
+dont il reste responsable (Chapitre~\ref{chap:mission}).
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Vérifier les qualifications des prestataires d'audit.} Lorsque la
+BANQUE SANAGA confie un audit à un cabinet, le responsable de la
+conformité vérifie les certifications annoncées (registre en ligne des
+organismes), la déclaration d'indépendance de chaque membre de l'équipe,
+et l'absence de mission de conseil récente sur le même objet.
+\end{boxmetier}
+
+% ============================================================================
+\section{Le Marché de l'Audit}
+\label{sec:c16-marche}
+% ============================================================================
+
+\subsection{Qui audite}
+
+Au Cameroun comme ailleurs, l'audit des SI est exercé par~: les services
+d'audit interne des grandes organisations (banques, opérateurs, entreprises
+publiques)~; les cabinets d'audit et d'expertise comptable, dont les
+réseaux internationaux~; des cabinets spécialisés en sécurité~; les
+organes publics de contrôle (Chambre des comptes, organes de contrôle
+supérieur de l'État)~; les autorités de régulation et leurs auditeurs
+agréés. L'exercice du commissariat aux comptes est réservé aux
+professionnels inscrits à l'ordre (ONECCA au Cameroun~; conditions à
+vérifier).
+
+\subsection{Les tensions du marché}
+
+\begin{itemize}
+    \item \textbf{Le client paie l'auditeur}~: c'est la source permanente de
+          la menace d'intérêt personnel. Les sauvegardes~: comité d'audit
+          qui choisit et rémunère, plafonnement de la dépendance
+          économique, rotation.
+    \item \textbf{Audit et conseil chez le même client}~: la vente de
+          conseil après l'audit crée l'autorévision. L'affaire Enron
+          (Chapitre~\ref{chap:defaillances}) a conduit la loi
+          Sarbanes-Oxley à restreindre ces cumuls pour les auditeurs légaux
+          des sociétés cotées américaines.
+    \item \textbf{La pression sur les prix}~: un audit vendu trop bas se
+          paie en diligence. Le chef de mission doit refuser un budget qui
+          ne permet pas de respecter la norme, ou réduire le périmètre par
+          écrit.
+\end{itemize}
+
+\begin{boxscenario}{Opération SANAGA. L'appel d'offres}
+\textbf{Faits.} Pour son audit de sécurité annuel, la BANQUE SANAGA reçoit
+trois offres~: 18, 32 et 35~millions FCFA. L'offre la moins chère prévoit
+6~jours de terrain pour un système central, 40~agences et un prestataire.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Six jours ne permettent ni de tester
+les contrôles généraux du système central, ni d'examiner le prestataire~:
+l'offre ne peut produire que des déclarations. Le comité d'audit retient
+l'offre de 32~millions, et le motive par écrit~: la diligence a un coût.
+\end{boxscenario}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Traiter la dépendance à un auditeur comme un risque.} Une banque
+qui confie depuis dix ans toutes ses missions d'audit et de conseil au
+même cabinet porte un risque de familiarité et d'autorévision. Le
+gestionnaire de risques l'inscrit au registre et propose une rotation.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Trois codes} (IIA, ISACA, IESBA) convergent sur
+          l'intégrité, l'objectivité, la compétence, la diligence et la
+          confidentialité.
+    \item \textbf{L'indépendance} est de fait et d'apparence~; cinq menaces
+          (intérêt personnel, autorévision, représentation, familiarité,
+          intimidation) appellent des sauvegardes écrites, ou le refus.
+    \item \textbf{La déontologie est une condition de la preuve}~: un
+          auditeur dépendant produit des conclusions contestables~; un
+          \OUI{} en conflit se cote \NEK{}.
+    \item \textbf{Un dilemme se résout par écrit}, en six étapes, avec
+          consultation.
+    \item \textbf{L'auditeur engage sa responsabilité} civile, pénale et
+          disciplinaire~; son dossier est sa défense.
+    \item \textbf{Les certifications} attestent une compétence et engagent à
+          un code et à la formation continue.
+    \item \textbf{Le marché de l'audit} crée des tensions (client payeur,
+          cumul audit et conseil, prix) que des sauvegardes organisées
+          compensent.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: citer les cinq exigences
+communes aux codes~; nommer et illustrer les cinq menaces~; proposer une
+sauvegarde~; appliquer la méthode en six étapes~; distinguer les trois
+responsabilités~; citer les certifications de l'ISACA et de l'IIA.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.1. Quel principe~? \niveaubase}]
+Indiquez le principe déontologique en jeu~: (a) un auditeur accepte
+l'audit d'un réseau industriel sans jamais en avoir vu~; (b) une auditrice
+garde sur sa clé personnelle les extractions d'un client~; (c) un chef de
+mission conclut sur 10 paiements au lieu des 60 prévus pour tenir les
+délais~; (d) un rapport passe sous silence un constat sur un administrateur
+de la société.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.2. Quelle menace~? \niveaubase}]
+Identifiez la menace et proposez une sauvegarde~: (a) la fille du chef de
+mission travaille à la DSI auditée~; (b) l'auditeur a rédigé la politique
+de sécurité qu'il audite~; (c) le client menace de faire réaliser
+l'audit suivant par un concurrent~; (d) le cabinet tire 40~\% de son
+chiffre d'affaires d'un seul client.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.3. Fait ou apparence \niveaumoyen}]
+Mme~EKAMBI a travaillé à la DSI de la BANQUE SANAGA jusqu'en 2024. Elle
+affirme n'avoir eu aucun rôle dans la migration de 2026. Son indépendance
+de fait est-elle menacée~? son indépendance apparente~? Quelle sauvegarde
+proposez-vous pour l'audit des changements~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.4. Les six étapes \niveaumoyen}]
+Appliquez la méthode en six étapes au cas suivant~: le magistrat
+vérificateur M.~NJOYA reçoit, de la part d'un conseiller du ministre, une
+demande « amicale » de « ne pas insister » sur les paiements après départ
+de l'ANPP.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.5. Le courrier de M.~BEYALA \niveaumoyen}]
+Rédigez le courrier de M.~BEYALA au directeur général de LiZbiZ, suite à
+l'appel du 12~juin, en respectant la méthode « refuser sans rompre ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.6. La cotation en conflit \niveaumoyen}]
+Dans l'audit de suivi de LiZbiZ, AUDIX CONSEIL doit coter six contrôles
+portant sur les profils de droits qu'il a lui-même conçus. Il les jugerait
+tous \OUI{}. Comment les cotez-vous dans le rapport, et quel est l'effet
+sur $U$ du domaine (20 réponses, 18/1/1 avant la prise en compte du
+conflit)~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.7. Responsabilité \niveaumoyen}]
+Un investisseur poursuit AUDIX CONSEIL après la découverte de la fraude
+de TRANSLOG SERVICES. Que doit contenir le dossier du cabinet pour établir
+qu'il a respecté son obligation de moyens~? Dans quel cas sa
+responsabilité serait-elle difficile à écarter~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.8. Une certification \niveaubase}]
+Un élève ingénieur veut devenir auditeur des SI dans une banque.
+Quelle certification vise-t-il en premier, et pourquoi~? Que lui impose-t-
+elle une fois obtenue~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.9. Audit et conseil \niveauexpert}]
+La BANQUE SANAGA veut confier au même cabinet l'audit de sécurité annuel,
+la conception de son plan de continuité et l'accompagnement de sa
+certification ISO/IEC~27001. Analysez les menaces, proposez une
+organisation acceptable, et dites ce que le comité d'audit doit décider et
+documenter.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~16.10. Un code pour AUDIX CONSEIL \niveauexpert}]
+Rédigez, en dix règles au plus, le code de conduite interne d'AUDIX
+CONSEIL pour ses missions d'audit des SI~: acceptation des missions,
+indépendance, cumul audit et conseil, cadeaux et invitations, données des
+clients, réseaux sociaux, signalement d'un manquement d'un collègue.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item IIA, Normes mondiales d'audit interne, domaine~II~\cite{iia2024gias}.
+    \item ISACA, \textit{Code of Professional Ethics}~\cite{isaca2024ethique}.
+    \item IESBA, \textit{International Code of Ethics for Professional
+          Accountants}~\cite{iesba2018code}~: les menaces et les
+          sauvegardes, en détail.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~\ref{part:normatif} a fixé les normes, les
+référentiels, le droit et la déontologie. La Partie~\ref{part:pratique}
+applique la méthode aux grands domaines du système d'information~: la
+gouvernance et la DSI d'abord (Chapitre~\ref{chap:audit-gouvernance}).
+\end{boxinfo}

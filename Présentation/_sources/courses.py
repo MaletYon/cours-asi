@@ -1,0 +1,63 @@
+"""Métadonnées du cours ASI (INF3226) et répartition des 30 séances de 2 heures (60 heures)."""
+
+COURS = r"C:\Users\Thierry MINKA\OneDrive\Documents\COURS"
+
+ASI = {
+    "sigle": "ASI",
+    "code": "INF3226",
+    "titre": "Audit des Systèmes d'Information",
+    "sous_titre": "Contrôle interne, risques, sécurité et conformité : du métier à l'auditologie",
+    "master": "Département de Génie Informatique · HN3",
+    "bandeau": "Université de Yaoundé I",
+    "ecole": "École Nationale Supérieure Polytechnique",
+    "logo_g": "uy1",
+    "logo_d": "enspy",
+    "n_jours": 30,
+    "annee": "2026-2027",
+    "dossier": COURS + r"\INF3226\Présentation",
+    "fil_rouge": "LIZBIZ, SANAGA, MEFOU",
+    "parties": [
+        ("Prologue", "Quarante-cinq questions", "P00"),
+        ("Partie I", "Fondements de l'audit, du contrôle et du risque", "C01–C06"),
+        ("Partie II", "Méthode de la mission d'audit", "C07–C12"),
+        ("Partie III", "Cadre normatif, juridique et déontologique", "C13–C16"),
+        ("Partie IV", "Pratique de l'audit des systèmes d'information", "C17–C26"),
+        ("Partie V", "Défis avancés", "C27–C29"),
+        ("Partie VI", "Recherche : l'auditologie", "C30–C31"),
+    ],
+    # jour : (thème court, contenu détaillé, ateliers, labs)
+    "jours": {
+        1: ("Ouverture · Quarante-cinq questions", "Présentation + Prologue", ["P00"], []),
+        2: ("Auditer, contrôler, donner une assurance", "C01", ["C01"], []),
+        3: ("Grandes défaillances et naissance de l'audit des SI", "C02", ["C02"], []),
+        4: ("Le contrôle interne et ses composantes", "C03", ["C03"], ["LAB-02"]),
+        5: ("Le risque, notions et mesure", "C04", ["C04"], ["LAB-01"]),
+        6: ("Gérer les risques des SI", "C05", ["C05"], []),
+        7: ("La fraude dans et par les SI", "C06", ["C06"], []),
+        8: ("La mission d'audit : principes et cycle", "C07", ["C07"], []),
+        9: ("Préparer et planifier la mission", "C08", ["C08"], ["LAB-03"]),
+        10: ("Décomposer l'espace d'audit", "C09", ["C09"], ["LAB-04"]),
+        11: ("Collecter la preuve : OUI, NON, NEK", "C10", ["C10"], []),
+        12: ("Conclure et rédiger", "C11", ["C11"], ["LAB-05"]),
+        13: ("Suivre : recommandations, cycles, maturité", "C12", ["C12"], []),
+        14: ("Les normes professionnelles de l'audit", "C13", ["C13"], []),
+        15: ("Les référentiels de contrôle", "C14", ["C14"], []),
+        16: ("Le cadre juridique camerounais et africain", "C15", ["C15"], ["LAB-06"]),
+        17: ("Déontologie et profession de l'auditeur", "C16", ["C16"], []),
+        18: ("Auditer la gouvernance et la fonction informatique", "C17", ["C17"], []),
+        19: ("Auditer une application en service", "C18", ["C18"], ["LAB-07"]),
+        20: ("Auditer les projets informatiques", "C19", ["C19"], []),
+        21: ("Auditer un SMSI", "C20", ["C20"], []),
+        22: ("Auditer la sécurité technique", "C21", ["C21"], ["LAB-08"]),
+        23: ("Tests d'intrusion et audit de code", "C22", ["C22"], []),
+        24: ("Auditer la production et la continuité", "C23", ["C23"], ["LAB-09"]),
+        25: ("Auditer les tiers et le nuage", "C24", ["C24"], []),
+        26: ("Auditer la conformité", "C25", ["C25"], []),
+        27: ("Études de cas intégratrices", "C26", ["C26"], ["LAB-10"]),
+        28: ("Audit continu · auditer l'IA", "C27 + C28", ["C27", "C28"], []),
+        29: ("De l'audit à la preuve judiciaire", "C29", ["C29"], []),
+        30: ("L'auditologie · mesurer l'incertitude · clôture", "C30 + C31", ["C30", "C31"], []),
+    },
+}
+
+ALL = {"ASI": ASI}

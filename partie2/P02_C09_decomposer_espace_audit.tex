@@ -1,0 +1,812 @@
+% ============================================================================
+% Fichier  : partie2/P02_C09_decomposer_espace_audit.tex
+% Titre    : Décomposer l'Espace d'Audit : Gabarit Canonique et Fiche d'Assertion
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C07 (gabarit à huit niveaux d'A0 ; fiche d'assertion ; D.4.2 ;
+% atomicité ; domaine D 5 × 5 ; lecture D.1 4/0/0, D.2 1/1/2, D.3 4/0/0,
+% D.4 2/0/2, D.5 2/1/1).
+% Sources : A0 (hal-05701007), thématique T2 et gabarit canonique ; Miller
+% (1956) pour la borne cognitive ; Simon (1962) pour la décomposabilité des
+% systèmes complexes ; Minto (2009) pour le principe « mutuellement
+% exclusif, collectivement exhaustif ». Décision du 06/11/2026 : aucun
+% renvoi à un article non publié (A4) ; les conditions sont fondées sur ces
+% travaux publiés.
+% Classeur O4 : dix onglets (NOTICE, MISSION, PARAMÈTRES, DOMAINES, GABARIT
+% A4, RÉPONDANTS, MESURES, CYCLES, CONTRADICTOIRE, SYNTHÈSE).
+% Corrigés : corriges/Corr_C09.tex.
+% ============================================================================
+
+\chapter[Décomposer l'Espace d'Audit]{Décomposer l'Espace d'Audit : Gabarit Canonique et Fiche d'Assertion}
+\label{chap:decomposition}
+\chaptermark{Décomposer l'espace d'audit}
+
+\epigraph{%
+    « Ce qu'on ne peut pas tenir en tête,\\
+    on ne peut pas l'auditer~: on le découpe. »%
+}{Principe de la méthode}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise des Chapitres~\ref{chap:controle-interne} (contrôles)
+    et~\ref{chap:planifier} (plan d'audit)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Justifier la décomposition de l'espace d'audit par les limites de
+          la mémoire de travail et la structure des systèmes complexes.
+    \item Décomposer un domaine selon le gabarit canonique à huit niveaux~:
+          domaine, sous-domaine, processus, activité, contrôle, test, preuve,
+          trace.
+    \item Rédiger la fiche d'assertion d'un contrôle à plusieurs critères, et
+          en déduire la cote du contrôle.
+    \item Appliquer la règle d'atomicité aux objectifs, aux critères et aux
+          questions.
+    \item Vérifier qu'une décomposition est exhaustive, non redondante et
+          respecte la borne cognitive, à la main et par un programme.
+    \item Construire la décomposition dans le classeur O4.
+    \item Reconnaître les domaines où le gabarit doit être adapté.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : pourquoi la grille de 45 questions a-t-elle échoué~?}
+% ============================================================================
+
+Le prologue a donné deux raisons à l'échec de la première mission de
+LiZbiZ~: une grille binaire qui interdisait de dire « je ne sais pas », et
+une grille reprise d'une autre entreprise, sans critères propres. Il y en a
+une troisième. Les neuf questions du domaine~D mélangeaient des objets de
+niveaux différents~: une question portait sur la politique d'accès, une
+autre sur un journal technique, une troisième combinait deux conditions.
+Personne ne pouvait dire si le domaine avait été couvert en entier.
+
+La seconde mission a commencé par \emph{décomposer} le domaine~D en
+$5 \times 5$ éléments~\cite{minka2026auditologie}. Ce chapitre enseigne
+cette opération.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Pourquoi décomposer (section~\ref{sec:c09-pourquoi}).
+    \item Le gabarit canonique (section~\ref{sec:c09-gabarit}).
+    \item La fiche d'assertion (section~\ref{sec:c09-fiche}).
+    \item Les règles de qualité (section~\ref{sec:c09-regles}).
+    \item La décomposition dans le classeur O4
+          (section~\ref{sec:c09-o4}).
+    \item Le domaine D de LiZbiZ (section~\ref{sec:c09-lizbiz}).
+    \item Les limites du gabarit (section~\ref{sec:c09-limites}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Pourquoi Décomposer}
+\label{sec:c09-pourquoi}
+% ============================================================================
+
+\subsection{La borne de la mémoire de travail}
+
+Un auditeur ne peut pas examiner « le contrôle d'accès » d'un bloc. Les
+travaux de George Miller ont établi que la mémoire de travail ne retient
+qu'un petit nombre d'éléments à la fois, de l'ordre de sept, plus ou moins
+deux~\cite{miller1956}. L'auditologie en fait l'un de ses axiomes
+(axiome~2, \emph{cognition limitée}) et en déduit qu'un instrument qui
+couvre un espace d'audit non trivial doit être organisé en une
+décomposition hiérarchique, dont chaque niveau respecte cette
+borne~\cite{minka2026auditologie}.
+
+\subsection{Les systèmes complexes se décomposent}
+
+Herbert Simon a montré que les systèmes complexes, naturels ou artificiels,
+sont le plus souvent hiérarchiques et « presque décomposables »~: les
+interactions à l'intérieur d'un sous-système sont plus fortes que les
+interactions entre sous-systèmes~\cite{simon1962complexity}. Un système
+d'information en est un exemple~: la gestion des comptes interagit
+fortement avec l'authentification, faiblement avec la gestion des
+sauvegardes. C'est ce qui permet d'auditer chaque sous-domaine
+séparément, puis d'en assembler les conclusions.
+
+\begin{boxdef}
+\termecle{Espace d'audit}\index{espace d'audit}~: ensemble des objets sur
+lesquels porte une mission (processus, contrôles, données, traces), tel que
+le délimite la lettre de mission.
+
+\medskip
+\termecle{Décomposition}\index{décomposition}~: découpage hiérarchique de
+l'espace d'audit en niveaux emboîtés, chaque élément d'un niveau se divisant
+en éléments du niveau inférieur.
+\end{boxdef}
+
+\subsection{Ce que la décomposition apporte}
+
+\begin{enumerate}
+    \item \textbf{La couverture}~: on sait ce qui a été audité, et ce qui ne
+          l'a pas été.
+    \item \textbf{La traçabilité}~: chaque conclusion remonte jusqu'à une
+          trace dans le système, ce qui la rend opposable (axiome~6).
+    \item \textbf{La localisation de l'incertitude}~: les réponses \NEK{} se
+          situent à un endroit précis de l'arbre, et non dans « le domaine »
+          (section~\ref{sec:c09-lizbiz}).
+    \item \textbf{La répartition du travail}~: chaque sous-domaine peut être
+          confié à un auditeur.
+\end{enumerate}
+
+% ============================================================================
+\section{Le Gabarit Canonique}
+\label{sec:c09-gabarit}
+% ============================================================================
+
+\subsection{Huit niveaux}
+
+Le programme de l'auditologie propose un \termecle{gabarit
+canonique}\index{gabarit canonique} de décomposition à huit
+niveaux~\cite{minka2026auditologie}.
+
+\noindent\begin{minipage}{\linewidth}
+\begin{center}
+\begin{tikzpicture}[
+    niv/.style = {
+        draw=CouleurBordDef, fill=CouleurDef, rounded corners=3pt,
+        minimum width=3.1cm, minimum height=0.62cm, align=center,
+        font=\footnotesize\bfseries\color{CouleurPrimaire}
+    },
+    note/.style = {font=\scriptsize\itshape\color{CouleurSecondaire}, anchor=west, text width=6.4cm},
+    fleche/.style = {-{Stealth[length=4pt]}, thick, color=CouleurSecondaire}
+]
+\foreach \t/\q [count=\i] in {
+    1. Domaine/Que soumet-on à l'audit~?,
+    2. Sous-domaine/Quels grands ensembles le composent~?,
+    3. Processus/Quelles suites d'activités~?,
+    4. Activité/Quelles actions élémentaires~?,
+    5. Contrôle/Quel dispositif maîtrise l'activité~?,
+    6. Test/Comment l'auditeur le vérifie-t-il~?,
+    7. Preuve/Quel élément le test produit-il~?,
+    8. Trace/Quel enregistrement du système l'atteste~?} {
+    \node[niv] (n\i) at (0, -0.85*\i) {\t};
+    \node[note] at (1.8, -0.85*\i) {\q};
+}
+\foreach \i [evaluate=\i as \j using int(\i+1)] in {1,...,7}
+    \draw[fleche] (n\i) -- (n\j);
+\draw[decorate, decoration={brace, amplitude=5pt, mirror}, thick, color=CouleurAccent]
+    (-1.75,-0.55) -- (-1.75,-3.65) node[midway, left=6pt, font=\scriptsize, align=right,
+    color=CouleurAccent] {ce qui\\ est audité};
+\draw[decorate, decoration={brace, amplitude=5pt, mirror}, thick, color=CouleurAccent]
+    (-1.75,-3.95) -- (-1.75,-7.05) node[midway, left=6pt, font=\scriptsize, align=right,
+    color=CouleurAccent] {comment on\\ le vérifie};
+\end{tikzpicture}
+\end{center}
+\vspace{-0.4em}
+\begin{center}{\small\itshape Figure~9.1. Le gabarit canonique de
+décomposition (d'après~\cite{minka2026auditologie})}\end{center}
+\end{minipage}
+
+\medskip
+
+Les quatre premiers niveaux décrivent \emph{ce qui est audité}~: ils
+découpent le système. Les quatre derniers décrivent \emph{comment on le
+vérifie}~: du dispositif de maîtrise jusqu'à l'enregistrement qui en prouve
+le fonctionnement. Le contrôle fait la charnière~: c'est l'objet sur lequel
+l'auditeur se prononce.
+
+\subsection{Les huit niveaux en détail}
+
+\begin{tableaucours}{L{2.3cm}L{5.0cm}L{4.9cm}}{%
+    \tableauHeader{Niveau} &
+    \tableauHeader{Définition} &
+    \tableauHeader{Exemple (domaine D de LiZbiZ)}
+}
+Domaine & Champ d'audit défini par la lettre de mission & Contrôle d'accès
+à l'application intégrée \\
+Sous-domaine & Grand ensemble cohérent du domaine & Cycle de vie des
+comptes \\
+Processus & Suite d'activités qui produit un résultat & Départ d'un
+agent \\
+Activité & Action élémentaire du processus & Retrait des accès \\
+Contrôle & Dispositif qui maîtrise l'activité & Désactivation du compte
+sous 48~heures \\
+Test & Procédure par laquelle l'auditeur vérifie le contrôle & Rapprocher
+les départs et les comptes actifs \\
+Preuve & Élément produit et conservé par le test & Extraction des comptes
+actifs, avec son empreinte \\
+Trace & Enregistrement du système qui atteste le fonctionnement &
+Entrée du journal de désactivation \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.1. Les niveaux du gabarit
+canonique}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Placer une politique (« une politique d'accès
+approuvée existe ») au niveau du test, et un journal technique au niveau du
+sous-domaine, dans la même liste.
+
+\smallskip
+\textbf{Règle~:} chaque élément se place à un seul niveau, celui qui
+correspond à sa nature. Un mélange de niveaux rend impossible le contrôle de
+la couverture.
+\end{boxalert}
+
+\subsection{Preuve et trace~: deux choses différentes}
+
+La \emph{trace} existe dans le système, que l'auditeur passe ou non~: une
+entrée de journal, un champ de date de désactivation. La \emph{preuve}
+est ce que l'auditeur en tire et conserve~: l'extraction horodatée, son
+empreinte, la requête qui l'a produite. Une trace qui n'est pas extraite
+n'est pas une preuve~; une preuve qui ne renvoie à aucune trace (une
+capture d'écran sans contexte) est fragile. Le Chapitre~\ref{chap:preuve}
+en tirera la hiérarchie de fiabilité.
+
+% ============================================================================
+\section{La Fiche d'Assertion}
+\label{sec:c09-fiche}
+% ============================================================================
+
+\subsection{Cinq attributs par contrôle}
+
+Le gabarit dit \emph{où} se trouve un contrôle. La \termecle{fiche
+d'assertion}\index{fiche d'assertion} dit \emph{ce que l'auditeur affirme}
+à son sujet, et ce qui arrive si l'affirmation est fausse.
+
+\begin{tableaucours}{L{2.4cm}L{5.0cm}L{4.8cm}}{%
+    \tableauHeader{Attribut} &
+    \tableauHeader{Rôle} &
+    \tableauHeader{Forme}
+}
+Objectif & Ce que le contrôle doit garantir & À l'infinitif~: « S'assurer
+que\ldots » \\
+Critère & La condition vérifiable qui définit la conformité & Au présent~:
+une condition unique, observable \\
+Question & La question posée pour coter le contrôle & Interrogative~;
+réponse \OUI{}, \NON{} ou \NEK{} \\
+Risque & L'état de non-conformité si la réponse est \NON{} & L'antithèse
+du critère \\
+Conséquence & L'effet sur l'organisation si le risque se réalise &
+Financier, opérationnel, réglementaire \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.2. Les attributs de la fiche
+d'assertion}\end{center}
+
+La fiche est complétée par les niveaux inférieurs du gabarit~: le test,
+la preuve attendue et la trace. Le prologue en a donné un premier exemple
+(contrôle D.2.1)~; en voici un second.
+
+\begin{boxobjet}{D.4.2. Revue des comptes à privilèges}
+\textbf{Position~:} domaine D $\rightarrow$ sous-domaine D.4 (comptes à
+privilèges) $\rightarrow$ processus «~gestion des comptes d'administration~»
+$\rightarrow$ activité «~revue des comptes~» $\rightarrow$ contrôle D.4.2.
+
+\textbf{Objectif~:} s'assurer que chaque compte d'administration de
+l'application correspond à un besoin en cours.
+
+\textbf{Critère~1~:} la liste des comptes d'administration est revue chaque
+trimestre par le responsable de la sécurité.
+
+\textbf{Question~1~:} la revue des comptes d'administration a-t-elle été
+réalisée pour chaque trimestre de la période~?
+
+\textbf{Critère~2~:} le compte rendu de chaque revue est signé par le
+responsable de la sécurité.
+
+\textbf{Question~2~:} le compte rendu de chaque revue trimestrielle est-il
+signé par le responsable de la sécurité~?
+
+\textbf{Test~:} demander les comptes rendus des deux trimestres de la
+période~; comparer leur liste à l'extraction des comptes d'administration.
+
+\textbf{Preuve et trace~:} comptes rendus signés~; extraction des comptes
+d'administration, avec son empreinte~; dates de dernière connexion de ces
+comptes dans le journal.
+
+\textbf{Risque~:} un compte d'administration inutile reste actif et sert à
+modifier des données ou des droits sans contrôle.
+
+\textbf{Conséquence~:} fraude ou altération non détectée, perte de fiabilité
+des états de stock, manquement à l'obligation de sécuriser le système
+(loi n°~2010/012, art.~26).
+\end{boxobjet}
+
+\subsection{De la fiche à la cotation}
+
+La question de la fiche est celle que l'auditeur cote \OUI{}, \NON{} ou
+\NEK{} (Chapitre~\ref{chap:preuve}). Le risque est \emph{activé} lorsque la
+réponse est \NON{}~; il reste \emph{indéterminé} lorsque la réponse est
+\NEK{}, et c'est précisément ce que mesure le taux d'incertitude~$U$.
+
+Un contrôle peut porter plusieurs critères, comme D.4.2~: une revue
+réalisée mais non signée ne satisfait pas le contrôle, et l'auditeur doit
+pouvoir dire lequel des deux fait défaut. Chaque critère reçoit sa propre
+question et sa propre cote. La cote du contrôle s'en déduit.
+
+\begin{boxinfo}
+\textbf{Règle de composition des cotes.} Un seul critère \NON{} suffit pour
+que le contrôle soit \NON{}~; à défaut, un seul critère \NEK{} donne
+\NEK{}~; le contrôle n'est coté \OUI{} que si tous ses critères le sont.
+En notation~: si $c_1, \dots, c_k$ sont les cotes des critères,
+\[
+\text{cote} =
+\begin{cases}
+\NON{} & \text{si } \exists\, i,\ c_i = \NON{},\\
+\NEK{} & \text{sinon, si } \exists\, i,\ c_i = \NEK{},\\
+\OUI{} & \text{sinon.}
+\end{cases}
+\]
+\end{boxinfo}
+
+\begin{tableaucours}{L{3.2cm}L{3.2cm}cL{4.2cm}}{%
+    \tableauHeader{Critère 1 (revue faite)} &
+    \tableauHeader{Critère 2 (signée)} &
+    \tableauHeader{Cote D.4.2} &
+    \tableauHeader{Lecture}
+}
+\OUI{} & \OUI{} & \OUI{} & Contrôle conforme \\
+\OUI{} & \NON{} & \NON{} & Revue faite, non signée \\
+\NEK{} & \OUI{} & \NEK{} & Signée, mais on ignore si elle couvre la
+période \\
+\NON{} & \NEK{} & \NON{} & Un défaut établi suffit \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.3. Composer les cotes de deux
+critères}\end{center}
+
+% ============================================================================
+\section{Les Règles de Qualité}
+\label{sec:c09-regles}
+% ============================================================================
+
+\subsection{L'atomicité}
+
+\begin{boxinfo}
+\textbf{Règle d'atomicité.} L'objectif, le critère et la question ne
+contiennent aucun connecteur logique «~et~» ni «~ou~». Toute assertion qui
+en contient est scindée en autant d'assertions qu'il y a de conditions
+indépendantes.
+\end{boxinfo}
+
+L'atomicité garantit qu'une réponse \NON{} désigne un seul défaut. Une
+question double, «~les comptes des agents partis sont-ils désactivés
+\emph{et} leurs données archivées~?~», n'admet pas de réponse honnête
+lorsque les comptes sont désactivés mais les données non archivées~: le
+répondant choisit au hasard, ou répond \NEK{} à tort.
+
+\begin{boxalert}
+\textbf{Violation typique.} « Les mots de passe sont-ils robustes et
+changés régulièrement~? »
+
+\smallskip
+\textbf{Règle~:} scinder~: « La politique impose-t-elle au moins douze
+caractères~? » et « Les mots de passe des comptes d'administration ont-ils
+été changés au cours des 90 derniers jours~? ». Chaque question a son
+critère, sa preuve et sa trace.
+\end{boxalert}
+
+\subsection{Exhaustivité, non-redondance, borne cognitive}
+
+Une décomposition est de qualité lorsqu'elle respecte trois conditions. Les
+deux premières sont connues des consultants sous le nom de principe
+« mutuellement exclusif, collectivement exhaustif »~\cite{minto2009pyramid}~;
+la troisième vient de la borne de Miller.
+
+\begin{tableaucours}{L{3.2cm}L{5.0cm}L{4.0cm}}{%
+    \tableauHeader{Condition} &
+    \tableauHeader{Sens} &
+    \tableauHeader{Défaut si elle manque}
+}
+Exhaustivité & Les éléments d'un niveau couvrent entièrement leur parent &
+Une partie du domaine n'est pas auditée \\
+Non-redondance & Deux éléments d'un même niveau ne se recouvrent pas~;
+chaque élément dérive d'un seul parent & Double comptage, conclusions
+contradictoires \\
+Borne cognitive & Aucun élément n'a plus de sept enfants environ & Grille
+illisible, éléments oubliés \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.4. Les trois conditions d'une bonne
+décomposition}\end{center}
+
+\subsection{Vérifier par programme}
+
+Deux des trois conditions se vérifient automatiquement sur la liste des
+codes du classeur. L'exhaustivité, elle, demande un jugement~: on compare
+les sous-domaines au périmètre de la lettre de mission et aux référentiels.
+
+\begin{boxoutils}{Contrôler un arbre de décomposition}
+\begin{lstlisting}[language=Python]
+from collections import Counter
+codes = ["D", "D.1", "D.2", "D.3", "D.4", "D.5",
+         "D.2.1", "D.2.2", "D.2.3", "D.2.4", "D.2.5"]   # extrait
+parent = lambda c: c.rsplit(".", 1)[0] if "." in c else None
+# 1. chaque code a un parent présent (pas d'élément orphelin)
+orphelins = [c for c in codes if parent(c) and parent(c) not in codes]
+# 2. aucun code en double (non-redondance syntaxique)
+doublons = [c for c, n in Counter(codes).items() if n > 1]
+# 3. borne cognitive : au plus 7 enfants par élément
+enfants = Counter(parent(c) for c in codes if parent(c))
+trop = {p: n for p, n in enfants.items() if n > 7}
+print(orphelins, doublons, trop)        # attendu : [] [] {}
+\end{lstlisting}
+\end{boxoutils}
+
+\begin{boxprocedure}
+\textbf{La décomposition revue par le chef de mission.} Pour que la
+décomposition puisse être revue, le classeur indique, pour chaque élément~:
+\begin{itemize}
+    \item son code (par exemple D.4.2), son niveau et son parent~;
+    \item pour chaque contrôle, sa fiche d'assertion complète, critère par
+          critère~;
+    \item pour chaque test, la preuve attendue et la référence du papier de
+          travail où elle sera classée~;
+    \item le référentiel d'où provient chaque critère (procédure interne,
+          COBIT, ISO/IEC~27002, loi)~;
+    \item la date de la revue de la décomposition et le nom du réviseur.
+\end{itemize}
+\end{boxprocedure}
+
+\subsection{Relier la décomposition aux référentiels}
+
+Les référentiels de contrôle fournissent des critères~: la
+mesure~5.18 de l'ISO/IEC~27002:2022 sur les droits d'accès, les pratiques de
+l'objectif DSS05 de COBIT, les principes du COSO
+(Chapitre~\ref{chap:referentiels}). Ils ne fournissent pas la
+décomposition de \emph{votre} mission~: c'est l'auditeur qui la construit, à
+partir de la lettre de mission et de la prise de connaissance, puis va
+chercher dans les référentiels les critères de chaque contrôle.
+
+% ============================================================================
+\section{La Décomposition dans le Classeur O4}
+\label{sec:c09-o4}
+% ============================================================================
+
+Le classeur d'aide à l'audit O4 porte toute la mission. Il compte dix
+onglets~; trois d'entre eux servent à la décomposition.
+
+\begin{tableaucours}{L{3.2cm}L{9.0cm}}{%
+    \tableauHeader{Onglet} &
+    \tableauHeader{Contenu}
+}
+NOTICE & Mode d'emploi, conventions, règle de cotation \\
+MISSION & Référence de la mission, objectifs, période, équipe \\
+PARAMÈTRES & Seuils de lecture ($\mu$, $U$), listes de valeurs \\
+DOMAINES & Liste des domaines et sous-domaines, avec leur responsable \\
+GABARIT A4 & Une ligne par contrôle, sur les huit niveaux~; la fiche
+d'assertion est repliée sous la ligne, un critère par sous-ligne, avec sa
+source, sa question et sa cote \\
+RÉPONDANTS & Personnes interrogées, fonction, date \\
+MESURES & Calcul automatique de $\mu$, $U$, $H$ par sous-domaine et par
+domaine \\
+CYCLES & Comparaison avec la mission précédente (Chapitre~\ref{chap:suivi}) \\
+CONTRADICTOIRE & Position de l'audité et position finale, par constat \\
+SYNTHÈSE & Lecture par domaine, pour le rapport \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.5. Les dix onglets du classeur
+O4}\end{center}
+
+\begin{boxprocedure}
+\textbf{Construire un domaine dans O4, pas à pas}
+\begin{enumerate}
+    \item Dans DOMAINES, créer le domaine (D) et ses sous-domaines (D.1 à
+          D.5), avec un auditeur responsable de chacun.
+    \item Dans GABARIT A4, créer une ligne par contrôle, en renseignant les
+          huit niveaux (le code du contrôle reprend celui du processus~:
+          D.2.1 est le premier contrôle de D.2).
+    \item Sous chaque contrôle, déplier la fiche d'assertion~: une
+          sous-ligne par critère, avec la source et la question.
+    \item Laisser vide la colonne des cotes~: elle se remplit en phase~2.
+    \item Faire revoir l'onglet par le chef de mission, et inscrire la date
+          de revue dans MISSION.
+\end{enumerate}
+\end{boxprocedure}
+
+% ============================================================================
+\section{Application : le Domaine D de LiZbiZ}
+\label{sec:c09-lizbiz}
+% ============================================================================
+
+\subsection{Cinq sous-domaines}
+
+\begin{boxscenario}{Opération LIZBIZ. Décomposer le domaine D}
+AUDIX CONSEIL décompose le domaine~D (contrôle d'accès à l'application
+intégrée) en cinq sous-domaines, eux-mêmes découpés en cinq éléments au
+plus, soit $5 \times 5$ éléments.
+
+\medskip
+\begin{tableaucours}{cL{3.6cm}L{6.8cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{Processus}
+}
+D.1 & Politique et organisation & Politique d'accès~; rôles~; profils
+types~; validation des demandes~; communication \\
+D.2 & Cycle de vie des comptes & Arrivée~; changement de fonction~; départ~;
+comptes génériques~; revue périodique \\
+D.3 & Authentification & Mots de passe~; double authentification~;
+verrouillage~; sessions~; comptes par défaut \\
+D.4 & Comptes à privilèges & Attribution~; revue~; usage tracé~; comptes de
+service~; secours \\
+D.5 & Journalisation et revue & Journaux d'accès~; protection des
+journaux~; revue des anomalies~; conservation~; alertes \\
+\end{tableaucours}
+
+\medskip
+\textbf{Vérification.} Chaque sous-domaine compte cinq processus, sous la
+borne de sept. Les cinq sous-domaines couvrent l'ensemble du contrôle
+d'accès décrit dans la lettre de mission. Le compte générique de
+l'agence de Garoua relève de D.2 et non de D.4~: il n'a pas de privilèges
+d'administration.
+\end{boxscenario}
+
+\subsection{Localiser l'incertitude}
+
+\begin{boxlecture}{Domaine D décomposé}
+Le prologue a lu le domaine~D d'un bloc~: 20 réponses, $\mu = 0{,}65$,
+$U = 0{,}25$, $H \approx 1{,}24$~bit. La décomposition permet de répartir ces
+réponses~: une question par sous-domaine, posée aux quatre mêmes
+interlocuteurs.
+
+\medskip
+\begin{tableaucours}{cL{3.6cm}cccc}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{\OUI{}/\NON{}/\NEK{}} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$}
+}
+D.1 & Politique et organisation & 4 / 0 / 0 & 1,00 & 0,00 & 0,00 \\
+D.2 & Cycle de vie des comptes & 1 / 1 / 2 & 0,25 & 0,50 & 1,50 \\
+D.3 & Authentification & 4 / 0 / 0 & 1,00 & 0,00 & 0,00 \\
+D.4 & Comptes à privilèges & 2 / 0 / 2 & 0,50 & 0,50 & 1,00 \\
+D.5 & Journalisation et revue & 2 / 1 / 1 & 0,50 & 0,25 & 1,50 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Toute l'incertitude du domaine se concentre dans
+trois sous-domaines~: D.2, D.4 et D.5. Les sous-domaines D.1 et D.3 sont
+connus et conformes.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Lu d'un bloc, le domaine paraissait
+uniformément opaque. Décomposé, il montre que la politique et
+l'authentification sont maîtrisées, et que l'ignorance porte sur la vie des
+comptes, les privilèges et les journaux~: c'est là que les tests doivent
+porter. D.1 et D.3, avec une entropie nulle et $U = 0$, sont des
+certitudes~; à l'inverse, une entropie nulle avec $U = 1$ serait une
+ignorance unanime (Chapitre~\ref{chap:conclure}).
+
+\medskip
+\hfill\lecture{0{,}65}{0{,}25}{1{,}24}
+\end{boxlecture}
+
+\begin{boxinfo}
+\textbf{Vérifier l'agrégation.} Les totaux des cinq sous-domaines
+redonnent ceux du domaine~: $4+1+4+2+2 = 13$~\OUI{}, $0+1+0+0+1 = 2$~\NON{},
+$0+2+0+2+1 = 5$~\NEK{}, soit 13/2/5 sur 20. L'entropie du domaine (1,24)
+n'est pas la moyenne des entropies des sous-domaines (0,80)~: elle mesure
+aussi la dispersion \emph{entre} sous-domaines. On recalcule toujours les
+mesures d'un niveau à partir des réponses, jamais à partir des mesures du
+niveau inférieur.
+\end{boxinfo}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Construire la décomposition d'un domaine}
+\begin{enumerate}
+    \item Partir du domaine défini par la lettre de mission, sans
+          l'élargir.
+    \item Découper en cinq à sept sous-domaines, à partir de la prise de
+          connaissance et des référentiels.
+    \item Descendre jusqu'aux contrôles, puis rédiger leurs fiches
+          d'assertion, critère par critère.
+    \item Pour chaque contrôle, définir le test, la preuve attendue et la
+          trace à rechercher.
+    \item Faire revoir la décomposition par le chef de mission avant le
+          terrain, en vérifiant les trois conditions.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Puiser les critères dans les référentiels techniques.} Pour D.3
+(authentification), l'auditeur de sécurité tire ses critères de la
+politique interne, de l'ISO/IEC~27002 (mesure 5.17, information
+d'authentification) et des guides de configuration (Chapitre~\ref{chap:audit-technique}).
+Il note la source de chaque critère dans O4~: sans source, un critère est
+une opinion.
+\end{boxmetier}
+
+% ============================================================================
+\section{Les Limites du Gabarit}
+\label{sec:c09-limites}
+% ============================================================================
+
+Le gabarit n'est pas une loi universelle. Il suppose trois conditions sur le
+domaine audité, dont l'échec appelle une adaptation, et non l'abandon du
+gabarit.
+
+\begin{tableaucours}{L{3.6cm}L{4.4cm}L{4.2cm}}{%
+    \tableauHeader{Condition} &
+    \tableauHeader{Situation où elle manque} &
+    \tableauHeader{Adaptation}
+}
+Richesse suffisante & Un audit de conformité qui vérifie seulement
+l'existence de documents & Gabarit tronqué (domaine, sous-domaine,
+contrôle, test) \\
+Cohérence sémantique & Un domaine nouveau, sans regroupements stables
+(audit d'un système d'IA) & Décomposition provisoire, revue à chaque
+mission \\
+Hétérogénéité bornée & Une mission qui mêle sécurité, finance et risques
+opérationnels & Plusieurs arbres, un par domaine \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~9.6. Conditions de validité et
+adaptations du gabarit}\end{center}
+
+\begin{boiteRemarque}{Et la première version de la méthode~?}
+Une première version de la méthode du cours décomposait l'assertion
+d'audit elle-même en huit niveaux~: domaine, point de contrôle, objectif,
+critère, élément requis, question, risque, conséquence. Ces notions sont
+conservées, mais à leur place~: les deux premières correspondent aux
+niveaux supérieurs du gabarit, l'élément requis devient la preuve, et les
+cinq autres forment la fiche d'assertion de chaque contrôle. Le gabarit
+découpe le \emph{système}~; la fiche porte l'\emph{affirmation}.
+\end{boiteRemarque}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} Le gabarit canonique figure dans le
+programme de l'auditologie (A0, thématique~T2)~\cite{minka2026auditologie}.
+Les conditions de qualité de ce chapitre s'appuient sur des résultats
+publiés~: la borne de Miller~\cite{miller1956}, la quasi-décomposabilité de
+Simon~\cite{simon1962complexity} et le principe d'exclusivité et
+d'exhaustivité~\cite{minto2009pyramid}. Leur formalisation propre à l'audit
+reste un sujet de recherche ouvert.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{On décompose parce que la mémoire de travail est
+          limitée}~: environ sept éléments par niveau~; et parce que les
+          systèmes complexes sont presque décomposables.
+    \item \textbf{Le gabarit canonique} a huit niveaux~: domaine,
+          sous-domaine, processus, activité (ce qui est audité), contrôle,
+          test, preuve, trace (comment on le vérifie).
+    \item \textbf{La fiche d'assertion} donne à chaque contrôle un objectif,
+          un ou plusieurs critères, des questions, un risque et une
+          conséquence~; la cote du contrôle se déduit de celles des
+          critères (un \NON{}, sinon un \NEK{}, sinon \OUI{}).
+    \item \textbf{L'atomicité} interdit «~et~» et «~ou~» dans l'objectif, le
+          critère et la question.
+    \item \textbf{Une bonne décomposition} est exhaustive, non redondante,
+          et respecte la borne cognitive~; deux conditions se vérifient par
+          programme.
+    \item \textbf{Le classeur O4} porte la décomposition~; ses mesures se
+          recalculent à chaque niveau à partir des réponses.
+    \item \textbf{La décomposition localise l'incertitude}~: elle montre où
+          porte l'ignorance, et donc où tester.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: citer les huit
+niveaux~; distinguer preuve et trace~; rédiger une fiche d'assertion à deux
+critères~; composer des cotes~; rendre une assertion atomique~; vérifier
+une décomposition avec le programme du chapitre.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.1. À quel niveau~? \niveaubase}]
+Placez chaque élément dans le niveau du gabarit qui lui correspond.
+\begin{enumerate}[(a)]
+    \item La revue trimestrielle des droits par le responsable de la
+          sécurité.
+    \item Une ligne du journal indiquant la désactivation du compte
+          « afouda » le 3~mai.
+    \item La gestion des sauvegardes.
+    \item L'extraction des comptes actifs au 30~avril, avec son empreinte.
+    \item Rapprocher la liste des départs et celle des comptes actifs.
+    \item Le départ d'un agent.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.2. Rendre atomique \niveaubase}]
+Réécrivez les assertions suivantes pour qu'elles respectent la règle
+d'atomicité, et donnez pour chacune le critère et la preuve attendue.
+\begin{enumerate}[(a)]
+    \item « Les sauvegardes sont réalisées chaque nuit et testées chaque
+          mois. »
+    \item « Les comptes génériques sont interdits ou placés sous la
+          responsabilité d'un titulaire nommé. »
+    \item « S'assurer que les journaux sont conservés et protégés contre la
+          modification. »
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.3. Composer des cotes \niveaubase}]
+Un contrôle a trois critères. Donnez la cote du contrôle pour~: (a)
+\OUI{}, \OUI{}, \NEK{}~; (b) \NEK{}, \NON{}, \OUI{}~; (c) \NEK{}, \NEK{},
+\NEK{}~; (d) \OUI{}, \OUI{}, \OUI{}. Pourquoi la règle ne donne-t-elle
+jamais \OUI{} lorsqu'un critère est \NEK{}~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.4. Une fiche complète \niveaumoyen}]
+Rédigez la fiche d'assertion complète du contrôle D.2.1 (désactivation des
+comptes des agents partis sous 48~heures), avec deux critères, le test, la
+preuve et la trace.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.5. Diagnostiquer une décomposition \niveaumoyen}]
+Un auditeur propose, pour le domaine des sauvegardes~: B.1 politique~; B.2
+sauvegardes quotidiennes~; B.3 journal des sauvegardes du serveur de
+Douala~; B.4 restauration~; B.5 sauvegardes et restaurations testées~; B.6
+« vérifier les sauvegardes ». Identifiez les défauts (niveau, redondance,
+atomicité) et proposez une décomposition corrigée.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.6. Le programme de contrôle \niveaumoyen}]
+Appliquez à la main le programme de la section~\ref{sec:c09-regles} à la
+liste~: D, D.1, D.2, D.2.1, D.2.2, D.3.1, D.4, D.4.1, D.4.1. Qu'affiche-t-il~?
+Quelle condition le programme ne peut-il pas vérifier, et pourquoi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.7. L'agrégation \niveaumoyen}]
+Recalculez l'entropie du domaine~D à partir des totaux 13/2/5, puis la
+moyenne des entropies des cinq sous-domaines. Expliquez l'écart.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.8. Construire dans O4 \niveaumoyen}]
+Décrivez les lignes que vous créez dans l'onglet GABARIT A4 pour le
+contrôle D.4.2, en précisant pour chacune les colonnes renseignées et
+celles laissées vides avant le terrain.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.9. Décomposer le domaine des stocks \niveauexpert}]
+La seconde zone d'audit de LiZbiZ est la gestion des stocks dans
+l'application intégrée.
+\begin{enumerate}[(a)]
+    \item Proposez cinq sous-domaines et, pour l'un d'eux, ses processus et
+          ses activités.
+    \item Rédigez la fiche d'assertion complète de deux contrôles, dont celui
+          qui porte sur la validation des ajustements de stock.
+    \item Vérifiez les trois conditions de qualité de votre décomposition.
+    \item Expliquez où vous placeriez le fichier tableur de suivi des stocks
+          tenu à Garoua.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~9.10. Adapter le gabarit \niveauexpert}]
+La Chambre des comptes audite la conformité des paiements de l'ANPP au
+régime financier de l'État~: pour chaque paiement, il s'agit de vérifier
+l'existence de quatre pièces (engagement, liquidation, ordonnancement,
+visa). Quelle adaptation du gabarit proposez-vous, et pourquoi~? Rédigez
+la décomposition et la fiche d'assertion d'un contrôle.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item G.~Miller, \textit{The Magical Number Seven, Plus or Minus
+          Two}~\cite{miller1956}~: l'article fondateur sur la mémoire de
+          travail.
+    \item H.~Simon, \textit{The Architecture of
+          Complexity}~\cite{simon1962complexity}~: pourquoi les systèmes
+          complexes se décomposent.
+    \item B.~Minto, \textit{The Pyramid Principle}~\cite{minto2009pyramid}~:
+          la décomposition d'un problème en éléments exclusifs et
+          exhaustifs.
+    \item A0, \textit{Vers l'auditologie}~\cite{minka2026auditologie}~: le
+          gabarit canonique dans le programme de recherche.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La décomposition dit quoi vérifier et comment. Il
+reste à aller chercher les réponses et les preuves sur le terrain. Le
+Chapitre~\ref{chap:preuve} présente l'instrument \OUI{}, \NON{} ou \NEK{},
+les entretiens, les tests, l'échantillonnage et les papiers de travail.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C06
+Chapitre 6 : La fraude dans et par les systèmes d'information
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Qu'est-ce qui distingue la fraude de l'erreur ?
+      a) Le montant
+      b) L'intention, donc la dissimulation
+      c) La fréquence
+      d) Le service concerné
+
+ 2. À quelle famille appartient un vol de marchandises masqué par un ajustement de stock ?
+      a) Corruption
+      b) Fraude à l'information financière
+      c) Détournement d'actifs
+      d) Erreur de saisie
+
+ 3. À quelle famille appartient un stock surévalué pour améliorer le résultat ?
+      a) Fraude à l'information financière
+      b) Détournement d'actifs
+      c) Corruption
+      d) Erreur
+
+ 4. Quels sont les trois éléments du triangle de la fraude ?
+      a) Menace, vulnérabilité, impact
+      b) Planifier, réaliser, vérifier
+      c) Inhérent, contrôle, détection
+      d) Pression, opportunité, rationalisation
+
+ 5. Sur quel élément du triangle l'auditeur et le contrôleur interne agissent-ils surtout ?
+      a) La pression
+      b) L'opportunité
+      c) La rationalisation
+      d) La capacité
+
+ 6. Quel élément certains auteurs ont-ils ajouté au triangle de la fraude ?
+      a) L'impact
+      b) La menace
+      c) La capacité
+      d) La matérialité
+
+ 7. Pourquoi l'auditeur doit-il rester imprévisible ?
+      a) Parce qu'un programme de tests connu d'avance indique au fraudeur où ne pas laisser de traces
+      b) Pour gagner du temps
+      c) Pour réduire les coûts
+      d) Parce que la loi l'impose
+
+ 8. Quel signal dans les données évoque un fractionnement ?
+      a) Une connexion après le départ
+      b) Des ajustements en fin de mois
+      c) Un fournisseur sans adresse
+      d) Des paiements répétés juste sous le seuil de validation
+
+ 9. Quel contrôle préventif répond au schéma du compte dormant ?
+      a) La double validation des RIB
+      b) La revue périodique des comptes
+      c) Le contrôle des cumuls par fournisseur
+      d) La validation des ajustements
+
+10. Quel signal évoque une modification frauduleuse des coordonnées bancaires ?
+      a) Un ajustement de stock positif
+      b) Une réception sans bon de transport
+      c) Un changement de RIB suivi d'un paiement dans les jours suivants
+      d) Une connexion le dimanche
+
+11. Qui doit examiner les journaux des comptes d'administration ?
+      a) Une personne indépendante, hors de leur portée
+      b) L'administrateur lui-même
+      c) Le prestataire informatique
+      d) Personne
+
+12. Quel principe du COSO 2013 demande de prendre en compte le risque de fraude ?
+      a) Le principe 11
+      b) Le principe 2
+      c) Le principe 17
+      d) Le principe 8
+
+13. Quels organismes ont publié en 2016 le guide de gestion du risque de fraude ?
+      a) L'IIA et l'ISACA
+      b) Le COSO et l'ACFE
+      c) L'ISO et l'IEC
+      d) L'INTOSAI et l'IDI
+
+14. Lequel de ces volets ne fait PAS partie des cinq volets du guide COSO-ACFE ?
+      a) Gouvernance
+      b) Évaluation du risque de fraude
+      c) Certification ISO
+      d) Investigation et correction
+
+15. Scénario. Combien LiZbiZ a-t-elle versé au fournisseur TRANSLOG SERVICES ?
+      a) 112,7 millions FCFA
+      b) 148 millions FCFA
+      c) 186 millions FCFA
+      d) 38 millions FCFA
+
+16. Scénario. Quelle part des ajustements négatifs de M. FOUDA a été saisie le dernier jour ouvré du mois ?
+      a) 23 %
+      b) 38 %
+      c) 52 %
+      d) 71 %
+
+17. Scénario. Comment est cotée la part de l'écart de stock qui ne peut être rattachée à aucune opération ?
+      a) OUI
+      b) NEK
+      c) NON
+      d) Elle n'est pas cotée
+
+18. Scénario. À l'entrepôt de Douala, comment évolue le taux de NEK entre l'auto-évaluation et l'entretien formel ?
+      a) De 40 % à 5 %
+      b) Il reste stable
+      c) De 5 % à 40 %
+      d) De 5 % à 100 %
+
+19. Que compare le SUI (Strategic Use Index) ?
+      a) La distribution des NEK entre questions à fort et à faible enjeu
+      b) Les montants des paiements
+      c) Les dates des ajustements
+      d) Les droits des utilisateurs
+
+20. Que doit faire l'auditeur devant des indices sérieux de fraude ?
+      a) Interroger les personnes en cause
+      b) Qualifier pénalement les faits dans son rapport
+      c) Poursuivre seul ses investigations
+      d) Conserver les preuves et informer par écrit le commanditaire
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une erreur laisse des traces au hasard, une fraude cherche à effacer les siennes.
+      Vrai / Faux
+
+22. Le triangle de la fraude est issu des travaux de Donald Cressey.
+      Vrai / Faux
+
+23. L'auditeur agit d'abord sur la pression financière des employés.
+      Vrai / Faux
+
+24. L'informatique facilite la fraude mais en garde la trace.
+      Vrai / Faux
+
+25. Le canal de signalement doit passer par la hiérarchie directe.
+      Vrai / Faux
+
+26. Les constatations sur TRANSLOG SERVICES prouvent à elles seules la fraude.
+      Vrai / Faux
+
+27. Un taux de NEK qui dépend de l'enjeu est une preuve de dissimulation.
+      Vrai / Faux
+
+28. L'auditeur doit éviter toute qualification pénale dans ses constatations.
+      Vrai / Faux
+
+29. Le commissaire aux comptes peut régler l'affaire en interne sans en informer le ministère public.
+      Vrai / Faux
+
+30. Ne pas chercher systématiquement la fraude autorise à ignorer un indice rencontré.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Un acte intentionnel qui recourt à la tromperie pour obtenir un avantage indu est une ______.
+
+32. Le criminologue à l'origine du triangle de la fraude est Donald ______.
+
+33. L'élément du triangle exprimé par « je le rendrai » est la ______.
+
+34. Payer plusieurs fois juste sous un seuil de validation s'appelle le ______.
+
+35. Le compte d'un agent parti, encore actif, est un compte ______.
+
+36. Le sigle de l'association des examinateurs certifiés de fraude est ______.
+
+37. Le seuil de double validation des paiements chez LiZbiZ est de ______ millions FCFA.
+
+38. Le sigle anglais de l'indice d'usage stratégique de NEK est ______.
+
+39. L'auditeur conserve les extractions avec leur empreinte ______.
+
+40. L'auditeur informe par écrit le ______ désigné par la lettre de mission.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

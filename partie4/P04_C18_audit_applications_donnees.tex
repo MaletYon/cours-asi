@@ -1,0 +1,608 @@
+% ============================================================================
+% Fichier  : partie4/P04_C14_audit_application.tex
+% Titre    : Auditer une Application en Service
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C14, repris et développé pour INF3226
+% ============================================================================
+% Sources : guide d'audit des SI du CHAI (2014), fiche 3.4 « Audit des
+% applications informatiques en service » (deux visées : fiabilité et
+% sécurité / efficacité et performance ; points de contrôle sur les
+% entrées, rejets, traitements, sorties, interfaces, données sensibles,
+% piste d'audit), paraphrasée ; TP « application » du cours Audit_SI de
+% l'auteur (tests SQL : doublons, équilibre des journaux, seuil de
+% validation), repris et mis en cohérence (OUI/NON/NEK, observation en
+% sept éléments). Faits TRANSLOG SERVICES repris du chapitre 4.
+% ============================================================================
+
+\chapter{Auditer une Application en Service}
+\label{chap:audit-applications}
+\chaptermark{Auditer une application}
+
+\epigraph{%
+    « Le contrôle programmé dit ce que l'application devrait faire.\\
+    Les données disent ce qu'elle a fait. »%
+}{Adage des auditeurs de données}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise du Chapitre~\ref{chap:controle-interne} (contrôles
+    d'application), du Chapitre~\ref{chap:preuve} (preuves et extractions)
+    et du Chapitre~\ref{chap:conclure} (observation)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer l'audit de fiabilité et l'audit d'efficacité d'une
+          application.
+    \item Décomposer l'audit d'une application selon le modèle
+          entrées-traitements-sorties, complété des interfaces et des
+          données permanentes.
+    \item Tester un contrôle d'application, après avoir vérifié les
+          contrôles généraux qui le protègent.
+    \item Réaliser des tests substantifs sur les données~: doublons,
+          équilibre des journaux, seuils, séquences, rapprochements.
+    \item Rédiger l'observation d'un audit d'application.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : l'application fait-elle ce qu'on croit~?}
+% ============================================================================
+
+L'application intégrée de LiZbiZ gère les expéditions, l'entreposage, la
+facturation et la comptabilité. Le DAF, Mme~MBALLA, assure que « le
+système bloque tout »~: les doublons, les montants au-dessus de
+5~millions FCFA sans double validation, les factures sans expédition. Le
+Chapitre~\ref{chap:fraude} a pourtant montré 23~paiements de
+4,9~millions FCFA à un même fournisseur.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Décomposer l'audit d'une application (section~\ref{sec:c18-decomposer}).
+    \item Tester les contrôles d'application (section~\ref{sec:c18-controles}).
+    \item Les contrôles des entrées, en détail (section~\ref{sec:c18-entrees}).
+    \item Interroger les données (section~\ref{sec:c18-donnees}).
+    \item Analyser les données en Python (section~\ref{sec:c18-python}).
+    \item Rédiger les observations (section~\ref{sec:c18-observations}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Décomposer l'Audit d'une Application}
+\label{sec:c18-decomposer}
+% ============================================================================
+
+\subsection{Deux visées}
+
+Le guide du CHAI distingue deux visées~\cite{chai2014guide}~:
+\begin{itemize}
+    \item l'audit de \textbf{fiabilité et de sécurité}, qui apprécie le
+          contrôle interne de l'application et la validité des données
+          qu'elle traite et restitue~;
+    \item l'audit d'\textbf{efficacité et de performance}, qui apprécie son
+          adéquation aux besoins, sa contribution à la valeur, sa
+          rentabilité et sa pérennité.
+\end{itemize}
+Ce chapitre traite surtout de la première. La seconde rejoint l'audit des
+projets (Chapitre~\ref{chap:audit-projets}). Un signal les relie
+cependant~: lorsque les utilisateurs tiennent des tableurs en parallèle de
+l'application, c'est souvent qu'elle ne répond pas à leurs besoins, et ces
+tableurs échappent à tous ses contrôles.
+
+\subsection{Entrées, traitements, sorties, interfaces, paramètres}
+
+Une application reçoit des données, les traite et produit des résultats.
+Chaque étape porte ses risques et ses contrôles. Deux éléments complètent
+ce modèle classique~: les \emph{interfaces}, par où les données passent
+d'un module ou d'une application à l'autre, et les \emph{données
+permanentes et paramètres} (fiches fournisseurs, barèmes, seuils), dont
+une seule modification change le traitement de milliers d'opérations.
+
+\begin{tableaucours}{cL{2.8cm}L{4.4cm}L{4.0cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{Risques} &
+    \tableauHeader{Contrôles attendus}
+}
+AP.1 & Entrées & Saisie erronée, incomplète, en double, non autorisée &
+Contrôles de format et de vraisemblance~; détection des doublons~;
+autorisation~; rejets conservés et recyclés \\
+AP.2 & Traitements & Calcul faux, traitement incomplet, écriture
+déséquilibrée & Équilibre automatique des écritures~; totaux de contrôle
+de fin de journée~; comptes rendus des traitements par lots \\
+AP.3 & Sorties & État incomplet, diffusé à la mauvaise personne & Séquence
+des documents~; validation et diffusion contrôlées des états \\
+AP.4 & Interfaces & Données perdues ou altérées entre modules &
+Rapprochement des volumes et des montants entre modules~; mêmes contrôles
+pour les fichiers que pour la saisie \\
+AP.5 & Données permanentes et paramètres & Fournisseur fictif, seuil
+modifié & Création des tiers sous double contrôle~; piste d'audit des
+paramètres (auteur, date, valeur avant et après) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~18.1. Décomposition de l'audit du
+cycle achats-paiements (d'après la fiche 3.4 du guide du CHAI)}\end{center}
+
+Les habilitations, sixième volet du guide du CHAI pour une application,
+relèvent du domaine~D (Chapitre~\ref{chap:decomposition}) et de la matrice
+des droits (Chapitre~\ref{chap:controle-interne}, ACSI-LAB-02)~: on ne les
+recompte pas ici, mais on en tire les conséquences.
+
+% ============================================================================
+\section{Tester les Contrôles d'Application}
+\label{sec:c18-controles}
+% ============================================================================
+
+\subsection{Les contrôles généraux d'abord}
+
+Le Chapitre~\ref{chap:controle-interne} l'a établi~: un contrôle
+d'application ne vaut que si les contrôles généraux qui le protègent sont
+efficaces. Avant de tester le blocage des paiements de plus de 5~millions,
+l'auditeur vérifie qui peut modifier ce seuil, et si la modification
+laisse une trace. Chez LiZbiZ, le seuil est stocké dans une table de
+paramètres que M.~KOUNOU peut modifier directement, et cette table n'a
+aucune piste d'audit.
+
+\subsection{Trois façons de tester un contrôle programmé}
+
+\begin{tableaucours}{L{2.8cm}L{5.2cm}L{4.2cm}}{%
+    \tableauHeader{Test} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Exemple chez LiZbiZ}
+}
+Inspection du paramétrage (DOC) & Lire la configuration du contrôle dans
+l'application & Le seuil de double validation vaut 5~000~000 FCFA \\
+Ré-exécution (TEST) & Saisir une transaction d'essai, en environnement de
+recette, qui doit être rejetée & Un paiement de 5,1~millions est bloqué
+sans seconde signature \\
+Test sur les données (TEST) & Chercher dans la production les opérations
+que le contrôle aurait dû empêcher & Paiements validés par une seule
+personne au-dessus du seuil~; paiements juste sous le seuil \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~18.2. Tester un contrôle programmé}\end{center}
+
+Les deux premiers tests établissent que le contrôle est \emph{conçu} et
+\emph{en place} aujourd'hui. Seul le troisième dit s'il a \emph{fonctionné}
+sur la période, puisqu'un paramètre a pu être modifié puis rétabli. C'est
+pourquoi le test sur les données est le plus probant.
+
+\begin{boxalert}
+\textbf{Violation typique.} Ré-exécuter un contrôle en production, avec une
+vraie transaction, « pour voir ».
+
+\smallskip
+\textbf{Règle~:} la ré-exécution se fait en environnement de recette, sur
+autorisation écrite, avec une configuration identique à la production
+(vérifiée). En production, l'auditeur lit et extrait~; il ne saisit pas.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Contrôles des Entrées, en Détail}
+\label{sec:c18-entrees}
+% ============================================================================
+
+La plupart des anomalies naissent à la saisie. Les contrôles des entrées
+se classent en six types, que l'auditeur reconnaît dans le paramétrage.
+
+\begin{tableaucours}{L{3.0cm}L{4.6cm}L{4.6cm}}{%
+    \tableauHeader{Type} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Exemple (achats de LiZbiZ)}
+}
+Format & Le champ respecte une syntaxe & Le RIB a la longueur et la clé
+attendues \\
+Plage & La valeur est dans des bornes & Quantité commandée entre 1 et
+10~000 \\
+Existence & La valeur renvoie à une donnée de référence & Le fournisseur
+existe et n'est pas bloqué \\
+Cohérence & Deux champs sont compatibles & Date de facture postérieure à
+la date de commande \\
+Unicité & Pas de doublon & Couple fournisseur et numéro de facture unique
+(après normalisation) \\
+Total de contrôle & Un total calculé est comparé à un total saisi &
+Total d'un lot de factures comparé au bordereau \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~18.3. Les six types de contrôles
+des entrées}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Constater que l'application refuse un doublon
+exact de numéro de facture, et conclure que les doublons sont impossibles.
+
+\smallskip
+\textbf{Règle~:} un contrôle d'unicité ne vaut que sur des données
+normalisées. « FA-102 », « FA102 » et « fa 102 » sont trois valeurs pour
+l'application, une seule facture pour le fournisseur~: les six doublons
+de LiZbiZ (31,4~millions FCFA) en sont la preuve.
+\end{boxalert}
+
+% ============================================================================
+\section{Interroger les Données}
+\label{sec:c18-donnees}
+% ============================================================================
+
+\subsection{Les techniques d'audit assistées par ordinateur}
+
+Les tests substantifs sur les données portent sur la population entière,
+et non sur un échantillon~: ils suppriment le risque d'échantillonnage
+(Chapitre~\ref{chap:preuve}). Ils reposent sur une extraction tracée, avec
+lettre et empreinte. Le Chapitre~\ref{chap:audit-continu} présentera les
+outils~; voici les cinq tests de base, en SQL, sur les tables
+\texttt{PAIEMENT}, \texttt{ECRITURE} et \texttt{EXPEDITION} d'une copie de
+la base.
+
+\paragraph{Doublons.} Un même fournisseur, un même montant, une même
+facture, payés deux fois.
+\begin{lstlisting}[language=SQL]
+SELECT id_fournisseur, montant, ref_facture, COUNT(*) AS nb
+FROM PAIEMENT
+GROUP BY id_fournisseur, montant, ref_facture
+HAVING COUNT(*) > 1;
+\end{lstlisting}
+
+Le contrôle de l'application compare souvent la référence exacte. Une
+variante («~FA-102~» puis «~FA102~») passe~: l'auditeur normalise donc les
+références (majuscules, sans espaces ni tirets) avant de grouper.
+
+\paragraph{Équilibre des journaux.} Total des débits égal au total des
+crédits, par pièce et par journal.
+\begin{lstlisting}[language=SQL]
+SELECT code_journal, num_piece, SUM(debit) AS d, SUM(credit) AS c
+FROM ECRITURE
+GROUP BY code_journal, num_piece
+HAVING SUM(debit) <> SUM(credit);
+\end{lstlisting}
+
+\paragraph{Seuils.} Opérations au-dessus du seuil validées par une seule
+personne, et opérations concentrées juste sous le seuil.
+\begin{lstlisting}[language=SQL]
+SELECT id_fournisseur, COUNT(*) AS nb, SUM(montant) AS total
+FROM PAIEMENT
+WHERE montant >= 4500000 AND montant < 5000000
+GROUP BY id_fournisseur
+ORDER BY nb DESC;
+\end{lstlisting}
+
+\paragraph{Séquences.} Numéros de factures manquants ou en double dans la
+séquence.
+
+\paragraph{Rapprochements entre modules.} Chaque expédition livrée a-t-elle
+une facture~? C'est le test de l'interface entre l'expédition et la
+facturation.
+\begin{lstlisting}[language=SQL]
+SELECT e.num_expedition, e.date_livraison
+FROM EXPEDITION e
+LEFT JOIN FACTURE f ON f.num_expedition = e.num_expedition
+WHERE e.statut = 'LIVREE' AND f.num_facture IS NULL;
+\end{lstlisting}
+
+\subsection{Ce que disent les données de LiZbiZ}
+
+\begin{boxscenario}{Opération LIZBIZ. Les cinq tests de 2025}
+\textbf{Population.} 4~812~paiements fournisseurs, 61~240~lignes
+d'écritures, 18~340~expéditions livrées (extraction du 15~mai~2026, empreinte
+au papier de travail PT-21).
+
+\medskip
+\textbf{Résultats.}
+\begin{itemize}
+    \item \emph{Doublons}~: 6~paiements payés deux fois, pour 31,4~millions
+          FCFA, tous avec une référence de facture écrite de deux façons.
+    \item \emph{Équilibre}~: aucune pièce déséquilibrée.
+    \item \emph{Seuils}~: 41~paiements entre 4,5 et 5~millions, dont 23 au
+          seul fournisseur TRANSLOG SERVICES (Chapitre~\ref{chap:fraude})~;
+          aucun paiement au-dessus du seuil sans seconde signature.
+    \item \emph{Séquences}~: la numérotation des factures est continue.
+    \item \emph{Rapprochement}~: 14~expéditions livrées sans facture, pour un
+          chiffre d'affaires estimé à 9,8~millions FCFA.
+\end{itemize}
+
+\medskip
+\textbf{Analyse} (confiance élevée sur les faits, moyenne sur les causes).
+Le contrôle du seuil a fonctionné au sens strict~: aucun paiement ne l'a
+dépassé sans seconde signature. Il a été contourné par fractionnement.
+Le contrôle des doublons existe, mais il est trop étroit. L'interface
+expéditions-facturation perd des opérations.
+\end{boxscenario}
+
+\subsection{Les tests lèvent l'incertitude}
+
+\begin{boxlecture}{Cycle achats-paiements}
+Avant les tests sur les données, AUDIX CONSEIL a coté les vingt contrôles
+du cycle (AP.1 à AP.5) par inspection et entretiens~: 12~\OUI{}, 3~\NON{},
+5~\NEK{}. Les cinq \NEK{} portaient sur ce que seules les données pouvaient
+établir~: la détection effective des doublons, l'équilibre des écritures,
+la continuité des séquences, l'exhaustivité de l'interface
+expéditions-facturation et la piste d'audit des paramètres.
+
+\medskip
+\begin{tableaucours}{L{4.0cm}cccccc}{%
+    \tableauHeader{Moment} &
+    \tableauHeader{\OUI{}} & \tableauHeader{\NON{}} & \tableauHeader{\NEK{}} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$}
+}
+Inspection et entretiens & 12 & 3 & 5 & 0,60 & 0,25 & 1,35 \\
+Après les tests sur données & 14 & 6 & 0 & 0,70 & 0,00 & 0,88 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Deux \NEK{} sont levés en \OUI{} (équilibre,
+séquences) et trois en \NON{} (doublons, interface, piste d'audit des
+paramètres).
+
+\medskip
+\textbf{Analyse} (confiance élevée). Les tests sur données ont fait passer
+le cycle d'une conformité opaque à une conformité claire, avec six
+non-conformités connues. Le taux de conformité a augmenté \emph{et} le
+nombre de \NON{} a doublé~: c'est ce que produit la levée de
+l'incertitude.
+
+\medskip
+\hfill\lecture{0{,}70}{0{,}00}{0{,}88}
+\end{boxlecture}
+
+% ============================================================================
+\section{Analyser les Données en Python}
+\label{sec:c18-python}
+% ============================================================================
+
+Le langage SQL suffit pour la plupart des tests. Python devient utile
+lorsqu'il faut normaliser des valeurs, enchaîner plusieurs fichiers ou
+produire un graphique. La bibliothèque \texttt{pandas} manipule des
+tableaux comme une base de données.
+
+\begin{boxoutils}{Doublons après normalisation, en Python}
+\begin{lstlisting}[language=Python]
+import pandas as pd, re
+p = pd.read_csv("paiements_fournisseurs_2025.csv", sep=";")
+# normaliser le numéro de facture : majuscules, sans espace ni tiret
+p["ref_norm"] = p["ref_facture"].str.upper().map(
+    lambda s: re.sub(r"[^A-Z0-9]", "", s))
+cle = ["id_fournisseur", "ref_norm", "montant_fcfa"]
+doublons = p[p.duplicated(cle, keep=False)].sort_values(cle)
+print(len(doublons) // 2, doublons["montant_fcfa"].sum() // 2)
+\end{lstlisting}
+\end{boxoutils}
+
+\begin{boxoutils}{Ruptures de séquence, en SQL}
+\begin{lstlisting}[language=SQL]
+-- numéros de bons de réception manquants dans la séquence
+SELECT numero + 1 AS debut_trou,
+       suivant - 1 AS fin_trou
+FROM (SELECT numero,
+             LEAD(numero) OVER (ORDER BY numero) AS suivant
+      FROM   receptions)
+WHERE suivant - numero > 1;
+\end{lstlisting}
+\end{boxoutils}
+
+\begin{boxprocedure}
+\textbf{Rendre une analyse reproductible}
+\begin{enumerate}
+    \item Calculer l'empreinte des fichiers reçus avant toute ouverture
+          (Chapitre~\ref{chap:preuve}).
+    \item Écrire l'analyse dans un script, et non par manipulations à la
+          main dans un tableur.
+    \item Conserver le script, sa version, et sa sortie dans les papiers de
+          travail.
+    \item Vérifier les totaux de contrôle~: nombre de lignes et montant total
+          lus doivent égaler ceux de la lettre d'extraction.
+\end{enumerate}
+\end{boxprocedure}
+
+% ============================================================================
+\section{Rédiger les Observations}
+\label{sec:c18-observations}
+% ============================================================================
+
+Une observation d'audit d'application relie un fait tiré des données à un
+contrôle défaillant, et la recommandation porte sur le contrôle, non sur
+les seules opérations découvertes. Récupérer les 31,4~millions ne suffit
+pas~: il faut que le prochain doublon soit bloqué.
+
+\begin{boxobjet}{AP.1.3~: Observation}
+\textbf{1. Norme~:} procédure des paiements fournisseurs de LiZbiZ~:
+« une facture ne peut être payée qu'une fois »~; contrôle programmé de
+détection des doublons.
+
+\textbf{2. Constatation~:} sur 4~812~paiements de 2025, 6 factures ont été
+payées deux fois, pour 31,4~millions FCFA. Dans les six cas, la référence
+de la facture est saisie de deux façons («~FA-102~» et «~FA102~»).
+Test sur la population entière, papier de travail PT-22. Cote \NON{}.
+
+\textbf{3. Risques~:} paiement indu~; perte financière~; usage du défaut
+pour détourner des fonds.
+
+\textbf{4. Contradictoire~:} le DAF indique, le 3~juin~2026, que quatre des
+six doublons ont été récupérés par avoir en 2025~; pièces remises.
+
+\textbf{5. Analyse} (confiance élevée)~: le contrôle compare la référence
+exacte. Il ne normalise pas la saisie et ne compare pas le fournisseur, le
+montant et la date. La récupération de quatre doublons montre que le
+défaut était connu de la comptabilité, sans être remonté.
+
+\textbf{6. Conclusion~:} le contrôle de détection des doublons n'est pas
+efficace. Deux paiements, 10,6~millions FCFA, restent à récupérer.
+
+\textbf{7. Recommandations~:} normaliser les références avant comparaison
+et bloquer tout paiement de même fournisseur et même montant dans un
+délai de 60~jours sans validation spécifique~; revue mensuelle des
+doublons potentiels par le contrôle interne~; récupération des deux
+paiements restants.
+\end{boxobjet}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Installer les tests sur données dans le contrôle permanent}
+\begin{enumerate}
+    \item Obtenir un accès en lecture seule à une copie de la base, mise à
+          jour chaque mois.
+    \item Programmer les cinq tests de base~: doublons, équilibre, seuils,
+          séquences, rapprochements.
+    \item Fixer pour chaque test un seuil d'alerte et un destinataire.
+    \item Documenter chaque anomalie~: explication, correction, ou
+          escalade.
+    \item Remettre les résultats à l'auditeur~: ils deviennent des preuves
+          de fonctionnement du contrôle permanent.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Le commissaire aux comptes.}
+\textbf{Tirer parti des tests de l'auditeur SI}
+\begin{enumerate}
+    \item Vérifier l'extraction~: source, date, empreinte, exhaustivité
+          rapprochée des totaux comptables.
+    \item Reprendre les doublons non récupérés et les expéditions non
+          facturées dans l'évaluation des anomalies.
+    \item Apprécier si le fractionnement des paiements de TRANSLOG SERVICES
+          appelle les diligences du Chapitre~\ref{chap:droit}.
+\end{enumerate}
+\end{boxinfo}
+
+% ============================================================================
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Deux visées}~: fiabilité et sécurité, efficacité et
+          performance~; un tableur parallèle est un signal pour les deux.
+    \item \textbf{Cinq sous-domaines}~: entrées, traitements, sorties,
+          interfaces, données permanentes et paramètres~; les habilitations
+          relèvent du domaine~D.
+    \item \textbf{Les contrôles généraux d'abord}~: un seuil modifiable sans
+          trace ne protège rien.
+    \item \textbf{Inspection et ré-exécution} montrent qu'un contrôle est en
+          place~; seul le test sur les données dit qu'il a fonctionné.
+    \item \textbf{Cinq tests de base}~: doublons, équilibre, seuils,
+          séquences, rapprochements entre modules.
+    \item \textbf{Les tests sur données lèvent l'incertitude}~: le taux de
+          conformité peut monter alors que les \NON{} augmentent.
+    \item \textbf{Les contrôles des entrées} (format, plage, existence, cohérence, unicité, total) se testent sur des données normalisées~; une analyse de données est un script conservé, pas une manipulation de tableur.
+\end{itemize}
+\end{boxresume}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.1. Rattacher les contrôles \niveaubase}]
+Rattachez chaque contrôle à un sous-domaine (AP.1 à AP.5).
+\begin{enumerate}[(a)]
+    \item Les factures rejetées sont conservées et recyclées sous cinq jours.
+    \item Toute création de fournisseur est validée par une seconde personne.
+    \item Les totaux de fin de journée sont rapprochés du journal.
+    \item Les états de paiement ne sont transmis qu'à la trésorerie.
+    \item Le nombre de factures transmises par le module de facturation est
+          rapproché du nombre reçu par la comptabilité.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.2. Écrire les requêtes \niveaumoyen}]
+Sur les tables \texttt{PAIEMENT} et \texttt{FOURNISSEUR} de LiZbiZ~:
+\begin{enumerate}[(a)]
+    \item Écrivez la requête qui trouve les paiements au-dessus de
+          5~millions validés par la même personne que celle qui les a
+          saisis.
+    \item Écrivez la requête qui trouve les fournisseurs dont les
+          coordonnées bancaires sont identiques à celles d'un salarié.
+    \item Pourquoi faut-il normaliser les références de facture avant de
+          chercher les doublons~?
+    \item Quelle cotation retenir pour le contrôle des doublons si
+          l'extraction ne couvre que neuf mois de l'exercice~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.3. L'interface expéditions-facturation \niveauexpert}]
+Reprenez le résultat~: 14~expéditions livrées sans facture, 9,8~millions
+FCFA.
+\begin{enumerate}[(a)]
+    \item Rédigez l'observation en sept éléments.
+    \item Quelles hypothèses sur la cause faut-il vérifier (défaut technique,
+          expéditions gratuites non documentées, fraude), et avec quelles
+          preuves~?
+    \item Proposez un contrôle permanent de l'interface, et sa fiche
+          d'assertion.
+    \item Quel indicateur suivrait l'efficacité de ce contrôle~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.4. Les types de contrôles \niveaubase}]
+Classez selon le Tableau~18.3~: (a) refus d'une facture datée de 2027~;
+(b) refus d'un fournisseur inconnu~; (c) refus d'un RIB de 20~caractères au
+lieu de 23~; (d) comparaison du total d'un lot avec son bordereau.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.5. Une requête à écrire \niveaumoyen}]
+Écrivez la requête qui liste les factures payées sans bon de réception
+correspondant (tables \texttt{factures}, \texttt{receptions},
+\texttt{paiements}). Quels faux positifs attendez-vous (prestations de
+service, acomptes)~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.6. Normaliser \niveaumoyen}]
+Expliquez pourquoi la normalisation du script Python retrouve des doublons
+que l'application ne voit pas. Quel risque inverse crée-t-elle (deux
+factures différentes rendues identiques)~? Comment l'écarter~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.7. La séquence \niveaumoyen}]
+La requête des ruptures de séquence trouve un trou de 12 numéros en
+décembre. Que faites-vous avant de conclure~? Quelles explications
+légitimes peut-il y avoir~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.8. Les paramètres \niveaumoyen}]
+Le seuil de double validation de 5~millions est stocké dans une table de
+paramètres. Rédigez la fiche d'assertion du contrôle « le seuil n'est
+modifié que par une procédure autorisée » et le test associé.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.9. Reproductibilité \niveauexpert}]
+Un auditeur a trouvé les 41~paiements entre 4,5 et 5~millions par un
+filtre dans un tableur, sans conserver le fichier filtré. Le contradictoire
+conteste le chiffre. Que fallait-il conserver, et comment refaites-vous le
+test de façon opposable~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~18.10. Les factures sans expédition \niveauexpert}]
+Sur 18~377~expéditions, 37 sont annulées et 14 livrées sans facture, pour
+9,8~millions FCFA. Rédigez l'observation en sept éléments et proposez un
+contrôle d'application qui empêcherait le cas.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: décomposer une
+application en entrées, traitements, sorties, interfaces et paramètres~;
+tester un contrôle programmé~; classer un contrôle des entrées~; écrire les
+requêtes de doublons, de seuils et de séquences~; rendre une analyse
+reproductible.
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item INTOSAI, GUID~5100~\cite{intosai2019guid5100}~: les techniques
+          d'audit assistées par ordinateur.
+    \item Le guide du CHAI~\cite{chai2014guide}~: les fiches « applications
+          en service ».
+    \item M.~Nigrini~\cite{nigrini2012benford}~: l'analyse de données
+          pour l'audit.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Une application en service a d'abord été un projet.
+Le Chapitre~\ref{chap:audit-projets} audite les projets informatiques~:
+enjeux, pilotage, tests, mise en production, et les signaux d'un projet en
+dérive.
+\end{boxinfo}

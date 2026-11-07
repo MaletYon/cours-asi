@@ -1,0 +1,507 @@
+% ============================================================================
+% Fichier  : partie4/P04_C25_audit_conformite.tex
+% Titre    : Auditer la Conformité
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C12 (paiements de l'ANPP, 40 = 29/6/5, µ 0,73 U 0,13 H 1,12 ;
+% 4 agents payés après départ pour 1 424 000 FCFA, 1 ordonnateur =
+% comptable, 1 paiement sans visa ; 5 pièces « aux archives ») et ACSI C10
+% (relation tripartite, ISSAI 400.35 ; règle de référence ISSAI 4000.14).
+% Sources : INTOSAI ISSAI 100, 400, 4000 ; IDI, manuel d'audit de
+% conformité (2021) ; ISO 37301:2021 (systèmes de management de la
+% conformité) ; loi n° 2024/017 (données personnelles, présentée sans
+% citation, à vérifier au Journal officiel) ; régime financier de l'État.
+% Corrigés : corriges/Corr_C25.tex.
+% ============================================================================
+
+\chapter{Auditer la Conformité}
+\label{chap:audit-conformite}
+\chaptermark{Auditer la conformité}
+
+\epigraph{%
+    « La conformité ne se présume pas.\\
+    Elle se démontre, obligation par obligation. »%
+}{Principe de l'audit de conformité}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise des Chapitres~\ref{chap:normes} (normes de l'INTOSAI) et
+    \ref{chap:droit} (du texte au critère)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir l'audit de conformité, sa relation à trois parties et ses
+          deux niveaux d'assurance.
+    \item Conduire un audit de conformité selon l'ISSAI~4000, de la
+          planification au rapport.
+    \item Construire un registre des obligations et en tirer les critères.
+    \item Formuler une conclusion ou une opinion de conformité, avec ou sans
+          réserve.
+    \item Auditer la conformité au droit des données personnelles.
+    \item Distinguer l'audit de conformité de la fonction conformité.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : l'ANPP respecte-t-elle les règles de la dépense~?}
+% ============================================================================
+
+La Chambre des comptes a relevé, dans un premier sondage, des paiements de
+l'ANPP sans pièce justificative (Chapitre~\ref{chap:droit}). Le Parlement
+demande une conclusion~: l'agence respecte-t-elle, oui ou non, les règles
+de la dépense publique dans ses paiements de 2025~? M.~NJOYA, magistrat
+vérificateur, sait qu'il doit répondre par une conclusion de conformité, et
+que cette conclusion n'a de valeur que si les critères, la méthode et les
+preuves sont irréprochables.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Ce qu'est un audit de conformité (section~\ref{sec:c25-definition}).
+    \item La méthode de l'ISSAI~4000 (section~\ref{sec:c25-methode}).
+    \item Le registre des obligations (section~\ref{sec:c25-registre}).
+    \item Conclure sur la conformité (section~\ref{sec:c25-conclure}).
+    \item Les paiements de l'ANPP (section~\ref{sec:c25-anpp}).
+    \item La conformité au droit des données personnelles
+          (section~\ref{sec:c25-donnees}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Ce qu'est un Audit de Conformité}
+\label{sec:c25-definition}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Audit de conformité}\index{audit de conformité}~: évaluation
+indépendante de la mesure dans laquelle un objet (une activité, des
+opérations, des informations) respecte, en tous points significatifs, les
+critères qui lui sont applicables~: lois, règlements, contrats, règles
+internes~\cite{idi2021conformite}.
+\end{boxdef}
+
+\subsection{Trois parties}
+
+L'ISSAI~400 décrit la relation à trois parties qui fonde tout audit de
+conformité~: la \emph{partie responsable} (l'entité qui doit respecter les
+règles), l'\emph{auditeur}, et les \emph{utilisateurs prévus} (ceux qui se
+fieront à la conclusion). Le Chapitre~\ref{chap:normes} l'a appliquée à
+l'ANPP~: le directeur général M.~ESSOMBA, la Chambre des comptes, le
+Parlement et le public.
+
+\subsection{Deux niveaux d'assurance}
+
+\begin{tableaucours}{L{3.0cm}L{4.4cm}L{4.8cm}}{%
+    \tableauHeader{Assurance} &
+    \tableauHeader{Travaux} &
+    \tableauHeader{Forme de la conclusion}
+}
+Raisonnable & Tests étendus, preuves suffisantes pour une opinion & « En
+tous points significatifs, les paiements sont conformes \ldots » \\
+Limitée & Travaux réduits (analyses, entretiens) & « Nous n'avons rien
+relevé qui nous porte à croire que les paiements ne sont pas conformes
+\ldots » \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~25.1. Assurance raisonnable et
+assurance limitée}\end{center}
+
+\begin{boxinfo}
+\textbf{Audit de conformité et fonction conformité.} La fonction
+conformité (deuxième ligne) veille, au quotidien, à ce que l'organisation
+connaisse et respecte ses obligations~; l'ISO~37301 en propose un système
+de management~\cite{iso37301_2021}. L'audit de conformité (troisième ligne
+ou contrôle externe) évalue, à un moment donné, le résultat. Le premier
+produit le registre des obligations~; le second s'en sert.
+\end{boxinfo}
+
+% ============================================================================
+\section{La Méthode de l'ISSAI 4000}
+\label{sec:c25-methode}
+% ============================================================================
+
+L'ISSAI~4000 et le manuel de l'IDI déroulent l'audit de conformité en
+trois phases, que la méthode du cours outille~\cite{idi2021conformite}.
+
+\begin{tableaucours}{L{2.6cm}L{5.4cm}L{4.2cm}}{%
+    \tableauHeader{Phase} &
+    \tableauHeader{Étapes} &
+    \tableauHeader{Outil du cours}
+}
+Planification & Comprendre l'entité et son contrôle interne~; identifier
+l'objet et les critères~; apprécier les risques de non-conformité~; fixer
+le seuil de signification et la stratégie & Lettre de mission, registre des
+obligations, décomposition, fiches d'assertion \\
+Exécution & Recueillir les preuves (tests sur échantillon ou sur
+population)~; évaluer les écarts & Cotation \OUI{}, \NON{}, \NEK{}~; papiers
+de travail \\
+Rapport & Conclusion ou opinion~; constats~; réponses de la partie
+responsable~; recommandations & Lecture $\mu$, $U$, $H$~; observation en
+sept éléments \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~25.2. Les phases de l'audit de
+conformité (d'après l'ISSAI~4000 et l'IDI)}\end{center}
+
+\subsection{Les critères d'abord}
+
+Un audit de conformité sans critères écrits n'est pas un audit~: c'est une
+opinion. L'ISSAI~4000 exige que les critères soient identifiés avant le
+terrain et communiqués à la partie responsable. Le
+Chapitre~\ref{chap:droit} a montré comment transformer un texte en critères
+atomiques~; ce chapitre les rassemble dans un registre.
+
+\subsection{Le seuil de signification}
+
+\begin{boxdef}
+\termecle{Seuil de signification}\index{seuil de signification}~: niveau
+au-delà duquel une non-conformité, seule ou cumulée, influencerait la
+décision des utilisateurs prévus. Il peut être quantitatif (un montant) ou
+qualitatif (une infraction grave est significative quel que soit son
+montant).
+\end{boxdef}
+
+Pour les paiements de l'ANPP, M.~NJOYA retient deux seuils~: un seuil
+quantitatif de 1~\% du total des paiements testés, et un seuil qualitatif~:
+tout paiement à une personne non due (agent parti, bénéficiaire fictif) est
+significatif quel qu'en soit le montant.
+
+% ============================================================================
+\section{Le Registre des Obligations}
+\label{sec:c25-registre}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Construire un registre des obligations}
+\begin{enumerate}
+    \item Recenser les textes applicables (lois, règlements, actes
+          uniformes, contrats, règles internes), avec leur version et leur
+          source.
+    \item Pour chaque texte, isoler les obligations (sujet, action, objet,
+          délai) et les écrire de façon atomique.
+    \item Désigner le propriétaire de chaque obligation dans l'organisation.
+    \item Associer à chaque obligation le contrôle qui en assure le
+          respect, et la preuve attendue.
+    \item Dater le registre, et le revoir à chaque nouveau texte.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{tableaucours}{cL{3.8cm}L{2.4cm}L{2.6cm}L{2.6cm}}{%
+    \tableauHeader{N°} &
+    \tableauHeader{Obligation} &
+    \tableauHeader{Source} &
+    \tableauHeader{Contrôle} &
+    \tableauHeader{Preuve}
+}
+1 & Le paiement est précédé d'un ordonnancement & Régime financier & Visa
+de l'ordonnateur & Mandat daté \\
+2 & Ordonnateur et comptable sont distincts & Régime financier &
+Séparation des droits dans le système & Matrice des droits, mandat \\
+3 & Le paiement porte le visa du contrôle financier & Régime financier &
+Blocage sans visa & Mandat visé \\
+4 & Le service fait est attesté & Régime financier & Pièce de service fait
+& Attestation datée \\
+5 & Le bénéficiaire est un agent en fonction à la date du service &
+Statut des agents & Rapprochement paie et effectifs & Fichier des
+départs \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~25.3. Extrait du registre des
+obligations de l'ANPP pour les paiements (régime financier présenté
+d'après le cours~; textes à vérifier)}\end{center}
+
+% ============================================================================
+\section{Conclure sur la Conformité}
+\label{sec:c25-conclure}
+% ============================================================================
+
+\subsection{Quatre formes de conclusion}
+
+\begin{tableaucours}{L{3.2cm}L{4.6cm}L{4.4cm}}{%
+    \tableauHeader{Conclusion} &
+    \tableauHeader{Quand} &
+    \tableauHeader{Lecture du cours}
+}
+Sans réserve & Aucune non-conformité significative & Conformité claire \\
+Avec réserve & Non-conformités significatives mais circonscrites, ou
+limitation d'étendue partielle & Conformité claire avec $\mu$ élevé mais
+des \NON{} significatifs~; ou $U$ localisé \\
+Défavorable & Non-conformités significatives et généralisées &
+Non-conformité claire \\
+Impossibilité de conclure & Preuves insuffisantes sur une part
+significative & Domaine opaque ($U$ élevé) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~25.4. Formes de conclusion de
+conformité et lecture du cours}\end{center}
+
+\begin{boxinfo}
+\textbf{\NEK{} et limitation d'étendue.} Dans le vocabulaire de l'audit de
+conformité, une pièce qu'on ne peut pas obtenir est une \emph{limitation
+d'étendue}. La cotation \NEK{} en est la trace pièce par pièce~; le taux
+$U$ dit si la limitation est assez large pour empêcher toute conclusion.
+\end{boxinfo}
+
+% ============================================================================
+\section{Les Paiements de l'ANPP}
+\label{sec:c25-anpp}
+% ============================================================================
+
+\begin{boxlecture}{Paiements de l'ANPP}
+M.~NJOYA examine un échantillon aléatoire de 40~paiements de l'ANPP au
+regard des obligations du registre.
+
+\medskip
+\textbf{Constatations.} 29 paiements sont conformes à toutes les
+obligations (\OUI{}). 6 ne le sont pas (\NON{})~: quatre ont été versés à
+des agents après la date de leur départ, pour 1~424~000~FCFA~; un a le même
+agent pour ordonnateur et pour comptable~; un n'a pas de visa du contrôle
+financier. Pour 5 paiements, les pièces sont déclarées « aux archives » et
+n'ont pas été produites (\NEK{}).
+
+\medskip
+$\mu = 29/40 \approx 0{,}73$~; $U = 5/40 \approx 0{,}13$~; $H \approx
+1{,}12$~bit.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Conformité claire au sens du quadrant
+($\mu \ge 0{,}5$, $U < 0{,}20$), mais les quatre paiements à des agents
+partis franchissent le seuil qualitatif~: la conclusion ne peut pas être
+sans réserve. Les cinq \NEK{} sont une limitation d'étendue, à mentionner.
+
+\medskip
+\hfill\lecture{0{,}73}{0{,}13}{1{,}12}
+\end{boxlecture}
+
+\begin{boxscenario}{Opération MEFOU. La conclusion de M.~NJOYA}
+\textit{« Sur la base des travaux réalisés sur un échantillon aléatoire de
+40~paiements de l'exercice~2025, et à l'exception des points décrits
+ci-après, les paiements de l'ANPP sont conformes, en tous points
+significatifs, aux règles de la dépense publique. Points ayant motivé la
+réserve~: quatre paiements, pour 1~424~000~FCFA, ont été versés à des agents
+après la date de leur départ~; un paiement a été ordonnancé et payé par le
+même agent~; un paiement n'a pas reçu le visa du contrôle financier.
+Limitation~: les pièces de cinq paiements n'ont pas été produites. »}
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Extrapoler à toute la population le montant des
+quatre paiements irréguliers (« l'ANPP a payé 1,4~million sur 40, donc
+environ X~millions sur l'année ») sans méthode statistique.
+
+\smallskip
+\textbf{Règle~:} un échantillon aléatoire permet une projection, mais
+seulement avec la méthode adaptée (Chapitre~\ref{chap:preuve}) et un
+intervalle. Sans elle, on rapporte les constats de l'échantillon, et on
+recommande un test sur toute la population (rapprochement des paiements et
+du fichier des départs).
+\end{boxalert}
+
+% ============================================================================
+\section{La Conformité au Droit des Données Personnelles}
+\label{sec:c25-donnees}
+% ============================================================================
+
+La loi n°~2024/017 encadre la protection des données à caractère personnel
+au Cameroun~; son texte est à vérifier au Journal officiel avant toute
+citation. Sans préjuger de ses articles, un audit de conformité au droit
+des données personnelles porte, dans la plupart des législations de ce
+type, sur un ensemble d'obligations que l'auditeur retrouve dans le texte
+national avant de les écrire en critères.
+
+\begin{tableaucours}{L{3.4cm}L{5.0cm}L{3.8cm}}{%
+    \tableauHeader{Thème} &
+    \tableauHeader{Question d'audit} &
+    \tableauHeader{Preuve}
+}
+Inventaire des traitements & Les traitements de données personnelles
+sont-ils recensés~? & Registre des traitements \\
+Finalité et base & Chaque traitement a-t-il une finalité et un fondement~?
+& Registre, mentions d'information \\
+Minimisation et durée & Ne collecte-t-on que le nécessaire, pour une durée
+fixée~? & Formulaires, règles de purge \\
+Sécurité & Les mesures de sécurité sont-elles adaptées au risque~? &
+Mesures techniques (Chapitre~\ref{chap:audit-technique}) \\
+Droits des personnes & Les demandes d'accès et de rectification sont-elles
+traitées~? & Registre des demandes \\
+Violations & Les violations sont-elles détectées, notifiées et
+documentées~? & Registre des violations \\
+Transferts et sous-traitants & Les transferts et les prestataires sont-ils
+encadrés~? & Contrats (Chapitre~\ref{chap:audit-tiers}) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~25.5. Thèmes d'un audit de conformité
+au droit des données personnelles (à rapprocher du texte de la loi
+n°~2024/017)}\end{center}
+
+\begin{boxscenario}{Opération LIZBIZ. Les données des clients}
+\textbf{Faits.} LiZbiZ traite les données de 12~000~clients (identité,
+téléphone, adresses de livraison). Il n'existe aucun registre des
+traitements~; le portail de suivi présente une faille critique
+(Chapitre~\ref{chap:intrusion})~; le prestataire de Garoua accède aux
+serveurs sans clause de confidentialité spécifique aux données.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Sur les sept thèmes, trois sont
+manifestement défaillants (inventaire, sécurité, sous-traitants)~; les
+autres ne peuvent pas être jugés sans registre (\NEK{}). La première
+recommandation est de constituer le registre des traitements~: sans lui,
+aucune conformité ne se démontre.
+\end{boxscenario}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Tenir le registre des obligations}
+\begin{enumerate}
+    \item Recenser les textes et leur version, avec la date de lecture.
+    \item Écrire chaque obligation de façon atomique, avec son
+          propriétaire.
+    \item Associer à chaque obligation un contrôle et une preuve.
+    \item Vérifier chaque année un échantillon d'obligations, et présenter
+          le résultat au comité d'audit.
+    \item Mettre le registre à jour à chaque nouveau texte (par exemple, à
+          la publication des textes d'application de la loi n°~2024/017).
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Préparer un audit de conformité}
+\begin{enumerate}
+    \item Obtenir le registre des obligations, ou le construire avec la
+          partie responsable.
+    \item Communiquer les critères à la partie responsable avant le
+          terrain.
+    \item Fixer et écrire les seuils de signification, quantitatif et
+          qualitatif.
+    \item Coter chaque obligation sur chaque élément testé.
+    \item Choisir la forme de la conclusion à partir de la lecture et des
+          seuils.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} La cotation \NEK{} donne à la limitation
+d'étendue une mesure~: le taux $U$~\cite{minka2026nek}. Elle permet de
+distinguer, dans une conclusion avec réserve, ce qui relève d'un écart
+établi (\NON{}) et ce qui relève d'une pièce manquante (\NEK{}), que les
+rapports de conformité mêlent souvent sous le seul mot « réserve ».
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'audit de conformité} évalue le respect des critères
+          applicables, dans une relation à trois parties, avec une assurance
+          raisonnable ou limitée.
+    \item \textbf{La méthode de l'ISSAI~4000}~: planification (critères,
+          risques, seuils), exécution (preuves), rapport (conclusion,
+          réponses, recommandations).
+    \item \textbf{Le registre des obligations} écrit chaque obligation de
+          façon atomique, avec son propriétaire, son contrôle et sa preuve.
+    \item \textbf{La conclusion} est sans réserve, avec réserve,
+          défavorable, ou impossible~; les seuils, quantitatif et
+          qualitatif, la fixent.
+    \item \textbf{\NEK{} mesure la limitation d'étendue}~; on ne projette
+          pas un échantillon sans méthode.
+    \item \textbf{Le droit des données personnelles} s'audite par thèmes, à
+          partir du texte national vérifié.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: décrire la relation à
+trois parties~; distinguer assurance raisonnable et limitée~; construire
+une ligne du registre des obligations~; fixer un seuil qualitatif~;
+choisir la forme d'une conclusion~; lister les thèmes d'un audit de
+protection des données.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.1. Raisonnable ou limitée~? \niveaubase}]
+Pour chaque cas, choisissez le niveau d'assurance et rédigez la première
+phrase de la conclusion~: (a) la Chambre des comptes teste 40~paiements et
+rapproche toute la paie du fichier des départs~; (b) un consultant
+interroge trois responsables et lit les procédures en deux jours.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.2. Le registre \niveaubase}]
+Ajoutez au registre de l'ANPP deux obligations sur la conservation des
+pièces de dépense et sur la sécurité du système de paiement, avec leur
+contrôle et leur preuve.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.3. Le seuil \niveaumoyen}]
+Le total des 40~paiements testés vaut 186~millions de FCFA. Calculez le
+seuil quantitatif retenu par M.~NJOYA. Les 1~424~000~FCFA payés à des agents
+partis le dépassent-ils~? Pourquoi la réserve est-elle quand même
+nécessaire~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.4. Recalculer la lecture \niveaumoyen}]
+Recalculez $\mu$, $U$ et $H$ des paiements de l'ANPP (29/6/5). Les cinq
+dossiers « aux archives » sont finalement produits~: trois sont conformes,
+deux concernent encore des agents partis. Recalculez et dites si la forme
+de la conclusion change.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.5. La forme de la conclusion \niveaumoyen}]
+Choisissez la forme de la conclusion pour~: (a) 38/0/2~; (b) 20/18/2~; (c)
+24/2/14~; (d) 36/1/3, où le \NON{} est un paiement à un bénéficiaire
+fictif. Justifiez par le quadrant et les seuils.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.6. Projeter ou non \niveaumoyen}]
+Le Parlement demande « combien l'ANPP a payé à tort en 2025 ». Que peut
+répondre M.~NJOYA avec l'échantillon~? Quel test recommande-t-il pour
+répondre précisément~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.7. La fonction conformité \niveaubase}]
+Distinguez, pour la BANQUE SANAGA, ce que fait le responsable de la
+conformité et ce que fait l'audit interne à propos du règlement COBAC
+R-2016/04.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.8. Le registre des traitements \niveaumoyen}]
+Proposez les colonnes du registre des traitements de LiZbiZ et remplissez
+une ligne pour le traitement « suivi des expéditions ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.9. L'observation de l'ANPP \niveauexpert}]
+Rédigez l'observation en sept éléments relative aux paiements versés à des
+agents partis, avec sa gravité et ses recommandations, dont le test sur
+toute la population.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~25.10. Un audit des données personnelles \niveauexpert}]
+Préparez la lettre de mission d'un audit de conformité de LiZbiZ à la loi
+n°~2024/017~: objectifs, critères (avec la mention de leur vérification
+dans le texte officiel), niveau d'assurance, seuils, périmètre, et ce que
+l'audit n'est pas.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item IDI, manuel d'audit de conformité~\cite{idi2021conformite}~: la
+          méthode complète de l'ISSAI~4000.
+    \item INTOSAI, GUID~5100~\cite{intosai2019guid5100}~: l'audit des SI
+          dans le secteur public.
+    \item ISO~37301:2021~\cite{iso37301_2021}~: le management de la
+          conformité.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~\ref{part:pratique} a audité chaque domaine
+du SI. Le Chapitre~\ref{chap:cas-integrateurs} réunit les trois cas du
+cours dans des missions complètes, de la lettre de mission au suivi.
+\end{boxinfo}

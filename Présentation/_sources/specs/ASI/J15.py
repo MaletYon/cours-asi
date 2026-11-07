@@ -1,0 +1,120 @@
+# Généré par gen_specs.py à partir du livre ASI (INF3226) ; retouches possibles à la main.
+SPEC = [{'k': 'title',
+  'tag': 'Jour 15 / 30 · Séance de 2 heures',
+  'title': 'Les référentiels de contrôle',
+  'sub': 'Par rapport à quoi juge-t-on ?',
+  'right': 'Partie III · Chapitre 14'},
+ {'k': 'synthese',
+  'title': 'Rappel de la séance précédente',
+  'kicker': "Jour 14 · Les normes professionnelles de l'audit",
+  'items': ['**Cinq familles de normes** : audit interne (IIA), audit des SI (ISACA), systèmes de management '
+            '(ISO)…',
+            "**Les Normes mondiales de l'IIA (2024)** remplacent le CRIPP de 2017 : cinq domaines, quinze "
+            'principes…',
+            "**ITAF** encadre l'audit des SI en trois séries ; ses normes sur les assertions et les critères "
+            'fondent la…']},
+ {'k': 'agenda',
+  'items': [('25 min', "**Évaluer le Contrôle Interne avec le COSO** ; COBIT : un Catalogue d'Objectifs de…"),
+            ('25 min', '**ISO/IEC 27001 et 27002 : les Mesures de…** ; NIST SP 800-53 et le Guide du CHAI'),
+            ('25 min', "**Choisir les Référentiels d'une Mission**"),
+            ('20 min', '**Exercice** en séance'),
+            ('10 min', '**À retenir**, travail à la maison')]},
+ {'k': 'chapitre',
+  'num': 'C14',
+  'short': 'Chapitre 14',
+  'part': 'PARTIE III · CADRE NORMATIF, JURIDIQUE ET DÉONTOLOGIQUE',
+  'title': 'Les Référentiels de Contrôle',
+  'question': 'Par rapport à quoi juge-t-on ?'},
+ {'k': 'objectifs',
+  'items': ["Utiliser le COSO 2013 comme cadre d'évaluation d'un dispositif de contrôle interne.",
+            'Utiliser COBIT 2019, et COBIT 4.1 encore cité dans de nombreux dossiers, comme catalogue '
+            "d'objectifs de contrôle.",
+            "Utiliser l'annexe A de l'ISO/IEC 27001 et l'ISO/IEC 27002 comme catalogue de mesures de "
+            'sécurité.',
+            "Situer NIST SP 800-53 et le guide d'audit des SI du CHAI.",
+            "Choisir les référentiels d'une mission, en sachant que la conformité à une norme est un choix "
+            "d'objectif, pas un axiome."]},
+ {'k': 'definition',
+  'title': 'Déficience majeure',
+  'kicker': 'Définition · Section 14.1',
+  'items': [('Définition',
+             "déficience, ou combinaison de déficiences, qui réduit fortement la probabilité que l'entité "
+             "atteigne ses objectifs. Elle existe notamment lorsqu'un principe pertinent n'est pas présent "
+             'et fonctionnel…')]},
+ {'k': 'scenario',
+  'title': 'Évaluer le Contrôle Interne avec le COSO',
+  'label': 'Les 17 principes, SANAGA',
+  'text': ["Pour l'évaluation exigée par la COBAC, Mme EKAMBI cote chacun des dix-sept principes « présent "
+           'et fonctionnel » : 12 OUI, 3 NON, 2 NEK…',
+           '**Constatation.** µ ≈ 0,71 ; U ≈ 0,12 ; H ≈ 1,16 bit. Selon le quadrant du cours, le domaine est '
+           'en conformité claire.',
+           "**Analyse** (confiance élevée). Selon le COSO, le dispositif n'est pas efficace : trois "
+           'principes ne sont pas présents et fonctionnels, ce sont trois déficiences majeures, et deux '
+           'autres principes ne peuvent pas être établis…']},
+ {'k': 'table',
+  'title': 'Les cinq domaines de COBIT 2019 (intitulés traduits)',
+  'kicker': 'Section 14.2',
+  'head': ['Code', 'Domaine', 'Obj.', "Exemples utiles à l'auditeur"],
+  'widths': [1.8, 3.95, 1.8, 4.85],
+  'rows': [['EDM', 'Évaluer, diriger et surveiller', '5', 'EDM03, optimisation des risques'],
+           ['APO', 'Aligner, planifier et organiser', '14', 'APO12, risques ; APO13, sécurité'],
+           ['BAI', 'Bâtir, acquérir et implémenter', '11', 'BAI06, changements'],
+           ['DSS', 'Délivrer, servir et soutenir', '6', 'DSS04, continuité ; DSS05, services de sécurité'],
+           ['MEA',
+            'Surveiller, évaluer et apprécier',
+            '4',
+            'MEA02, contrôle interne ; MEA03, conformité ; MEA04, assurance']]},
+ {'k': 'points',
+  'title': 'ISO/IEC 27001 et 27002 : les Mesures de Sécurité',
+  'kicker': 'Section 14.3',
+  'items': ["L'ISO/IEC 27001 fixe les exigences d'un SMSI ; son annexe A énumère des mesures de sécurité, "
+            "que l'ISO/IEC 27002 détaille et explique.",
+            "Chaque mesure de l'édition 2022 porte des attributs : type de mesure (préventive, détective, "
+            'corrective), propriétés de sécurité…']},
+ {'k': 'table',
+  'title': 'Les six fonctions du NIST CSF 2.0',
+  'kicker': 'Section 14.4',
+  'head': ['Fonction', 'Résultats attendus (reformulés)'],
+  'widths': [2.64, 9.76],
+  'rows': [['Gouverner',
+            'Stratégie, rôles, politique et supervision des risques de cybersécurité (fonction ajoutée en…'],
+           ['Identifier', 'Connaître les actifs, les risques, les fournisseurs'],
+           ['Protéger', 'Mettre en place les protections (identités, données, plateformes)'],
+           ['Détecter', 'Repérer les événements et les anomalies'],
+           ['Répondre', 'Traiter un incident détecté'],
+           ['Rétablir', 'Restaurer les actifs et les opérations']]},
+ {'k': 'scenario',
+  'title': "Choisir les Référentiels d'une Mission",
+  'label': 'Domaine D.3, deux critères',
+  'text': ['Au Chapitre 9, la question du sous-domaine D.3 (authentification), posée aux quatre '
+           "interlocuteurs, est cotée d'après la politique interne de LiZbiZ : 4 OUI sur 4 réponses…",
+           "**Constatation.** Le taux de conformité passe de 1,00 à 0,50 ; le taux d'incertitude reste nul.",
+           "**Analyse** (confiance élevée). Le référentiel a déplacé µ, pas U : l'état de connaissance de "
+           "l'auditeur n'a pas changé, seule la cible a changé…"]},
+ {'k': 'synthese',
+  'title': 'À retenir',
+  'kicker': 'Chapitre 14',
+  'items': ['**Le COSO** évalue un dispositif : chaque principe présent et fonctionnel, les composantes '
+            'intégrées…',
+            '**COBIT 2019** (40 objectifs, 5 domaines) est un catalogue de pratiques ; COBIT 4.1 (34 '
+            'processus) reste très cité…',
+            "**L'ISO/IEC 27002:2022** détaille 93 mesures en quatre thèmes ; l'annexe A n'est pas une grille "
+            "d'audit.",
+            "**NIST SP 800-53** est un catalogue détaillé ; la SP 800-53A donne des procédures d'évaluation "
+            '(examiner, interroger, tester).',
+            "**Le guide du CHAI** propose des points de contrôle par thème d'audit."]},
+ {'k': 'exercice',
+  'title': 'Conclure selon le COSO',
+  'duree': '20 minutes, en binôme',
+  'text': 'Reprenez la lecture « Les 17 principes, SANAGA ».',
+  'questions': ["Pourquoi un taux de conformité de 0,71 ne permet-il pas de conclure à l'efficacité du "
+                'dispositif ?',
+                'Quelles pièces lèveraient les deux NEK des principes 16 et 17 ?',
+                'Si ces deux NEK étaient levés en OUI, la conclusion changerait-elle ? Justifiez.',
+                "Rédigez la conclusion de l'évaluation destinée à la COBAC."]},
+ {'k': 'maison', 'lecture': ['Chapitre 14, à relire avec ses exercices', 'Préparer : chapitre 15']},
+ {'k': 'fin',
+  'next': 'Jour 16 · Le cadre juridique camerounais et africain',
+  'items': ["Identifier les obligations d'audit et de contrôle du droit…",
+            'Situer les exigences du droit comptable OHADA sur la comptabilité…',
+            'Situer le contrôle des finances publiques : régime financier de…']}]

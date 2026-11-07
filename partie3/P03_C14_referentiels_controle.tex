@@ -1,0 +1,600 @@
+% ============================================================================
+% Fichier  : partie3/P03_C11_referentiels_controle.tex
+% Titre    : Les Référentiels de Contrôle
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C11, repris et développé pour INF3226
+% ============================================================================
+% Sources : COSO 2013 (évaluation : composantes et principes « présents et
+% fonctionnels », déficience majeure) ; COBIT 2019 (40 objectifs, 5
+% domaines ; copie de l'auteur, paraphrasée) et COBIT 4.1 (édition
+% française, dossier Normes : 34 processus, 4 domaines) ; ISO/IEC
+% 27001:2022 et 27002:2022 (93 mesures, 4 thèmes ; le dossier Normes
+% contient l'édition 2013) ; NIST SP 800-53 rév. 5 (20 familles) et SP
+% 800-53A rév. 5 (examiner, interroger, tester) ; guide d'audit des SI du
+% CHAI (2014, neuf thèmes). Conformité à une norme = choix de fonction
+% objectif (A0).
+% ============================================================================
+
+\chapter{Les Référentiels de Contrôle}
+\label{chap:referentiels}
+
+\epigraph{%
+    « Le référentiel donne le critère.\\
+    Il ne donne ni la preuve, ni la conclusion. »%
+}{Adage des auditeurs}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise du Chapitre~\ref{chap:controle-interne} (COSO) et du
+    Chapitre~\ref{chap:normes} (normes professionnelles)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Utiliser le COSO~2013 comme cadre d'évaluation d'un dispositif de
+          contrôle interne.
+    \item Utiliser COBIT~2019, et COBIT~4.1 encore cité dans de nombreux
+          dossiers, comme catalogue d'objectifs de contrôle.
+    \item Utiliser l'annexe~A de l'ISO/IEC~27001 et l'ISO/IEC~27002 comme
+          catalogue de mesures de sécurité.
+    \item Situer NIST SP~800-53 et le guide d'audit des SI du CHAI.
+    \item Choisir les référentiels d'une mission, en sachant que la
+          conformité à une norme est un choix d'objectif, pas un axiome.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : par rapport à quoi juge-t-on~?}
+% ============================================================================
+
+Au Chapitre~\ref{chap:decomposition}, AUDIX CONSEIL a décomposé le domaine~D
+de LiZbiZ en cinq sous-domaines et vingt-cinq processus. Chaque contrôle a
+reçu une fiche d'assertion, avec un critère. Mais d'où vient ce critère~?
+Faut-il exiger des mots de passe de huit caractères, comme la politique
+interne, ou de douze, comme le propose le chef de mission~? Revoir les
+comptes à privilèges chaque mois, ou chaque trimestre~?
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Évaluer le contrôle interne avec le COSO (section~\ref{sec:c14-coso}).
+    \item COBIT~2019, présenté pour lui-même, puis comme catalogue de critères (section~\ref{sec:c14-cobit}).
+    \item L'ISO/IEC~27001 et l'ISO/IEC~27002 (section~\ref{sec:c14-iso}).
+    \item Le NIST~: SP~800-53, SP~800-53A et le cadre CSF~2.0~; le guide du CHAI (section~\ref{sec:c14-autres}).
+    \item Choisir les référentiels d'une mission, et ce que ce choix change aux mesures (section~\ref{sec:c14-choisir}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Évaluer le Contrôle Interne avec le COSO}
+\label{sec:c14-coso}
+% ============================================================================
+
+\subsection{Présent, fonctionnel, intégré}
+
+Le Chapitre~\ref{chap:controle-interne} a présenté les cinq composantes et
+les dix-sept principes du COSO~2013. Le cadre sert aussi à \emph{évaluer}
+un dispositif~\cite{coso2013ic}. Pour conclure qu'un contrôle interne est
+efficace, trois conditions doivent être réunies~:
+\begin{itemize}
+    \item chaque composante et chaque principe pertinent est
+          \textbf{présent}, c'est-à-dire conçu et mis en place~;
+    \item chaque composante et chaque principe pertinent est
+          \textbf{fonctionnel}, c'est-à-dire qu'il opère comme prévu~;
+    \item les cinq composantes \textbf{agissent ensemble}, de manière
+          intégrée.
+\end{itemize}
+
+\begin{boxdef}
+\termecle{Déficience majeure}\index{déficience majeure} (COSO~2013)~:
+déficience, ou combinaison de déficiences, qui réduit fortement la
+probabilité que l'entité atteigne ses objectifs. Elle existe notamment
+lorsqu'un principe pertinent n'est pas présent et fonctionnel. En présence
+d'une déficience majeure, la direction ne peut pas conclure que son
+contrôle interne est efficace.
+\end{boxdef}
+
+La règle est stricte~: dix-sept principes sur dix-sept. Elle ne se résume
+pas à un taux de conformité, comme le montre l'évaluation de la BANQUE
+SANAGA.
+
+\begin{boxlecture}{Les 17 principes, SANAGA}
+Pour l'évaluation exigée par la COBAC, Mme~EKAMBI cote chacun des dix-sept
+principes « présent et fonctionnel »~: 12~\OUI{}, 3~\NON{}, 2~\NEK{}. Les
+\NON{} portent sur le principe~9 (les changements significatifs, dont la
+bascule de mars~2026, n'ont pas été analysés), le principe~11 (contrôles
+généraux sur les changements) et le principe~14. Les \NEK{} portent sur les
+principes~16 et~17~: aucune pièce n'établit que les évaluations ont eu lieu.
+
+\medskip
+\textbf{Constatation.} $\mu \approx 0{,}71$~; $U \approx 0{,}12$~;
+$H \approx 1{,}16$~bit. Selon le quadrant du cours, le domaine est en
+conformité claire.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Selon le COSO, le dispositif n'est
+pas efficace~: trois principes ne sont pas présents et fonctionnels, ce
+sont trois déficiences majeures, et deux autres principes ne peuvent pas
+être établis. Le référentiel impose sa propre règle de décision, plus
+exigeante que le seuil de $\mu = 0{,}5$. L'auditeur applique les deux et
+les rapporte toutes deux~: les mesures disent \emph{où} l'on en est, la
+règle du COSO dit \emph{si} l'on peut conclure.
+
+\medskip
+\hfill\lecture{0{,}71}{0{,}12}{1{,}16}
+\end{boxlecture}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Préparer l'évaluation COSO d'un dispositif}
+\begin{enumerate}
+    \item Pour chaque principe, lister les contrôles qui le mettent en
+          œuvre, et le responsable de chacun.
+    \item Pour chaque principe, rassembler la preuve qu'il est présent
+          (procédure, organigramme, charte) et la preuve qu'il fonctionne
+          (traces de l'année).
+    \item Coter chaque principe \OUI{}, \NON{} ou \NEK{}~; un principe sans
+          preuve de fonctionnement est \NEK{}, pas \OUI{}.
+    \item Qualifier chaque déficience et dire si elle est majeure.
+    \item Conclure selon la règle du COSO, puis rapporter $\mu$, $U$ et $H$
+          pour situer l'écart.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{COBIT : un Catalogue d'Objectifs de Contrôle}
+\label{sec:c14-cobit}
+% ============================================================================
+
+\subsection{COBIT 2019}
+
+Le cours GCI (MSN-2S3-MSI03) présente COBIT~2019 comme référentiel de
+gouvernance. L'auditeur l'utilise autrement~: comme un catalogue de
+pratiques, où il puise des critères. COBIT~2019 compte quarante objectifs
+de gouvernance et de gestion, répartis en cinq
+domaines~\cite{isaca2018cobitintro,isaca2018cobitobjectifs}.
+
+\begin{tableaucours}{cL{4.4cm}cL{5.4cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Domaine} &
+    \tableauHeader{Obj.} &
+    \tableauHeader{Exemples utiles à l'auditeur}
+}
+EDM & Évaluer, diriger et surveiller & 5 & EDM03, optimisation des risques \\
+APO & Aligner, planifier et organiser & 14 & APO12, risques~; APO13,
+sécurité \\
+BAI & Bâtir, acquérir et implémenter & 11 & BAI06, changements \\
+DSS & Délivrer, servir et soutenir & 6 & DSS04, continuité~; DSS05,
+services de sécurité \\
+MEA & Surveiller, évaluer et apprécier & 4 & MEA02, contrôle interne~;
+MEA03, conformité~; MEA04, assurance \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.1. Les cinq domaines de COBIT~2019
+(intitulés traduits)}\end{center}
+
+Chaque objectif se décline en pratiques de gestion, elles-mêmes détaillées
+en activités. La pratique est le bon niveau pour un critère d'audit~: par
+exemple, la pratique DSS05.04 traite de la gestion des identités et des
+accès logiques, et fournit les critères des sous-domaines D.2 et D.4 de
+LiZbiZ.
+
+\begin{boxinfo}
+\textbf{Maturité ou capacité~?} COBIT~2019 évalue la \emph{capacité} des
+processus sur une échelle de 0 à~5, activité par activité. Le
+Chapitre~\ref{chap:conclure} a rappelé que le niveau de maturité du cours,
+tiré de $\mu$, est une convention distincte~: les deux échelles ne se
+convertissent pas l'une dans l'autre.
+\end{boxinfo}
+
+\subsection{COBIT 2019 pour lui-même}
+
+Un élève ingénieur qui n'a pas suivi le cours de gouvernance doit pouvoir
+lire COBIT seul. Le référentiel repose sur trois idées~\cite{isaca2018cobitintro}.
+\begin{enumerate}
+    \item \textbf{Gouvernance et gestion sont distinctes.} La gouvernance
+          (domaine EDM) évalue, oriente et surveille~; elle relève du
+          conseil. La gestion (APO, BAI, DSS, MEA) planifie, construit,
+          exploite et surveille~; elle relève de la direction.
+    \item \textbf{Un système de gouvernance a plusieurs composants}~:
+          processus, structures organisationnelles, principes et
+          politiques, information, culture et comportements, compétences,
+          services et infrastructures. Auditer un objectif COBIT, ce n'est
+          pas seulement vérifier un processus~: c'est aussi vérifier qu'une
+          structure en est responsable et qu'une politique le fonde.
+    \item \textbf{Le système se conçoit selon le contexte}~: des
+          \emph{facteurs de conception} (stratégie, profil de risque,
+          taille, rôle de l'informatique, réglementation\ldots) font varier
+          l'importance de chaque objectif d'une organisation à l'autre.
+\end{enumerate}
+
+\begin{boxinfo}
+\textbf{Ce que l'auditeur en retient.} Pour la BANQUE SANAGA, un facteur
+de conception domine~: l'exigence réglementaire (COBAC). Il rend
+prioritaires MEA03 (conformité), BAI06 (changements) et DSS04
+(continuité)~; ce sont les objectifs où l'auditeur ira chercher ses
+critères en premier.
+\end{boxinfo}
+
+\subsection{COBIT 4.1, encore très cité}
+
+De nombreux dossiers d'audit, et l'ancien cours de l'auteur, se réfèrent à
+COBIT~4.1, publié en 2007 et disponible en français~\cite{itgi2007cobit41}.
+Il comptait trente-quatre processus en quatre domaines (PO, AI, DS, ME),
+chacun décliné en objectifs de contrôle, et proposait des modèles de
+maturité de 0 à~5. Il faut savoir passer de l'un à l'autre.
+
+\begin{tableaucours}{L{4.6cm}L{3.6cm}L{4.0cm}}{%
+    \tableauHeader{Sujet} &
+    \tableauHeader{COBIT 4.1} &
+    \tableauHeader{COBIT 2019}
+}
+Sécurité des systèmes & DS5 & APO13, DSS05 \\
+Gestion des changements & AI6 & BAI06 \\
+Continuité du service & DS4 & DSS04 \\
+Surveillance du contrôle interne & ME2 & MEA02 \\
+Conformité aux exigences externes & ME3 & MEA03 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.2. Quelques correspondances entre
+COBIT~4.1 et COBIT~2019}\end{center}
+
+% ============================================================================
+\section{ISO/IEC 27001 et 27002 : les Mesures de Sécurité}
+\label{sec:c14-iso}
+% ============================================================================
+
+L'ISO/IEC~27001 fixe les exigences d'un SMSI~; son annexe~A énumère des
+mesures de sécurité, que l'ISO/IEC~27002 détaille et
+explique~\cite{iso27001_2022,iso27002_2022}. Depuis l'édition de 2022,
+l'annexe compte 93~mesures en quatre thèmes~: organisationnelles~(37),
+humaines~(8), physiques~(14) et technologiques~(34). L'édition de 2013, que
+contient le dossier \texttt{Normes}, en comptait 114 en quatorze domaines~:
+un critère tiré de l'ancienne numérotation doit être converti.
+
+Chaque mesure de l'édition 2022 porte des \emph{attributs}~: type de mesure
+(préventive, détective, corrective), propriétés de sécurité, concepts de
+cybersécurité, capacités opérationnelles, domaines de sécurité. Ils
+permettent à l'auditeur de filtrer le catalogue~: par exemple, ne retenir
+que les mesures détectives d'un domaine.
+
+\begin{boiteRemarque}{L'annexe A est-elle une grille d'audit~?}
+Non. Recopier les 93~mesures en autant de questions donne une grille qui
+viole la borne cognitive (Chapitre~\ref{chap:decomposition}) et pose des
+questions sans objet. L'entité choisit ses mesures dans sa \emph{déclaration
+d'applicabilité}, en justifiant chaque exclusion. L'auditeur part de sa
+décomposition, puis va chercher dans l'annexe le critère de chaque contrôle,
+et vérifie au passage que les exclusions déclarées sont justifiées.
+\end{boiteRemarque}
+
+% ============================================================================
+\section{NIST SP 800-53 et le Guide du CHAI}
+\label{sec:c14-autres}
+% ============================================================================
+
+\subsection{NIST SP 800-53}
+
+La publication spéciale SP~800-53 du NIST (révision~5, 2020) est un
+catalogue de mesures de sécurité et de protection de la vie privée,
+réparties en vingt familles (contrôle d'accès AC, journalisation AU,
+gestion de configuration CM, continuité CP, identification et
+authentification IA, sécurité du personnel PS, etc.)~\cite{nist2020sp80053}.
+Elle s'impose aux systèmes fédéraux américains, et sert ailleurs de
+catalogue de référence, souvent plus précis que l'ISO/IEC~27002.
+
+Son intérêt pour l'auditeur tient surtout à la publication compagne
+SP~800-53A, qui donne pour chaque mesure des procédures d'évaluation selon
+trois méthodes~: \emph{examiner}, \emph{interroger}, \emph{tester}~\cite{nist2022sp80053a}.
+Elles correspondent aux tests DOC, ENT et TEST du
+Chapitre~\ref{chap:preuve}.
+
+\subsection{Le cadre de cybersécurité du NIST (CSF 2.0)}
+
+Le NIST publie aussi, depuis 2014, un cadre de cybersécurité plus
+synthétique, révisé en février~2024 (version~2.0)~\cite{nist2024csf}. Il
+organise les résultats attendus en six \emph{fonctions}.
+
+\begin{tableaucours}{L{2.6cm}L{9.6cm}}{%
+    \tableauHeader{Fonction} &
+    \tableauHeader{Résultats attendus (reformulés)}
+}
+Gouverner & Stratégie, rôles, politique et supervision des risques de
+cybersécurité (fonction ajoutée en 2024) \\
+Identifier & Connaître les actifs, les risques, les fournisseurs \\
+Protéger & Mettre en place les protections (identités, données,
+plateformes) \\
+Détecter & Repérer les événements et les anomalies \\
+Répondre & Traiter un incident détecté \\
+Rétablir & Restaurer les actifs et les opérations \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.3. Les six fonctions du NIST
+CSF~2.0}\end{center}
+
+Le CSF ne fixe pas de critères détaillés~: il renvoie à d'autres
+catalogues (dont la SP~800-53 et l'ISO/IEC~27002). Il sert à l'auditeur à
+vérifier la \emph{couverture} d'un dispositif~: une organisation qui
+protège bien mais ne sait ni détecter ni rétablir présente un défaut que
+la seule lecture de l'annexe~A ne révèle pas toujours.
+
+\subsection{Le guide d'audit des SI du CHAI}
+
+Le guide du Comité d'harmonisation de l'audit interne (CHAI), élaboré en
+2014 par un groupe de travail interministériel français, est un guide
+pratique, en français, organisé par thèmes d'audit~\cite{chai2014guide}~:
+missions généralistes, pilotage des SI, sécurité, production, applications
+en service, support et parc, fonction « études », projets, marchés
+informatiques. Il ne prétend pas être le seul référentiel~: il propose,
+pour chaque thème, des points de contrôle. La Partie~\ref{part:pratique}
+suit largement ce découpage.
+
+% ============================================================================
+\section{Choisir les Référentiels d'une Mission}
+\label{sec:c14-choisir}
+% ============================================================================
+
+\subsection{Un même contrôle, quatre critères}
+
+Les référentiels se recouvrent. Pour un même contrôle, l'auditeur trouve
+plusieurs critères possibles~; il en retient un, et le cite dans la fiche
+d'assertion.
+
+\begin{tableaucours}{L{4.0cm}L{1.8cm}L{1.8cm}L{1.8cm}L{2.2cm}}{%
+    \tableauHeader{Contrôle} &
+    \tableauHeader{COSO} &
+    \tableauHeader{COBIT 2019} &
+    \tableauHeader{ISO/IEC 27002} &
+    \tableauHeader{NIST 800-53}
+}
+D.2.1 Désactivation des comptes des partants & Principe~11 & DSS05.04 &
+5.18 & AC-2, PS-4 \\
+D.4.2 Revue des comptes à privilèges & Principe~11 & DSS05.04 & 8.2 &
+AC-2, AC-6 \\
+B Sauvegardes & Principe~11 & DSS04 & 8.13 & CP-9 \\
+Gestion des changements (SANAGA) & Principes~9 et~11 & BAI06 & 8.32 &
+CM-3 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~14.4. Correspondances entre
+référentiels pour quatre contrôles (à vérifier dans l'édition en vigueur)}\end{center}
+
+\subsection{Les critères de choix}
+
+\begin{boxprocedure}
+\textbf{Choisir les référentiels.} Dans l'ordre~:
+\begin{enumerate}
+    \item \textbf{Ce qui s'impose}~: loi, règlement, exigence du régulateur
+          (COBAC pour la BANQUE SANAGA, régime financier de l'État pour
+          l'ANPP, Chapitre~\ref{chap:droit}).
+    \item \textbf{Ce que l'entité s'est engagée à respecter}~: ses propres
+          politiques, un contrat, une certification revendiquée.
+    \item \textbf{Ce que le commanditaire demande}~: une comparaison avec un
+          référentiel international, pour se situer.
+    \item \textbf{Ce que l'auditeur juge nécessaire}, en le justifiant~:
+          un critère plus exigeant que la politique interne, lorsque le
+          risque le demande.
+\end{enumerate}
+Le choix est écrit dans la lettre de mission ou dans le plan d'audit,
+discuté avec le commanditaire, et repris dans le rapport.
+\end{boxprocedure}
+
+\subsection{Le référentiel, une fonction objectif}
+
+L'article A0 tire de ce choix une conséquence théorique~: la conformité à
+un référentiel n'est pas un fondement de l'audit, c'est le choix d'une
+\emph{fonction objectif}~\cite{minka2026auditologie}. Changer de référentiel
+change ce que l'on appelle « conforme »~; cela ne change pas ce que l'on
+sait. La lecture suivante le montre.
+
+\begin{boxlecture}{Domaine D.3, deux critères}
+Au Chapitre~\ref{chap:decomposition}, la question du sous-domaine D.3
+(authentification), posée aux quatre interlocuteurs, est cotée d'après la
+politique interne de LiZbiZ~: 4~\OUI{} sur 4~réponses. Le chef de mission
+propose de retenir des critères plus exigeants, tirés de la mesure~8.5 de
+l'ISO/IEC~27002~: mots de passe de douze caractères, et double
+authentification pour \emph{tout} accès distant, et non pour les seuls
+administrateurs. Les quatre réponses sont cotées de nouveau sur les mêmes
+preuves.
+
+\medskip
+\begin{tableaucours}{L{4.6cm}cccccc}{%
+    \tableauHeader{Critère} &
+    \tableauHeader{\OUI{}} & \tableauHeader{\NON{}} & \tableauHeader{\NEK{}} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$}
+}
+Politique interne de LiZbiZ & 4 & 0 & 0 & 1,00 & 0,00 & 0,00 \\
+Critères tirés de l'ISO/IEC~27002 & 2 & 2 & 0 & 0,50 & 0,00 & 1,00 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Le taux de conformité passe de 1,00 à 0,50~; le
+taux d'incertitude reste nul.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le référentiel a déplacé $\mu$, pas
+$U$~: l'état de connaissance de l'auditeur n'a pas changé, seule la cible a
+changé. C'est pourquoi le rapport doit nommer le critère de chaque
+conclusion~; et c'est pourquoi l'auditeur ne change pas de référentiel en
+cours de mission sans l'accord écrit du commanditaire.
+
+\medskip
+\hfill\lecture{0{,}50}{0{,}00}{1{,}00}
+\end{boxlecture}
+
+\begin{boxalert}
+\textbf{Violation typique.} Annoncer dans le rapport « conformité à
+l'ISO/IEC~27001 à 62~\% » à partir d'une grille construite sur la politique
+interne de l'entité.
+
+\smallskip
+\textbf{Règle~:} un taux de conformité n'a de sens que rapporté au critère
+qui l'a produit. On écrit « 62~\% des contrôles conformes à la politique
+interne, évalués selon les critères du plan d'audit », et l'on ne parle de
+conformité à une norme que si les critères en sont tirés.
+\end{boxalert}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Tenir une table de correspondance}
+\begin{enumerate}
+    \item Recenser les référentiels qui s'imposent à l'entité, et ceux
+          qu'elle a choisis.
+    \item Définir des \emph{contrôles communs}, chacun relié aux exigences
+          de plusieurs référentiels (COSO, COBIT, ISO/IEC~27002, COBAC).
+    \item Tester chaque contrôle commun une seule fois, et réutiliser la
+          preuve pour chaque référentiel.
+    \item Mettre à jour la table à chaque nouvelle édition d'un
+          référentiel, en signalant les numéros qui changent.
+    \item Remettre la table à l'auditeur dès la préparation de la mission.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Le COSO} évalue un dispositif~: chaque principe présent et
+          fonctionnel, les composantes intégrées~; un seul principe
+          défaillant est une déficience majeure.
+    \item \textbf{COBIT~2019} (40 objectifs, 5 domaines) est un catalogue de
+          pratiques~; COBIT~4.1 (34 processus) reste très cité, et se
+          convertit.
+    \item \textbf{L'ISO/IEC~27002:2022} détaille 93~mesures en quatre
+          thèmes~; l'annexe~A n'est pas une grille d'audit.
+    \item \textbf{NIST SP~800-53} est un catalogue détaillé~; la SP~800-53A
+          donne des procédures d'évaluation (examiner, interroger, tester).
+    \item \textbf{Le guide du CHAI} propose des points de contrôle par thème
+          d'audit.
+    \item \textbf{Le choix du référentiel} est celui d'une fonction
+          objectif~: il déplace $\mu$, pas $U$, et doit être écrit, discuté
+          et cité.
+    \item \textbf{COBIT~2019} distingue gouvernance et gestion et s'adapte par facteurs de conception~; le \textbf{NIST CSF~2.0} vérifie la couverture en six fonctions, dont « Gouverner ».
+\end{itemize}
+\end{boxresume}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.1. Trouver le critère \niveaubase}]
+Pour chaque contrôle, indiquez l'objectif COBIT~2019 et la mesure de
+l'ISO/IEC~27002:2022 où chercher le critère.
+\begin{enumerate}[(a)]
+    \item Les sauvegardes du centre de Douala sont testées chaque trimestre.
+    \item Toute modification de l'application intégrée est approuvée avant
+          sa mise en production.
+    \item Les comptes des agents partis sont désactivés sous 48~heures.
+    \item Les droits d'administration sont revus chaque mois.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.2. Conclure selon le COSO \niveaumoyen}]
+Reprenez la lecture « Les 17 principes, SANAGA ».
+\begin{enumerate}[(a)]
+    \item Pourquoi un taux de conformité de 0,71 ne permet-il pas de
+          conclure à l'efficacité du dispositif~?
+    \item Quelles pièces lèveraient les deux \NEK{} des principes~16 et~17~?
+    \item Si ces deux \NEK{} étaient levés en \OUI{}, la conclusion
+          changerait-elle~? Justifiez.
+    \item Rédigez la conclusion de l'évaluation destinée à la COBAC.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.3. Choisir les référentiels de l'ANPP \niveauexpert}]
+La Chambre des comptes prépare l'audit des paiements de l'ANPP, dont les
+comptes d'agents partis encore actifs.
+\begin{enumerate}[(a)]
+    \item Quels référentiels s'imposent, et lesquels sont choisis~?
+          Classez-les selon la procédure du chapitre.
+    \item Pour le contrôle « les comptes des agents partis sont désactivés
+          sous 48~heures », l'ANPP n'a aucune procédure écrite. Quel critère
+          retenir, et comment le justifier~?
+    \item Montrez, à l'aide de la lecture du domaine D.3, pourquoi le rapport
+          doit nommer le critère de chaque conclusion.
+    \item En quoi le choix d'un référentiel est-il, au sens de l'article A0,
+          un choix de fonction objectif~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.4. Gouvernance ou gestion~? \niveaubase}]
+Rangez dans le bon domaine de COBIT~2019~: (a) le conseil approuve
+l'appétence au risque informatique~; (b) la DSI teste un changement avant
+sa mise en production~; (c) l'audit interne évalue le contrôle interne~;
+(d) l'exploitation restaure une sauvegarde~; (e) la direction établit le
+schéma directeur.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.5. Les fonctions du CSF \niveaubase}]
+Classez les constats suivants de LiZbiZ dans les fonctions du NIST
+CSF~2.0~: comptes d'agents partis actifs~; aucun inventaire des
+applications~; journaux jamais revus~; restaurations jamais testées~;
+aucune politique de sécurité approuvée.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.6. Convertir une ancienne grille \niveaumoyen}]
+Un dossier d'audit de 2019 de la BANQUE SANAGA cite « COBIT~4.1 DS5 » et
+« ISO/IEC~27002:2013, 9.2 ». Donnez les références à utiliser en 2026 et
+expliquez pourquoi le rapport ne peut pas reprendre telles quelles les
+anciennes références.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.7. La déclaration d'applicabilité \niveaumoyen}]
+La déclaration d'applicabilité de DIGICORE AFRIQUE exclut la mesure de
+l'ISO/IEC~27002 sur la sécurité des développements, au motif que
+« DIGICORE ne développe pas ». Or DIGICORE paramètre et modifie le système
+central de la banque. Quelle est votre analyse, et quelle cote donnez-vous
+au contrôle « les exclusions sont justifiées »~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.8. Examiner, interroger, tester \niveaumoyen}]
+Pour la mesure « revue des droits d'accès », rédigez une procédure
+d'évaluation dans chacune des trois méthodes de la SP~800-53A, et
+associez-la au type de test du Chapitre~\ref{chap:preuve}.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.9. Le référentiel déplace µ \niveauexpert}]
+Reprenez le sous-domaine D.3 de LiZbiZ (authentification), coté 4/0/0
+avec la politique interne et 2/2/0 avec un critère plus exigeant.
+Expliquez pourquoi le changement de référentiel déplace $\mu$ mais pas
+$U$, et dites quel critère vous retenez pour le rapport, en justifiant par
+les critères de choix du chapitre.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~14.10. Un référentiel pour LiZbiZ \niveauexpert}]
+Proposez, pour les cinq domaines de LiZbiZ, le référentiel principal et
+un référentiel complémentaire, et justifiez. Indiquez pour quel domaine le
+COSO est indispensable, et pour lequel le NIST CSF apporte le plus.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: conclure sur un
+principe COSO (présent, fonctionnel, intégré)~; citer les cinq domaines de
+COBIT~2019 et leur nombre d'objectifs~; passer de COBIT~4.1 à COBIT~2019~;
+dire combien de mesures compte l'annexe A de 2022~; nommer les six
+fonctions du CSF~2.0~; choisir et justifier un référentiel.
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item COSO, \textit{Internal Control -- Integrated
+          Framework}~\cite{coso2013ic}.
+    \item ISACA, \textit{COBIT 2019 Framework}~\cite{isaca2018cobitintro,isaca2018cobitobjectifs}.
+    \item ISO/IEC~27002:2022~\cite{iso27002_2022}.
+    \item NIST, SP~800-53 rév.~5 et SP~800-53A~\cite{nist2020sp80053,nist2022sp80053a}~;
+          \textit{Cybersecurity Framework 2.0}~\cite{nist2024csf}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les référentiels se choisissent~; la loi s'impose. Le
+Chapitre~\ref{chap:droit} présente le cadre juridique camerounais et
+africain de l'audit et du contrôle des SI~: loi n°~2010/012, règlement
+COBAC, AUSCGIE et contrôle des finances publiques.
+\end{boxinfo}

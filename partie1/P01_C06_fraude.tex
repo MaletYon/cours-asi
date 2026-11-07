@@ -1,0 +1,730 @@
+% ============================================================================
+% Fichier  : partie1/P01_C06_fraude.tex
+% Titre    : La Fraude dans et par les Systèmes d'Information
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C04 (TRANSLOG SERVICES 23 × 4,9 M = 112,7 M ; ajustements de
+% FOUDA 148 M dont 71 % le dernier jour ouvré ; 38 M de l'écart de 186 M
+% cotés NEK ; Douala 17/2/1 puis 9/3/8).
+% Sources : COSO et ACFE, guide de gestion du risque de fraude (2016) ;
+% Cressey (1953) ; Wolfe et Hermanson (2004), losange de la fraude ;
+% Benford (1938) et Nigrini (2012) pour la loi du premier chiffre ; COSO
+% 2013 (principe 8) ; A0 (axiome 4), A1 (usage stratégique de NEK).
+% Données Benford : fichier paiements_fournisseurs_2025.csv du lab
+% ACSI-LAB-07 (4 812 paiements) ; calcul du 06/11/2026 : premier chiffre,
+% khi-deux 10,4, MAD 0,0035 ; deux premiers chiffres « 49 » : 60 observés
+% pour 42,2 attendus.
+% L'obligation de révélation du commissaire aux comptes (AUSCGIE) est
+% décrite sans numéro d'article : à vérifier dans le texte.
+% Corrigés : corriges/Corr_C06.tex.
+% ============================================================================
+
+\chapter{La Fraude dans et par les Systèmes d'Information}
+\label{chap:fraude}
+\chaptermark{La fraude et les SI}
+
+\epigraph{%
+    « L'erreur se cache par hasard.\\
+    La fraude se cache exprès~: c'est ce qui la rend auditable. »%
+}{Principe de l'auditeur}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise des Chapitres~\ref{chap:controle-interne} (séparation des
+    tâches), \ref{chap:risque} et~\ref{chap:gestion-risques} (risque,
+    registre, scénarios)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir la fraude, la distinguer de l'erreur, et en classer les
+          formes.
+    \item Expliquer le triangle et le losange de la fraude, et les relier à
+          l'interaction stratégique entre auditeur et audité.
+    \item Classer les schémas de fraude assistés par l'informatique et
+          leurs signaux dans les données.
+    \item Écrire les requêtes de détection des principaux schémas et
+          appliquer la loi de Benford, en connaissant ses limites.
+    \item Concevoir un dispositif de gestion du risque de fraude selon le
+          guide du COSO et de l'ACFE.
+    \item Reconnaître un usage stratégique de la réponse \NEK{}.
+    \item Savoir quand l'audit doit s'arrêter et laisser place à
+          l'enquête.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : erreur ou fraude~?}
+% ============================================================================
+
+Au Chapitre~\ref{chap:risque}, trois risques intolérables de LiZbiZ
+supposaient une intention~: ajuster le stock, payer des fournisseurs
+fictifs, utiliser le compte d'un agent parti. Lorsque AUDIX CONSEIL
+présente sa cartographie, le responsable informatique proteste~: « Ce sont
+des erreurs de saisie, pas des fraudes. Nos agents sont honnêtes. »
+
+Peut-être. Mais l'auditeur ne présume ni l'honnêteté ni la malhonnêteté~: il
+cherche des faits. Et il sait qu'une fraude ne se trouve pas par hasard~:
+elle se trouve parce qu'on connaît ses schémas et qu'on sait où regarder.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Définir et classer la fraude (section~\ref{sec:c06-definir}).
+    \item Pourquoi elle survient (section~\ref{sec:c06-triangle}).
+    \item Ses schémas dans les SI (section~\ref{sec:c06-schemas}).
+    \item Le dispositif anti-fraude (section~\ref{sec:c06-dispositif}).
+    \item La repérer dans les données, par requêtes et par la loi de
+          Benford (sections~\ref{sec:c06-donnees} et~\ref{sec:c06-benford}).
+    \item La repérer dans les réponses (section~\ref{sec:c06-strategie}).
+    \item De l'audit à l'enquête (section~\ref{sec:c06-enquete}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Définir la Fraude}
+\label{sec:c06-definir}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Fraude}\index{fraude}~: acte \emph{intentionnel}, commis par une ou
+plusieurs personnes de l'organisation ou extérieures à elle, qui recourt à
+la tromperie pour obtenir un avantage indu ou causer un préjudice.
+
+\medskip
+\termecle{Erreur}\index{erreur}~: inexactitude \emph{non intentionnelle}
+(faute de saisie, mauvaise interprétation d'une règle, panne).
+\end{boxdef}
+
+Ce qui distingue la fraude de l'erreur, c'est l'intention, et donc la
+\emph{dissimulation}. Une erreur laisse des traces au hasard~; une fraude
+efface les siennes, ou les place là où personne ne regarde. C'est pourquoi
+la fraude obéit à des schémas, que l'auditeur peut connaître.
+
+\begin{tableaucours}{L{3.6cm}L{4.4cm}L{4.2cm}}{%
+    \tableauHeader{Famille} &
+    \tableauHeader{Définition} &
+    \tableauHeader{Exemple chez LiZbiZ}
+}
+Détournement d'actifs & Appropriation de biens ou de fonds de
+l'organisation & Vol de marchandises masqué par un ajustement de stock \\
+Corruption & Usage de sa fonction pour obtenir un avantage indu, souvent
+avec un tiers & Commission versée par un transporteur pour être
+retenu \\
+Fraude à l'information financière & Présentation trompeuse des états
+financiers & Stock surévalué pour améliorer le résultat \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~6.1. Trois familles de fraude
+(classification usuelle de la profession)}\end{center}
+
+\subsection{Fraude interne, fraude externe, fraude par le système}
+
+Une deuxième classification croise l'auteur et le rôle du système.
+
+\begin{tableaucours}{L{3.0cm}L{4.6cm}L{4.6cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Auteur interne} &
+    \tableauHeader{Auteur externe}
+}
+Fraude \emph{dans} le système (le SI enregistre une opération frauduleuse)
+& Fournisseur fictif, ajustement de stock & Faux client, fausse facture
+d'un fournisseur réel \\
+Fraude \emph{par} le système (le SI est l'arme) & Abus d'administrateur,
+modification d'un paramètre & Hameçonnage, usurpation du dirigeant,
+rançongiciel \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~6.2. Fraude dans et par le
+système}\end{center}
+
+\begin{boxinfo}
+\textbf{L'usurpation du dirigeant.} Un comptable reçoit un courriel ou un
+appel, apparemment du directeur général, qui demande un virement urgent et
+confidentiel vers un compte à l'étranger. C'est une fraude externe par le
+système~: aucune règle de l'application n'est violée, le paiement est
+« normalement » saisi et validé. Le contrôle est procédural (rappel par un
+numéro connu, double validation de tout nouveau bénéficiaire), pas
+technique.
+\end{boxinfo}
+
+% ============================================================================
+\section{Pourquoi la Fraude Survient}
+\label{sec:c06-triangle}
+% ============================================================================
+
+\subsection{Le triangle de la fraude}
+
+Dans les années 1950, le criminologue Donald Cressey étudie des personnes
+condamnées pour détournement de fonds~\cite{cressey1953}. Ses travaux ont
+donné naissance au \termecle{triangle de la fraude}\index{triangle de la
+fraude}~: la fraude survient lorsque trois conditions sont réunies.
+
+\noindent\begin{minipage}{\linewidth}
+\begin{center}
+\begin{tikzpicture}[
+    sommet/.style = {
+        draw=CouleurPrimaire, fill=CouleurDef, rounded corners=4pt,
+        text width=3.2cm, align=center, minimum height=1.0cm,
+        font=\small\bfseries\color{CouleurPrimaire}
+    }
+]
+\coordinate (A) at (0,3.0);
+\coordinate (B) at (-3.0,0);
+\coordinate (C) at (3.0,0);
+\draw[very thick, color=CouleurAccent] (A) -- (B) -- (C) -- cycle;
+\node[sommet] at (A) {Pression\\ \mdseries\footnotesize dette, objectifs intenables};
+\node[sommet] at (B) {Opportunité\\ \mdseries\footnotesize contrôle faible, droits cumulés};
+\node[sommet] at (C) {Rationalisation\\ \mdseries\footnotesize « je le rendrai », « on me doit »};
+\node[font=\footnotesize\itshape, color=CouleurSecondaire] at (0,1.0) {Fraude};
+\end{tikzpicture}
+\end{center}
+\vspace{-0.4em}
+\begin{center}{\small\itshape Figure~6.1. Le triangle de la fraude, d'après
+les travaux de Cressey}\end{center}
+\end{minipage}
+
+\medskip
+
+L'auditeur et le contrôleur interne n'ont guère de prise sur la pression ni
+sur la rationalisation. Ils agissent sur l'\textbf{opportunité}~: c'est
+pourquoi la séparation des tâches et la revue des droits
+(Chapitre~\ref{chap:controle-interne}) sont les premières défenses contre la
+fraude.
+
+\subsection{Le losange~: la capacité}
+
+D.~Wolfe et D.~Hermanson ont ajouté en 2004 un quatrième élément, la
+\termecle{capacité}\index{losange de la fraude}~: la position, les
+compétences et l'assurance qui permettent de passer à l'acte et de
+dissimuler~\cite{wolfe2004diamond}. Dans les systèmes d'information, cette
+capacité est souvent technique~: un administrateur peut faire ce que le
+contrôle interne interdit aux autres, et effacer la trace de ce qu'il a
+fait. C'est la raison pour laquelle le cumul total de M.~KOUNOU
+(Chapitre~\ref{chap:controle-interne}) est le plus grave~: il réunit
+l'opportunité et la capacité.
+
+\subsection{Un jeu entre l'auditeur et l'audité}
+
+L'auditologie pose que l'auditeur et l'audité poursuivent des intérêts
+distincts, et que leurs actions se comprennent comme des coups dans un jeu
+à information imparfaite (axiome~4~\cite{minka2026auditologie}). La fraude en
+est le cas extrême~: le fraudeur sait ce que l'auditeur ignore, et cherche à
+ce qu'il continue de l'ignorer. Deux conséquences pratiques en découlent.
+\begin{enumerate}
+    \item \textbf{L'audité adapte ses réponses à l'enjeu.} Une même personne
+          ne répond pas de la même façon dans une auto-évaluation et dans un
+          entretien formel (section~\ref{sec:c06-strategie}).
+    \item \textbf{L'auditeur doit être imprévisible.} Un programme de tests
+          connu d'avance indique au fraudeur où ne pas laisser de traces~:
+          les échantillons, les dates et certains tests doivent rester
+          inconnus de l'audité.
+\end{enumerate}
+
+% ============================================================================
+\section{Les Schémas de Fraude Assistés par l'Informatique}
+\label{sec:c06-schemas}
+% ============================================================================
+
+\begin{tableaucours}{L{2.9cm}L{3.2cm}L{3.0cm}L{3.1cm}}{%
+    \tableauHeader{Schéma} &
+    \tableauHeader{Vulnérabilité exploitée} &
+    \tableauHeader{Contrôle préventif} &
+    \tableauHeader{Signal dans les données}
+}
+Fournisseur fictif & Cumul création du fournisseur et paiement & Séparation
+des tâches, validation des nouveaux fournisseurs & Coordonnées bancaires
+partagées avec un salarié, absence d'adresse \\
+Modification des coordonnées bancaires & Données de référence modifiables
+sans validation & Double validation, journal des modifications &
+Changement de RIB suivi d'un paiement dans les jours suivants \\
+Fausse réception & Cumul commande et réception & Réception confirmée par
+une personne distincte & Réception sans bon de transport, à l'heure de
+fermeture \\
+Ajustement de stock & Cumul réception et ajustement & Validation au-delà
+d'un seuil & Ajustements concentrés en fin de mois, sans pièce \\
+Fractionnement & Seuil de validation connu & Contrôle des cumuls par
+fournisseur & Paiements juste sous le seuil, répétés \\
+Compte dormant & Comptes d'agents partis non désactivés & Revue périodique
+des comptes & Connexion après la date de départ \\
+Abus d'administrateur & Droits techniques étendus, sans trace & Comptes
+nominatifs, journalisation protégée & Opérations de gestion faites par un
+compte d'administration \\
+Salarié fantôme & Fichier de paie modifiable sans contrôle & Rapprochement
+paie et effectif des services & Même RIB pour deux salariés, absence de
+congés \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~6.3. Schémas de fraude et
+signaux}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Laisser le responsable informatique, qui détient
+tous les droits, administrer lui-même les journaux qui tracent ses propres
+actions.
+
+\smallskip
+\textbf{Règle~:} les journaux des comptes d'administration sont conservés
+hors de leur portée et examinés par une personne indépendante.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Dispositif Anti-Fraude}
+\label{sec:c06-dispositif}
+% ============================================================================
+
+Le principe~8 du COSO~2013 demande de prendre en compte le risque de fraude
+(Chapitre~\ref{chap:controle-interne}). Le COSO et l'Association of
+Certified Fraud Examiners (\sigle{ACFE}) ont publié en 2016 un guide qui
+décline cette exigence en un programme global de gestion du risque de
+fraude~\cite{coso2016fraude}. Ses cinq principes sont alignés sur les cinq
+composantes du contrôle interne.
+
+\begin{tableaucours}{L{3.6cm}L{8.6cm}}{%
+    \tableauHeader{Volet} &
+    \tableauHeader{Contenu (reformulé)}
+}
+Gouvernance & Une politique écrite de gestion du risque de fraude, portée
+par l'organe de gouvernance et la direction \\
+Évaluation & Une évaluation régulière et complète du risque de fraude,
+schéma par schéma \\
+Activités de contrôle & Des contrôles préventifs et détectifs choisis pour
+les schémas identifiés \\
+Investigation et correction & Un dispositif de signalement et une approche
+coordonnée des investigations et des mesures correctives \\
+Pilotage & Des évaluations qui vérifient que les cinq volets fonctionnent,
+et la communication des déficiences \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~6.4. Les cinq volets de la gestion du
+risque de fraude (d'après COSO et ACFE, 2016)}\end{center}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Bâtir le programme anti-fraude de LiZbiZ}
+\begin{enumerate}
+    \item Faire adopter par le conseil une politique anti-fraude~: tolérance
+          zéro, obligation de signaler, protection des lanceurs d'alerte.
+    \item Dresser, schéma par schéma, la liste des fraudes possibles dans
+          l'application intégrée (Tableau~6.3).
+    \item Supprimer d'abord les opportunités~: cumuls de droits, comptes
+          dormants, seuils connus et non surveillés.
+    \item Mettre en place des contrôles détectifs automatiques sur les
+          données, revus chaque mois.
+    \item Ouvrir un canal de signalement confidentiel, hors de la
+          hiérarchie directe.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Repérer la Fraude dans les Données}
+\label{sec:c06-donnees}
+% ============================================================================
+
+\subsection{Analyser toute la population}
+
+L'informatique facilite la fraude, mais elle en garde la trace. L'auditeur
+analyse l'ensemble des opérations, et non un échantillon, à la recherche des
+signaux du Tableau~6.3~: doublons, valeurs juste sous un seuil, opérations
+hors des heures de travail, coordonnées partagées entre un fournisseur et un
+salarié.
+
+\begin{boxoutils}{Trois requêtes de détection}
+\begin{lstlisting}[language=SQL]
+-- 1. Paiements juste sous le seuil de double validation (5 M)
+SELECT id_fournisseur, COUNT(*) AS nb, SUM(montant_fcfa) AS total
+FROM   paiements
+WHERE  montant_fcfa >= 4500000 AND montant_fcfa < 5000000
+GROUP  BY id_fournisseur
+HAVING COUNT(*) >= 3
+ORDER  BY total DESC;
+
+-- 2. Fournisseurs dont le RIB est celui d'un salarié
+SELECT f.id_fournisseur, f.nom, s.matricule
+FROM   fournisseurs f
+JOIN   salaries s ON REPLACE(f.rib, ' ', '') = REPLACE(s.rib, ' ', '');
+
+-- 3. Ajustements négatifs du dernier jour ouvré, par magasinier
+SELECT saisi_par, SUM(-quantite * prix_unitaire) AS valeur
+FROM   ajustements a
+JOIN   calendrier c ON c.jour = a.date_ajustement
+WHERE  a.quantite < 0 AND c.dernier_ouvre_du_mois = 1
+GROUP  BY saisi_par;
+\end{lstlisting}
+\end{boxoutils}
+
+\begin{boxscenario}{Opération LIZBIZ. Ce que disent les données}
+\textbf{Tests réalisés} par AUDIX CONSEIL sur les extractions de l'application
+intégrée, pour 2025 et le premier trimestre~2026.
+
+\medskip
+\textbf{Constatation 1.} Le fournisseur « TRANSLOG SERVICES », créé en
+mars~2025 par Mme~OWONA, a reçu 23~paiements de 4,9~millions FCFA chacun,
+soit 112,7~millions FCFA. Le seuil de double validation est de 5~millions.
+Ses coordonnées bancaires sont identiques à celles qu'un salarié a déclarées
+pour sa paie.
+
+\medskip
+\textbf{Constatation 2.} À l'entrepôt de Douala, les ajustements négatifs de
+stock saisis par M.~FOUDA s'élèvent à 148~millions FCFA, dont 71~\% le
+dernier jour ouvré du mois. Aucun n'est appuyé par un procès-verbal
+d'inventaire.
+
+\medskip
+\textbf{Constatation 3.} Sur l'écart de stock de 186~millions FCFA, 38~millions
+ne peuvent être rattachés à aucune opération~: les extractions des autres
+entrepôts sont incomplètes.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Les constatations 1 et 2 réunissent
+les signaux de deux schémas~: fournisseur fictif avec fractionnement, et
+ajustement de stock. Elles ne prouvent pas une fraude, car l'intention reste
+à établir, mais elles imposent d'en informer le commanditaire. La
+constatation 3 est cotée \NEK{}~: on ne sait pas, et il faut dire pourquoi.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Écrire dans le rapport « Mme~OWONA a détourné
+112,7~millions ».
+
+\smallskip
+\textbf{Règle~:} l'auditeur constate des faits («~23~paiements de
+4,9~millions à un fournisseur créé par Mme~OWONA, dont le RIB est celui
+d'un salarié~») et s'abstient de toute qualification pénale. Qualifier,
+c'est le rôle du juge~; accuser sans preuve de l'intention expose
+l'auditeur et sa mission.
+\end{boxalert}
+
+% ============================================================================
+\section{La Loi de Benford}
+\label{sec:c06-benford}
+% ============================================================================
+
+\subsection{Le premier chiffre n'est pas uniforme}
+
+Dans de nombreuses séries de montants naturels (factures, paiements,
+populations), le premier chiffre significatif n'est pas réparti au hasard
+entre 1 et 9~: il vaut 1 dans environ 30~\% des cas, et 9 dans moins de
+5~\%. Cette régularité, observée par Frank Benford en
+1938~\cite{benford1938}, suit la loi
+\[
+    P(d) = \log_{10}\!\left(1 + \frac{1}{d}\right), \qquad d = 1, \dots, 9.
+\]
+Elle s'étend aux deux premiers chiffres~: $P(d_1d_2) =
+\log_{10}(1 + 1/d_1d_2)$, pour $d_1d_2$ de 10 à 99. M.~Nigrini a fait de
+ces tests un outil de l'audit et de la détection de
+fraude~\cite{nigrini2012benford}.
+
+\subsection{Les paiements de LiZbiZ}
+
+\begin{boxscenario}{Opération LIZBIZ. Le test du premier chiffre}
+\textbf{Données.} Les 4~812~paiements fournisseurs de 2025 (fichier
+\texttt{paiements\_fournisseurs\_2025.csv}).
+
+\medskip
+\begin{tableaucours}{cccc}{%
+    \tableauHeader{Chiffre} & \tableauHeader{Observés} &
+    \tableauHeader{Part observée} & \tableauHeader{Part attendue}
+}
+1 & 1~443 & 30,0~\% & 30,1~\% \\
+2 & 813 & 16,9~\% & 17,6~\% \\
+3 & 574 & 11,9~\% & 12,5~\% \\
+4 & 461 & 9,6~\% & 9,7~\% \\
+5 & 378 & 7,9~\% & 7,9~\% \\
+6 & 332 & 6,9~\% & 6,7~\% \\
+7 & 292 & 6,1~\% & 5,8~\% \\
+8 & 284 & 5,9~\% & 5,1~\% \\
+9 & 235 & 4,9~\% & 4,6~\% \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Khi-deux à 8~degrés de liberté~: 10,4, inférieur à
+la valeur critique de 15,5 au seuil de 5~\%~; écart absolu moyen (MAD)~:
+0,0035. La distribution est conforme à la loi de Benford.
+
+\medskip
+\textbf{Test des deux premiers chiffres.} Les montants commençant par
+« 49 » sont 60, pour 42,2 attendus. L'écart réduit vaut environ
+$(60 - 42{,}2)/\sqrt{42{,}2} \approx 2{,}7$~: il est significatif, alors que
+la distribution globale reste conforme.
+
+\medskip
+\textbf{Analyse.} Le test du premier chiffre ne voit pas les 23~paiements de
+TRANSLOG SERVICES, noyés dans 4~812 opérations. Le test des deux premiers
+chiffres les fait apparaître~: il est plus fin, et c'est lui qui oriente
+vers la requête des paiements juste sous le seuil.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Conclure « pas de fraude » parce que la
+distribution du premier chiffre est conforme à la loi de Benford, ou
+« fraude » parce qu'elle ne l'est pas.
+
+\smallskip
+\textbf{Règle~:} la loi de Benford oriente, elle ne prouve rien. Elle ne
+s'applique pas aux montants fixés (loyers, salaires, tarifs), bornés ou
+attribués (numéros). Un écart désigne où regarder~; une conformité ne
+rassure que sur l'ensemble, jamais sur une sous-population.
+\end{boxalert}
+
+% ============================================================================
+\section{Repérer la Dissimulation dans les Réponses}
+\label{sec:c06-strategie}
+% ============================================================================
+
+Le prologue l'a annoncé~: les réponses données en entretien formel ont
+différé de celles de l'auto-évaluation. La réponse \NEK{} peut traduire une
+ignorance sincère~; elle peut aussi servir à ne pas répondre. L'article
+\emph{Modelling Epistemic Uncertainty in IS Audit} propose un indice, le
+\termecle{SUI}\index{SUI (indice d'usage stratégique)} (\textit{Strategic Use
+Index}), qui compare la distribution des \NEK{} entre questions à fort enjeu
+et à faible enjeu, pour distinguer l'ignorance authentique de la
+dissimulation~\cite{minka2026nek}. Le Chapitre~\ref{chap:incertitude} en
+donnera la définition.
+
+\begin{boxlecture}{Entrepôt de Douala}
+Les mêmes dix questions sur la gestion du stock de Douala sont posées aux
+mêmes deux responsables, d'abord en auto-évaluation écrite, puis en
+entretien formel, après la découverte des ajustements.
+
+\medskip
+\begin{tableaucours}{L{3.6cm}ccccc}{%
+    \tableauHeader{Contexte} &
+    \tableauHeader{\OUI{}} & \tableauHeader{\NON{}} & \tableauHeader{\NEK{}} &
+    \tableauHeader{$U$} & \tableauHeader{$H$ (bit)}
+}
+Auto-évaluation & 17 & 2 & 1 & 0,05 & 0,75 \\
+Entretien formel & 9 & 3 & 8 & 0,40 & 1,46 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Le taux de \NEK{} passe de 5~\% à 40~\% lorsque
+l'enjeu augmente, pour les mêmes personnes et les mêmes questions.
+
+\medskip
+\textbf{Analyse} (confiance faible à moyenne). Une ignorance sincère ne
+devrait pas dépendre du contexte. Ce déplacement est un \emph{signal}
+d'usage stratégique de \NEK{}, pas une preuve~: d'autres explications sont
+possibles, comme la crainte de se tromper devant un auditeur. Il oriente
+les tests vers les questions où \NEK{} a le plus augmenté.
+
+\medskip
+\hfill\lecture{0{,}45}{0{,}40}{1{,}46}
+\end{boxlecture}
+
+% ============================================================================
+\section{De l'Audit à l'Enquête}
+\label{sec:c06-enquete}
+% ============================================================================
+
+L'auditeur n'est ni un enquêteur ni un juge. Lorsque ses travaux révèlent des
+indices sérieux de fraude, il ne poursuit pas seul.
+
+\begin{boxprocedure}
+\textbf{Conduite à tenir devant des indices de fraude.} Le papier de travail
+de l'auditeur doit permettre d'établir qu'il a~:
+\begin{itemize}
+    \item conservé les extractions et les journaux utilisés, avec leur
+          empreinte numérique, sans les modifier~;
+    \item consigné les constatations séparément de leur analyse, sans
+          qualification pénale («~fraude~», «~vol~»)~;
+    \item informé le commanditaire désigné par la lettre de mission, par
+          écrit, et non les personnes mises en cause~;
+    \item suspendu les tests susceptibles d'alerter les personnes en cause,
+          dans l'attente de la décision du commanditaire.
+\end{itemize}
+\end{boxprocedure}
+
+La suite relève d'une enquête interne, d'un expert judiciaire ou de la
+justice. Elle obéit aux règles de la preuve numérique~: chaîne de
+conservation, intégrité, opposabilité. Le Chapitre~\ref{chap:audit-preuve}
+et les cours d'investigation numérique (UE~SEC4031 et SEC4052) y reviennent.
+
+\begin{boxinfo}
+\textbf{Le commissaire aux comptes.} Informé des constatations d'AUDIX
+CONSEIL, le commissaire aux comptes de LiZbiZ doit en apprécier l'effet sur
+les comptes~: stock surévalué, charges fictives. Le droit OHADA des
+sociétés commerciales lui impose en outre de révéler au ministère public
+les faits délictueux dont il a connaissance dans l'exercice de sa
+mission~\cite{ohada2014auscgie} (l'article est à vérifier dans le texte
+avant toute citation). Il ne peut donc pas «~régler l'affaire en interne~».
+\end{boxinfo}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Protéger le canal de signalement.} Le responsable de la conformité
+s'assure que les signalements reçus sont enregistrés, traités par une
+personne indépendante des personnes mises en cause, et que leur auteur
+n'est pas exposé. Un canal que personne n'ose utiliser ne détecte rien.
+\end{boxmetier}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Fournir des preuves exploitables.} Devant des indices, l'auditeur
+SI remet au commanditaire les requêtes exécutées, les extractions et leurs
+empreintes SHA-256, et la lettre d'extraction qui atteste leur origine.
+Une enquête qui doit tout refaire perd des semaines, et parfois la preuve.
+\end{boxmetier}
+
+\begin{boiteRemarque}{L'auditeur doit-il chercher la fraude~?}
+Pas systématiquement~: la lettre de mission d'AUDIX CONSEIL l'exclut
+(Chapitre~\ref{chap:audit-auditologie}). Mais il doit tenir compte du risque
+de fraude dans la conception de ses tests, rester attentif aux signaux, et
+ne jamais ignorer un indice qu'il a rencontré. Ne pas chercher n'est pas
+fermer les yeux.
+\end{boiteRemarque}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{La fraude est intentionnelle et se dissimule}~; c'est ce
+          qui la distingue de l'erreur et ce qui lui donne des schémas
+          reconnaissables.
+    \item \textbf{Le triangle de la fraude}~: pression, opportunité,
+          rationalisation~; le losange y ajoute la capacité, souvent
+          technique dans les SI.
+    \item \textbf{Les schémas assistés par l'informatique} exploitent des
+          cumuls de droits, des données de référence non protégées, des
+          seuils connus et des comptes dormants~; chacun laisse un signal
+          que des requêtes simples font apparaître.
+    \item \textbf{La loi de Benford} oriente~: le test des deux premiers
+          chiffres est plus fin que celui du premier~; aucun des deux ne
+          prouve.
+    \item \textbf{Un programme anti-fraude} a cinq volets~: gouvernance,
+          évaluation, contrôles, investigation et correction, pilotage.
+    \item \textbf{La réponse \NEK{}} peut être stratégique~: un taux de \NEK{}
+          qui dépend de l'enjeu est un signal, pas une preuve.
+    \item \textbf{Devant des indices}, l'auditeur conserve les preuves,
+          informe le commanditaire et laisse la place à l'enquête.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer erreur et
+fraude~; nommer les quatre éléments du losange~; écrire la requête des
+paiements sous le seuil~; calculer la part attendue d'un chiffre selon
+Benford~; rédiger une constatation sans qualification pénale.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.1. Erreur ou fraude~? \niveaubase}]
+Pour chacune des situations suivantes, indiquez s'il s'agit plutôt d'une
+erreur ou d'un signal de fraude, et le test qui permettrait de trancher.
+\begin{enumerate}[(a)]
+    \item Une facture est saisie deux fois, avec deux numéros différents.
+    \item Les coordonnées bancaires d'un transporteur sont modifiées, puis
+          rétablies trois jours plus tard, après un paiement.
+    \item Un ajustement de stock positif compense exactement un ajustement
+          négatif de la veille.
+    \item Une commande est passée un dimanche par un compte d'administration.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.2. Classer \niveaubase}]
+Classez selon les Tableaux~6.1 et~6.2~: (a) un faux virement demandé au nom
+du DG~; (b) un salarié fantôme dans la paie de l'ANPP~; (c) une provision
+sur stock non comptabilisée pour présenter un bénéfice~; (d) un acheteur
+rémunéré par un fournisseur.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.3. Le triangle de TRANSLOG SERVICES \niveaumoyen}]
+Reprenez la constatation 1 de la section~\ref{sec:c06-donnees}.
+\begin{enumerate}[(a)]
+    \item Identifiez l'élément du losange de la fraude sur lequel LiZbiZ peut
+          agir, et les contrôles correspondants.
+    \item Rédigez la constatation de façon factuelle, sans qualification
+          pénale.
+    \item Proposez deux tests complémentaires qui confirmeraient ou
+          infirmeraient le caractère fictif du fournisseur.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.4. Écrire une requête \niveaumoyen}]
+Écrivez la requête qui liste les modifications de RIB d'un fournisseur
+suivies d'un paiement à ce fournisseur dans les 7~jours, à partir des
+tables \texttt{modifs\_fournisseurs(id\_fournisseur, champ, date\_modif,
+auteur)} et \texttt{paiements}. Quels faux positifs attendez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.5. Benford pas à pas \niveaumoyen}]
+\begin{enumerate}[(a)]
+    \item Calculez $P(1)$, $P(4)$ et $P(9)$ selon la loi de Benford.
+    \item Calculez la part attendue des montants commençant par « 49 ».
+    \item Pour les 4~812~paiements, combien en attendait-on~? Retrouvez
+          l'écart réduit de la section~\ref{sec:c06-benford}.
+    \item Citez deux séries de LiZbiZ auxquelles la loi ne s'applique pas,
+          et pourquoi.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.6. Un programme anti-fraude \niveaumoyen}]
+Pour chacun des cinq volets du Tableau~6.4, proposez une mesure concrète
+pour la BANQUE SANAGA et la preuve que l'auditeur demanderait pour la
+vérifier.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.7. La constatation de trop \niveaumoyen}]
+Le brouillon d'observation d'un auditeur junior contient la phrase~:
+« M.~FOUDA a volé des marchandises pour 148~millions, comme le prouve la
+concentration des ajustements en fin de mois. » Réécrivez l'observation et
+expliquez chaque modification.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.8. Un usage stratégique de \NEK{}~? \niveauexpert}]
+Reprenez la lecture de l'entrepôt de Douala (section~\ref{sec:c06-strategie}).
+\begin{enumerate}[(a)]
+    \item Recalculez $\mu$, $U$ et $H$ pour l'auto-évaluation et pour
+          l'entretien formel.
+    \item Proposez deux explications du déplacement des réponses, l'une
+          sincère, l'autre stratégique.
+    \item Concevez un protocole de recueil qui permettrait de départager ces
+          deux explications.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.9. La note au commanditaire \niveauexpert}]
+Rédigez la note que le chef de mission d'AUDIX CONSEIL adresse au
+commanditaire après les constatations 1 et 2, en respectant la conduite à
+tenir de la section~\ref{sec:c06-enquete}~: destinataire, contenu, pièces
+jointes, ce qu'elle ne doit pas contenir.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~6.10. Une fraude externe \niveauexpert}]
+Le comptable de la BANQUE SANAGA reçoit un appel du « directeur général »
+qui demande un virement urgent de 85~millions vers un compte à Dubaï.
+\begin{enumerate}[(a)]
+    \item Classez la fraude et identifiez le contrôle qui aurait dû la
+          bloquer.
+    \item Rédigez la fiche d'assertion d'un contrôle de rappel des nouveaux
+          bénéficiaires.
+    \item Comment l'auditeur testerait-il ce contrôle sans fraude réelle~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item COSO et ACFE, \textit{Fraud Risk Management
+          Guide}~\cite{coso2016fraude}~: les cinq volets, avec des outils
+          d'évaluation.
+    \item D.~Cressey, \textit{Other People's Money}~\cite{cressey1953}~: le
+          livre d'où vient le triangle.
+    \item M.~Nigrini, \textit{Benford's Law}~\cite{nigrini2012benford}~:
+          les tests, leurs seuils et leurs pièges.
+    \item D.~Wolfe et D.~Hermanson, \textit{The Fraud
+          Diamond}~\cite{wolfe2004diamond}~: la capacité, quatrième élément.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~\ref{part:fondements} a posé ce que l'auditeur
+doit savoir~: ce qu'est un audit, les grandes défaillances, le contrôle
+interne, le risque, sa gestion et la fraude. La Partie~\ref{part:methode}
+enseigne comment conduire la mission. Le Chapitre~\ref{chap:mission} en
+présente les principes et le cycle.
+\end{boxinfo}

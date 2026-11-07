@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C05
+Chapitre 5 : Gérer les risques des systèmes d'information
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quelle étape de l'ISO 31000 regroupe identifier, analyser et évaluer ?
+      a) L'appréciation du risque
+      b) Le traitement
+      c) La surveillance
+      d) Le contexte
+
+ 2. Que se fait à chaque étape du processus de l'ISO 31000 ?
+      a) La certification
+      b) La communication et l'enregistrement
+      c) Le paiement d'une prime
+      d) Un test d'intrusion
+
+ 3. Quelle norme applique le processus de management du risque à la sécurité de l'information ?
+      a) ISO 22301
+      b) ISO 19011
+      c) ISO/IEC 27005
+      d) ISO 9001
+
+ 4. Une procédure renvoie à l'ISO/IEC 27005 de 2018. Qu'attend l'auditeur ?
+      a) Une non-conformité automatique
+      b) Rien
+      c) Le retrait de la procédure
+      d) Une décision documentée de la conserver ou de migrer
+
+ 5. Quelle option de traitement consiste à renoncer à l'activité à l'origine du risque ?
+      a) Éviter
+      b) Réduire
+      c) Transférer
+      d) Accepter
+
+ 6. Que ne transfère jamais un contrat de sous-traitance ?
+      a) L'exécution
+      b) La responsabilité
+      c) Une partie du coût
+      d) Le travail
+
+ 7. Sur quoi porte un indicateur clé de risque ?
+      a) Sur l'incident lui-même, après coup
+      b) Sur le chiffre d'affaires
+      c) Sur une cause ou une vulnérabilité, avant l'incident
+      d) Sur la satisfaction des clients
+
+ 8. Pourquoi la panne de mars 2026 de la BANQUE SANAGA n'est-elle jamais apparue parmi les risques majeurs ?
+      a) Elle était imprévisible
+      b) Elle n'a rien coûté
+      c) Le conseil l'avait acceptée
+      d) Les risques informatiques et bancaires étaient cotés sur deux échelles différentes
+
+ 9. Combien d'ateliers compte EBIOS Risk Manager ?
+      a) Cinq
+      b) Trois
+      c) Quatre
+      d) Sept
+
+10. Quel atelier d'EBIOS identifie les sources de risque et leurs objectifs ?
+      a) Atelier 1
+      b) Atelier 2
+      c) Atelier 4
+      d) Atelier 5
+
+11. Que décrit un scénario opérationnel ?
+      a) Les valeurs métier
+      b) Le budget de la DSI
+      c) Le chemin d'attaque, étape par étape
+      d) Les clauses du contrat
+
+12. Pourquoi le concurrent n'est-il pas retenu comme source de risque chez LiZbiZ ?
+      a) Il est trop proche
+      b) La loi l'interdit
+      c) Il est déjà couvert par l'assurance
+      d) Motivation faible et ressources faibles
+
+13. Après traitement, qu'est-ce qui baisse pour l'événement redouté ER1 ?
+      a) La vraisemblance
+      b) La gravité
+      c) La gravité et la vraisemblance
+      d) Rien
+
+14. Ce qu'apporte EBIOS par rapport au registre de Mme NKENG :
+      a) Une cotation plus élevée
+      b) Une liste de faits à vérifier pour chaque étape d'attaque
+      c) Un logiciel
+      d) Une certification
+
+15. De quelle organisation vient la méthode MEHARI ?
+      a) Le NIST
+      b) L'ISACA
+      c) Le CLUSIF
+      d) L'ANSSI
+
+16. Comment FAIR calcule-t-il la fréquence des événements de perte (LEF) ?
+      a) LEF = LM × V
+      b) LEF = TEF + LM
+      c) LEF = P × I
+      d) LEF = TEF × V
+
+17. Que représente V dans la décomposition FAIR ?
+      a) La probabilité qu'une tentative réussisse
+      b) La valeur de l'actif
+      c) La vitesse de l'attaque
+      d) Le volume de données
+
+18. Dans la simulation de R8, quelle est la perte annuelle moyenne, environ ?
+      a) 0
+      b) 87 millions FCFA
+      c) 417 millions FCFA
+      d) 582 millions FCFA
+
+19. Pourquoi la médiane de la perte annuelle de R8 est-elle nulle ?
+      a) Le modèle est faux
+      b) Le rançongiciel est impossible
+      c) Plus d'une année sur deux se passe sans événement
+      d) La graine est mal choisie
+
+20. Que doit citer le rapport pour qu'un tiers puisse refaire une simulation FAIR ?
+      a) Le nom du logiciel seulement
+      b) Le seul résultat moyen
+      c) Le nom du DSI
+      d) La source de chaque intervalle et la graine
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un risque confié à un prestataire n'est plus le nôtre.
+      Vrai / Faux
+
+22. Une assurance transfère une partie des conséquences financières.
+      Vrai / Faux
+
+23. Dans EBIOS, chaque étape d'un chemin d'attaque est une hypothèse vérifiable par l'auditeur.
+      Vrai / Faux
+
+24. Après le traitement, la gravité d'une indisponibilité critique devient mineure.
+      Vrai / Faux
+
+25. Un résultat FAIR vaut ce que valent ses estimations.
+      Vrai / Faux
+
+26. La moyenne d'une perte annuelle simulée suffit pour décider du budget de sécurité.
+      Vrai / Faux
+
+27. Dans la simulation de R8, la probabilité de perdre plus de 500 millions dans l'année est d'environ 7,3 %.
+      Vrai / Faux
+
+28. OCTAVE Allegro est une méthode d'appréciation des risques.
+      Vrai / Faux
+
+29. La surveillance et la revue font partie du processus de l'ISO 31000.
+      Vrai / Faux
+
+30. Un indicateur clé de risque compte les incidents déjà survenus.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le dernier atelier d'EBIOS porte sur le ______ du risque.
+
+32. Dans FAIR, LM désigne l'______ de la perte.
+
+33. Dans FAIR, TEF est la fréquence des ______.
+
+34. Le sigle anglais d'un indicateur clé de risque est ______.
+
+35. Les quatre options sont réduire, transférer, éviter et ______.
+
+36. La norme ISO de management du risque applicable à tout risque porte le numéro ______.
+
+37. La simulation de R8 porte sur 10 000 années, avec la graine ______.
+
+38. OCTAVE Allegro vient du CERT de l'université Carnegie ______.
+
+39. Le document qui transforme la cartographie en actions datées et chiffrées est le plan de ______.
+
+40. Le premier atelier d'EBIOS porte sur le ______ et le socle de sécurité.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

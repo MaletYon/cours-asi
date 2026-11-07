@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C12
+Chapitre 12 : Suivre : recommandations, cycles et maturité
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Que vaut une recommandation déclarée mise en œuvre mais non testée ?
+      a) NEK
+      b) OUI
+      c) NON
+      d) Sans objet
+
+ 2. Que distingue le tableau de suivi ?
+      a) Les recommandations coûteuses et gratuites
+      b) Les recommandations déclarées et vérifiées
+      c) Les auditeurs internes et externes
+      d) Les domaines A et B
+
+ 3. Sur 18 recommandations de LiZbiZ, combien ont été vérifiées par AUDIX CONSEIL ?
+      a) 14
+      b) 3
+      c) 9
+      d) 18
+
+ 4. Quel est le taux de mise en œuvre vérifié chez LiZbiZ ?
+      a) 78 %
+      b) 28 %
+      c) 100 %
+      d) 50 %
+
+ 5. Quel écart sépare le taux déclaré du taux vérifié chez LiZbiZ ?
+      a) 28 points
+      b) 9 points
+      c) 14 points
+      d) 50 points
+
+ 6. Comment traite-t-on une recommandation refusée par la direction ?
+      a) On l'oublie
+      b) Comme un risque accepté par écrit
+      c) Comme une recommandation mise en œuvre
+      d) Comme une fraude
+
+ 7. Que compare la divergence de Kullback-Leibler ?
+      a) Deux auditeurs
+      b) Deux normes
+      c) Deux distributions de réponses, par exemple deux cycles
+      d) Deux budgets
+
+ 8. Quelle propriété a la divergence de Kullback-Leibler ?
+      a) Elle est symétrique
+      b) Elle peut être négative
+      c) Elle vaut toujours 1
+      d) Elle est positive ou nulle et non symétrique
+
+ 9. Quand la divergence devient-elle infinie ?
+      a) Quand une réponse absente au premier cycle apparaît au second
+      b) Quand les deux cycles sont identiques
+      c) Quand U = 0,5
+      d) Jamais
+
+10. Le domaine D de LiZbiZ passe de 13/2/5 en mai à 18/1/1 en novembre. Que devient H, environ ?
+      a) De 0,57 à 1,24 bit
+      b) De 1,24 à 0,57 bit
+      c) De 1,58 à 0
+      d) Il ne change pas
+
+11. Quel domaine de LiZbiZ a la plus forte divergence entre les deux cycles ?
+      a) A. Gouvernance
+      b) B. Sauvegardes
+      c) C. Stocks
+      d) D. Accès
+
+12. Pourquoi lisse-t-on les distributions ?
+      a) Pour embellir le rapport
+      b) Pour réduire la conformité
+      c) Pour cacher les NEK
+      d) Pour éviter une divergence infinie quand une modalité a un effectif nul
+
+13. Quel lissage le cours utilise-t-il ?
+      a) Le lissage de Laplace
+      b) La moyenne mobile
+      c) Le lissage exponentiel
+      d) Aucun
+
+14. Où le lissage retenu est-il écrit ?
+      a) Dans le rapport final seulement
+      b) Dans le plan d'audit, onglet PARAMÈTRES du classeur O4
+      c) Nulle part
+      d) Dans la lettre de mission
+
+15. Pourquoi la trajectoire dans le quadrant dit-elle plus qu'un chiffre ?
+      a) Elle est en couleur
+      b) Elle remplace le rapport
+      c) Une divergence faible peut cacher une régression d'un sous-domaine
+      d) Elle supprime les NEK
+
+16. Comment s'obtient le niveau de maturité dans le cours ?
+      a) Par une certification
+      b) Par le DSI
+      c) Par tirage au sort
+      d) Par une conversion conventionnelle du taux de conformité
+
+17. En mai, le domaine D était opaque. Comment présenter sa progression ?
+      a) D'« indéterminé » à 5
+      b) Du niveau 3 au niveau 5
+      c) Du niveau 1 au niveau 5
+      d) Il ne progresse pas
+
+18. Quand une progression de niveau a-t-elle un sens ?
+      a) Toujours
+      b) Si les deux niveaux sont déterminés
+      c) Si le DG la valide
+      d) Si U est élevé
+
+19. Que teste un audit de suivi ?
+      a) La satisfaction de l'audité
+      b) La rentabilité
+      c) La mise en œuvre effective des recommandations
+      d) Le budget de l'audit
+
+20. Quel axiome d'A0 pose que l'état du système à un cycle dépend des interventions du cycle précédent ?
+      a) L'observabilité partielle
+      b) L'opposabilité
+      c) La cognition limitée
+      d) L'individuation temporelle
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une déclaration de mise en œuvre est une preuve.
+      Vrai / Faux
+
+22. Chez LiZbiZ, deux recommandations déclarées mises en œuvre n'avaient aucune pièce.
+      Vrai / Faux
+
+23. La divergence de p par rapport à q est égale à celle de q par rapport à p.
+      Vrai / Faux
+
+24. Une divergence nulle signifie que les deux distributions sont identiques.
+      Vrai / Faux
+
+25. On peut lisser certaines comparaisons d'une mission et pas d'autres.
+      Vrai / Faux
+
+26. Les seuils de conversion en niveaux de maturité sont une convention déclarée.
+      Vrai / Faux
+
+27. Après les corrections, le domaine D de LiZbiZ ne compte plus qu'un seul NEK.
+      Vrai / Faux
+
+28. Un taux de conformité stable garantit qu'aucun sous-domaine n'a régressé.
+      Vrai / Faux
+
+29. L'audit de suivi reprend les mêmes questions que le cycle précédent.
+      Vrai / Faux
+
+30. L'étude statistique de trajectoires sur de nombreux cycles est un résultat établi du cours.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La divergence de ______-Leibler compare deux distributions.
+
+32. Le lissage qui ajoute un à chaque effectif porte le nom de ______.
+
+33. Le taux de mise en œuvre calculé sur les recommandations testées est le taux ______.
+
+34. Le taux déclaré de LiZbiZ est de 14 sur ______.
+
+35. Un niveau qu'on ne peut pas établir est dit ______.
+
+36. La divergence s'exprime ici en ______ (logarithme de base 2).
+
+37. La représentation qui croise conformité et incertitude est le ______.
+
+38. Une recommandation refusée devient un risque ______ par écrit.
+
+39. Pour que la divergence ait un sens, on garde les mêmes ______ d'un cycle à l'autre.
+
+40. En novembre, le domaine D de LiZbiZ compte ______ réponses OUI.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,540 @@
+% ============================================================================
+% Fichier  : partie4/P04_C21_audit_securite_technique.tex
+% Titre    : Auditer la Sécurité Technique de l'Infrastructure
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C16 (IN.1 à IN.5 ; matrice de flux ; quatre centres de LiZbiZ
+% Douala 4/1/0, Yaoundé 4/1/0, Garoua 0/4/1, Bafoussam 0/3/2, ensemble
+% 8/9/3, µ 0,40 U 0,15 H 1,46 ; flux DMZ→utilisateurs 445 et
+% utilisateurs→base 1433 non autorisés). Base du lab ASI-LAB-11.
+% Sources : ISO/IEC 27002:2022 (mesures 8.8, 8.9, 8.15, 8.20, 8.22, 8.24,
+% numéros à vérifier dans l'édition en vigueur) ; Center for Internet
+% Security, CIS Benchmarks et CIS Controls v8 ; FIRST, CVSS v3.1 ; NIST
+% SP 800-115 (évaluation technique de la sécurité) ; guide du CHAI.
+% Corrigés : corriges/Corr_C21.tex.
+% ============================================================================
+
+\chapter{Auditer la Sécurité Technique de l'Infrastructure}
+\label{chap:audit-technique}
+\chaptermark{Sécurité technique}
+
+\epigraph{%
+    « Une politique de sécurité dit ce qui devrait être fermé.\\
+    Une configuration dit ce qui l'est. »%
+}{Adage des auditeurs techniques}
+
+\niveauChapitre{Intermédiaire à expert}{%
+    Maîtrise du Chapitre~\ref{chap:audit-smsi} (SMSI, mesures) et des
+    notions de réseau et de système du cursus d'ingénieur%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décomposer l'audit d'une infrastructure~: segmentation,
+          durcissement, protocoles, vulnérabilités et correctifs,
+          journalisation.
+    \item Comparer les flux autorisés et les flux observés à partir d'un
+          export de pare-feu.
+    \item Vérifier un durcissement à partir d'un guide de configuration
+          (CIS Benchmarks) et de commandes système.
+    \item Auditer la gestion des vulnérabilités et des correctifs, et lire
+          un score CVSS.
+    \item Vérifier la journalisation centralisée.
+    \item Coter par site avant d'agréger.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : ce qui est écrit est-il configuré~?}
+% ============================================================================
+
+LiZbiZ exploite quatre centres de données, à Douala, Yaoundé, Garoua et
+Bafoussam. Sa politique de sécurité interdit les protocoles
+d'administration en clair, impose le changement des mots de passe par
+défaut et sépare les postes des utilisateurs des serveurs de base de
+données. Le domaine~D a montré que les accès étaient mal tenus
+(Chapitre~\ref{chap:decomposition}). AUDIX CONSEIL doit maintenant dire si
+l'infrastructure est configurée comme la politique l'écrit.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Décomposer l'audit de l'infrastructure (section~\ref{sec:c21-decomposer}).
+    \item La segmentation~: flux autorisés, flux observés
+          (section~\ref{sec:c21-flux}).
+    \item Le durcissement et les protocoles (section~\ref{sec:c21-durcissement}).
+    \item Les vulnérabilités et les correctifs (section~\ref{sec:c21-vuln}).
+    \item La journalisation (section~\ref{sec:c21-journaux}).
+    \item Quatre centres, une même politique (section~\ref{sec:c21-lizbiz}).
+\end{enumerate}
+Les tests actifs (scans, tests d'intrusion) et leur encadrement juridique
+font l'objet du Chapitre~\ref{chap:intrusion}~; ce chapitre s'appuie sur
+des exports et des lectures de configuration, sans action sur les systèmes.
+
+\separateur
+
+% ============================================================================
+\section{Décomposer l'Audit de l'Infrastructure}
+\label{sec:c21-decomposer}
+% ============================================================================
+
+\begin{tableaucours}{cL{3.0cm}L{5.6cm}L{2.2cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{Contrôle clé} &
+    \tableauHeader{ISO/IEC 27002}
+}
+IN.1 & Architecture et segmentation & Seuls les flux autorisés par la
+matrice de flux traversent les zones & 8.20, 8.22 \\
+IN.2 & Durcissement & Aucun compte par défaut actif avec son mot de passe
+d'origine & 8.9 \\
+IN.3 & Protocoles & Aucun protocole d'administration ou de transfert en
+clair & 8.20, 8.24 \\
+IN.4 & Vulnérabilités et correctifs & Les correctifs critiques sont
+appliqués dans le délai de la politique & 8.8 \\
+IN.5 & Journalisation et surveillance & Les équipements envoient leurs
+journaux à un point central surveillé & 8.15 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~21.1. Décomposition de l'audit de
+l'infrastructure (numéros de l'édition 2022, à vérifier)}\end{center}
+
+IN.5 rejoint l'article~29 de la loi n°~2010/012 (surveillance des accès,
+conservation des journaux, Chapitre~\ref{chap:droit}) et le sous-domaine
+D.5 du contrôle d'accès~: l'auditeur réutilise les mêmes preuves.
+
+\begin{boxinfo}
+\textbf{Une lecture, pas une attaque.} Toutes les vérifications de ce
+chapitre se font sur des exports produits par l'exploitant (règles de
+pare-feu, fichiers de configuration, listes de comptes, état des
+correctifs) ou par des commandes de lecture exécutées par un
+administrateur, en présence de l'auditeur. Elles ne modifient rien et
+n'exposent pas l'auditeur aux articles~65 et~69 de la loi n°~2010/012,
+pourvu que la lettre de mission les prévoie.
+\end{boxinfo}
+
+% ============================================================================
+\section{La Segmentation : Flux Autorisés, Flux Observés}
+\label{sec:c21-flux}
+% ============================================================================
+
+\subsection{Deux matrices}
+
+La segmentation se vérifie en comparant deux matrices~: celle des flux que
+la politique autorise entre zones, et celle des flux que les règles des
+pare-feu laissent réellement passer. L'écart entre les deux est le
+constat.
+
+\begin{tableaucours}{L{3.0cm}cccc}{%
+    \tableauHeader{De \textbackslash{} vers} &
+    \tableauHeader{DMZ} & \tableauHeader{Applicatif} &
+    \tableauHeader{Utilisateurs} & \tableauHeader{Administration}
+}
+Internet & 443 & (aucun) & (aucun) & (aucun) \\
+DMZ & (aucun) & 8443 & \textbf{445 (observé)} & (aucun) \\
+Utilisateurs & 443 & 8443 \textbf{+ 1433 (observé)} & (aucun) & (aucun) \\
+Administration & 22 & 22 & 22 & (aucun) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~21.2. Matrice de flux d'un centre de
+données~: ports autorisés, et en gras les flux observés non
+autorisés}\end{center}
+
+Dans cet exemple, deux flux non autorisés sont ouverts~: de la DMZ vers les
+postes (un serveur web compromis pourrait atteindre les utilisateurs par
+le partage de fichiers), et des postes vers la base de données (port~1433~:
+un utilisateur peut contourner l'application et attaquer la base).
+
+\subsection{Lire un export de règles}
+
+\begin{boxoutils}{Repérer les flux non autorisés dans un export}
+\begin{lstlisting}[language=Python]
+import csv
+# export du pare-feu : source, destination, port, action
+# matrice autorisée : couples (zone source, zone destination, port)
+autorises = {("internet", "dmz", 443), ("dmz", "app", 8443),
+             ("users", "app", 8443), ("users", "dmz", 443),
+             ("admin", "dmz", 22), ("admin", "app", 22),
+             ("admin", "users", 22)}
+with open("regles_garoua.csv", encoding="utf-8") as f:
+    for r in csv.DictReader(f, delimiter=";"):
+        cle = (r["zone_src"], r["zone_dst"], int(r["port"]))
+        if r["action"] == "allow" and cle not in autorises:
+            print("NON AUTORISE :", cle, "regle", r["id"])
+\end{lstlisting}
+Le test ne retient que les règles qui \emph{autorisent} (\texttt{allow}).
+Une règle qui \emph{refuse} un flux non prévu n'est pas un écart~: c'est le
+comportement attendu.
+\end{boxoutils}
+
+\begin{boxalert}
+\textbf{Violation typique.} Compter comme écart une règle de refus, ou une
+règle placée après une règle « tout refuser » qui ne sera jamais atteinte.
+
+\smallskip
+\textbf{Règle~:} un pare-feu applique ses règles dans l'ordre~; l'auditeur
+reconstitue l'effet réel de la liste, et non la présence de chaque ligne.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Durcissement et les Protocoles}
+\label{sec:c21-durcissement}
+% ============================================================================
+
+\subsection{Les guides de configuration}
+
+\begin{boxdef}
+\termecle{Durcissement}\index{durcissement}~: réduction de la surface
+d'attaque d'un système par sa configuration~: services inutiles arrêtés,
+comptes par défaut supprimés ou modifiés, paramètres de sécurité activés.
+\end{boxdef}
+
+Le Center for Internet Security publie des guides de configuration par
+produit (systèmes, bases de données, navigateurs, équipements réseau),
+les \emph{CIS Benchmarks}, et un ensemble de mesures prioritaires, les
+\emph{CIS Controls}~\cite{cis2021controls}. L'organisation choisit sa
+configuration de référence~; l'auditeur vérifie l'écart entre la référence
+et l'état réel.
+
+\subsection{Quelques vérifications en ligne de commande}
+
+\begin{boxoutils}{Lecture d'un serveur Linux (exécutée par l'administrateur)}
+\begin{lstlisting}[language=bash_forensique]
+ss -tlnp                           # services en écoute et ports
+awk -F: '$3 == 0 {print $1}' /etc/passwd   # comptes de super-utilisateur
+grep -Ei '^(PermitRootLogin|PasswordAuthentication)' /etc/ssh/sshd_config
+systemctl list-unit-files --state=enabled  # services activés au démarrage
+\end{lstlisting}
+Attendus de la politique de LiZbiZ~: aucun service Telnet ni FTP~; un seul
+compte d'UID~0~; connexion directe de \texttt{root} interdite en SSH.
+\end{boxoutils}
+
+\begin{boxoutils}{Lecture d'un serveur Windows (PowerShell, administrateur)}
+\begin{lstlisting}[language=bash_forensique]
+Get-LocalUser | Select Name, Enabled, PasswordLastSet
+Get-NetTCPConnection -State Listen | Select LocalPort, OwningProcess
+auditpol /get /category:*          # stratégie d'audit des événements
+\end{lstlisting}
+Attendus~: compte « Administrateur » renommé ou désactivé~; aucun compte
+« Invité » actif~; journalisation des ouvertures de session activée.
+\end{boxoutils}
+
+\begin{boxalert}
+\textbf{Violation typique.} Exécuter soi-même des commandes sur un serveur
+de production avec un compte prêté par l'administrateur.
+
+\smallskip
+\textbf{Règle~:} l'administrateur exécute, l'auditeur observe et reçoit la
+sortie, horodatée et accompagnée de son empreinte. L'auditeur n'agit jamais
+sur un système audité avec l'identité d'un autre~: ce serait une
+usurpation, et la preuve serait contestable.
+\end{boxalert}
+
+\subsection{Les protocoles en clair}
+
+Telnet, FTP, HTTP pour l'administration, SNMP en version~1 ou~2c
+transmettent les identifiants en clair sur le réseau. Leur présence se lit
+dans la liste des services en écoute et dans la configuration des
+équipements. Le critère est simple~: aucun protocole d'administration en
+clair~; une redirection de HTTP vers HTTPS n'est pas un écart si aucune
+donnée sensible ne transite avant la redirection.
+
+% ============================================================================
+\section{Vulnérabilités et Correctifs}
+\label{sec:c21-vuln}
+% ============================================================================
+
+\subsection{Le processus attendu}
+
+La gestion des vulnérabilités suit un cycle~: veille (bulletins des
+éditeurs), inventaire des systèmes concernés, évaluation de la gravité,
+correction dans un délai fixé selon la gravité, vérification. L'affaire
+Equifax (Chapitre~\ref{chap:defaillances}) montre ce que coûte une étape
+manquante.
+
+\subsection{Lire un score CVSS}
+
+\begin{boxdef}
+\termecle{CVSS}\index{CVSS} (\textit{Common Vulnerability Scoring
+System})~: système de notation de la gravité des vulnérabilités, de 0 à 10,
+publié par le FIRST~\cite{first2019cvss}. La note de base combine le vecteur
+d'attaque (réseau, adjacent, local, physique), la complexité, les
+privilèges requis, l'interaction de l'utilisateur, et l'effet sur la
+confidentialité, l'intégrité et la disponibilité.
+\end{boxdef}
+
+\begin{tableaucours}{L{3.0cm}cL{6.0cm}}{%
+    \tableauHeader{Gravité} &
+    \tableauHeader{Note de base} &
+    \tableauHeader{Délai de correction (politique de LiZbiZ)}
+}
+Critique & 9,0 à 10,0 & 30 jours (7 jours si exploitée activement) \\
+Élevée & 7,0 à 8,9 & 30 jours \\
+Moyenne & 4,0 à 6,9 & 90 jours \\
+Faible & 0,1 à 3,9 & À la prochaine maintenance \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~21.3. Gravités CVSS et délais de
+correction (les délais sont ceux de la politique de LiZbiZ)}\end{center}
+
+\subsection{Tester le délai}
+
+\begin{boxprocedure}
+\textbf{Auditer le délai de correction}
+\begin{enumerate}
+    \item Obtenir la liste des correctifs critiques publiés pendant la
+          période pour les systèmes du périmètre.
+    \item Obtenir, pour chaque serveur, la date d'installation de chaque
+          correctif (outil de gestion des correctifs, ou commande de
+          lecture).
+    \item Calculer, pour chaque couple serveur et correctif, le délai entre
+          la publication et l'installation.
+    \item Coter \NON{} au-delà du délai, \NEK{} si la date d'installation ne
+          peut pas être établie.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Compter « en retard » un correctif installé le
+trentième jour exactement.
+
+\smallskip
+\textbf{Règle~:} lire la politique~: « sous 30~jours » inclut le
+trentième~; « en moins de 30~jours » ne l'inclut pas. L'auditeur écrit la
+convention dans la fiche d'assertion avant le test.
+\end{boxalert}
+
+% ============================================================================
+\section{La Journalisation}
+\label{sec:c21-journaux}
+% ============================================================================
+
+Un journal qui reste sur la machine qu'il surveille peut être effacé par
+celui qui l'a compromise. Le contrôle attendu est l'envoi en temps réel
+vers un point central (serveur de journaux, outil de gestion des
+événements de sécurité), protégé et surveillé.
+
+\begin{tableaucours}{L{4.0cm}L{4.2cm}L{4.0cm}}{%
+    \tableauHeader{Question} &
+    \tableauHeader{Preuve} &
+    \tableauHeader{Cote si absente}
+}
+Les équipements envoient-ils leurs journaux~? & Configuration de
+l'envoi~; présence des journaux au point central & \NON{} \\
+Les journaux sont-ils protégés~? & Droits sur le point central, empreintes
+& \NON{} \\
+Sont-ils surveillés~? & Règles d'alerte, traces de traitement des alertes &
+\NON{} si aucune règle~; \NEK{} si non montré \\
+Sont-ils conservés assez longtemps~? & Plus ancien journal disponible,
+politique de conservation & \NON{} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~21.4. Auditer la
+journalisation}\end{center}
+
+% ============================================================================
+\section{Quatre Centres, une Même Politique}
+\label{sec:c21-lizbiz}
+% ============================================================================
+
+\begin{boxlecture}{Les quatre centres de LiZbiZ}
+AUDIX CONSEIL cote, pour chaque centre, le contrôle clé de chacun des cinq
+sous-domaines, d'après les exports de configuration remis par la DSI.
+
+\medskip
+\begin{tableaucours}{L{2.6cm}cccccc}{%
+    \tableauHeader{Centre} &
+    \tableauHeader{IN.1} & \tableauHeader{IN.2} & \tableauHeader{IN.3} &
+    \tableauHeader{IN.4} & \tableauHeader{IN.5} & \tableauHeader{O/N/K}
+}
+Douala & \NON{} & \OUI{} & \OUI{} & \OUI{} & \OUI{} & 4 / 1 / 0 \\
+Yaoundé & \OUI{} & \NON{} & \OUI{} & \OUI{} & \OUI{} & 4 / 1 / 0 \\
+Garoua & \NON{} & \NON{} & \NON{} & \NEK{} & \NON{} & 0 / 4 / 1 \\
+Bafoussam & \NON{} & \NON{} & \NON{} & \NEK{} & \NEK{} & 0 / 3 / 2 \\
+Ensemble & & & & & & 8 / 9 / 3 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Ensemble~: $\mu = 0{,}40$~; $U = 0{,}15$~;
+$H \approx 1{,}46$~bit. Douala et Yaoundé ont chacun un écart~; Garoua et
+Bafoussam n'appliquent pratiquement pas la politique. Pour ces deux
+centres, l'état des correctifs n'a pas pu être établi~: aucun export n'a
+été produit.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Non-conformité claire pour
+l'ensemble, mais la cause est localisée~: selon la DSI, les centres de
+Garoua et de Bafoussam ont été installés par un prestataire, sans
+reprendre la configuration de référence (à confirmer par les dossiers
+d'installation). Une moyenne des quatre centres serait trompeuse~; la
+recommandation porte sur une configuration de référence imposée à chaque
+nouveau site, et vérifiée avant sa mise en service.
+
+\medskip
+\hfill\lecture{0{,}40}{0{,}15}{1{,}46}
+\end{boxlecture}
+
+\begin{boxinfo}
+\textbf{Décomposer l'entropie.} Avec $U = 0{,}15$, la part d'ignorance
+vaut $H_b(0{,}15) \approx 0{,}61$~bit, soit environ 42~\% de $H$~; le reste
+vient du désaccord entre \OUI{} et \NON{}, c'est-à-dire de la différence
+entre les deux centres conformes et les deux autres
+(Chapitre~\ref{chap:conclure}). La décomposition par site confirme ce que
+dit l'entropie.
+\end{boxinfo}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Lire un export de configuration}
+\begin{enumerate}
+    \item Vérifier la date, l'équipement et l'empreinte de l'export.
+    \item Lister les services exposés et les comparer à la configuration de
+          référence.
+    \item Chercher les comptes par défaut et les protocoles en clair
+          (Telnet, FTP, HTTP d'administration).
+    \item Reconstituer les flux autorisés par les règles, dans leur ordre,
+          et les comparer à la matrice de flux.
+    \item Coter chaque contrôle par centre, avant toute agrégation.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{RSSI}
+\textbf{Préparer un audit technique}
+\begin{enumerate}
+    \item Fournir la matrice de flux autorisés et la configuration de
+          référence de chaque type d'équipement.
+    \item Produire les exports demandés, avec leur date et leur empreinte.
+    \item Désigner un administrateur par site pour exécuter les commandes
+          de lecture devant l'auditeur.
+    \item Traiter les constats par ordre de gravité, et documenter chaque
+          correction pour l'audit de suivi.
+\end{enumerate}
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Cinq sous-domaines d'infrastructure}~: segmentation,
+          durcissement, protocoles, vulnérabilités, journalisation.
+    \item \textbf{La segmentation se prouve} en comparant flux autorisés et
+          flux observés, en lisant les règles dans leur ordre.
+    \item \textbf{Le durcissement se mesure} contre une configuration de
+          référence (CIS Benchmarks)~; l'administrateur exécute, l'auditeur
+          observe.
+    \item \textbf{Les correctifs} se jugent sur un délai lié à la gravité
+          CVSS, écrit dans la politique~; une date inconnue est \NEK{}.
+    \item \textbf{Les journaux} valent s'ils sont centralisés, protégés,
+          surveillés et conservés.
+    \item \textbf{Coter par site avant d'agréger}~: une moyenne peut cacher
+          deux centres hors politique.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: dresser une matrice de
+flux autorisés et observés~; lire un export de règles dans l'ordre~;
+interpréter les sorties des commandes de lecture~; associer une note CVSS
+à une gravité et un délai~; auditer la journalisation~; coter par site.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.1. Rattacher \niveaubase}]
+Rattachez à IN.1 à IN.5~: (a) SNMP v2c activé avec la communauté
+« public »~; (b) aucun envoi des journaux du pare-feu de Garoua~; (c) le
+compte « admin » du routeur a son mot de passe d'usine~; (d) les postes
+peuvent joindre la base en 1433~; (e) un correctif critique installé après
+75~jours.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.2. Matrice de flux \niveaumoyen}]
+La politique de LiZbiZ autorise~: Internet vers DMZ en 443~; DMZ vers
+applicatif en 8443~; utilisateurs vers applicatif en 8443~; administration
+vers toutes les zones en 22. L'export du pare-feu de Bafoussam montre en
+outre~: utilisateurs vers applicatif en 1433 et en 3389~; Internet vers
+administration en 23.
+\begin{enumerate}[(a)]
+    \item Dressez la matrice des flux autorisés et observés.
+    \item Classez les écarts par gravité, en justifiant.
+    \item Quelle cote retenir pour IN.1 et pour IN.3 à Bafoussam~?
+    \item Rédigez la constatation de l'observation la plus grave.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.3. L'ordre des règles \niveaumoyen}]
+Un pare-feu applique~: (1) refuser tout de « users » vers « app » en 1433~;
+(2) autoriser tout de « users » vers « app »~; (3) refuser tout. Le flux
+1433 des utilisateurs vers la base passe-t-il~? Et le flux 3389~? Que
+devient le résultat si l'on inverse les règles 1 et 2~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.4. Interpréter des sorties \niveaumoyen}]
+Sur un serveur Linux de Garoua, \texttt{ss -tlnp} montre les ports 21, 22,
+23 et 3306 en écoute~; \texttt{awk} sur \texttt{/etc/passwd} rend
+\texttt{root} et \texttt{support}. Quels constats faites-vous, quelles cotes
+pour IN.2 et IN.3, et quelles vérifications complémentaires demandez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.5. CVSS et délais \niveaubase}]
+Trois vulnérabilités sont publiées le 1\textsuperscript{er}~mars~2026~:
+note 9,8 (exploitée activement), 7,5 et 5,3. Les correctifs sont installés
+à Douala le 6~mars, le 31~mars et le 15~mai. Cotez chaque correctif selon le
+Tableau~21.3.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.6. Le correctif du trentième jour \niveaumoyen}]
+La politique dit « dans un délai de 30~jours ». Un correctif publié le
+2~avril est installé le 2~mai. Est-il dans le délai~? Comment
+l'auditeur évite-t-il que la réponse dépende de son humeur~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.7. La journalisation \niveaumoyen}]
+À Yaoundé, les journaux sont envoyés au serveur central, mais
+l'administrateur système y a les droits d'écriture et de suppression.
+Cotez les quatre questions du Tableau~21.4 et rédigez la recommandation.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.8. Le script de flux \niveaumoyen}]
+Modifiez le script de la section~\ref{sec:c21-flux} pour qu'il tienne compte
+de l'ordre des règles (la première règle qui correspond s'applique).
+Décrivez votre algorithme, puis écrivez-le.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.9. Une configuration de référence \niveauexpert}]
+Rédigez les dix contrôles de la configuration de référence qu'AUDIX
+CONSEIL recommande d'imposer à tout nouveau centre de LiZbiZ, chacun avec
+son critère et la commande ou l'export qui permet de le vérifier.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~21.10. Agréger ou non \niveauexpert}]
+Le directeur général veut une seule ligne pour l'infrastructure dans la
+synthèse. Rédigez-la à partir de la lecture des quatre centres, sans
+cacher la différence entre les sites, et proposez la priorité des
+recommandations.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Center for Internet Security, \textit{CIS Controls}
+          v8~\cite{cis2021controls} et les CIS Benchmarks.
+    \item FIRST, \textit{CVSS v3.1 Specification}~\cite{first2019cvss}.
+    \item NIST, SP~800-115~\cite{nist2008sp800115}~: le guide de
+          l'évaluation technique de la sécurité.
+    \item ISO/IEC~27002:2022~\cite{iso27002_2022}~: les mesures
+          technologiques.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La lecture des configurations montre ce qui est
+paramétré~; elle ne montre pas ce qu'un attaquant pourrait en faire. Le
+Chapitre~\ref{chap:intrusion} présente les tests d'intrusion et l'audit
+de code, leur cadre légal et leur rapport.
+\end{boxinfo}

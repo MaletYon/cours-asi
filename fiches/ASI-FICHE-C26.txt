@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C26
+Chapitre 26 : Études de cas intégratrices
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel type de recommandation appelle une conformité claire ?
+      a) Établir la preuve avant de conclure
+      b) Maintenir, surveiller et traiter les quelques NON
+      c) Prendre des mesures conservatoires
+      d) Abandonner le domaine
+
+ 2. Quel type de recommandation appelle une non-conformité claire ?
+      a) Aucune
+      b) Établir d'abord la preuve
+      c) Corriger : plan d'action, responsables, échéances
+      d) Maintenir et surveiller
+
+ 3. Quel type de recommandation appelle une conformité opaque ?
+      a) Établir la preuve avant de conclure ; c'est une alerte prioritaire
+      b) Corriger d'abord
+      c) Maintenir
+      d) Ignorer le domaine
+
+ 4. Quel type de recommandation appelle une non-conformité opaque ?
+      a) Maintenir
+      b) Corriger seulement
+      c) Établir la preuve seulement
+      d) Établir la preuve et prendre des mesures conservatoires sur ce qui est connu
+
+ 5. Que place-t-on en tête des recommandations d'une mission ?
+      a) Les domaines opaques à faible enjeu
+      b) Les non-conformités claires sur des risques intolérables
+      c) Les conformités claires
+      d) Les actions les moins coûteuses
+
+ 6. Que nomme chaque recommandation ?
+      a) Seulement l'auditeur
+      b) Son coût
+      c) Un responsable, une échéance et la preuve de son exécution
+      d) Un référentiel
+
+ 7. Scénario. Dans quelle région se situait le domaine D de LiZbiZ en mai 2026 ?
+      a) Conformité opaque
+      b) Non-conformité claire
+      c) Conformité claire
+      d) Non-conformité opaque
+
+ 8. Scénario. Quelle cause commune relie trois constats de LiZbiZ ?
+      a) Le prestataire de Garoua
+      b) La COBAC
+      c) Un logiciel obsolète
+      d) M. KOUNOU détient tous les droits de l'application
+
+ 9. Scénario. Que vaut la divergence du domaine D entre mai et novembre 2026 ?
+      a) Environ 1,37 bit
+      b) Environ 0,26 bit
+      c) Environ 0,05 bit
+      d) 0
+
+10. Scénario. Que vaut U pour le domaine E en novembre 2026 ?
+      a) 0,30
+      b) 0,05
+      c) 0,40
+      d) 0,17
+
+11. Scénario. Que masque la faible divergence du domaine E entre les deux cycles ?
+      a) Une régression de la connaissance
+      b) Une amélioration
+      c) Une erreur de calcul
+      d) Une conformité nouvelle
+
+12. Que dit la divergence entre deux cycles ?
+      a) Le sens de l'évolution
+      b) Si l'on en sait plus
+      c) Le taux de conformité
+      d) Qu'un domaine a changé, sans dire dans quel sens
+
+13. Scénario. Pourquoi le COSO conclut-il à l'inefficacité du contrôle interne de la BANQUE SANAGA ?
+      a) Parce que µ est inférieur à 0,5
+      b) Parce que trois principes sont défaillants
+      c) Parce que U dépasse 0,20
+      d) Parce que H dépasse 1 bit
+
+14. Scénario. Quelle réponse est donnée au comité d'audit de la BANQUE SANAGA ?
+      a) Le dispositif pouvait éviter la panne
+      b) La panne était purement technique
+      c) Non : le dispositif ne pouvait ni éviter la panne, ni en limiter les effets
+      d) La faute revient au seul prestataire
+
+15. Scénario. Avec un rapport ISAE 3402 de type 1, comment coter les contrôles de DIGICORE AFRIQUE pour 2026 ?
+      a) NEK
+      b) OUI
+      c) NON
+      d) Non applicable
+
+16. Scénario. Comment l'échantillon de paiements de l'ANPP est-il coté après le délai accordé ?
+      a) 29 / 6 / 5
+      b) 30 / 10 / 0
+      c) 35 / 5 / 0
+      d) 32 / 8 / 0
+
+17. Scénario. Comment coter un taux d'avancement déclaré sans livrable recetté ?
+      a) OUI
+      b) NEK
+      c) NON
+      d) Non applicable
+
+18. Quel est l'antidote de l'erreur « agréger sans lire les sous-domaines ni les sites » ?
+      a) Changer de référentiel
+      b) Supprimer les NEK
+      c) Coter par sous-domaine et par site avant d'agréger
+      d) Calculer H seul
+
+19. Quel est l'antidote de l'erreur « auditer son propre travail » ?
+      a) Déclarer, faire revoir par un tiers, coter NEK entre-temps
+      b) Ignorer le conflit
+      c) Coter OUI
+      d) Supprimer le contrôle
+
+20. Que vaut une copie qui conclut « le domaine est conforme à 45 % » sans parler des NEK ?
+      a) Elle est excellente
+      b) Elle est moyenne
+      c) Elle est bonne
+      d) Elle n'obtient pas la moyenne
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Le chapitre 26 introduit des notions nouvelles.
+      Vrai / Faux
+
+22. Une recommandation traite la cause établie dans l'analyse de l'observation.
+      Vrai / Faux
+
+23. Un défaut que l'on ne voit plus est un défaut corrigé.
+      Vrai / Faux
+
+24. Les mesures µ, U et H remplacent les règles de décision des référentiels.
+      Vrai / Faux
+
+25. Le domaine C de LiZbiZ change profondément entre mai et novembre 2026.
+      Vrai / Faux
+
+26. L'audit de suivi reprend les mêmes questions et critères, pour que la divergence soit interprétable.
+      Vrai / Faux
+
+27. La note de report de la DSI a été transmise au comité des risques.
+      Vrai / Faux
+
+28. M. NJOYA accepte d'écrire « en cours de régularisation ».
+      Vrai / Faux
+
+29. Quatre paiements de l'échantillon de l'ANPP ont été versés à des agents partis.
+      Vrai / Faux
+
+30. Une entropie élevée avec un U faible invite à chercher le sous-domaine ou le site qui s'écarte.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Chaque cas suit quatre temps : brief, investigation, révélations et ______.
+
+32. Le second cycle d'audit de LiZbiZ a lieu en ______ 2026.
+
+33. L'opération qui désigne le cas de l'ANPP s'appelle ______.
+
+34. Le domaine de LiZbiZ dont U passe de 0,30 à 0,40 est le domaine ______.
+
+35. La divergence du domaine C entre les deux cycles vaut environ 1,______ bit.
+
+36. La grille du chapitre compte ______ erreurs d'audit.
+
+37. La coopérative du sujet d'examen est installée à ______.
+
+38. Le rapport de la BANQUE SANAGA est destiné au régulateur bancaire, la ______.
+
+39. La région « conformité ______ » est une alerte prioritaire.
+
+40. L'opération qui désigne le cas principal du cours s'appelle ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

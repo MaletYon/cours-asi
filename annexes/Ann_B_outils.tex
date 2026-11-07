@@ -1,0 +1,108 @@
+%% ============================================================================
+%% Fichier  : annexes/Ann_B_outils.tex
+%% Titre    : Référentiel des Outils
+%% Version  : 1.0 -- novembre 2026 (INF3226, d'après ACSI)
+%% ============================================================================
+%% Outils effectivement mobilisés dans les chapitres et les labs ; les noms
+%% de logiciels commerciaux sont des exemples, à vérifier au moment du choix
+%% (Chapitre 19).
+%% ============================================================================
+
+\chapter{Référentiel des Outils}
+\label{ann:outils}
+
+Cette annexe rassemble les outils mobilisés dans le cours et dans les labs
+de NDAP SUKULU. Les noms de logiciels commerciaux sont des exemples~: les
+offres évoluent, et le choix se fait selon les six critères du
+Chapitre~\ref{chap:audit-continu}.
+
+\section*{Intégrité et preuve}
+
+\begin{tableaucours}{L{3.4cm}L{5.2cm}L{3.6cm}}{%
+    \tableauHeader{Outil} &
+    \tableauHeader{Usage} &
+    \tableauHeader{Chapitre, lab}
+}
+\texttt{sha256sum} & Calculer et vérifier l'empreinte d'une extraction
+(\texttt{sha256sum -c MANIFESTE\_SHA256.txt}) & Ch.~\ref{chap:preuve}~;
+tous les labs \\
+Lettre d'extraction & Source, requête, date, volumes, empreinte &
+Ch.~\ref{chap:preuve}, ASI-LAB-07 \\
+Registre de conservation & Chaque accès et chaque remise d'une pièce &
+Ch.~\ref{chap:audit-preuve} \\
+\end{tableaucours}
+
+\section*{Analyse de données}
+
+\begin{tableaucours}{L{3.4cm}L{5.2cm}L{3.6cm}}{%
+    \tableauHeader{Outil} &
+    \tableauHeader{Usage} &
+    \tableauHeader{Chapitre, lab}
+}
+Tableur (LibreOffice Calc) & Filtres, tableaux croisés, \texttt{NB.SI.ENS},
+\texttt{RECHERCHEV}, normalisation des références & ASI-LAB-01 à ASI-LAB-10 \\
+SQL & Doublons, équilibre, seuils, séquences, rapprochements
+(\texttt{GROUP BY}, \texttt{HAVING}, \texttt{LEFT JOIN}) &
+Ch.~\ref{chap:audit-applications}, ASI-LAB-07 \\
+Langage de script (Python et ses bibliothèques d'analyse) & Tests
+reproductibles sur de grands volumes, contrôle mensuel, loi de Benford,
+simulation FAIR & Ch.~\ref{chap:gestion-risques}, \ref{chap:fraude},
+\ref{chap:audit-continu} \\
+Logiciels d'analyse pour auditeurs (par exemple ACL, IDEA) & Tests
+intégrés, journal des traitements, sans programmation &
+Ch.~\ref{chap:audit-continu} \\
+\end{tableaucours}
+
+\section*{Gestion de la mission et du risque}
+
+\begin{tableaucours}{L{3.4cm}L{5.2cm}L{3.6cm}}{%
+    \tableauHeader{Outil} &
+    \tableauHeader{Usage} &
+    \tableauHeader{Chapitre, lab}
+}
+Classeur O4 & Décomposition, fiches d'assertion, cotation, $\mu$, $U$, $H$
+& Ch.~\ref{chap:decomposition} à~\ref{chap:conclure}, ASI-LAB-04, ASI-LAB-05 \\
+Registre des risques & Probabilité, impact, score, appétence &
+Ch.~\ref{chap:risque}, ASI-LAB-01 \\
+Méthodes d'appréciation (EBIOS RM, MEHARI, OCTAVE, FAIR) & Scénarios,
+ateliers, quantification & Ch.~\ref{chap:gestion-risques} \\
+Déclaration d'applicabilité & Mesures retenues et exclues, justification
+& Ch.~\ref{chap:audit-smsi} \\
+Matrice des droits & Paires incompatibles, comptes sans titulaire &
+Ch.~\ref{chap:controle-interne}, ASI-LAB-02 \\
+Plateformes de gouvernance, risques et conformité & Cartographie,
+auto-évaluations, suivi des recommandations & Ch.~\ref{chap:audit-continu} \\
+\end{tableaucours}
+
+\section*{Tests techniques}
+
+\begin{tableaucours}{L{3.4cm}L{5.2cm}L{3.6cm}}{%
+    \tableauHeader{Outil} &
+    \tableauHeader{Usage} &
+    \tableauHeader{Chapitre, lab}
+}
+Exports de configuration & Règles des pare-feu, services, comptes,
+correctifs, journalisation & Ch.~\ref{chap:audit-technique}, ASI-LAB-08 \\
+Scanners de ports et de vulnérabilités & Uniquement après note
+d'autorisation signée, dans le périmètre et la fenêtre convenus &
+Ch.~\ref{chap:audit-technique}, \ref{chap:intrusion} \\
+Référentiels de test (OWASP ASVS, Top~10, NIST SP~800-115, CVSS) &
+Construire le plan de test, noter la gravité & Ch.~\ref{chap:intrusion} \\
+Repères CIS & Configurations de référence des systèmes &
+Ch.~\ref{chap:audit-technique} \\
+\end{tableaucours}
+
+\begin{boxalert}
+\textbf{Rappel.} Aucun scan n'est réalisé dans les labs du cours~: le
+ASI-LAB-08 fournit des exports figés. Un test technique sur un système réel
+exige une note d'autorisation écrite (loi n°~2010/012, art.~65, 69, 70 et~86~;
+Chapitre~\ref{chap:intrusion}).
+\end{boxalert}
+
+\section*{Le bureau de NDAP SUKULU}
+
+Les labs s'exécutent dans un bureau d'analyste virtuel. Les pièces sont
+remises dans \texttt{\textasciitilde/preuves}, en lecture seule, avec leur
+manifeste d'empreintes~; une copie de travail se trouve dans
+\texttt{\textasciitilde/travail}. Le bureau propose un terminal et une suite
+bureautique. Toute l'activité dans le terminal est journalisée.

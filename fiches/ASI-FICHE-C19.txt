@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C19
+Chapitre 19 : Auditer les projets informatiques
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Selon le guide du CHAI, sur quoi porte l'audit d'un projet ?
+      a) Une organisation permanente
+      b) Une organisation temporaire et sur mesure
+      c) Une application en service
+      d) Un marché public
+
+ 2. Quel est l'avantage d'un audit de projet conduit aux jalons ?
+      a) Il coûte moins cher
+      b) Il est plus facile
+      c) Il peut encore changer le cours du projet
+      d) Il remplace la recette
+
+ 3. À quel sous-domaine appartient le cahier des charges rédigé par la maîtrise d'ouvrage ?
+      a) PR.1
+      b) PR.2
+      c) PR.4
+      d) PR.5
+
+ 4. À quel sous-domaine appartient le retour arrière préparé et testé ?
+      a) PR.2
+      b) PR.3
+      c) PR.4
+      d) PR.5
+
+ 5. Quel objectif de COBIT 2019 est consacré aux projets ?
+      a) APO05
+      b) BAI11
+      c) DSS04
+      d) MEA03
+
+ 6. Pour l'auditeur, que signifie un comité sans compte rendu ?
+      a) Qu'il a bien fonctionné
+      b) Qu'il est hors périmètre
+      c) Qu'il n'a rien décidé
+      d) Qu'il faut coter NEK par principe
+
+ 7. Qu'est-ce qu'une mise en production, pour l'auditeur ?
+      a) Une décision de l'organe compétent, sur des critères écrits
+      b) Une date fixée par la direction générale
+      c) Une formalité technique
+      d) Une décision du prestataire
+
+ 8. Que faire d'un critère de passage non atteint ?
+      a) L'ignorer
+      b) Annuler la bascule
+      c) Laisser le prestataire décider
+      d) L'accepter par écrit, avec le risque nommé et une mesure de compensation
+
+ 9. Scénario. Quelle part des scénarios du projet HORIZON était recettée le 20 février 2026 ?
+      a) 37 %
+      b) 63 %
+      c) 71 %
+      d) 89 %
+
+10. Scénario. Comment le projet HORIZON est-il coté a posteriori ?
+      a) 12 / 3 / 5
+      b) 14 / 6 / 0
+      c) 7 / 11 / 2
+      d) 8 / 9 / 3
+
+11. Scénario. Comment le sous-domaine PR.5 du projet HORIZON est-il coté ?
+      a) 0 / 4 / 0
+      b) 4 / 0 / 0
+      c) 1 / 2 / 1
+      d) 2 / 1 / 1
+
+12. L'auditeur qui déclare au comité de pilotage que « le projet peut basculer » s'expose à une menace :
+      a) D'intimidation
+      b) De familiarité
+      c) D'intérêt personnel
+      d) D'autorévision
+
+13. Scénario. Quel signal de dérive le projet HORIZON présentait-il ?
+      a) Un avancement trop rapide
+      b) Un comité de pilotage qui ne se réunissait plus
+      c) Un budget sous-consommé
+      d) Une recette complète
+
+14. Comment se calcule la valeur acquise ?
+      a) CR / BAC
+      b) BAC × CR
+      c) Avancement × BAC
+      d) BAC / IPC
+
+15. Que signifie un indice de performance des coûts inférieur à 1 ?
+      a) Chaque franc dépensé produit moins d'un franc de travail prévu
+      b) Le projet est en avance
+      c) Le budget est sous-consommé
+      d) La mesure est erronée
+
+16. Scénario. Quel est l'IPC global des trois projets de l'ANPP ?
+      a) 0,71
+      b) 0,41
+      c) 0,70
+      d) 0,55
+
+17. Scénario. Quel serait, à performance constante, le coût final des trois projets de l'ANPP ?
+      a) Environ 9,3 milliards
+      b) Environ 17,4 milliards
+      c) Environ 14 milliards
+      d) Environ 9,94 milliards
+
+18. Comment coter un taux d'avancement qui n'est adossé à aucun livrable recetté ?
+      a) OUI
+      b) NON
+      c) NEK
+      d) Non applicable
+
+19. Comment conduire la maintenance évolutive pour limiter le risque de régression ?
+      a) En regroupant les évolutions en versions
+      b) Au fil de l'eau
+      c) Directement en production
+      d) Sans recette
+
+20. Que vérifie l'auditeur au titre de la réversibilité d'un marché ?
+      a) Les pénalités de retard
+      b) Le nombre de jours de présence
+      c) La réception des livrables
+      d) La restitution des données, de la documentation et des sources, ou leur dépôt chez un tiers
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'audit d'une application en service commence quand le projet s'achève.
+      Vrai / Faux
+
+22. L'auditeur qui a audité le projet peut décider de la bascule.
+      Vrai / Faux
+
+23. La date de bascule du projet HORIZON a été fixée par le comité de pilotage.
+      Vrai / Faux
+
+24. Un marché qui rémunère des jours de présence sans livrables impose une obligation de résultat.
+      Vrai / Faux
+
+25. Le scénario « ne rien faire » doit figurer, chiffré, parmi les options d'un projet.
+      Vrai / Faux
+
+26. Le point de non-retour d'une bascule doit être défini à l'avance.
+      Vrai / Faux
+
+27. Les six autres projets du schéma directeur de l'ANPP disposent encore de 4,06 milliards FCFA.
+      Vrai / Faux
+
+28. La valeur acquise se calcule de préférence avec les taux d'avancement déclarés.
+      Vrai / Faux
+
+29. Les corrections urgentes de programmes n'ont pas à être tracées.
+      Vrai / Faux
+
+30. Le groupe qualité doit être indépendant de l'équipe de développement du projet.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le projet de remplacement du système central de la BANQUE SANAGA s'appelle ______.
+
+32. L'indice de performance des coûts a pour sigle ______.
+
+33. La recette fonctionnelle est réalisée par la maîtrise d'______.
+
+34. L'estimation du coût à l'achèvement a pour sigle ______.
+
+35. Le budget du projet HORIZON est de 3,______ milliards FCFA.
+
+36. Les critères écrits de mise en production forment la grille de ______.
+
+37. Le dépôt des sources chez un tiers garantit la ______ du marché.
+
+38. L'intégrateur du projet HORIZON est DIGICORE ______.
+
+39. Le sous-domaine PR.4 couvre les tests et la ______.
+
+40. Les trois projets de l'ANPP ont consommé ______ % des 14 milliards du schéma directeur.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

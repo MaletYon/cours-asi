@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C13
+Chapitre 13 : Les normes professionnelles de l'audit
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel organisme publie les Normes mondiales d'audit interne ?
+      a) ISACA
+      b) IIA
+      c) IAASB
+      d) INTOSAI
+
+ 2. Depuis quand les Normes mondiales d'audit interne sont-elles applicables ?
+      a) Janvier 2017
+      b) Janvier 2024
+      c) Janvier 2025
+      d) Janvier 2026
+
+ 3. Combien de domaines comptent les Normes mondiales d'audit interne ?
+      a) Cinq
+      b) Quatre
+      c) Sept
+      d) Quinze
+
+ 4. Combien de principes comptent les Normes mondiales d'audit interne ?
+      a) Cinq
+      b) Dix
+      c) Dix-sept
+      d) Quinze
+
+ 5. Quel domaine traite du mandat donné par le conseil et du positionnement indépendant de la fonction ?
+      a) Le domaine II
+      b) Le domaine III
+      c) Le domaine IV
+      d) Le domaine V
+
+ 6. Quelle exigence, norme de qualification en 2017, devient un principe éthique en 2024 ?
+      a) L'intégrité
+      b) La confidentialité
+      c) La conscience professionnelle
+      d) L'objectivité
+
+ 7. Selon le principe 12, à quelle fréquence minimale la fonction d'audit interne fait-elle l'objet d'une évaluation externe ?
+      a) Tous les cinq ans
+      b) Tous les deux ans
+      c) Tous les dix ans
+      d) Chaque année
+
+ 8. Qui publie ITAF ?
+      a) L'IIA
+      b) L'ISO
+      c) L'IAASB
+      d) L'ISACA
+
+ 9. Quelle série d'ITAF regroupe les normes de réalisation ?
+      a) 1000
+      b) 1200
+      c) 1400
+      d) 2000
+
+10. Quelles normes générales d'ITAF fondent la fiche d'assertion du cours ?
+      a) Charte et indépendance
+      b) Preuves et supervision
+      c) Assertions et critères
+      d) Rapport et suivi
+
+11. Un client qui audite son fournisseur en vertu d'un contrat réalise un audit de :
+      a) Seconde partie
+      b) Première partie
+      c) Tierce partie
+      d) Certification
+
+12. Quelle norme donne les lignes directrices pour auditer un SMSI ?
+      a) ISO/IEC 27001
+      b) ISO/IEC 27002
+      c) ISO/IEC 27006
+      d) ISO/IEC 27007
+
+13. À qui s'adresse l'ISO/IEC 27006 ?
+      a) Aux auditeurs internes
+      b) Aux organismes de certification des SMSI
+      c) Aux commissaires aux comptes
+      d) Aux institutions supérieures de contrôle
+
+14. Sur quoi porte la norme ISA 315 révisée ?
+      a) Les rapports des prestataires
+      b) L'audit de conformité public
+      c) L'identification et l'évaluation des risques d'anomalies significatives
+      d) L'audit des SMSI
+
+15. Que couvre un rapport ISAE 3402 de type 2 ?
+      a) La conception et l'efficacité des contrôles sur une période
+      b) La conception des contrôles à une date
+      c) Le seul périmètre du système
+      d) La sécurité physique du prestataire
+
+16. Scénario. DIGICORE AFRIQUE remet un rapport de type 1 au 31 décembre 2025. Comment coter l'efficacité de ses douze contrôles en 2026 ?
+      a) OUI
+      b) NON
+      c) Non applicable
+      d) NEK
+
+17. Quelle ISSAI est la norme d'audit de conformité ?
+      a) ISSAI 100
+      b) ISSAI 4000
+      c) ISSAI 300
+      d) GUID 5100
+
+18. La relation tripartite de l'audit de conformité réunit l'auditeur, la partie responsable et :
+      a) Le commissaire aux comptes
+      b) Le régulateur
+      c) Les utilisateurs prévus
+      d) Le DSI
+
+19. Auditer une procédure qu'on a soi-même conçue expose à une menace :
+      a) D'autorévision
+      b) D'intimidation
+      c) De familiarité
+      d) D'intérêt personnel
+
+20. Scénario. Les cinq OUI non opposables de Mme EKAMBI sont cotés NEK. Que devient U ?
+      a) 0,08
+      b) 0,25
+      c) 0,42
+      d) 0,58
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Les Normes mondiales d'audit interne remplacent le CRIPP de 2017.
+      Vrai / Faux
+
+22. Pour un auditeur SI en audit interne, ITAF remplace les Normes mondiales de l'IIA.
+      Vrai / Faux
+
+23. Un certificat ISO/IEC 27001 garantit la conformité de toutes les applications de l'entité.
+      Vrai / Faux
+
+24. Un rapport ISAE 3402 énumère des contrôles complémentaires à tester chez le client.
+      Vrai / Faux
+
+25. Un rapport ISAE 3402 de type 1 permet de conclure sur l'efficacité des contrôles de l'exercice.
+      Vrai / Faux
+
+26. On peut se référer à l'ISSAI 4000 sans signaler les exigences non suivies.
+      Vrai / Faux
+
+27. L'ISSAI 100 reconnaît trois types d'audit : financier, de conformité et de performance.
+      Vrai / Faux
+
+28. Selon l'article A0, l'indépendance se déduit des axiomes 4 et 6.
+      Vrai / Faux
+
+29. Un OUI donné en situation de conflit d'intérêts reste OUI dès lors que le conflit est déclaré.
+      Vrai / Faux
+
+30. Le commanditaire et le lecteur du rapport décident de la norme applicable.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. ITAF est publié par l'______.
+
+32. Le cadre de l'IIA de 2017 s'appelle le ______.
+
+33. Le guide de l'INTOSAI pour la vérification des SI est le GUID ______.
+
+34. La norme ISAE ______ porte sur les contrôles des sociétés de services.
+
+35. Un rapport ISAE 3402 qui couvre l'efficacité sur une période est de type ______.
+
+36. La norme internationale d'audit sur les risques d'anomalies significatives est l'ISA ______.
+
+37. L'audit d'un organisme accrédité qui certifie est un audit de ______ partie.
+
+38. La menace qui naît quand on audite son propre travail s'appelle l'______.
+
+39. L'indépendance est une condition nécessaire de l'______ des conclusions.
+
+40. Les normes de l'INTOSAI s'appellent les ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C04
+Chapitre 4 : Le risque, notions et mesure
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Comment l'ISO 31000:2018 définit-elle le risque ?
+      a) La probabilité d'une perte
+      b) L'effet de l'incertitude sur les objectifs
+      c) Une vulnérabilité exploitée
+      d) Le coût d'un incident
+
+ 2. Comment appelle-t-on la cause potentielle d'un incident ?
+      a) La vulnérabilité
+      b) L'impact
+      c) La menace
+      d) La vraisemblance
+
+ 3. Comment appelle-t-on la faiblesse qu'une menace peut exploiter ?
+      a) La vulnérabilité
+      b) Le risque résiduel
+      c) L'appétence
+      d) Le score
+
+ 4. Qui fixe l'appétence au risque ?
+      a) Les opérationnels
+      b) L'auditeur
+      c) Le DSI
+      d) L'organe de gouvernance
+
+ 5. Qu'est-ce que le risque résiduel ?
+      a) Le risque avant tout contrôle
+      b) Le risque qui subsiste compte tenu des contrôles réellement en place et efficaces
+      c) Le risque accepté par la direction
+      d) Le risque transféré à l'assureur
+
+ 6. Sur quoi porte l'incertitude épistémique ?
+      a) Sur les événements futurs de l'organisation
+      b) Sur le coût des incidents
+      c) Sur ce que l'auditeur ou l'organisation sait de l'état actuel du système
+      d) Sur la probabilité d'une panne
+
+ 7. Par quelles mesures l'incertitude épistémique se mesure-t-elle ?
+      a) Par U et H
+      b) Par la probabilité et l'impact
+      c) Par le score de risque
+      d) Par la VAN
+
+ 8. Dans la convention du cours, quel est l'intervalle des scores de risque ?
+      a) De 0 à 100
+      b) De 1 à 5
+      c) De 1 à 25
+      d) De 1 à 16
+
+ 9. Quel niveau d'impact correspond à une perte de 50 à 500 millions FCFA ?
+      a) Mineur (1)
+      b) Modéré (2)
+      c) Majeur (3)
+      d) Critique (4)
+
+10. Scénario. Le risque R1 de LiZbiZ est coté P = 4 et I = 3. Quel est son score inhérent ?
+      a) 7
+      b) 12
+      c) 16
+      d) 9
+
+11. Scénario. Quel risque de LiZbiZ obtient le score résiduel le plus élevé ?
+      a) R1, ajustement frauduleux du stock
+      b) R4, arrêt du centre de Garoua
+      c) R8, rançongiciel
+      d) R6, fuite de données
+
+12. Scénario. Selon l'appétence fixée par le conseil, combien de risques de LiZbiZ sont intolérables ?
+      a) Un
+      b) Deux
+      c) Cinq
+      d) Trois
+
+13. Scénario. Quel risque, qui inquiétait le plus le comité, est en réalité le mieux maîtrisé ?
+      a) R1
+      b) R4, arrêt prolongé du centre de Garoua
+      c) R2
+      d) R5
+
+14. Quelle option de traitement consiste à renoncer à l'activité ?
+      a) Réduire
+      b) Transférer
+      c) Éviter
+      d) Accepter
+
+15. Que transfère une assurance ?
+      a) Une partie des conséquences financières, mais pas la responsabilité
+      b) La responsabilité
+      c) Le risque entier
+      d) L'appétence
+
+16. Scénario. Pourquoi la panne de mars 2026 n'est-elle jamais apparue parmi les risques majeurs de la BANQUE SANAGA ?
+      a) Elle était imprévisible
+      b) La COBAC l'avait interdit
+      c) La DSI l'avait cotée 1 sur 5
+      d) Les risques informatiques et bancaires étaient cotés sur deux échelles différentes
+
+17. Quel risque désigne la probabilité que les travaux de l'auditeur ne détectent pas une anomalie ?
+      a) Le risque inhérent
+      b) Le risque de détection
+      c) Le risque de contrôle
+      d) Le risque résiduel
+
+18. Sur quel élément du modèle du risque d'audit l'auditeur agit-il directement ?
+      a) Le risque inhérent
+      b) Le risque de contrôle
+      c) Le risque de détection, en dimensionnant ses tests
+      d) L'appétence
+
+19. Scénario. Avec RI = 0,9, RC = 0,8 et un risque d'audit accepté de 5 %, quel est le risque de détection ?
+      a) Environ 0,07
+      b) 0,72
+      c) 0,05
+      d) 0,9
+
+20. Quel référentiel traite spécifiquement des risques liés à la sécurité de l'information ?
+      a) ISO 31000
+      b) COSO 2013
+      c) COSO ERM 2004
+      d) ISO/IEC 27005
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un risque se rattache toujours à un objectif.
+      Vrai / Faux
+
+22. On peut réduire le risque résiduel du fait d'un contrôle décrit mais jamais testé.
+      Vrai / Faux
+
+23. Plus de preuves peuvent réduire l'incertitude épistémique.
+      Vrai / Faux
+
+24. Risque et incertitude épistémique désignent la même chose.
+      Vrai / Faux
+
+25. Chaque organisation fixe sa propre échelle de cotation.
+      Vrai / Faux
+
+26. Un risque d'impact 4 en zone verte peut être retiré de la surveillance.
+      Vrai / Faux
+
+27. Un risque accepté doit faire l'objet d'une décision écrite de l'instance compétente.
+      Vrai / Faux
+
+28. L'auditeur choisit le risque inhérent de l'entité auditée.
+      Vrai / Faux
+
+29. Les valeurs de RI et RC traduisent le plus souvent un jugement plutôt qu'une mesure.
+      Vrai / Faux
+
+30. L'ISO 31000 est une norme certifiable.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le niveau de risque avant la prise en compte des contrôles est le risque ______.
+
+32. Le niveau de risque qu'une organisation accepte de prendre s'appelle l'______ au risque.
+
+33. Le score d'un risque est le produit de la probabilité et de l'______.
+
+34. Chez LiZbiZ, un score résiduel de ______ ou plus est intolérable.
+
+35. La représentation des risques dans une matrice probabilité × impact s'appelle la ______ des risques.
+
+36. Le document qui garde, pour chaque risque, son propriétaire et sa justification est le ______ des risques.
+
+37. Le risque que le contrôle interne ne prévienne ni ne détecte une anomalie est le risque de ______.
+
+38. Le modèle classique s'écrit RA = RI × RC × ______.
+
+39. La norme ISO de management du risque applicable à tout risque porte le numéro ______.
+
+40. L'édition de l'ISO/IEC 27005 présente dans le dossier Normes date de ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

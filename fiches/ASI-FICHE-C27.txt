@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C27
+Chapitre 27 : Audit continu, analyse de données et outils
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel est le sigle français des techniques d'audit assistées par ordinateur ?
+      a) SMSI
+      b) TAAO
+      c) TDR
+      d) CDBF
+
+ 2. Selon le GUID 5100 (§ 6.10), quel est l'un des avantages des TAAO ?
+      a) Elles suppriment le jugement de l'auditeur
+      b) Elles remplacent la lettre de mission
+      c) Elles rendent les tests répétables
+      d) Elles dispensent de l'extraction
+
+ 3. Quel test permet de savoir si des factures ont été supprimées ?
+      a) Les trous et séquences
+      b) Les doublons
+      c) La stratification
+      d) Le premier chiffre
+
+ 4. Quel test permet de savoir si des agents partis sont encore payés ?
+      a) La stratification
+      b) Le premier chiffre
+      c) Les séquences
+      d) Le rapprochement de fichiers
+
+ 5. Selon la loi de Benford, quelle est la probabilité approximative d'un premier chiffre égal à 1 ?
+      a) 11,1 %
+      b) 30,1 %
+      c) 4,6 %
+      d) 50 %
+
+ 6. Que permet le test du premier chiffre ?
+      a) Prouver une fraude
+      b) Contrôler les salaires d'une grille
+      c) Orienter la recherche, sans rien prouver
+      d) Analyser les petits ensembles
+
+ 7. À quelle condition une analyse de données est-elle une preuve ?
+      a) Un tiers peut la refaire et retrouver le même résultat
+      b) L'outil est commercial
+      c) Elle est rapide
+      d) Elle est automatique
+
+ 8. Sur quoi l'auditeur travaille-t-il ?
+      a) Sur l'extraction d'origine
+      b) Sur une version modifiée à la main
+      c) Sur un résumé des données
+      d) Sur une copie dont il vérifie l'empreinte
+
+ 9. Que recouvre le sixième critère de choix d'un outil ?
+      a) Les référentiels intégrés
+      b) Le contexte africain : hors ligne, exports locaux, coût
+      c) L'apprentissage
+      d) Le périmètre fonctionnel
+
+10. À quoi servent surtout les plateformes de gouvernance, risques et conformité ?
+      a) Analyser des transactions
+      b) Extraire des PDF
+      c) Piloter : cartographie des risques, suivi des recommandations
+      d) Programmer des tests
+
+11. À qui appartient le contrôle continu ?
+      a) Au management et au contrôle interne
+      b) À l'audit interne
+      c) Au commissaire aux comptes
+      d) Au régulateur
+
+12. Que se passe-t-il si l'audit est seul à surveiller les opérations ?
+      a) Son indépendance est renforcée
+      b) Il est plus efficace
+      c) C'est obligatoire
+      d) Il devient un contrôle et perd son indépendance
+
+13. Scénario. Quel est le rôle de l'audit interne dans le dispositif de LiZbiZ ?
+      a) Exécuter les tests chaque jour
+      b) Vérifier chaque trimestre que chaque alerte a reçu une suite, et refaire un test
+      c) Corriger les doublons
+      d) Valider les paiements
+
+14. Scénario. À quelle fréquence l'indicateur des comptes actifs d'agents partis est-il calculé chez LiZbiZ ?
+      a) Chaque mois
+      b) Chaque trimestre
+      c) Chaque semaine
+      d) Chaque année
+
+15. Quelle thématique de l'article A0 vise les grilles adaptatives ?
+      a) L'instrumentation adaptative (T5)
+      b) La pédagogie (T6)
+      c) La décomposition
+      d) Le suivi longitudinal
+
+16. Sur quoi s'appuie le principe de la grille adaptative ?
+      a) Une norme ISO certifiable
+      b) Un logiciel commercial
+      c) Le tirage au hasard des questions
+      d) Le questionnaire adaptatif, procédé établi de la mesure en psychométrie
+
+17. Qu'est-ce qu'une grille adaptative ?
+      a) Une grille aux questions fixes
+      b) Une grille dont les questions suivantes dépendent des réponses, l'effort allant vers l'incertitude
+      c) Une grille aux questions tirées au hasard
+      d) Une grille qui supprime les sous-domaines conformes
+
+18. Scénario. Combien de questions le sous-domaine D.2 reçoit-il dans la grille adaptée ?
+      a) 2
+      b) 4
+      c) 6
+      d) 8
+
+19. Pourquoi garder au moins deux questions par sous-domaine ?
+      a) Pour qu'un domaine stable ne cesse pas d'être observé
+      b) Parce que la loi l'impose
+      c) Pour réduire le coût
+      d) Pour augmenter µ
+
+20. Que vaut une grille que l'auditeur ne sait pas expliquer ?
+      a) Elle est acceptable
+      b) Elle est plus rapide
+      c) Elle est conforme
+      d) Elle n'est pas opposable
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Les outils libres ne peuvent pas réaliser les tests de base des TAAO.
+      Vrai / Faux
+
+22. Les noms d'outils cités dans le cours sont des exemples à vérifier au moment du choix.
+      Vrai / Faux
+
+23. L'audit continu remplace le contrôle continu.
+      Vrai / Faux
+
+24. Le contrôleur interne exécute le test d'un indicateur à la date prévue, même quand rien n'est attendu.
+      Vrai / Faux
+
+25. Un excès de montants commençant par 4 prouve une fraude.
+      Vrai / Faux
+
+26. La règle d'adaptation d'une grille est écrite dans le plan d'audit.
+      Vrai / Faux
+
+27. Dans la grille adaptée du domaine D, D.1 et D.3 reçoivent chacun deux questions.
+      Vrai / Faux
+
+28. Le LAB-07 exigeait un logiciel commercial d'audit.
+      Vrai / Faux
+
+29. L'auditeur note les paramètres de chaque test : seuils, clés de rapprochement, normalisations.
+      Vrai / Faux
+
+30. La règle adaptative présentée dans le cours est un résultat démontré.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Les techniques d'audit assistées par ordinateur ont pour sigle ______.
+
+32. Le guide de l'INTOSAI qui présente les TAAO est le GUID ______.
+
+33. La loi du premier chiffre porte le nom de ______.
+
+34. Selon la loi de Benford, la probabilité d'un premier chiffre égal à 9 est d'environ 4,______ %.
+
+35. La thématique d'A0 consacrée à l'instrumentation adaptative est la T______.
+
+36. L'outil auditologique en cours de formalisation s'appelle ______.
+
+37. Le dispositif tenu par le management s'appelle le contrôle ______.
+
+38. Dans la grille adaptée du domaine D, D.5 reçoit ______ questions.
+
+39. Le cours propose ______ critères de choix d'un outil.
+
+40. Une analyse reproductible conserve l'extraction et son ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

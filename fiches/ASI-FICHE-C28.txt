@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C28
+Chapitre 28 : Auditer l'intelligence artificielle, auditer avec elle
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Dans un modèle d'IA, où se trouve la règle de décision ?
+      a) Elle est écrite dans le code
+      b) Elle est apprise des données
+      c) Elle est fixée par la loi
+      d) Elle n'existe pas
+
+ 2. Qu'est-ce qu'un modèle réentraîné, pour l'auditeur ?
+      a) Le même modèle
+      b) Un modèle qu'il n'est pas nécessaire de valider
+      c) Un nouveau modèle, qui relève de la gestion des changements
+      d) Un modèle hors du champ de l'audit
+
+ 3. Quelle norme certifiable porte sur le système de management de l'IA ?
+      a) ISO/IEC 42001
+      b) ISO/IEC 27037
+      c) ISO 22301
+      d) ISO/IEC 27007
+
+ 4. Quelles sont les quatre fonctions du NIST AI RMF ?
+      a) Planifier, faire, vérifier, agir
+      b) Observer, décider, agir, suivre
+      c) Examiner, interroger, tester, conclure
+      d) Gouverner, cartographier, mesurer, gérer
+
+ 5. À quel sous-domaine appartient la validation par une équipe indépendante du concepteur ?
+      a) IA.1
+      b) IA.3
+      c) IA.4
+      d) IA.5
+
+ 6. À quel sous-domaine appartient le réentraînement soumis à la gestion des changements ?
+      a) IA.2
+      b) IA.3
+      c) IA.5
+      d) IA.1
+
+ 7. Comment se calcule le ratio d'impact ?
+      a) Taux de décisions favorables du groupe le moins favorisé, divisé par celui du groupe le plus favorisé
+      b) Différence entre deux taux de refus
+      c) Refus divisés par acceptations
+      d) Défauts divisés par crédits accordés
+
+ 8. Quelle valeur a le seuil de 0,8 au Cameroun ?
+      a) Une obligation légale
+      b) Une exigence ISO
+      c) Une interdiction
+      d) Un signal d'alerte, sans valeur juridique
+
+ 9. Scénario. Quel est le ratio d'impact du modèle de la BANQUE SANAGA au premier semestre 2026 ?
+      a) 0,51
+      b) 0,60
+      c) 0,80
+      d) 0,42
+
+10. Scénario. Quel taux de défaut est constaté sur les crédits accordés depuis janvier ?
+      a) 6 %
+      b) 9 %
+      c) 11 %
+      d) 42 %
+
+11. Scénario. Comment les dix contrôles du modèle de notation sont-ils cotés ?
+      a) 3 / 5 / 2
+      b) 2 / 7 / 1
+      c) 4 / 3 / 1
+      d) 8 / 9 / 3
+
+12. Scénario. Dans quelle région du quadrant se situe le modèle de notation ?
+      a) Conformité claire
+      b) Non-conformité claire
+      c) Conformité opaque
+      d) Non-conformité opaque
+
+13. Selon l'article A0, qu'est-ce que l'IA générative ?
+      a) Un sixième pilier de l'auditologie
+      b) Un outil transversal au service des piliers
+      c) Un axiome
+      d) Un outil interdit à l'auditeur
+
+14. Comment l'article A0 qualifie-t-il sa position sur l'IA générative ?
+      a) Définitive
+      b) Imposée par l'ISO
+      c) Révisable
+      d) Abandonnée
+
+15. Quelle valeur a une affirmation produite par un assistant d'IA générative ?
+      a) Celle d'une déclaration orale : une piste
+      b) Celle d'une preuve
+      c) Celle d'un critère
+      d) Celle d'une conclusion
+
+16. Scénario. Que donne la vérification des 40 affirmations du résumé automatique de LiZbiZ ?
+      a) 40 exactes
+      b) 30 exactes, 8 inexactes, 2 invérifiables
+      c) 38 exactes, 2 inexactes
+      d) 34 exactes, 4 inexactes, 2 invérifiables
+
+17. Que faut-il avant de confier des données de la mission à un service externe ?
+      a) Rien
+      b) L'accord écrit du commanditaire
+      c) L'accord du fournisseur de l'outil
+      d) L'accord oral de l'audité
+
+18. Quelle norme donne les lignes directrices pour la preuve numérique ?
+      a) ISO/IEC 42001
+      b) ISO/IEC 27001
+      c) ISO/IEC 27037
+      d) ISO 19011
+
+19. Que retrace la chaîne de conservation ?
+      a) Qui a détenu la pièce, quand, et pour quoi faire
+      b) Le coût de la pièce
+      c) La valeur de la pièce
+      d) Les auteurs du rapport
+
+20. Que fait l'auditeur face à une demande de l'autorité judiciaire ?
+      a) Il enquête
+      b) Il interroge les suspects
+      c) Il extrait de nouvelles données
+      d) Il préserve et il remet
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'auditeur peut lever un NEK sur la foi d'une sortie de l'outil.
+      Vrai / Faux
+
+22. Une requête SQL proposée par un assistant se teste sur un cas dont on connaît le résultat.
+      Vrai / Faux
+
+23. Un ratio d'impact de 0,60 prouve une discrimination.
+      Vrai / Faux
+
+24. Le réentraînement de décembre 2025 est passé par la gestion des changements de la banque.
+      Vrai / Faux
+
+25. Les motifs d'un refus doivent pouvoir être communiqués à la personne concernée.
+      Vrai / Faux
+
+26. Le classement de tickets par un modèle génératif peut varier d'une exécution à l'autre.
+      Vrai / Faux
+
+27. AUDIX CONSEIL remet au ministère public le brouillon qui parlait de « fraude ».
+      Vrai / Faux
+
+28. La remise de pièces à l'autorité se fait contre récépissé.
+      Vrai / Faux
+
+29. Sans droit d'audit, la banque peut obtenir seule les pièces que le prestataire ne remet pas.
+      Vrai / Faux
+
+30. Les UE SEC4031 et SEC4052 approfondissent la chaîne de conservation.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'inventaire des modèles relève du sous-domaine IA.______.
+
+32. La norme du système de management de l'IA est l'ISO/IEC ______.
+
+33. La norme sur la preuve numérique est l'ISO/IEC ______.
+
+34. La variable du modèle de la BANQUE SANAGA corrélée à la région est l'______.
+
+35. La traçabilité ininterrompue d'une pièce s'appelle la chaîne de ______.
+
+36. Un ratio d'impact est tenu pour suspect en dessous de 0,______.
+
+37. Le dossier de validation prévoyait un taux de défaut de ______ %.
+
+38. L'organisation qui a adopté en 2021 une recommandation sur l'éthique de l'IA est l'______.
+
+39. L'extraction remise pour les ajustements de M. FOUDA est le papier de travail PT-______.
+
+40. Mesurer une dérive, c'est comparer le prévu et le ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

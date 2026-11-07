@@ -1,0 +1,725 @@
+% ============================================================================
+% Fichier  : partie2/P02_C07_mission_principes_cycle.tex
+% Titre    : La Mission d'Audit : Principes et Cycle
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C05 (sept principes ISO 19011:2018 ; charte IIA 2024 ; cycle
+% en 5 phases ; outils O0-O9 ; calendrier AUDIX CONSEIL 4 mai - 17 juillet
+% 2026 ; domaine B 6/2/4 puis 8/3/1).
+% Sources : ISO 19011:2018 ; Normes mondiales d'audit interne de l'IIA
+% (2024) ; ITAF (ISACA, 2020) pour la supervision et la documentation ;
+% articles A0 (axiomes 5 et 6) et A1.
+% Corrigés : corriges/Corr_C07.tex.
+% ============================================================================
+
+\chapter{La Mission d'Audit : Principes et Cycle}
+\label{chap:mission}
+\chaptermark{La mission d'audit}
+
+\epigraph{%
+    « Une mission d'audit se gagne avant le terrain\\
+    et se perd après le rapport. »%
+}{Adage des chefs de mission}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise du Chapitre~\ref{chap:audit-auditologie} (audit, assurance,
+    axiomes de l'auditologie)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Énoncer les sept principes de l'audit selon l'ISO~19011:2018 et
+          les illustrer.
+    \item Rédiger les rubriques d'une charte d'audit et d'une lettre de
+          mission.
+    \item Répartir les rôles dans une équipe d'audit et organiser la
+          supervision.
+    \item Décrire les cinq phases de la mission, leurs entrées et leurs
+          livrables, et y situer les dix outils O0 à O9.
+    \item Tenir des papiers de travail référencés et revus.
+    \item Organiser le contradictoire, le relier à l'opposabilité des
+          conclusions (axiome~6) et mesurer ce qu'il apporte à la
+          connaissance.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment ne pas refaire la première mission~?}
+% ============================================================================
+
+La première mission de LiZbiZ (Chapitre~\ref{chap:prologue}) a échoué
+faute de mandat, de critères et de preuves. Pour la seconde, le cabinet
+AUDIX CONSEIL n'improvise rien~: M.~BEYALA ouvre la mission par une réunion
+avec le directeur général, remet une lettre de mission, annonce un
+calendrier en cinq phases et prévient que chaque constat sera discuté avec
+les audités avant d'être écrit.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les principes de l'audit (section~\ref{sec:c07-principes}).
+    \item La charte et la lettre de mission (section~\ref{sec:c07-charte}).
+    \item L'équipe et ses responsabilités (section~\ref{sec:c07-equipe}).
+    \item Le cycle de la mission (section~\ref{sec:c07-cycle}).
+    \item La boîte à outils (section~\ref{sec:c07-outils}).
+    \item Les papiers de travail (section~\ref{sec:c07-papiers}).
+    \item Le contradictoire (section~\ref{sec:c07-contradictoire}).
+\end{enumerate}
+Les Chapitres~\ref{chap:planifier} à~\ref{chap:suivi} détaillent ensuite
+chaque phase.
+
+\separateur
+
+% ============================================================================
+\section{Les Principes de l'Audit}
+\label{sec:c07-principes}
+% ============================================================================
+
+L'ISO~19011 donne des lignes directrices pour l'audit des systèmes de
+management. Ses principes valent pour tout audit, et en particulier pour
+l'audit des SI~\cite{iso19011_2018}.
+
+\begin{tableaucours}{L{3.4cm}L{4.4cm}L{4.4cm}}{%
+    \tableauHeader{Principe} &
+    \tableauHeader{Sens (reformulé)} &
+    \tableauHeader{Chez LiZbiZ}
+}
+Intégrité & Honnêteté, diligence, responsabilité & Ne pas taire un constat
+qui gêne la direction \\
+Présentation impartiale & Rendre compte avec exactitude et fidélité &
+Ne pas grossir un risque mineur, ne pas minimiser un risque majeur \\
+Conscience professionnelle & Diligence et jugement proportionnés à
+l'enjeu & Ne pas lancer un test de charge à l'heure de pointe \\
+Confidentialité & Protéger l'information obtenue & Ne pas divulguer les
+failles constatées \\
+Indépendance & Impartialité, absence de conflit d'intérêts & Ne pas auditer
+l'application qu'on a conçue \\
+Approche fondée sur la preuve & Des conclusions vérifiables, appuyées sur
+un échantillon adapté & Une capture, une extraction, pas un ouï-dire \\
+Approche par les risques & Concentrer l'effort sur ce qui compte pour les
+objectifs & Commencer par les risques intolérables du registre \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.1. Les sept principes de l'audit
+selon l'ISO~19011:2018 (notre reformulation)}\end{center}
+
+\begin{boxinfo}
+\textbf{Six ou sept principes~?} L'édition de 2011 de l'ISO~19011 en
+comptait six. L'édition de 2018, en vigueur, ajoute l'\emph{approche par
+les risques}. Un support qui annonce « six principes » se réfère à
+l'ancienne édition.
+\end{boxinfo}
+
+Deux de ces principes trouvent un fondement dans l'auditologie. L'approche
+fondée sur la preuve découle de l'axiome d'opposabilité~: une conclusion
+doit pouvoir être défendue devant un tiers. L'indépendance, on l'a vu au
+Chapitre~\ref{chap:audit-auditologie}, se déduit de l'interaction
+stratégique et de l'opposabilité~\cite{minka2026auditologie}.
+
+\subsection{Les principes en conflit}
+
+Les principes ne se concilient pas toujours d'eux-mêmes. La
+confidentialité interdit de divulguer une faille~; la présentation
+impartiale oblige à la signaler. La solution est dans les destinataires~:
+la faille est décrite précisément au commanditaire, et de façon générale
+dans toute version du rapport qui circule plus largement. L'approche par les
+risques invite à négliger les domaines peu risqués~; la conscience
+professionnelle interdit de les ignorer s'ils présentent un signal. La
+règle du cours est d'écrire, dans le plan d'audit, ce qui est exclu et
+pourquoi.
+
+% ============================================================================
+\section{Charte d'Audit et Lettre de Mission}
+\label{sec:c07-charte}
+% ============================================================================
+
+\subsection{La charte d'audit}
+
+\begin{boxdef}
+\termecle{Charte d'audit}\index{charte d'audit}~: document approuvé par
+l'organe de gouvernance, qui fixe la mission de l'audit, ses pouvoirs (accès
+aux personnes, aux documents et aux systèmes), son rattachement, son
+indépendance et ses responsabilités.
+\end{boxdef}
+
+Les Normes mondiales d'audit interne de l'IIA placent sous la
+responsabilité du conseil la supervision de la fonction d'audit, son mandat
+et les moyens de son indépendance~\cite{iia2024gias}. La charte en est
+l'instrument~: sans elle, l'auditeur dépend du bon vouloir de ceux qu'il
+audite.
+
+\begin{tableaucours}{L{3.2cm}L{9.0cm}}{%
+    \tableauHeader{Rubrique} &
+    \tableauHeader{Contenu attendu}
+}
+Mission & Finalité de l'audit (assurance et conseil), périmètre de
+l'organisation couvert \\
+Rattachement & Rattachement fonctionnel au comité d'audit ou au conseil,
+rattachement administratif à la direction générale \\
+Pouvoirs & Accès sans restriction aux personnes, aux documents, aux biens et
+aux systèmes, y compris en lecture sur les bases de production \\
+Indépendance & Absence de responsabilité opérationnelle, déclaration
+annuelle d'indépendance, règles en cas de conflit d'intérêts \\
+Responsabilités & Plan annuel fondé sur les risques, rapports, suivi des
+recommandations, normes appliquées \\
+Relations & Avec le commissaire aux comptes, les régulateurs, les
+prestataires d'audit \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.2. Les rubriques d'une charte
+d'audit}\end{center}
+
+\subsection{La lettre de mission}
+
+Chaque mission est ensuite fondée sur une \termecle{lettre de
+mission}\index{lettre de mission}, ou des termes de référence, qui précise
+ce qu'elle doit démontrer. Elle répond à quatre questions~: quoi (objectifs
+et périmètre), selon quoi (référentiels et critères), comment (approche,
+calendrier, équipe) et pour qui (destinataires et livrables). Le
+Chapitre~\ref{chap:audit-auditologie} en a donné un exemple pour LiZbiZ~;
+le Chapitre~\ref{chap:planifier} en détaille le contenu.
+
+\begin{boxalert}
+\textbf{Violation typique.} Le plan d'audit interne d'une entreprise est
+approuvé par le directeur général, dont relèvent les directions auditées.
+
+\smallskip
+\textbf{Règle~:} le plan d'audit et les moyens de l'audit sont approuvés par
+l'organe de gouvernance (conseil, comité d'audit), et non par la direction
+auditée.
+\end{boxalert}
+
+% ============================================================================
+\section{L'Équipe et ses Responsabilités}
+\label{sec:c07-equipe}
+% ============================================================================
+
+\subsection{Quatre rôles}
+
+\begin{tableaucours}{L{2.8cm}L{5.0cm}L{4.4cm}}{%
+    \tableauHeader{Rôle} &
+    \tableauHeader{Responsabilités} &
+    \tableauHeader{Chez AUDIX CONSEIL}
+}
+Associé signataire & Accepte la mission, signe le rapport, répond de la
+qualité devant le client & L'associée du cabinet, Mme~TCHOUA \\
+Chef de mission & Planifie, répartit les travaux, revoit les papiers de
+travail, conduit le contradictoire & M.~BEYALA \\
+Auditeur & Exécute les tests, tient les papiers de travail, rédige les
+projets d'observation & Deux auditeurs seniors, un junior \\
+Expert & Apporte une compétence technique (réseau, base de données),
+sous la responsabilité du chef de mission & Un ingénieur réseau pour les
+centres de données \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.3. Les rôles dans une équipe
+d'audit}\end{center}
+
+\subsection{La supervision}
+
+Chaque papier de travail est revu par une personne plus expérimentée que
+son auteur. La revue porte sur trois points~: le test répond-il au
+critère~? la preuve suffit-elle à la cote~? la conclusion est-elle séparée
+de la constatation~? La revue laisse une trace (nom, date, remarques et leur
+traitement). Le cadre professionnel de l'ISACA fait de cette supervision
+une exigence~\cite{isaca2020itaf}.
+
+\begin{boxalert}
+\textbf{Violation typique.} Un expert externe remet un rapport technique que
+l'équipe recopie dans le rapport d'audit sans l'avoir compris.
+
+\smallskip
+\textbf{Règle~:} le chef de mission répond des travaux de l'expert comme
+des siens. Il en vérifie la méthode, la preuve et la cohérence avec les
+critères de la mission avant de les utiliser.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Cycle de la Mission}
+\label{sec:c07-cycle}
+% ============================================================================
+
+\subsection{Cinq phases}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{center}
+\begin{tikzpicture}[
+    phase/.style = {
+        draw=CouleurPrimaire, fill=CouleurPrimaire, rounded corners=4pt,
+        text width=2.1cm, minimum height=1.1cm, align=center,
+        font=\scriptsize\bfseries\color{white}
+    },
+    livr/.style = {
+        draw=CouleurBordDef, fill=CouleurDef, rounded corners=3pt,
+        text width=2.0cm, align=center, font=\scriptsize\color{CouleurPrimaire}
+    },
+    fleche/.style = {-{Stealth[length=5pt]}, thick, color=CouleurSecondaire}
+]
+\foreach \n/\t/\l [count=\i] in {
+    0/Préparation/Termes de référence,
+    1/Planification/Plan d'audit,
+    2/Exécution/Papiers de travail,
+    3/Rapport/Rapport contradictoire,
+    4/Suivi/Tableau de suivi} {
+    \node[phase] (p\i) at (2.55*\i, 0) {Phase~\n\\ \t};
+    \node[livr, below=0.35cm of p\i] {\l};
+}
+\foreach \i [evaluate=\i as \j using int(\i+1)] in {1,...,4}
+    \draw[fleche] (p\i) -- (p\j);
+\draw[fleche] (p5.north) to[out=150, in=30] node[above, font=\scriptsize\itshape]
+    {mission suivante} (p1.north);
+\end{tikzpicture}
+\end{center}
+\vspace{-0.4em}
+\begin{center}{\small\itshape Figure~7.1. Les cinq phases de la mission et
+leurs livrables}\end{center}
+\end{minipage}
+
+\medskip
+
+\begin{tableaucours}{L{2.6cm}L{4.8cm}L{4.8cm}}{%
+    \tableauHeader{Phase} &
+    \tableauHeader{Activités principales} &
+    \tableauHeader{Chapitre}
+}
+0. Préparation & Mandat, termes de référence, documents sollicités,
+équipe & Chapitre~\ref{chap:planifier} \\
+1. Planification & Prise de connaissance, cartographie préliminaire des
+risques, décomposition de l'espace d'audit, plan d'audit &
+Chapitres~\ref{chap:planifier} et~\ref{chap:decomposition} \\
+2. Exécution & Entretiens, tests, cotation \OUI{}, \NON{} ou \NEK{},
+papiers de travail & Chapitre~\ref{chap:preuve} \\
+3. Rapport & Calcul de $\mu$, $U$, $H$, observations, contradictoire,
+rapport & Chapitre~\ref{chap:conclure} \\
+4. Suivi & Suivi des recommandations, préparation du cycle suivant &
+Chapitre~\ref{chap:suivi} \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.4. Les phases de la mission}\end{center}
+
+Le cycle ne se referme pas sur lui-même~: le suivi d'une mission prépare la
+suivante. C'est la dimension temporelle de l'audit, que l'auditologie pose
+en axiome~: le système audité évolue, et son état à la mission suivante
+dépend des interventions déclenchées par la précédente (axiome~5,
+\emph{individuation temporelle}~\cite{minka2026auditologie}).
+
+\subsection{Entrées et sorties de chaque phase}
+
+\begin{tableaucours}{L{2.4cm}L{4.6cm}L{5.2cm}}{%
+    \tableauHeader{Phase} &
+    \tableauHeader{Elle ne commence pas sans} &
+    \tableauHeader{Elle ne se termine pas sans}
+}
+0 & Un commanditaire identifié & Lettre de mission signée, liste O3 remise \\
+1 & La lettre de mission & Plan d'audit validé, décomposition revue \\
+2 & Le plan d'audit & Toutes les fiches d'assertion cotées, papiers de
+travail revus \\
+3 & Les papiers de travail revus & Réponses des audités consignées, rapport
+signé \\
+4 & Le rapport et ses recommandations & État du suivi présenté au comité
+d'audit \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.5. Les conditions d'entrée et de
+sortie des phases}\end{center}
+
+\subsection{La mission d'AUDIX CONSEIL chez LiZbiZ}
+
+\begin{boxscenario}{Opération LIZBIZ. Le calendrier de la seconde mission}
+\begin{tableaucours}{L{3.0cm}L{2.6cm}L{6.2cm}}{%
+    \tableauHeader{Phase} &
+    \tableauHeader{Dates (2026)} &
+    \tableauHeader{Faits marquants}
+}
+0. Préparation & 4 au 8 mai & Lettre de mission signée~; 21 documents
+sollicités \\
+1. Planification & 11 au 22 mai & Prise de connaissance des quatre centres
+de données~; décomposition du domaine D~; plan d'audit validé par le
+directeur général \\
+2. Exécution & 25 mai au 26 juin & Entretiens, extractions, tests sur
+quatre agences \\
+3. Rapport & 29 juin au 17 juillet & Réunion de restitution, réponses
+écrites des audités, rapport final \\
+4. Suivi & À partir de janvier~2027 & Revue de la mise en œuvre des
+recommandations \\
+\end{tableaucours}
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le calendrier réserve trois semaines
+au rapport et au contradictoire~: c'est le temps nécessaire pour que les
+conclusions soient discutées, et donc opposables.
+\end{boxscenario}
+
+\subsection{Le budget de la mission}
+
+Le chef de mission traduit le calendrier en jours d'auditeur. Pour la
+seconde mission de LiZbiZ~: 5~jours de préparation, 20 de planification,
+75 d'exécution (quatre sites), 20 de rapport et de contradictoire, soit
+120~jours-auditeur. L'exécution concentre environ 60~\% du budget~; si
+elle déborde, ce n'est jamais le contradictoire qu'on raccourcit, mais le
+périmètre qu'on réduit, par écrit, avec l'accord du commanditaire.
+
+% ============================================================================
+\section{La Boîte à Outils de la Méthode}
+\label{sec:c07-outils}
+% ============================================================================
+
+La méthode du cours est outillée~: à chaque phase correspondent un ou
+plusieurs instruments, numérotés de O0 à O9. Ils seront construits au fil
+des chapitres et rassemblés en annexe.
+
+\begin{tableaucours}{cL{3.6cm}L{2.4cm}L{5.4cm}}{%
+    \tableauHeader{Outil} &
+    \tableauHeader{Nom} &
+    \tableauHeader{Phase} &
+    \tableauHeader{Usage}
+}
+O0 & Aide-mémoire du cycle & Toutes & Entrées, activités et livrables de
+chaque phase \\
+O1 & Fiche technique de la mission & 0 & Présentation de la mission~:
+objectifs, acteurs, référentiels \\
+O2 & Termes de référence & 0 & Objectifs, périmètre, équipe, livrables,
+calendrier \\
+O3 & Liste des documents sollicités & 0 & Documents attendus, priorité,
+interlocuteur~; un document essentiel absent est coté \NEK{} \\
+O4 & Classeur d'aide à l'audit & 1 à 3 & Décomposition selon le gabarit
+canonique, fiches d'assertion, cotation \OUI{}, \NON{} ou \NEK{}, calcul de
+$\mu$, $U$ et $H$ par domaine \\
+O5 & Guide d'entretien & 2 & Questions issues des fiches d'assertion,
+classées par interlocuteur \\
+O6 & Plan d'audit & 1 & Contexte, périmètre, risques, programme de
+travail, calendrier \\
+O7 & Plan de tests & 2 & Tests codifiés, preuves attendues, références des
+papiers de travail \\
+O8 & Projets d'observation & 3 & Observations en sept éléments, soumises
+au contradictoire \\
+O9 & Suivi des documents & 2 & Mise à jour, sur le terrain, de la liste O3 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~7.6. Les outils O0 à O9}\end{center}
+
+L'outil central est le classeur~O4~: il porte la décomposition de l'espace
+d'audit (Chapitre~\ref{chap:decomposition}), la cotation des réponses
+(Chapitre~\ref{chap:preuve}) et les trois mesures de chaque domaine
+(Chapitre~\ref{chap:conclure}).
+
+% ============================================================================
+\section{Les Papiers de Travail}
+\label{sec:c07-papiers}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Papiers de travail}\index{papiers de travail}~: ensemble des
+documents établis ou obtenus par l'auditeur pendant la mission, qui
+décrivent les travaux réalisés, les preuves recueillies et les conclusions
+tirées. Ils permettent à un auditeur expérimenté, extérieur à la mission, de
+comprendre ce qui a été fait et d'aboutir aux mêmes conclusions.
+\end{boxdef}
+
+\begin{boxprocedure}
+\textbf{Ce que contient un papier de travail}
+\begin{itemize}
+    \item Une référence unique (par exemple PT-21), et le renvoi à la fiche
+          d'assertion testée~;
+    \item l'objectif du test, le critère, la population et l'échantillon~;
+    \item la description du test, assez précise pour être refait~;
+    \item les preuves, ou leur référence (fichier, empreinte SHA-256,
+          lettre d'extraction)~;
+    \item la constatation, séparée de la conclusion, et la cote~;
+    \item le nom de l'auteur, la date, le nom du réviseur et la date de
+          revue.
+\end{itemize}
+\end{boxprocedure}
+
+\begin{boxinfo}
+\textbf{Le critère du tiers.} Le Chapitre~\ref{chap:prologue} l'a montré~:
+le commissaire aux comptes a demandé les papiers de travail de la première
+mission, et il n'en existait pas. Un dossier se juge par une question~: un
+tiers qui n'a pas participé à la mission peut-il refaire le raisonnement
+et arriver à la même cote~? C'est la forme opérationnelle de l'axiome
+d'opposabilité.
+\end{boxinfo}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Ouvrir une mission}
+\begin{enumerate}
+    \item Vérifier que la charte ou la lettre de mission donne l'accès aux
+          personnes, aux documents et aux systèmes nécessaires.
+    \item Tenir une réunion d'ouverture avec le commanditaire et les
+          principaux audités~: objectifs, périmètre, calendrier, règles du
+          contradictoire.
+    \item Annoncer que la réponse \NEK{} est admise et documentée, et qu'un
+          document non remis sera coté comme tel.
+    \item Remettre la liste des documents sollicités (O3) avec une date de
+          remise.
+    \item Consigner la réunion dans un compte rendu, premier papier de
+          travail de la mission.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Le Contradictoire}
+\label{sec:c07-contradictoire}
+% ============================================================================
+
+\subsection{Pourquoi le contradictoire~?}
+
+\begin{boxdef}
+\termecle{Contradictoire}\index{contradictoire}~: principe selon lequel
+l'audité prend connaissance des constats qui le concernent et peut y
+répondre, avant que le rapport ne soit définitif~; ses réponses sont
+consignées et, le cas échéant, reproduites dans le rapport.
+\end{boxdef}
+
+Le contradictoire n'est pas une politesse. Il remplit trois fonctions~:
+\begin{enumerate}
+    \item \textbf{Corriger les erreurs} de l'auditeur, qui a pu mal
+          comprendre un processus ou manquer une pièce.
+    \item \textbf{Rendre les conclusions opposables}~: un constat discuté et
+          maintenu est plus difficile à contester qu'un constat découvert
+          dans le rapport (axiome~6).
+    \item \textbf{Réduire l'incertitude}~: l'audité apporte souvent, au
+          moment du contradictoire, l'information qui manquait.
+\end{enumerate}
+
+\subsection{Le contradictoire réduit l'incertitude}
+
+\begin{boxlecture}{Domaine B, avant et après la restitution}
+Douze questions du domaine~B (gestion des sauvegardes) sont cotées avant la
+réunion de restitution, puis après, lorsque le responsable informatique
+remet les journaux de sauvegarde qu'il n'avait pas fournis.
+
+\medskip
+\begin{tableaucours}{L{3.8cm}ccccc}{%
+    \tableauHeader{Moment} &
+    \tableauHeader{\OUI{}} & \tableauHeader{\NON{}} & \tableauHeader{\NEK{}} &
+    \tableauHeader{$U$} & \tableauHeader{$H$ (bit)}
+}
+Avant la restitution & 6 & 2 & 4 & 0,33 & 1,46 \\
+Après la restitution & 8 & 3 & 1 & 0,08 & 1,19 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Le taux d'incertitude passe de 0,33 à 0,08~: trois
+\NEK{} sont levés, deux en \OUI{}, un en \NON{}.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le contradictoire a surtout réduit
+l'ignorance. L'entropie baisse moins, parce que les réponses restent
+partagées entre \OUI{} et \NON{}~: le domaine est désormais mieux connu,
+et l'on sait où il est défaillant. Sans restitution, le rapport aurait
+conclu sur un tiers de réponses inconnues.
+
+\medskip
+\hfill\lecture{0{,}67}{0{,}08}{1{,}19}
+\end{boxlecture}
+
+\begin{boxprocedure}
+\textbf{La trace du contradictoire.} Pour qu'un constat soit opposable, le
+dossier de la mission contient~:
+\begin{itemize}
+    \item le projet d'observation transmis à l'audité, daté~;
+    \item la réponse écrite de l'audité, ou le compte rendu de la réunion de
+          restitution signé des participants~;
+    \item la position finale de l'auditeur~: constat maintenu, modifié ou
+          retiré, et pourquoi~;
+    \item les pièces nouvelles remises au moment du contradictoire, avec leur
+          date de remise.
+\end{itemize}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Accepter, au contradictoire, une affirmation de
+l'audité («~les sauvegardes sont testées chaque mois~») et changer un
+\NON{} en \OUI{} sans pièce.
+
+\smallskip
+\textbf{Règle~:} au contradictoire, une affirmation sans pièce peut lever un
+malentendu, jamais remplacer une preuve. Elle transforme au mieux un \NON{}
+en \NEK{}, en attendant la pièce.
+\end{boxalert}
+
+\subsection{Quand l'audité refuse}
+
+Le contradictoire n'oblige pas l'auditeur à l'accord. Si l'audité conteste
+un constat sans apporter de pièce, l'auditeur maintient le constat et
+reproduit la position de l'audité dans le rapport, à côté de la sienne. Si
+l'audité refuse de répondre dans le délai, le rapport le mentionne~: le
+silence n'est ni une approbation ni un démenti.
+
+\begin{boxmetier}{RSSI}
+\textbf{Se préparer à être audité}
+\begin{enumerate}
+    \item Remettre les documents sollicités dans les délais~: un document
+          non remis sera coté \NEK{}, et signalé comme tel.
+    \item Désigner un interlocuteur unique pour l'équipe d'audit.
+    \item Répondre par écrit aux projets d'observation, pièce à l'appui.
+    \item Proposer, pour chaque recommandation acceptée, un responsable et
+          une échéance.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Être l'interlocuteur de l'audit externe.} Chez LiZbiZ,
+Mme~NKENG coordonne la remise des documents, assiste aux réunions de
+restitution et tient le tableau des recommandations. Elle n'est pas
+auditée sur ce rôle, mais son indépendance vis-à-vis des directions
+opérationnelles conditionne la qualité des pièces remises.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'axiome d'opposabilité d'A0 dit qu'une
+conclusion n'a de valeur que si elle peut être défendue devant un tiers.
+Le contradictoire en est l'épreuve anticipée~: il expose la conclusion à la
+partie qui a le plus intérêt à la contester, avant qu'un juge, un
+régulateur ou un comité ne le fasse~\cite{minka2026auditologie}.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Sept principes} guident l'auditeur selon l'ISO~19011:2018,
+          dont l'approche fondée sur la preuve et l'approche par les risques.
+    \item \textbf{La charte d'audit} fonde les pouvoirs et l'indépendance de
+          l'audit~; elle est approuvée par l'organe de gouvernance. La
+          lettre de mission dit quoi, selon quoi, comment et pour qui.
+    \item \textbf{L'équipe} répartit les rôles~; chaque papier de travail est
+          revu par un plus expérimenté~; le chef de mission répond des
+          travaux de l'expert.
+    \item \textbf{Cinq phases}~: préparation, planification, exécution,
+          rapport, suivi~; chacune a ses conditions d'entrée et de sortie.
+    \item \textbf{Dix outils} (O0 à O9) outillent le cycle~; le classeur O4
+          porte la décomposition, la cotation et les mesures.
+    \item \textbf{Les papiers de travail} permettent à un tiers de refaire
+          le raisonnement.
+    \item \textbf{Le contradictoire} corrige, rend opposable et réduit
+          l'incertitude~; une affirmation sans pièce ne remplace jamais une
+          preuve.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: citer les sept
+principes~; rédiger les six rubriques d'une charte~; dire qui revoit quoi
+dans une équipe~; donner l'entrée et la sortie de chaque phase~; lister le
+contenu d'un papier de travail~; tracer un contradictoire.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.1. Quel principe~? \niveaubase}]
+Indiquez le principe de l'ISO~19011 que chacune des situations suivantes
+méconnaît.
+\begin{enumerate}[(a)]
+    \item Un auditeur évoque, lors d'un dîner, les failles du système de
+          paiement de la BANQUE SANAGA.
+    \item Un rapport passe sous silence un constat qui met en cause le
+          directeur général.
+    \item Un auditeur consacre autant de temps aux imprimantes qu'aux
+          comptes à privilèges.
+    \item Un constat repose sur ce qu'un agent a « entendu dire ».
+    \item Un consultant audite la politique de sécurité qu'il a rédigée
+          l'année précédente.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.2. La charte d'audit de LiZbiZ \niveaumoyen}]
+LiZbiZ veut créer une fonction d'audit interne.
+\begin{enumerate}[(a)]
+    \item Rédigez les six rubriques de sa charte d'audit.
+    \item À qui la directrice de l'audit doit-elle être rattachée, et
+          pourquoi~?
+    \item Quels pouvoirs d'accès faut-il prévoir pour auditer l'application
+          intégrée et les quatre centres de données~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.3. Entrées et sorties \niveaubase}]
+Pour chacune des situations, dites quelle condition du Tableau~7.5 n'est
+pas remplie~: (a) l'équipe commence les entretiens avant la validation du
+plan~; (b) le rapport est envoyé avant la réponse des audités~; (c) une
+fiche d'assertion n'est pas cotée à la fin du terrain.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.4. Revoir un papier de travail \niveaumoyen}]
+Un auditeur junior remet le papier de travail suivant~: « PT-14. Revue des
+comptes. Vu le responsable informatique, qui affirme que les comptes sont
+revus chaque trimestre. Conclusion~: conforme. » Rédigez les remarques du
+réviseur et le papier de travail corrigé, en précisant la cote que vous
+pouvez attribuer en l'état.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.5. Le budget \niveaumoyen}]
+La mission de LiZbiZ prend du retard~: au 15~juin, 70 des 75~jours
+d'exécution sont consommés et le site de Bafoussam n'est pas audité. Le
+directeur général propose de réduire le contradictoire à une semaine.
+Que répondez-vous~? Proposez deux solutions et la forme de l'accord à
+obtenir.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.6. Le contradictoire chiffré \niveaumoyen}]
+Recalculez $\mu$, $U$ et $H$ du domaine~B avant et après la restitution
+(posez les calculs). Expliquez pourquoi $H$ baisse moins que $U$.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.7. L'expert \niveaumoyen}]
+L'ingénieur réseau d'AUDIX CONSEIL remet un rapport de 40~pages issu d'un
+outil de scan, qui conclut « 312 vulnérabilités ». Que fait le chef de
+mission avant d'utiliser ce rapport~? Comment le résultat entre-t-il dans
+les fiches d'assertion du domaine~D~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.8. L'audité qui refuse \niveaumoyen}]
+Le responsable de l'agence de Garoua conteste par écrit un constat sur le
+tableur parallèle de facturation, sans pièce. Rédigez le paragraphe du
+rapport qui présente le constat et la position de l'audité.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.9. Le contradictoire à la BANQUE SANAGA \niveauexpert}]
+Mme~EKAMBI présente à la DSI un projet d'observation~: aucun test de retour
+arrière n'a été réalisé avant la bascule de mars~2026. La DSI répond que des
+tests ont eu lieu, mais que leurs comptes rendus ont été perdus.
+\begin{enumerate}[(a)]
+    \item Quelle cotation retenir pour ce contrôle, avant et après la
+          réponse de la DSI~? Justifiez.
+    \item Que doit contenir le dossier pour que le constat final soit
+          opposable~?
+    \item Rédigez la position finale de l'auditrice.
+    \item En quoi cette situation illustre-t-elle la différence entre réduire
+          l'incertitude et lever un constat~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~7.10. Concilier deux principes \niveauexpert}]
+Le rapport d'audit de la BANQUE SANAGA décrit une faille permettant de
+modifier un virement après sa validation. Le rapport doit être transmis au
+conseil, à la COBAC et, en résumé, aux agences. Comment conciliez-vous la
+confidentialité et la présentation impartiale~? Proposez le contenu de
+chaque version.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item ISO~19011:2018~\cite{iso19011_2018}~: les principes, la gestion
+          d'un programme d'audit et la compétence des auditeurs.
+    \item IIA, Normes mondiales d'audit interne~\cite{iia2024gias}~: le
+          domaine III sur la gouvernance de la fonction d'audit.
+    \item ISACA, ITAF~\cite{isaca2020itaf}~: les exigences de
+          documentation et de supervision propres à l'audit des SI.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La mission commence avant le terrain. Le
+Chapitre~\ref{chap:planifier} détaille la préparation et la planification~:
+termes de référence, documents sollicités, prise de connaissance du système
+d'information et plan d'audit.
+\end{boxinfo}

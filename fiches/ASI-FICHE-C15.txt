@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C15
+Chapitre 15 : Le cadre juridique camerounais et africain
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel article de la loi n° 2010/012 définit l'audit de sécurité ?
+      a) L'article 7
+      b) L'article 4
+      c) L'article 26
+      d) L'article 61
+
+ 2. Quel article soumet à un audit de sécurité obligatoire les réseaux et SI des opérateurs, des autorités de certification et des fournisseurs de services ?
+      a) L'article 26
+      b) L'article 29
+      c) L'article 13
+      d) L'article 14
+
+ 3. Selon l'article 32, à quelle fréquence l'audit de sécurité est-il effectué ?
+      a) Chaque année, ou lorsque les circonstances l'exigent
+      b) Tous les trois ans
+      c) Tous les cinq ans
+      d) À la demande de l'audité
+
+ 4. À qui les rapports d'audit de sécurité sont-ils adressés ?
+      a) Au directeur général
+      b) À l'ANTIC seulement
+      c) Au public
+      d) Au Ministre chargé des Télécommunications
+
+ 5. Combien de temps les exploitants doivent-ils conserver les données de connexion et de trafic ?
+      a) Cinq ans
+      b) Dix ans
+      c) Un an
+      d) Trente ans
+
+ 6. Quel article impose des systèmes normalisés pour gérer continûment les risques de sécurité ?
+      a) L'article 13
+      b) L'article 61
+      c) L'article 26
+      d) L'article 32
+
+ 7. Quel article astreint au secret professionnel les experts commis pour un audit ?
+      a) L'article 14
+      b) L'article 7
+      c) L'article 29
+      d) L'article 30
+
+ 8. Comment la loi traite-t-elle l'obstruction à un audit de sécurité ?
+      a) Elle l'autorise
+      b) Seule la COBAC la sanctionne
+      c) C'est un NEK sans autre conséquence
+      d) L'article 61 la punit
+
+ 9. Scénario. Les quatre contrôles légaux de LiZbiZ sont cotés 1 OUI, 2 NON, 1 NEK. Que vaut U ?
+      a) 0,50
+      b) 0,25
+      c) 0
+      d) 0,75
+
+10. Au sens du règlement COBAC R-2016/04, une défaillance informatique est un risque :
+      a) Stratégique
+      b) De réputation
+      c) Opérationnel
+      d) De marché
+
+11. Qui doit révéler au ministère public les faits délictueux connus dans l'exercice de sa mission ?
+      a) Le commissaire aux comptes
+      b) L'auditeur contractuel
+      c) Le DSI
+      d) Le contrôleur interne
+
+12. Pour quelles sociétés l'AUSCGIE révisé rend-il le comité d'audit obligatoire ?
+      a) Toutes les SARL
+      b) Les établissements publics
+      c) Les banques
+      d) Les sociétés cotées
+
+13. Que fait l'auditeur qui n'a pas lu l'article de loi qu'il voudrait citer ?
+      a) Il le cite de mémoire
+      b) Il fonde le constat sur un critère qu'il maîtrise et signale la question à vérifier
+      c) Il supprime le constat
+      d) Il qualifie l'infraction
+
+14. Quelle loi porte régime financier de l'État et des autres entités publiques ?
+      a) Loi n° 2010/012
+      b) Loi n° 2024/017
+      c) Loi n° 2018/012
+      d) Loi n° 2010/013
+
+15. Qui engage et ordonne la dépense publique ?
+      a) L'ordonnateur
+      b) Le comptable public
+      c) Le contrôleur financier
+      d) La Chambre des comptes
+
+16. Quel organe sanctionne les fautes de gestion des agents publics ?
+      a) L'ANTIC
+      b) La COBAC
+      c) L'ART
+      d) Le CDBF
+
+17. Scénario. Comment coter un paiement de l'ANPP dont la pièce « se trouve aux archives », sans être au dossier ?
+      a) OUI
+      b) NEK
+      c) NON
+      d) Non applicable
+
+18. Scénario. Combien des six paiements NON de l'échantillon de l'ANPP sont versés à des agents partis ?
+      a) 2
+      b) 6
+      c) 4
+      d) 5
+
+19. Quel est, en règle générale, l'engagement de l'auditeur contractuel ?
+      a) Une obligation de moyens
+      b) Une obligation de résultat
+      c) Une garantie de l'absence d'anomalie
+      d) Aucun engagement
+
+20. Quelle formulation de constat est correcte ?
+      a) « M. FOUDA a commis une fraude »
+      b) « Ces paiements sont illégaux »
+      c) « Le détournement est avéré »
+      d) « Paiements non conformes au régime financier »
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. La définition légale de l'audit de sécurité couvre la conformité et l'adéquation des moyens aux risques.
+      Vrai / Faux
+
+22. Les rapports d'audit de sécurité légaux sont publics.
+      Vrai / Faux
+
+23. La loi n° 2010/012 punit l'auditeur qui révèle sans autorisation des informations confidentielles.
+      Vrai / Faux
+
+24. L'auditeur contractuel a la même obligation de révélation que le commissaire aux comptes.
+      Vrai / Faux
+
+25. La demande du directeur général de « ne pas ébruiter » délie le commissaire aux comptes de son obligation de révélation.
+      Vrai / Faux
+
+26. Une pièce non produite à l'échéance, avec confirmation écrite de son absence, devient NON.
+      Vrai / Faux
+
+27. La qualification pénale des faits appartient à l'auditeur.
+      Vrai / Faux
+
+28. Le commissaire aux comptes vérifie sans s'immiscer dans la gestion.
+      Vrai / Faux
+
+29. Dans un système de paiement informatisé, la séparation entre ordonnateur et comptable se vérifie dans la matrice des droits.
+      Vrai / Faux
+
+30. La loi n° 2024/017 est citée textuellement dans le cours.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'agence chargée de la régulation de la sécurité électronique a pour sigle ______.
+
+32. Les données de connexion et de trafic sont conservées ______ ans.
+
+33. Le règlement COBAC sur le contrôle interne est le R-2016/______.
+
+34. L'Acte uniforme sur le droit des sociétés commerciales a pour sigle ______.
+
+35. Le juge qualifie, l'auditeur ______.
+
+36. Le contrôle juridictionnel des comptes publics relève de la Chambre des ______.
+
+37. Le contrôle administratif des services publics relève du Contrôle ______ de l'État.
+
+38. Le commissaire aux comptes révèle les faits délictueux au ministère ______.
+
+39. Une pièce déclarée « aux archives » mais non produite est cotée ______.
+
+40. Le CDBF sanctionne les fautes de ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

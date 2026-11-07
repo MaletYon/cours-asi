@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C03
+Chapitre 3 : Le contrôle interne et ses composantes
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Selon le COSO, le contrôle interne vise une assurance raisonnable sur quelles catégories d'objectifs ?
+      a) Ventes, achats, stocks
+      b) Opérations, information (reporting), conformité
+      c) Sécurité, disponibilité, intégrité
+      d) Stratégie, finance, ressources humaines
+
+ 2. Qui porte le contrôle interne ?
+      a) Le seul contrôleur interne
+      b) L'audit interne
+      c) L'organe de gouvernance, la direction et l'ensemble du personnel
+      d) Le commissaire aux comptes
+
+ 3. Combien de composantes compte le cadre COSO 2013 ?
+      a) Cinq
+      b) Trois
+      c) Huit
+      d) Dix-sept
+
+ 4. Combien de principes le COSO 2013 compte-t-il ?
+      a) Cinq
+      b) Huit
+      c) Vingt
+      d) Dix-sept
+
+ 5. Quel principe du COSO 2013 porte sur les contrôles généraux sur les technologies ?
+      a) Le principe 8
+      b) Le principe 11
+      c) Le principe 2
+      d) Le principe 17
+
+ 6. À quelle composante appartient le principe de prise en compte du risque de fraude ?
+      a) Environnement de contrôle
+      b) Activités de contrôle
+      c) Évaluation des risques
+      d) Pilotage
+
+ 7. Scénario. Chez LiZbiZ, les écarts d'inventaire ne remontent à la direction qu'une fois par an. Quelle composante est défaillante ?
+      a) Information et communication
+      b) Environnement de contrôle
+      c) Évaluation des risques
+      d) Activités de contrôle
+
+ 8. Comment classer un rapprochement mensuel du stock et des inventaires ?
+      a) Préventif
+      b) Correctif
+      c) Automatisé
+      d) Détectif
+
+ 9. Comment classer une validation obligatoire avant paiement ?
+      a) Détectif
+      b) Préventif
+      c) Correctif
+      d) Compensatoire
+
+10. Quels contrôles s'appliquent à l'environnement dans lequel les applications sont développées et exploitées ?
+      a) Les contrôles d'application
+      b) Les contrôles compensatoires
+      c) Les contrôles généraux informatiques
+      d) Les contrôles détectifs
+
+11. Pourquoi l'auditeur teste-t-il d'abord les contrôles généraux informatiques ?
+      a) Parce qu'un contrôle d'application ne vaut que si les contrôles généraux qui le protègent sont efficaces
+      b) Parce qu'ils sont plus simples
+      c) Parce que la loi l'impose
+      d) Parce qu'ils sont moins nombreux
+
+12. Lesquelles de ces fonctions la séparation des tâches répartit-elle ?
+      a) Vendre, acheter, livrer, facturer
+      b) Planifier, réaliser, vérifier, agir
+      c) Créer, lire, modifier, supprimer
+      d) Autoriser, enregistrer, garder l'actif, contrôler
+
+13. Scénario. Quel cumul permet de créer un fournisseur fictif puis de le payer ?
+      a) F2 et F3
+      b) F1 et F5
+      c) F3 et F4
+      d) F2 et F4
+
+14. Scénario. Dans la matrice de LiZbiZ, combien d'utilisateurs sur six cumulent au moins une paire incompatible ?
+      a) Deux
+      b) Trois
+      c) Quatre
+      d) Six
+
+15. Scénario. Quel cumul du magasinier M. FOUDA permet de masquer un manquant ?
+      a) Réception (F3) et ajustement du stock (F4)
+      b) Commande (F2) et paiement (F5)
+      c) Fournisseur (F1) et paiement (F5)
+      d) Commande (F2) et réception (F3)
+
+16. Que faire quand une petite agence ne permet pas de séparer les tâches ?
+      a) Accepter le risque sans rien faire
+      b) Fermer l'agence
+      c) Confier tous les droits au chef d'agence
+      d) Mettre en place des contrôles compensatoires écrits, exécutés et tracés
+
+17. Quel document relie chaque risque à ses contrôles et à la preuve de leur exécution ?
+      a) L'organigramme
+      b) La matrice des risques et des contrôles
+      c) La charte d'audit
+      d) Le plan comptable
+
+18. Qu'évalue l'efficacité opérationnelle d'un contrôle ?
+      a) Si le contrôle, s'il fonctionne, réduit le risque
+      b) Si la procédure est bien écrite
+      c) Si le contrôle a fonctionné comme prévu pendant toute la période
+      d) Si le contrôle est automatisé
+
+19. Scénario. Le critère exige une validation tracée de chaque ajustement ; l'extraction montre des ajustements sans validation. Quelle cotation ?
+      a) NON
+      b) NEK
+      c) OUI
+      d) Aucune
+
+20. Quel règlement fixe les exigences minimales du contrôle interne des établissements de crédit de la CEMAC ?
+      a) La loi n° 2010/012
+      b) L'AUSCGIE
+      c) La loi n° 2024/017
+      d) Le règlement COBAC R-2016/04
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Le contrôle interne est un document plutôt qu'un processus.
+      Vrai / Faux
+
+22. Les activités de contrôle suffisent à rendre un dispositif efficace, même sans les autres composantes.
+      Vrai / Faux
+
+23. Un contrôle automatisé n'est fiable que si personne ne peut le désactiver sans contrôle.
+      Vrai / Faux
+
+24. La règle des quatre yeux impose qu'une opération sensible soit réalisée par une personne et validée par une autre.
+      Vrai / Faux
+
+25. Le cumul total des droits du responsable informatique de LiZbiZ est le cumul le plus grave.
+      Vrai / Faux
+
+26. Un contrôle sans preuve d'exécution peut être évalué sur la foi de la procédure.
+      Vrai / Faux
+
+27. Un contrôle bien conçu mais non exécuté ne protège de rien.
+      Vrai / Faux
+
+28. L'absence d'une trace exigée par le critère se cote NEK.
+      Vrai / Faux
+
+29. Le contrôle interne peut être mis en échec par la collusion.
+      Vrai / Faux
+
+30. Chez la BANQUE SANAGA, le défaut constaté sur la gestion des changements est un défaut d'exécution.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le cadre de référence du contrôle interne publié en 2013 est celui du ______.
+
+32. La composante qui regroupe intégrité, éthique et supervision par le conseil est l'environnement de ______.
+
+33. La cinquième composante du COSO, qui évalue le dispositif, s'appelle le ______.
+
+34. Un contrôle qui corrige l'anomalie et ses effets est un contrôle ______.
+
+35. Le sigle anglais de la séparation des tâches est ______.
+
+36. Un contrôle qui remplace une séparation impossible s'appelle un contrôle ______.
+
+37. La règle selon laquelle une opération sensible est validée par une seconde personne est la règle des quatre ______.
+
+38. Vérifier le fonctionnement d'un contrôle sur un cas s'appelle un test de ______.
+
+39. Les contrôles des stocks de LiZbiZ donnent 1 OUI, 10 NON et 1 NEK : c'est une non-conformité ______.
+
+40. Selon le règlement COBAC, la défaillance des systèmes est un risque ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

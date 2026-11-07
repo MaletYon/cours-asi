@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C30
+Chapitre 30 : L'auditologie : objet, axiomes et piliers
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Comment s'écrit la mission auditologique selon A0 ?
+      a) ⟨Q, R, S, T, U⟩
+      b) ⟨S, A, I, G, T⟩
+      c) ⟨µ, U, H, ρ, D⟩
+      d) ⟨C1, C2, C3, C4⟩
+
+ 2. Que désigne A dans la mission auditologique ?
+      a) Le système audité
+      b) Le canal d'information
+      c) L'architecture cognitive de l'auditeur ou du collectif d'audit
+      d) La trajectoire temporelle
+
+ 3. Que désigne G dans la mission auditologique ?
+      a) La structure stratégique de l'interaction entre auditeur, audité et tiers
+      b) La gouvernance du SI
+      c) La grille d'audit
+      d) La gravité du risque
+
+ 4. Comment A0 définit-il l'auditologie ?
+      a) Comme un référentiel de contrôle
+      b) Comme une norme ISO
+      c) Comme une méthode commerciale
+      d) Comme la science appliquée de la réduction de l'incertitude sur les missions auditologiques
+
+ 5. Quel est l'axiome 1 ?
+      a) Cognition limitée des agents
+      b) Observabilité partielle
+      c) Opposabilité
+      d) Mesurabilité de l'incertitude épistémique
+
+ 6. Quel est l'axiome 5 ?
+      a) Interaction stratégique
+      b) Opposabilité
+      c) Individuation temporelle
+      d) Mesurabilité de l'incertitude épistémique
+
+ 7. Quel est l'axiome 3 ?
+      a) Mesurabilité de l'incertitude épistémique
+      b) Cognition limitée des agents
+      c) Observabilité partielle
+      d) Opposabilité
+
+ 8. Selon A0, qu'est-ce que l'indépendance de l'auditeur ?
+      a) Le septième axiome
+      b) Un paramètre
+      c) Un choix d'objectif
+      d) Un théorème dérivé des axiomes 4 et 6
+
+ 9. Selon A0, qu'est-ce que la matérialité ?
+      a) Un axiome
+      b) Un paramètre dérivé de l'opposabilité
+      c) Un théorème
+      d) Un pilier
+
+10. Sur quels axiomes repose la nécessité de la modalité NEK ?
+      a) 5 et 6
+      b) 2 et 6
+      c) 1, 2, 3 et 4
+      d) 4 et 6
+
+11. Sur quels axiomes repose la nécessité d'une décomposition hiérarchique ?
+      a) 2 et 6
+      b) 1 et 4
+      c) 5 seul
+      d) 3 seul
+
+12. Que dit la proposition de réflexivité ?
+      a) L'audit est une observation neutre
+      b) L'audit est une observation externe
+      c) L'audit n'a pas d'effet sur le système
+      d) L'acte d'audit est lui-même un constituant de la trajectoire du système audité
+
+13. Quel est le pilier 1 ?
+      a) La théorie de l'information
+      b) La cognition limitée
+      c) La théorie des jeux
+      d) L'ontologie critique-réaliste
+
+14. Quel formalisme porte le pilier 2 ?
+      a) Le jeu bayésien
+      b) La chaîne de Markov
+      c) L'entropie et l'information mutuelle
+      d) Les strates du réel, de l'actuel et de l'empirique
+
+15. Quelle prédiction falsifiable porte le pilier 4 ?
+      a) Les prévisions par matrice de transition battent la persistance naïve à 12-24 mois
+      b) Les grilles de plus de neuf dimensions produisent plus d'erreurs
+      c) Les instruments incitatifs réduisent la dissimulation
+      d) Les cadres socio-matériels font mieux appliquer les recommandations
+
+16. Sur quels auteurs s'appuie le pilier 5 ?
+      a) Shannon
+      b) Nash
+      c) Miller
+      d) Bhaskar, Simondon et Latour
+
+17. Dans quel cadre méthodologique A0 inscrit-il l'auditologie ?
+      a) La statistique bayésienne seule
+      b) La recherche en science du design
+      c) L'ethnographie
+      d) L'audit financier
+
+18. Selon le falsificationnisme de Lakatos adopté par A0, qu'est-ce que le noyau dur ?
+      a) Ce qui est directement testé
+      b) Ce qui est abandonné
+      c) Les axiomes et les piliers, non directement falsifiables ; la ceinture protectrice est testée
+      d) Un synonyme de la ceinture protectrice
+
+19. Quel est le septième axiome d'A0 ?
+      a) La falsifiabilité comme engagement méthodologique
+      b) L'opposabilité
+      c) L'indépendance
+      d) La conformité
+
+20. Scénario. Quelle probabilité de régression du domaine D le mini-cas d'A0 prédit-il dans les dix-huit mois ?
+      a) 5 %
+      b) 50 %
+      c) 80 %
+      d) 35 %
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'auditologie est normative : elle prescrit le « bon audit ».
+      Vrai / Faux
+
+22. La conformité à un référentiel est un choix de fonction objectif.
+      Vrai / Faux
+
+23. La réfutation d'une prédiction de la ceinture protectrice entraîne celle du noyau dur.
+      Vrai / Faux
+
+24. Chaque pilier est nécessaire ; leur suffisance conjointe est une hypothèse de travail.
+      Vrai / Faux
+
+25. Selon A0, l'analyse topologique devient impraticable au-delà d'une dizaine de dimensions.
+      Vrai / Faux
+
+26. La méthode du cours est une instanciation opérationnelle, pour le praticien, du programme auditologique.
+      Vrai / Faux
+
+27. Dans le mini-cas d'A0, le domaine D est décomposé en 5 × 5 sous-éléments.
+      Vrai / Faux
+
+28. La prédiction de régression du domaine D a été confirmée.
+      Vrai / Faux
+
+29. L'auditologie invalide les cadres professionnels existants.
+      Vrai / Faux
+
+30. Le cours numérote les axiomes comme l'article A0.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Dans le quintuplet, le système audité est noté ______.
+
+32. Dans le quintuplet, la trajectoire temporelle est notée ______.
+
+33. L'axiome 6 s'appelle l'______.
+
+34. L'axiome 4 s'appelle l'interaction ______.
+
+35. Le pilier 5 est l'ontologie critique-______.
+
+36. Selon Lakatos, le noyau dur est entouré d'une ceinture ______.
+
+37. La décomposition respecte la borne de 7 plus ou moins ______.
+
+38. L'entropie d'une réponse à trois modalités ne dépasse pas log2 de ______.
+
+39. L'auditologie repose sur ______ piliers.
+
+40. L'article A0 est déposé sur HAL sous la référence hal-0570______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

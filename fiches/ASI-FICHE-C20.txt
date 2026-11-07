@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C20
+Chapitre 20 : Auditer un système de management de la sécurité
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quels sont les trois audits de sécurité distingués par le chapitre ?
+      a) Légal, d'un SMSI, technique
+      b) Interne, externe, fiscal
+      c) Financier, social, environnemental
+      d) De code, de réseau, de paie
+
+ 2. Quel article de la loi n° 2010/012 soumet les opérateurs à un audit de sécurité obligatoire ?
+      a) Article 4
+      b) Article 13
+      c) Article 61
+      d) Article 86
+
+ 3. À qui sont adressés les rapports de l'audit de sécurité de l'Agence (art. 32) ?
+      a) Au DG de l'entreprise
+      b) Au juge
+      c) Au Ministre chargé des Télécommunications
+      d) À la COBAC
+
+ 4. Combien de clauses d'exigences compte l'ISO/IEC 27001:2022 ?
+      a) Trois (1 à 3)
+      b) Dix (1 à 10)
+      c) Quatorze
+      d) Sept (4 à 10)
+
+ 5. Combien de mesures compte l'annexe A de l'ISO/IEC 27001:2022 ?
+      a) 93
+      b) 114
+      c) 35
+      d) 14
+
+ 6. Quelle clause traite de l'évaluation des performances (audit interne, revue de direction) ?
+      a) Clause 4
+      b) Clause 9
+      c) Clause 6
+      d) Clause 10
+
+ 7. Quel est le premier maillon de la chaîne du SMSI ?
+      a) Les mesures
+      b) L'évaluation
+      c) Le périmètre
+      d) Le traitement
+
+ 8. Comment coter une mesure déclarée sans preuve de fonctionnement ?
+      a) OUI
+      b) NON
+      c) Sans objet
+      d) NEK
+
+ 9. Que contient la déclaration d'applicabilité ?
+      a) Les mesures de l'annexe A, retenues ou exclues, avec la justification et l'état de mise en œuvre
+      b) La liste des salariés
+      c) Le budget de sécurité
+      d) Le rapport d'audit
+
+10. Combien de mesures la BANQUE SANAGA exclut-elle de sa déclaration d'applicabilité ?
+      a) 3
+      b) 12
+      c) 81
+      d) 93
+
+11. L'exclusion « La banque ne développe pas » de la sécurité du développement est-elle justifiée ?
+      a) OUI, la banque n'a pas de développeurs
+      b) NEK
+      c) NON
+      d) Sans objet
+
+12. Quand une mesure peut-elle être exclue ?
+      a) Quand elle est difficile à mettre en œuvre
+      b) Quand le DSI le décide oralement
+      c) Quand elle coûte cher
+      d) Quand le risque n'existe pas dans le périmètre, ou est accepté par une décision écrite fondée sur l'appréciation des risques
+
+13. Qu'est-ce qui distingue un audit de certification d'un audit interne de SMSI ?
+      a) Il est conduit par un organisme tiers accrédité
+      b) Il est gratuit
+      c) Il ne porte que sur l'annexe A
+      d) Il n'a pas de rapport
+
+14. Pourquoi échantillonner les mesures de l'annexe A ?
+      a) Parce que la norme l'interdit
+      b) Parce qu'on ne peut pas toutes les tester en profondeur dans le temps imparti
+      c) Parce que certaines sont fausses
+      d) Pour réduire le prix
+
+15. Qu'est-ce qu'une non-conformité majeure ?
+      a) Une faute de frappe dans une procédure
+      b) Un compte rendu non signé
+      c) Une défaillance qui remet en cause la capacité du système à atteindre ses résultats
+      d) Une remarque du client
+
+16. L'absence de tout audit interne du SMSI est :
+      a) Une observation
+      b) Une non-conformité mineure
+      c) Un point fort
+      d) Une non-conformité majeure
+
+17. Une procédure non mise à jour est, en général :
+      a) Une non-conformité mineure
+      b) Une non-conformité majeure
+      c) Une fraude
+      d) Sans objet
+
+18. Le registre des risques de la BANQUE SANAGA n'a pas été revu depuis la migration de 2026. Quelle cote ?
+      a) OUI
+      b) NON
+      c) NEK
+      d) Sans objet
+
+19. Quel type de SMSI expose le plus aux non-conformités majeures selon le chapitre ?
+      a) Celui dont les mesures échouent souvent
+      b) Celui qui est certifié
+      c) Celui dont on ne sait pas si les mesures fonctionnent (NEK nombreux)
+      d) Celui qui a peu de mesures
+
+20. Sur combien d'années le chapitre construit-il un programme d'audit du SMSI ?
+      a) Un an
+      b) Deux ans
+      c) Dix ans
+      d) Trois ans
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Les trois audits de sécurité partagent leurs preuves.
+      Vrai / Faux
+
+22. Une mesure retenue dans la déclaration d'applicabilité est forcément en place.
+      Vrai / Faux
+
+23. La difficulté de mise en œuvre justifie l'exclusion d'une mesure.
+      Vrai / Faux
+
+24. Chaque clause d'exigence a une preuve attendue.
+      Vrai / Faux
+
+25. Une non-conformité majeure empêche la certification tant qu'elle n'est pas corrigée.
+      Vrai / Faux
+
+26. Les rapports d'audit de l'Agence sont publics.
+      Vrai / Faux
+
+27. Le taux d'incertitude du SMSI mesure la distance entre le papier et la réalité.
+      Vrai / Faux
+
+28. Le télétravail interdit justifie l'exclusion de la mesure de travail à distance.
+      Vrai / Faux
+
+29. La revue de direction se vérifie par ses comptes rendus.
+      Vrai / Faux
+
+30. L'audit de sécurité de l'Agence est annuel ou effectué lorsque les circonstances l'exigent.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le système de management de la sécurité de l'information a pour sigle ______.
+
+32. Le sigle anglais de la déclaration d'applicabilité est ______.
+
+33. L'annexe A de l'édition 2022 compte ______ mesures.
+
+34. Une défaillance ponctuelle qui ne remet pas en cause le système est une non-conformité ______.
+
+35. L'audit obligatoire des opérateurs figure à l'article ______.
+
+36. Le dernier maillon de la chaîne du SMSI est l'______.
+
+37. La BANQUE SANAGA retient ______ mesures sur 93.
+
+38. L'audit de certification est conduit par un organisme ______ accrédité.
+
+39. Les rapports de l'audit de l'Agence sont adressés au ______ chargé des Télécommunications.
+
+40. La clause 10 porte sur l'______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

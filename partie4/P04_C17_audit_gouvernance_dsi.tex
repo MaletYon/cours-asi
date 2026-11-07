@@ -1,0 +1,601 @@
+% ============================================================================
+% Fichier  : partie4/P04_C13_audit_gouvernance_dsi.tex
+% Titre    : Auditer la Gouvernance et la Fonction Informatique
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C13, repris et développé pour INF3226
+% ============================================================================
+% Sources : guide d'audit des SI du CHAI (2014), fiche 3.1 « Audit du
+% pilotage des systèmes d'information » (six axes : rôle et positionnement,
+% planification stratégique, budgets et coûts, mesure de la performance,
+% organisation de la DSI, cadre légal ; distinction contenant / contenu),
+% paraphrasée ; COBIT 2019 (EDM01, APO01, APO02, APO05, APO06, APO07, APO09,
+% MEA01) comme source de critères ; décomposition du domaine A de LiZbiZ
+% cohérente avec le chapitre 9 (16 / 3 / 1). La gouvernance elle-même est
+% traitée dans les UE MSN-2S3-MSI01 et MSN-2S3-MSI03 (GCI).
+% ============================================================================
+
+\chapter{Auditer la Gouvernance et la Fonction Informatique}
+\label{chap:audit-gouvernance}
+\chaptermark{Auditer la gouvernance}
+
+\epigraph{%
+    « L'auditeur ne juge pas la stratégie.\\
+    Il juge la manière dont on l'a décidée, suivie et corrigée. »%
+}{Règle de l'audit de gouvernance}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise du Chapitre~\ref{chap:conclure} (mesures et observation) et du
+    Chapitre~\ref{chap:referentiels} (critères tirés de COBIT)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Décomposer l'audit de la fonction informatique en sous-domaines~:
+          rôle et organes, planification stratégique, budgets, performance,
+          organisation et compétences.
+    \item Distinguer, pour chaque document de gouvernance, le contrôle du
+          \emph{contenant} (processus d'élaboration et de validation) et
+          celui du \emph{contenu} (pertinence, cohérence).
+    \item Évaluer les organes de gouvernance des SI à partir de la trace de
+          leurs décisions.
+    \item Auditer un indicateur de pilotage~: définition, source, calcul,
+          reproduction.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : l'informatique de LiZbiZ est-elle bien gouvernée~?}
+% ============================================================================
+
+Au Chapitre~\ref{chap:conclure}, le domaine~A de LiZbiZ, la gouvernance du
+SI, sortait en conformité claire~: 16~\OUI{}, 3~\NON{}, 1~\NEK{}. Le conseil
+d'administration s'en félicite et demande à AUDIX CONSEIL s'il peut
+« passer à autre chose ». M.~BEYALA répond par une question~: qu'y a-t-il
+derrière ces vingt réponses~?
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Décomposer l'audit de la fonction informatique (section~\ref{sec:c17-decomposer}).
+    \item Le rôle, le positionnement et les organes de gouvernance (section~\ref{sec:c17-organes}).
+    \item La planification stratégique et les budgets (section~\ref{sec:c17-planification}).
+    \item L'organisation et les compétences (section~\ref{sec:c17-organisation}).
+    \item Auditer un indicateur de pilotage (section~\ref{sec:c17-indicateurs}).
+    \item Auditer un engagement de service (section~\ref{sec:c17-sla}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Décomposer l'Audit de la Fonction Informatique}
+\label{sec:c17-decomposer}
+% ============================================================================
+
+\subsection{Ce que l'on audite, et ce que l'on n'audite pas}
+
+L'audit de la gouvernance porte sur des décisions~: qui décide, selon
+quelle procédure, avec quelle information, et comment la décision est
+suivie. L'auditeur n'a pas à dire si LiZbiZ aurait dû choisir tel
+progiciel ou ouvrir tel centre de données~: ce choix appartient aux
+dirigeants. Il vérifie que le choix a été préparé, décidé par l'organe
+compétent, tracé, et suivi.
+
+Le guide du CHAI formule cette distinction pour les documents de
+pilotage~: on analyse d'abord le \emph{contenant}, c'est-à-dire le
+processus d'élaboration et de validation, puis le \emph{contenu}, sa
+pertinence et son alignement~\cite{chai2014guide}.
+
+\begin{boxdef}
+\termecle{Contenant et contenu}\index{contenant et contenu}~: pour un
+document de gouvernance (schéma directeur, budget, tableau de bord), le
+\emph{contenant} est la manière dont il a été élaboré, validé et mis à
+jour~; le \emph{contenu} est ce qu'il dit, et sa cohérence avec les
+objectifs de l'organisation. Le contenant se teste par des preuves
+(procès-verbaux, versions, signatures)~; le contenu se juge par
+rapprochement avec d'autres documents.
+\end{boxdef}
+
+\subsection{Cinq sous-domaines}
+
+En reprenant les axes du guide du CHAI et les objectifs de COBIT~2019,
+AUDIX CONSEIL décompose le domaine~A en cinq sous-domaines de quatre
+contrôles chacun. Le cadre légal, sixième axe du CHAI, est traité dans les
+domaines où chaque obligation s'applique (Chapitre~\ref{chap:droit}).
+
+\begin{tableaucours}{cL{3.4cm}L{5.4cm}L{2.4cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{Contrôles} &
+    \tableauHeader{Critères COBIT}
+}
+A.1 & Rôle, positionnement et organes & Rattachement de la DSI à la
+direction générale~; mission écrite~; comité de pilotage du SI actif~;
+rôle des métiers dans les projets & EDM01, APO01 \\
+A.2 & Planification stratégique & Schéma directeur approuvé~; revue
+annuelle~; projets rattachés au schéma~; ressources adaptées & APO02,
+APO05 \\
+A.3 & Budgets et coûts & Processus budgétaire écrit~; budget exhaustif~;
+suivi des écarts~; bilan économique des projets & APO06 \\
+A.4 & Performance et indicateurs & Objectifs assignés à la DSI~; tableau
+de bord~; engagements de service~; satisfaction des utilisateurs &
+MEA01, APO09 \\
+A.5 & Organisation et compétences & Organigramme et fiches de poste~;
+séparation études et exploitation~; dépendance aux personnes~; plan de
+formation & APO07 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~17.1. Décomposition du domaine~A,
+gouvernance et fonction informatique}\end{center}
+
+\begin{boxlecture}{Domaine A décomposé}
+Les vingt contrôles du domaine~A, lus par sous-domaine~:
+
+\medskip
+\begin{tableaucours}{L{4.2cm}cccccc}{%
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{\OUI{}} & \tableauHeader{\NON{}} & \tableauHeader{\NEK{}} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$}
+}
+A.1 Rôle et organes & 4 & 0 & 0 & 1,00 & 0,00 & 0,00 \\
+A.2 Planification & 3 & 1 & 0 & 0,75 & 0,00 & 0,81 \\
+A.3 Budgets et coûts & 3 & 0 & 1 & 0,75 & 0,25 & 0,81 \\
+A.4 Performance & 3 & 1 & 0 & 0,75 & 0,00 & 0,81 \\
+A.5 Organisation & 3 & 1 & 0 & 0,75 & 0,00 & 0,81 \\
+Domaine A & 16 & 3 & 1 & 0,80 & 0,05 & 0,88 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatation.} Les trois \NON{} portent sur la revue annuelle du
+schéma directeur (A.2), les engagements de service (A.4) et la dépendance
+à une seule personne (A.5). Le \NEK{} porte sur le bilan économique des
+projets (A.3).
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Le domaine est en conformité claire,
+mais le sous-domaine A.3 est opaque~: $U = 0{,}25$. Agréger le domaine
+dilue une incertitude locale, comme au Chapitre~\ref{chap:decomposition}.
+Et le \NON{} de A.5 rejoint un constat d'un autre domaine~: le responsable
+informatique, M.~KOUNOU, détient tous les droits de l'application
+(Chapitre~\ref{chap:controle-interne}). Une bonne gouvernance sur le
+papier n'empêche pas la concentration du pouvoir sur une personne.
+
+\medskip
+\hfill\lecture{0{,}80}{0{,}05}{0{,}88}
+\end{boxlecture}
+
+% ============================================================================
+\section{Rôle, Positionnement et Organes de Gouvernance}
+\label{sec:c17-organes}
+% ============================================================================
+
+\subsection{Le positionnement de la DSI}
+
+Le guide du CHAI ouvre sa fiche de pilotage par le positionnement de
+l'informatique~: la DSI est-elle rattachée à la direction générale et
+présente au comité de direction~? Un document définit-il son rôle et son
+périmètre~? Les métiers jouent-ils leur rôle de maîtrise d'ouvrage
+(besoins, priorités, recette), ou laissent-ils la DSI décider à leur
+place~?
+
+Un signal revient souvent dans les organisations camerounaises~: la DSI
+pilote seule des projets métier, parce que les directions métier ne
+désignent pas de responsable. Le risque n'est pas technique~: c'est un
+système conforme au cahier des charges et inutile aux utilisateurs.
+
+\subsection{Évaluer un organe par la trace de ses décisions}
+
+Un comité de pilotage du SI, un comité des risques, un comité d'audit
+existent souvent sur le papier. L'auditeur ne s'arrête pas à leur
+existence~: il évalue ce qu'ils décident.
+
+\begin{boxprocedure}
+\textbf{Évaluer un organe de gouvernance des SI.}
+\begin{enumerate}
+    \item \textbf{Mandat}~: un texte fixe sa composition, ses attributions et
+          sa fréquence de réunion. (Preuve~: charte du comité, décision
+          de création.)
+    \item \textbf{Fonctionnement}~: il s'est réuni à la fréquence prévue,
+          avec le quorum. (Preuve~: procès-verbaux de la période.)
+    \item \textbf{Information}~: il a reçu les éléments utiles pour décider~:
+          risques, avancement des projets, incidents majeurs. (Preuve~:
+          dossiers de séance.)
+    \item \textbf{Décision}~: ses procès-verbaux contiennent des décisions,
+          avec un responsable et une échéance, et non de simples «~points
+          d'information~».
+    \item \textbf{Suivi}~: les décisions sont reprises à la séance
+          suivante, et leur exécution est vérifiable.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxscenario}{Opération SANAGA. Le comité des risques et la bascule}
+\textbf{Faits.} Mme~EKAMBI lit les procès-verbaux du comité des risques de
+la BANQUE SANAGA pour 2025 et le premier trimestre 2026. Le comité s'est
+réuni quatre fois, conformément à sa charte. Aucun dossier de séance ne
+mentionne la bascule du système central, ni le risque de panne coté
+« 3 sur 5 » par la DSI (Chapitre~\ref{chap:risque}).
+
+\medskip
+\textbf{Cotation.} Mandat~: \OUI{}. Fonctionnement~: \OUI{}.
+Information~: \NON{}. Décision et suivi sur le risque informatique~: sans
+objet faute d'information, donc \NON{} au regard du critère « le comité
+statue sur les risques majeurs, y compris informatiques ».
+
+\medskip
+\textbf{Analyse} (confiance élevée). L'organe existe et fonctionne, mais
+il n'a jamais été saisi du risque qui s'est réalisé. La défaillance n'est
+pas dans le comité~: elle est dans le circuit qui aurait dû l'informer.
+La recommandation porte sur l'échelle commune de cotation et sur la
+remontée des risques informatiques, pas sur le comité lui-même.
+\end{boxscenario}
+
+% ============================================================================
+\section{Planification Stratégique et Budgets}
+\label{sec:c17-planification}
+% ============================================================================
+
+\subsection{Le schéma directeur}
+
+Le schéma directeur, ou plan stratégique du SI, est le premier document de
+strate~1 (Chapitre~\ref{chap:planifier}). Il s'audite en deux temps.
+
+\begin{tableaucours}{L{2.4cm}L{5.0cm}L{4.8cm}}{%
+    \tableauHeader{Angle} &
+    \tableauHeader{Questions} &
+    \tableauHeader{Preuves}
+}
+Contenant & Qui l'a élaboré~? Qui l'a approuvé~? Est-il revu au moins une
+fois par an~? & Versions datées, procès-verbal d'approbation, comptes
+rendus de revue \\
+Contenu & Les projets en cours y figurent-ils~? Les priorités
+correspondent-elles à la stratégie de l'organisation~? Les ressources
+suffisent-elles~? & Rapprochement avec le portefeuille de projets, le
+plan stratégique de l'entreprise, le budget \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~17.2. Auditer un schéma directeur}\end{center}
+
+Un test simple donne beaucoup d'information~: prendre la liste des projets
+informatiques en cours et chercher chacun dans le schéma directeur. Un
+projet absent du schéma a été décidé hors du circuit~; un projet du
+schéma qui n'a jamais démarré signale un plan déconnecté des moyens.
+
+\begin{boxinfo}
+\textbf{Le contrôle A.2.2 de LiZbiZ.} Le schéma directeur 2025-2028 est
+approuvé par le conseil (\OUI{} pour A.2.1). Mais aucune revue n'a eu
+lieu depuis son approbation, alors que l'ouverture du centre de données de
+Bafoussam en a modifié les priorités~: \NON{} pour A.2.2, revue annuelle.
+\end{boxinfo}
+
+\subsection{Les budgets et les coûts}
+
+L'auditeur examine le processus budgétaire (qui propose, qui arbitre, qui
+approuve), le périmètre du budget (tous les sites, charges et
+investissements, dépenses informatiques engagées hors DSI), et le suivi
+des écarts. Le guide du CHAI recommande de manier les ratios de coûts et
+les comparaisons avec d'autres organisations avec précaution~: un ratio
+n'est fiable que si les périmètres sont comparables~\cite{chai2014guide}.
+
+Le bilan économique d'un projet compare les coûts et les bénéfices
+constatés à ceux de l'étude préalable. Chez LiZbiZ, le DAF affirme qu'un
+bilan de l'application intégrée a été présenté au conseil en 2025, mais
+ne le retrouve pas~: \NEK{} pour A.3.4, en attendant le procès-verbal.
+
+% ============================================================================
+\section{Organisation et Compétences}
+\label{sec:c17-organisation}
+% ============================================================================
+
+L'organisation de la DSI s'audite avec les outils du
+Chapitre~\ref{chap:controle-interne}~: organigramme, fiches de poste,
+séparation des tâches. Trois points méritent l'attention de l'auditeur
+des SI.
+
+\begin{itemize}
+    \item \textbf{La séparation entre études et exploitation}~: ceux qui
+          développent ne doivent pas accéder aux données ni aux programmes
+          de production. Le Chapitre~\ref{chap:audit-continuite} y revient.
+    \item \textbf{La dépendance aux personnes}~: une application connue
+          d'une seule personne, un compte d'administration détenu par une
+          seule personne, sont des risques de continuité et de fraude. Le
+          guide du CHAI invite à apprécier cette dépendance au regard de
+          l'âge des applications, de la taille des équipes et de la
+          documentation.
+    \item \textbf{Les compétences}~: un plan de formation nominatif, et un
+          effort de formation suivi sur plusieurs années.
+\end{itemize}
+
+\begin{boxalert}
+\textbf{Violation typique.} Conclure que la fonction informatique est bien
+organisée parce que l'organigramme est à jour et les fiches de poste
+signées.
+
+\smallskip
+\textbf{Règle~:} on confronte l'organigramme à la matrice des droits. Chez
+LiZbiZ, l'organigramme sépare l'administration des droits et la gestion~;
+la matrice donne tout à M.~KOUNOU. C'est la matrice qui dit ce qui se
+passe (Chapitre~\ref{chap:planifier}, strates documentaires).
+\end{boxalert}
+
+% ============================================================================
+\section{Auditer un Indicateur de Pilotage}
+\label{sec:c17-indicateurs}
+% ============================================================================
+
+\subsection{Un indicateur est une affirmation}
+
+Un tableau de bord présente des chiffres~: taux de disponibilité, délai de
+résolution des incidents, avancement des projets. Pour l'auditeur, chacun
+est une \emph{affirmation} de la direction, à vérifier comme toute autre.
+Un indicateur faux est pire que l'absence d'indicateur~: il rassure à tort
+le comité qui le lit.
+
+\begin{boxprocedure}
+\textbf{Auditer un indicateur.}
+\begin{enumerate}
+    \item \textbf{Définition}~: une fiche décrit l'indicateur, sa formule,
+          sa source, sa fréquence, son responsable et sa cible.
+    \item \textbf{Source}~: les données d'entrée viennent d'un système, et
+          non d'une saisie manuelle invérifiable.
+    \item \textbf{Reproduction}~: l'auditeur extrait les données sources
+          (Chapitre~\ref{chap:preuve}) et recalcule l'indicateur selon la
+          formule.
+    \item \textbf{Écart}~: il explique tout écart entre la valeur publiée et
+          la valeur recalculée.
+    \item \textbf{Usage}~: l'indicateur est lu par l'organe compétent, et un
+          dépassement de cible déclenche une action tracée.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxlecture}{Disponibilité affichée}
+Le tableau de bord de la DSI de LiZbiZ affiche, pour avril~2026, une
+disponibilité de l'application intégrée de 99,6~\%, au-dessus de la cible
+de 99,5~\%. Avril compte 720~heures. AUDIX CONSEIL extrait le journal des
+incidents~: 7,9~heures d'indisponibilité, dont 5,0~heures classées
+« maintenance planifiée » et exclues du calcul. Aucune de ces
+maintenances n'a été annoncée aux utilisateurs.
+
+\medskip
+\textbf{Calcul.} Valeur publiée~: $(720 - 2{,}9) / 720 \approx 99{,}6~\%$.
+Valeur recalculée selon la définition (seules les maintenances annoncées
+sont exclues)~: $(720 - 7{,}9) / 720 \approx 98{,}9~\%$, sous la cible.
+
+\medskip
+\textbf{Analyse} (confiance élevée). L'indicateur n'est pas faux par erreur
+de calcul~: il est faussé par un classement. Le contrôle A.4.2
+(« le tableau de bord est fiable ») passe de \OUI{} à \NON{}. Le
+domaine~A devient 15~\OUI{}, 4~\NON{}, 1~\NEK{}~: il reste en conformité
+claire, mais l'écart se concentre désormais dans le pilotage.
+
+\medskip
+\hfill\lecture{0{,}75}{0{,}05}{0{,}99}
+\end{boxlecture}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Recalculer un indicateur}
+\begin{enumerate}
+    \item Demander la fiche de l'indicateur~; à défaut, faire écrire la
+          définition par son responsable avant tout calcul.
+    \item Extraire les données sources avec une lettre d'extraction et une
+          empreinte (Chapitre~\ref{chap:preuve}).
+    \item Recalculer, dans un classeur conservé au dossier, chaque étape de
+          la formule.
+    \item Lister les exclusions et vérifier que chacune est prévue par la
+          définition.
+    \item Présenter l'écart au responsable avant de conclure~: c'est le
+          contradictoire (Chapitre~\ref{chap:mission}).
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Faire remonter le risque informatique}
+\begin{enumerate}
+    \item Coter les risques informatiques sur l'échelle commune de
+          l'entreprise (Chapitre~\ref{chap:risque}).
+    \item Inscrire au dossier du comité des risques tout risque informatique
+          au-dessus du seuil d'appétence, et tout projet qui modifie un
+          système critique.
+    \item Vérifier, à chaque séance, que les décisions sur ces risques ont
+          un responsable et une échéance.
+    \item Rapprocher chaque trimestre le registre de la DSI et le registre
+          de l'entreprise~: un risque présent dans le premier et absent du
+          second est un écart.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+
+% ============================================================================
+\section{Auditer un Engagement de Service}
+\label{sec:c17-sla}
+% ============================================================================
+
+\subsection{Ce qu'est un engagement de service}
+
+\begin{boxdef}
+\termecle{Engagement de service}\index{engagement de service}
+(\textit{service level agreement}, SLA)~: accord écrit entre un
+fournisseur de service (la DSI, ou un prestataire) et ses utilisateurs,
+qui fixe des niveaux mesurables (disponibilité, délai de résolution), la
+manière de les mesurer et les conséquences d'un manquement.
+\end{boxdef}
+
+Un engagement de service se décompose comme une fiche d'assertion~: un
+indicateur (critère), une méthode de calcul (test), une source de données
+(trace). L'auditeur vérifie qu'il existe, qu'il est mesuré comme il est
+écrit, et qu'il est respecté.
+
+\subsection{Recalculer la disponibilité}
+
+La disponibilité d'un service sur une période se calcule ainsi~:
+\[
+    \text{disponibilité} = \frac{T_{\text{ouverture}} - T_{\text{indisponibilité}}}{T_{\text{ouverture}}},
+\]
+où $T_{\text{ouverture}}$ est la durée pendant laquelle le service devait
+être disponible. Tout l'enjeu de l'audit tient dans les exclusions~: les
+« maintenances programmées » sont-elles déduites de l'indisponibilité, et
+étaient-elles réellement programmées~?
+
+\begin{boxprocedure}
+\textbf{Auditer un indicateur de disponibilité}
+\begin{enumerate}
+    \item Obtenir la définition écrite de l'indicateur (engagement de
+          service, tableau de bord) et la période d'ouverture.
+    \item Extraire la liste des incidents et des maintenances de la période,
+          avec leurs heures de début et de fin.
+    \item Vérifier que chaque maintenance déduite a été annoncée avant son
+          début (trace~: avis aux utilisateurs, ticket).
+    \item Recalculer la disponibilité, avec et sans les exclusions
+          contestées.
+    \item Comparer au chiffre publié, et expliquer l'écart.
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxinfo}
+\textbf{Rappel chiffré.} La section~\ref{sec:c17-indicateurs} a montré, pour LiZbiZ, une
+disponibilité publiée de 99,6~\% en avril, recalculée à 98,9~\% après
+réintégration de 5,0~heures de « maintenance » non annoncée. Sur 720~heures
+d'ouverture, un écart de 0,7~point représente environ 5~heures~: c'est la
+taille d'un incident majeur rendu invisible par une exclusion.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{L'audit de la gouvernance} porte sur les décisions~: qui
+          décide, comment, avec quelle information, avec quel suivi~; il ne
+          juge pas l'opportunité des choix stratégiques.
+    \item \textbf{Cinq sous-domaines}~: rôle et organes, planification,
+          budgets, performance, organisation~; le cadre légal se traite
+          dans chaque domaine concerné.
+    \item \textbf{Contenant, puis contenu}~: la manière dont un document a
+          été élaboré et approuvé, puis sa pertinence.
+    \item \textbf{Un organe s'évalue} par la trace de ses décisions~:
+          mandat, fonctionnement, information, décision, suivi.
+    \item \textbf{Un indicateur est une affirmation}~: on le recalcule à
+          partir des données sources, et on explique chaque écart.
+    \item \textbf{Agréger un domaine} peut masquer une opacité locale~:
+          lire aussi les sous-domaines.
+    \item \textbf{Un engagement de service} s'audite comme une fiche d'assertion~: définition, mesure, exclusions annoncées, recalcul.
+\end{itemize}
+\end{boxresume}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.1. Classer les points de contrôle \niveaubase}]
+Rattachez chaque point de contrôle à un sous-domaine (A.1 à A.5) et dites
+s'il porte sur le contenant ou sur le contenu.
+\begin{enumerate}[(a)]
+    \item Le schéma directeur a été approuvé par le conseil en 2025.
+    \item Le budget informatique inclut les dépenses informatiques des
+          agences.
+    \item Le comité de pilotage du SI s'est réuni quatre fois en 2025.
+    \item Les projets en cours figurent tous au schéma directeur.
+    \item Chaque informaticien a un plan de formation nominatif.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.2. Recalculer un délai de résolution \niveaumoyen}]
+Le tableau de bord de la DSI de LiZbiZ annonce que 92~\% des incidents de
+mai~2026 ont été résolus en moins de 8~heures. Le journal compte
+150~incidents~: 126 résolus en moins de 8~heures, 11 résolus en plus de
+8~heures, et 13 incidents « reclassés en demande de service » après
+24~heures, exclus du calcul.
+\begin{enumerate}[(a)]
+    \item Retrouvez la valeur publiée.
+    \item Recalculez l'indicateur en réintégrant les incidents reclassés.
+    \item Que faut-il demander pour savoir si le reclassement est justifié~?
+          Quelle cotation retenir en attendant~?
+    \item Rédigez la constatation et l'analyse de l'observation.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.3. Le comité des risques de la BANQUE SANAGA \niveauexpert}]
+Reprenez le scénario « Le comité des risques et la bascule ».
+\begin{enumerate}[(a)]
+    \item Rédigez l'observation en sept éléments (Chapitre~\ref{chap:conclure}).
+    \item Pourquoi la recommandation ne vise-t-elle pas le comité
+          lui-même~?
+    \item Quels contrôles ajouteriez-vous au sous-domaine A.1 de la banque
+          pour couvrir ce défaut à l'avenir~? Rédigez la fiche d'assertion
+          de l'un d'eux.
+    \item Quel indicateur proposeriez-vous au comité d'audit pour suivre la
+          remontée des risques informatiques~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.4. Les organes \niveaubase}]
+Pour un comité de pilotage informatique, citez les cinq points
+d'évaluation d'un organe (mandat, fonctionnement, information, décision,
+suivi) et la pièce qui permet de vérifier chacun.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.5. Un schéma directeur \niveaumoyen}]
+Le schéma directeur de LiZbiZ (2024-2027) n'a jamais été revu. Quelle
+fiche d'assertion rédigez-vous~? Quelle cote, et quelle conséquence pour
+le sous-domaine A.2~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.6. La dépendance à une personne \niveaumoyen}]
+M.~KOUNOU est le seul à connaître l'administration de la base de
+l'application intégrée. Rédigez la constatation, le risque et deux
+recommandations, en évitant toute mise en cause personnelle.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.7. Recalculer une disponibilité \niveaumoyen}]
+En mai~2026, le système de facturation de LiZbiZ devait être ouvert
+22~jours de 7~h à 19~h. Le tableau de bord publie 99,8~\%. Les journaux
+montrent 3~h d'incidents et 4~h de « maintenance », dont 2~h annoncées.
+Recalculez la disponibilité selon l'engagement (seules les maintenances
+annoncées sont exclues) et concluez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.8. L'engagement de DIGICORE \niveaumoyen}]
+Le contrat de DIGICORE AFRIQUE prévoit une disponibilité de 99,5~\% par
+mois, sans dire comment elle est mesurée ni par qui. Quel est le défaut, et
+quelle clause proposez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.9. Le budget informatique \niveauexpert}]
+Le bilan économique du schéma directeur de LiZbiZ n'a pas été remis
+(\NEK{}). Concevez trois tests qui permettraient de lever cette incertitude
+sans ce document, et dites ce que chacun établirait.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~17.10. Une gouvernance de façade \niveauexpert}]
+Le comité des risques de la BANQUE SANAGA s'est réuni quatre fois en 2025,
+mais n'a jamais été saisi de la bascule du système central. Rédigez
+l'observation en sept éléments et sa gravité.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: décomposer l'audit de la
+fonction informatique~; évaluer un organe par ses traces~; auditer un
+schéma directeur et un budget~; repérer une dépendance à une personne~;
+recalculer un indicateur et une disponibilité.
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Le guide d'audit des SI du CHAI~\cite{chai2014guide}~: les fiches
+          « pilotage des SI ».
+    \item ISACA, COBIT~2019~\cite{isaca2018cobitobjectifs}~: les objectifs
+          EDM et APO.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La gouvernance décide~; les applications exécutent.
+Le Chapitre~\ref{chap:audit-applications} audite une application en
+service~: entrées, traitements, sorties, interfaces, et les tests sur les
+données.
+\end{boxinfo}

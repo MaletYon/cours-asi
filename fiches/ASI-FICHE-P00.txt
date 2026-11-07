@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-P00
+Chapitre 0 : Prologue : quarante-cinq questions et aucune réponse fiable
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel est le secteur d'activité de LiZbiZ ?
+      a) La banque
+      b) La logistique
+      c) L'énergie
+      d) Les télécommunications
+
+ 2. Combien de centres de données LiZbiZ exploite-t-elle ?
+      a) Deux
+      b) Douze
+      c) Quatre
+      d) Un seul
+
+ 3. De combien de questions se composait la grille de la première mission ?
+      a) 45
+      b) 25
+      c) 20
+      d) 12
+
+ 4. Quel domaine de la grille produisait des réponses incohérentes ?
+      a) Le domaine A
+      b) Le domaine B
+      c) Le domaine C
+      d) Le domaine D, le contrôle d'accès
+
+ 5. Pourquoi le comité de direction refuse-t-il de valider le premier rapport ?
+      a) Parce qu'il est trop long
+      b) Parce qu'aucun papier de travail ne relie les conclusions à des preuves
+      c) Parce qu'il est rédigé en anglais
+      d) Parce que l'audit a duré trop longtemps
+
+ 6. Comment appelle-t-on un fait vérifiable, établi par l'auditeur et appuyé sur une preuve conservée ?
+      a) Une impression
+      b) Une opinion
+      c) Une constatation
+      d) Une recommandation
+
+ 7. Qu'est-ce qu'une opinion d'audit ?
+      a) Une conclusion motivée, tirée de constatations, au regard d'un critère connu à l'avance
+      b) Un jugement formé sans preuve
+      c) Un fait vérifiable
+      d) Une rumeur recueillie en entretien
+
+ 8. Lequel de ces défauts n'est PAS l'un des trois défauts de méthode de la première mission ?
+      a) Pas de mandat
+      b) Pas de critère
+      c) Pas de preuve
+      d) Pas de budget
+
+ 9. Scénario. La mission a été demandée par un simple courriel. Quel réflexe a manqué ?
+      a) Le droit au NEK
+      b) Le mandat écrit
+      c) Le contradictoire
+      d) La décomposition
+
+10. Combien d'états de connaissance une réponse d'audit peut-elle traduire ?
+      a) Deux
+      b) Quatre
+      c) Trois
+      d) Cinq
+
+11. Que signifie le sigle NEK ?
+      a) Not Enough Knowledge, connaissance insuffisante
+      b) No Evidence Kept
+      c) Non-conformité En Klasse
+      d) New Evaluation Key
+
+12. Que faut-il faire de réponses contradictoires à une même question ?
+      a) Retenir la réponse majoritaire
+      b) Les supprimer
+      c) Retenir la réponse du plus haut responsable
+      d) Chercher pourquoi elles divergent, car c'est un signal
+
+13. Scénario. Un chef d'agence répond NON là où le responsable informatique répond OUI. Quelle est l'explication la plus probable ?
+      a) L'un des deux ment
+      b) Chacun répond pour ce qu'il connaît : la procédure ou la réalité de son site
+      c) La question est inutile
+      d) Le chef d'agence n'a pas compris
+
+14. Quelle valeur approximative prend l'entropie du domaine D après l'ajout de NEK ?
+      a) 0,6 bit
+      b) 1,585 bit
+      c) 1,2 bit
+      d) 0 bit
+
+15. Quelle est l'entropie maximale d'une réponse à trois modalités ?
+      a) Environ 1,585 bit
+      b) 1 bit
+      c) 3 bits
+      d) 0,5 bit
+
+16. En combien de sous-éléments le domaine D est-il décomposé ?
+      a) 3 × 3
+      b) 7 × 7
+      c) 9 × 5
+      d) 5 × 5
+
+17. Quelle probabilité de régression du domaine D à 18 mois est estimée ?
+      a) 12 %
+      b) 35 %
+      c) 52 %
+      d) 84 %
+
+18. Scénario. Au second passage, le domaine D compte 13 OUI, 2 NON et 5 NEK sur 20 réponses. Quel est le taux d'incertitude U ?
+      a) 0,65
+      b) 0,10
+      c) 0,25
+      d) 0,50
+
+19. Quel remède appelle une non-conformité inconnue (entropie élevée) ?
+      a) D'abord des investigations et une clarification des processus
+      b) Des correctifs techniques immédiats
+      c) Aucun
+      d) Une sanction des répondants
+
+20. Lequel de ces réflexes fait partie des cinq réflexes de l'auditeur ?
+      a) Retenir la majorité
+      b) Conclure vite
+      c) Interdire le NEK
+      d) Le contradictoire avant le rapport
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une impression peut figurer dans un rapport d'audit si l'auditeur est expérimenté.
+      Vrai / Faux
+
+22. Un tiers doit pouvoir refaire une constatation et aboutir au même résultat.
+      Vrai / Faux
+
+23. Une grille binaire supprime l'ignorance des répondants.
+      Vrai / Faux
+
+24. Une réponse NEK est un aveu d'échec de l'auditeur.
+      Vrai / Faux
+
+25. Avec 65 % de OUI, on peut conclure que le domaine D est maîtrisé.
+      Vrai / Faux
+
+26. Une entropie nulle peut correspondre à une ignorance unanime.
+      Vrai / Faux
+
+27. Les réponses en entretien formel ont différé de celles de l'auto-évaluation.
+      Vrai / Faux
+
+28. Six mois plus tard, le domaine à faible entropie est passé de 52 % à 84 % de conformité.
+      Vrai / Faux
+
+29. Le papier de travail doit indiquer l'identité du répondant.
+      Vrai / Faux
+
+30. Les cas BANQUE SANAGA et ANPP sont des organisations réelles.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La troisième modalité de réponse, distincte de OUI et de NON, s'appelle ______.
+
+32. Une grille dont chaque question admet OUI, NON et NEK est un instrument ______.
+
+33. Le taux de conformité se note ______ (lettre grecque).
+
+34. La part des réponses NEK s'appelle le taux d'______.
+
+35. L'entropie se mesure en ______.
+
+36. Une non-conformité à entropie faible est une non-conformité ______.
+
+37. L'écart de stock de LiZbiZ s'élève à ______ millions de francs CFA.
+
+38. Pas d'audit sans mandat ______.
+
+39. Le critère avant le ______.
+
+40. La science appliquée de la réduction de l'incertitude dans l'audit des SI s'appelle l'______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

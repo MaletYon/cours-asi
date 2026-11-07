@@ -1,0 +1,717 @@
+% ============================================================================
+% Fichier  : partie2/P02_C11_conclure_rapport.tex
+% Titre    : Conclure et Rédiger : Mesures, Quadrant, Observation, Rapport
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C09 (mesures, quadrant, seuils µ 0,5 et U 0,20, règle de
+% décision, cinq domaines de LiZbiZ A 0,80/0,05/0,88 ; B 0,67/0,08/1,19 ;
+% C 0,08/0,08/0,82 ; D 0,65/0,25/1,24 ; E 0,40/0,30/1,57 ; observation
+% D.2.1 en sept éléments) et ACSI C22 (décomposition de l'entropie,
+% D 66 %, E 56 %, B 35 %).
+% Sources : A1 (hal-05701270) pour les mesures et le quadrant ; A0 pour
+% la non-conformité connue et inconnue ; Shannon (1948) et Cover et Thomas
+% (2006) pour la règle de chaînage de l'entropie. L'identité
+% H = H_b(U) + (1-U) H_b(µ/(1-U)) est donnée exacte ; la Proposition 1
+% d'A1 comporte un terme en trop (erratum signalé à l'auteur), elle n'est
+% donc pas citée pour cette identité.
+% Corrigés : corriges/Corr_C11.tex.
+% ============================================================================
+
+\chapter[Conclure et Rédiger]{Conclure et Rédiger : Mesures, Quadrant, Observation, Rapport}
+\label{chap:conclure}
+\chaptermark{Conclure et rédiger}
+
+\epigraph{%
+    « Conclure, ce n'est pas compter les \emph{oui}.\\
+    C'est savoir ce qu'ils valent. »%
+}{Principe de la méthode}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise du Chapitre~\ref{chap:preuve} (instrument \OUI{}, \NON{},
+    \NEK{}, preuves, papiers de travail)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Calculer, pour une question et pour un domaine, le taux de
+          conformité~$\mu$, le taux d'incertitude~$U$ et l'entropie~$H$.
+    \item Démontrer la décomposition de l'entropie en une part
+          d'ignorance et une part de désaccord, et l'interpréter.
+    \item Situer un domaine dans le quadrant conformité × incertitude et en
+          déduire l'action appropriée.
+    \item Appliquer la règle de décision du cours, qui combine toujours
+          $\mu$, $U$ et $H$.
+    \item Graduer et rédiger une observation en sept éléments.
+    \item Construire un rapport d'audit complet, de la synthèse aux
+          annexes.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : que peut-on affirmer~?}
+% ============================================================================
+
+Le terrain est terminé. AUDIX CONSEIL dispose, pour les cinq domaines de sa
+mission chez LiZbiZ, de centaines de réponses et de dizaines de tests. Le
+directeur général attend une phrase~: « Mes contrôles fonctionnent-ils~? »
+M.~BEYALA sait qu'il doit répondre domaine par domaine, en disant à la fois
+ce qui va mal et ce que l'on ne sait pas.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les trois mesures (section~\ref{sec:c11-mesures}).
+    \item La décomposition de l'entropie (section~\ref{sec:c11-decomp}).
+    \item Le quadrant (section~\ref{sec:c11-quadrant}).
+    \item La règle de décision (section~\ref{sec:c11-regle}).
+    \item L'observation en sept éléments (section~\ref{sec:c11-observation}).
+    \item Le rapport (section~\ref{sec:c11-rapport}).
+\end{enumerate}
+Le suivi, la comparaison des cycles et la maturité font l'objet du
+Chapitre~\ref{chap:suivi}.
+
+\separateur
+
+% ============================================================================
+\section{Trois Mesures}
+\label{sec:c11-mesures}
+% ============================================================================
+
+\subsection{Pour une question}
+
+Pour une question~$q$ à laquelle plusieurs répondants ont répondu, on note
+$p_q(\OUI)$, $p_q(\NON)$ et $p_q(\NEK)$ les parts de chaque réponse. L'article
+A1 définit trois mesures~\cite{minka2026nek}.
+
+\begin{boxdef}
+\termecle{Taux de conformité}\index{taux de conformité}~: $\mu_q =
+p_q(\OUI)$, la part des réponses \OUI{}.
+
+\medskip
+\termecle{Taux d'incertitude}\index{taux d'incertitude}~: $U_q = p_q(\NEK)$,
+la part des réponses \NEK{}.
+
+\medskip
+\termecle{Entropie}\index{entropie}~: dispersion des réponses, en bits,
+\[
+    H_q = -\sum_{m \in \{\OUI, \NON, \NEK\}} p_q(m) \log_2 p_q(m),
+    \qquad 0 \leq H_q \leq \log_2 3 \approx 1{,}585,
+\]
+avec la convention $0 \log_2 0 = 0$.
+\end{boxdef}
+
+L'entropie, introduite par Claude Shannon en 1948~\cite{shannon1948},
+mesure la quantité d'information qu'apporterait la connaissance de la
+réponse~: elle est nulle quand tout le monde répond la même chose, maximale
+quand les trois réponses sont également fréquentes.
+
+\subsection{Pour un domaine}
+
+Au niveau d'un domaine ou d'un sous-domaine, le cours agrège les réponses de
+toutes ses questions avant de calculer les trois mesures. C'est ce qui a été
+fait pour le domaine~D au prologue (20 réponses) et au
+Chapitre~\ref{chap:decomposition} (sous-domaine par sous-domaine). Les
+mesures d'un niveau se recalculent toujours à partir des réponses, jamais
+comme moyenne des mesures du niveau inférieur.
+
+\subsection{Quatre cas limites}
+
+\begin{tableaucours}{L{4.6cm}cccL{3.4cm}}{%
+    \tableauHeader{Situation} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$} &
+    \tableauHeader{Lecture}
+}
+Tous répondent \OUI{} & 1 & 0 & 0 & Conformité certaine \\
+Tous répondent \NON{} & 0 & 0 & 0 & Non-conformité certaine \\
+Tous répondent \NEK{} & 0 & 1 & 0 & \textbf{Ignorance unanime} \\
+Réponses également réparties & $1/3$ & $1/3$ & 1,585 & Dispersion maximale \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.1. Les cas limites des trois
+mesures (d'après~\cite{minka2026nek})}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Conclure «~certitude~» parce que l'entropie est
+nulle.
+
+\smallskip
+\textbf{Règle~:} une entropie nulle signifie seulement que tous les
+répondants ont donné la même réponse. Si cette réponse est \NEK{}, personne
+ne sait rien~: $H = 0$ et $U = 1$. On ne lit jamais $H$ sans $U$ ni $\mu$.
+\end{boxalert}
+
+\begin{boxoutils}{Calculer les trois mesures}
+\begin{lstlisting}[language=Python]
+from math import log2
+def mesures(oui, non, nek):
+    n = oui + non + nek
+    p = [oui / n, non / n, nek / n]
+    H = -sum(x * log2(x) for x in p if x > 0)
+    return round(oui / n, 2), round(nek / n, 2), round(H, 2)
+
+print(mesures(13, 2, 5))   # domaine D : (0.65, 0.25, 1.24)
+\end{lstlisting}
+\end{boxoutils}
+
+% ============================================================================
+\section{Décomposer l'Entropie}
+\label{sec:c11-decomp}
+% ============================================================================
+
+\subsection{Deux sources de dispersion}
+
+Une entropie élevée peut venir de deux choses très différentes~: beaucoup
+de répondants ne savent pas (ignorance), ou ceux qui savent ne sont pas
+d'accord (désaccord entre \OUI{} et \NON{}). L'auditeur doit savoir
+laquelle domine~: on ne traite pas l'ignorance comme le désaccord.
+
+\subsection{La démonstration}
+
+On regroupe d'abord les réponses en deux classes~: \NEK{} (probabilité $U$)
+et « réponse informée » (\OUI{} ou \NON{}, probabilité $1 - U$). À
+l'intérieur de la seconde classe, la part des \OUI{} vaut $\mu / (1 - U)$.
+La règle de chaînage de l'entropie~\cite{shannon1948,cover2006elements}
+donne alors, pour $U < 1$~:
+\[
+    H = H_b(U) + (1 - U)\, H_b\!\left(\frac{\mu}{1 - U}\right),
+\]
+où $H_b(x) = -x\log_2 x - (1-x)\log_2(1-x)$ est l'entropie binaire.
+
+\begin{boxinfo}
+\textbf{Vérification directe.} Avec $p_{\NEK} = U$, $p_{\OUI} = \mu$ et
+$p_{\NON} = 1 - U - \mu$, on développe le second membre~:
+\begin{align*}
+H_b(U) &= -U\log_2 U - (1-U)\log_2(1-U),\\
+(1-U)\,H_b\!\left(\tfrac{\mu}{1-U}\right)
+ &= -\mu\log_2\tfrac{\mu}{1-U} - (1-U-\mu)\log_2\tfrac{1-U-\mu}{1-U}.
+\end{align*}
+En additionnant, les termes en $\log_2(1-U)$ se compensent
+($-(1-U) + \mu + (1-U-\mu) = 0$), et il reste
+$-U\log_2 U - \mu\log_2\mu - (1-U-\mu)\log_2(1-U-\mu)$, c'est-à-dire $H$.
+\end{boxinfo}
+
+Le premier terme, $H_b(U)$, est la \textbf{part d'ignorance}~: il ne
+dépend que de la proportion de \NEK{}. Le second est la \textbf{part de
+désaccord}~: la dispersion entre \OUI{} et \NON{} chez ceux qui savent,
+pondérée par leur proportion.
+
+\subsection{Les domaines de LiZbiZ}
+
+\begin{tableaucours}{L{3.0cm}ccccc}{%
+    \tableauHeader{Domaine} &
+    \tableauHeader{$H$} &
+    \tableauHeader{$H_b(U)$} &
+    \tableauHeader{Désaccord} &
+    \tableauHeader{Part d'ignorance} &
+    \tableauHeader{Lecture}
+}
+B. Sauvegardes & 1,19 & 0,41 & 0,78 & 35~\% & Surtout désaccord \\
+D. Contrôle d'accès & 1,24 & 0,81 & 0,43 & 66~\% & Surtout ignorance \\
+E. Exploitation & 1,57 & 0,88 & 0,69 & 56~\% & Les deux \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.2. Décomposition de l'entropie de
+trois domaines}\end{center}
+
+\begin{boxlecture}{Deux entropies voisines}
+B et D ont des entropies voisines (1,19 et 1,24), mais pour des raisons
+opposées.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Dans le domaine~B, deux tiers de
+l'entropie viennent du désaccord entre \OUI{} et \NON{}~: les répondants
+savent, mais les sites diffèrent (Garoua ne teste pas ses restaurations).
+On décompose par site. Dans le domaine~D, deux tiers viennent de
+l'ignorance~: on cherche la preuve. Le même chiffre appelle deux
+démarches.
+
+\medskip
+\hfill\lecture{0{,}65}{0{,}25}{1{,}24}
+\end{boxlecture}
+
+% ============================================================================
+\section{Le Quadrant Conformité × Incertitude}
+\label{sec:c11-quadrant}
+% ============================================================================
+
+L'article A1 propose de lire ensemble la conformité et l'incertitude dans un
+quadrant à quatre régions, chacune appelant une action
+différente~\cite{minka2026nek}. Le cours retient, par convention, un seuil de
+0,5 pour $\mu$ et de 0,20 pour $U$~; chaque mission peut fixer les siens, à
+condition de les écrire dans le plan d'audit.
+
+\noindent\begin{minipage}{\linewidth}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\fill[green!18] (3,0) rectangle (6,2);
+\fill[red!15] (0,0) rectangle (3,2);
+\fill[orange!25] (3,2) rectangle (6,5);
+\fill[orange!15] (0,2) rectangle (3,5);
+\draw[thick, color=CouleurPrimaire] (0,0) rectangle (6,5);
+\draw[dashed, color=CouleurPrimaire] (3,0) -- (3,5);
+\draw[dashed, color=CouleurPrimaire] (0,2) -- (6,2);
+\node[align=center, font=\footnotesize\bfseries] at (1.5,1.0) {Non-conformité\\ claire};
+\node[align=center, font=\footnotesize\bfseries] at (4.5,1.0) {Conformité\\ claire};
+\node[align=center, font=\footnotesize\bfseries] at (1.5,3.5) {Non-conformité\\ opaque};
+\node[align=center, font=\footnotesize\bfseries] at (4.5,3.5) {Conformité\\ opaque};
+\foreach \x/\y/\t in {4.8/0.5/A, 4.0/0.8/B, 0.5/0.8/C, 3.9/2.5/D, 2.4/3.0/E}
+    \fill[CouleurAccent] (\x,\y) circle (2.5pt) node[above right, font=\scriptsize\bfseries] {\t};
+\node[font=\scriptsize] at (3,-0.3) {0,5};
+\node[font=\scriptsize] at (-0.35,2) {0,20};
+\node[font=\small] at (3,-0.8) {Taux de conformité $\mu$};
+\node[font=\small, rotate=90] at (-0.9,2.5) {Taux d'incertitude $U$};
+\end{tikzpicture}
+\end{center}
+\vspace{-0.4em}
+\begin{center}{\small\itshape Figure~11.1. Le quadrant diagnostique et les
+cinq domaines de LiZbiZ (d'après~\cite{minka2026nek}~; seuils du cours~;
+échelle verticale $U \times 10$)}\end{center}
+\end{minipage}
+
+\medskip
+
+\begin{tableaucours}{L{3.4cm}L{4.0cm}L{4.8cm}}{%
+    \tableauHeader{Région} &
+    \tableauHeader{Situation} &
+    \tableauHeader{Action}
+}
+Conformité claire & On s'accorde, avec assurance, sur la conformité &
+Validation courante \\
+Non-conformité claire & On s'accorde, avec assurance, sur la
+non-conformité & Correctifs \\
+\textbf{Conformité opaque} & Des \OUI{} nombreux, mais une part importante
+de \NEK{} & \textbf{Alerte prioritaire}~: rechercher la preuve avant tout
+correctif \\
+Non-conformité opaque & Des \NON{} nombreux et une part importante de
+\NEK{} & Rechercher la preuve et engager des premiers correctifs \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.3. Les quatre régions et leurs
+actions (d'après~\cite{minka2026nek})}\end{center}
+
+La conformité opaque est la région la plus dangereuse~: une grille binaire
+la confond avec la conformité claire, alors qu'elle peut cacher une
+ignorance répandue. C'est exactement l'erreur du premier rapport de LiZbiZ.
+
+\begin{boxinfo}
+\textbf{Deux vocabulaires, une même idée.} L'article \emph{Vers
+l'auditologie} distingue la \emph{non-conformité connue}, qui appelle des
+correctifs, de la \emph{non-conformité inconnue}, qui appelle d'abord des
+investigations~\cite{minka2026auditologie}. La première correspond à la
+non-conformité claire~; la seconde aux deux régions opaques du quadrant.
+\end{boxinfo}
+
+% ============================================================================
+\section{La Règle de Décision du Cours}
+\label{sec:c11-regle}
+% ============================================================================
+
+\begin{boxprocedure}
+\textbf{Conclure sur un domaine.} L'auditeur ne conclut qu'après avoir
+consigné, dans le classeur O4, pour chaque domaine~:
+\begin{enumerate}
+    \item \textbf{$U$ d'abord.} Si $U \geq 0{,}20$, le domaine est opaque~:
+          aucune conclusion de conformité n'est possible. L'auditeur
+          recherche la preuve, ou conclut \emph{sur l'opacité elle-même}.
+    \item \textbf{$\mu$ ensuite.} Si $U < 0{,}20$, le domaine est clair~:
+          conforme si $\mu \geq 0{,}5$, non conforme sinon.
+    \item \textbf{$H$ pour contrôler.} Une entropie élevée avec $U$ faible
+          signale un désaccord entre \OUI{} et \NON{}~: le domaine n'est pas
+          homogène (un site conforme, un autre non). On le décompose avant de
+          conclure (Chapitre~\ref{chap:decomposition}). La décomposition de
+          $H$ (section~\ref{sec:c11-decomp}) dit lequel des deux, ignorance
+          ou désaccord, domine.
+    \item \textbf{Les cotes de l'auditeur prévalent.} Les mesures des
+          répondants orientent~; la conclusion repose sur les contrôles cotés
+          par l'auditeur, preuve à l'appui (Chapitre~\ref{chap:preuve}).
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxlecture}{Les cinq domaines de LiZbiZ}
+\begin{tableaucours}{L{4.0cm}cccL{3.2cm}}{%
+    \tableauHeader{Domaine} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$} &
+    \tableauHeader{Région}
+}
+A. Gouvernance du SI & 0,80 & 0,05 & 0,88 & Conformité claire \\
+B. Sauvegardes & 0,67 & 0,08 & 1,19 & Conformité claire, $H$ élevé \\
+C. Gestion des stocks & 0,08 & 0,08 & 0,82 & Non-conformité claire \\
+D. Contrôle d'accès & 0,65 & 0,25 & 1,24 & \textbf{Conformité opaque} \\
+E. Exploitation & 0,40 & 0,30 & 1,57 & Non-conformité opaque \\
+\end{tableaucours}
+
+\medskip
+\textbf{Analyse} (confiance moyenne).
+\begin{itemize}
+    \item \emph{A}~: conclusion de conformité.
+    \item \emph{B}~: conforme, mais l'entropie signale un désaccord~; la
+          décomposition par site montre que l'agence de Garoua ne teste pas
+          ses restaurations.
+    \item \emph{C}~: non-conformité établie~: correctifs immédiats
+          (Chapitre~\ref{chap:controle-interne}).
+    \item \emph{D}~: alerte prioritaire~: une conformité apparente cache un
+          quart de réponses inconnues~; preuves à rechercher avant toute
+          conclusion.
+    \item \emph{E}~: investigations et premiers correctifs.
+\end{itemize}
+\end{boxlecture}
+
+\begin{boxalert}
+\textbf{Violation typique.} Moyenner les cinq domaines pour donner une note
+globale («~le SI de LiZbiZ est conforme à 52~\%~»).
+
+\smallskip
+\textbf{Règle~:} une moyenne efface les régions du quadrant. Le rapport
+présente chaque domaine dans sa région~; s'il faut une synthèse chiffrée, ce
+sont les comptes par région (deux domaines clairs conformes, un non
+conforme clair, deux opaques).
+\end{boxalert}
+
+% ============================================================================
+\section{L'Observation en Sept Éléments}
+\label{sec:c11-observation}
+% ============================================================================
+
+\subsection{Sept éléments}
+
+Chaque non-conformité significative donne lieu à une observation (outil~O8),
+de structure invariante.
+
+\begin{tableaucours}{cL{3.0cm}L{8.4cm}}{%
+    \tableauHeader{N°} &
+    \tableauHeader{Élément} &
+    \tableauHeader{Contenu}
+}
+1 & Norme & Le critère, et le texte ou le référentiel d'où il vient \\
+2 & Constatation & Le fait établi, chiffré, avec sa preuve et sa cote \\
+3 & Risques & Ce qui peut arriver~: le risque de la fiche d'assertion et sa
+conséquence \\
+4 & Contradictoire & La réponse de l'audité, datée \\
+5 & Analyse & La cause de l'écart et l'interprétation, avec un niveau de
+confiance \\
+6 & Conclusion & La position finale de l'auditeur \\
+7 & Recommandations & Ce qu'il faut faire, en traitant la cause \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.4. Les sept éléments de
+l'observation}\end{center}
+
+\subsection{Sept éléments ou cinq~?}
+
+Le cours MSN-2S3-MSI03 présente le constat d'audit en cinq éléments~:
+constatation, critère, cause, conséquence, recommandation. Les sept
+éléments les développent, sans les contredire.
+
+\begin{tableaucours}{L{5.0cm}L{6.0cm}}{%
+    \tableauHeader{Constat en cinq éléments} &
+    \tableauHeader{Observation en sept éléments}
+}
+Critère & 1. Norme \\
+Constatation & 2. Constatation \\
+Conséquence & 3. Risques \\
+(absent) & 4. Contradictoire \\
+Cause & 5. Analyse \\
+(absent) & 6. Conclusion \\
+Recommandation & 7. Recommandations \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.5. Correspondance entre le constat
+et l'observation}\end{center}
+
+L'observation ajoute deux éléments que la méthode juge indispensables~: la
+trace du contradictoire, qui rend l'observation opposable
+(Chapitre~\ref{chap:mission}), et une conclusion explicite, qui sépare la
+position de l'auditeur de son analyse.
+
+\begin{boxobjet}{D.2.1. Observation}
+\textbf{1. Norme~:} procédure interne de gestion des accès~: désactivation
+du compte d'un agent parti sous 48~heures~; loi n°~2010/012, art.~26.
+
+\textbf{2. Constatation~:} sur 31~départs entre janvier et avril~2026, 19
+comptes ont été désactivés sous 48~heures, 7 plus tard, 5 sont encore
+actifs (rapprochement exhaustif, papier de travail PT-14). Cote \NON{}.
+
+\textbf{3. Risques~:} usage du compte d'un agent parti pour consulter ou
+modifier des données de stock~; manquement à l'obligation de sécuriser le
+système.
+
+\textbf{4. Contradictoire~:} le responsable informatique indique, le
+2~juillet, que les départs ne lui sont pas notifiés par les ressources
+humaines.
+
+\textbf{5. Analyse} (confiance élevée)~: la cause est l'absence de
+notification des départs, non la négligence de l'informatique.
+
+\textbf{6. Conclusion~:} le contrôle D.2.1 n'est pas efficace.
+
+\textbf{7. Recommandations~:} notification automatique des départs par les
+ressources humaines~; désactivation immédiate des cinq comptes~; revue
+trimestrielle des comptes actifs.
+\end{boxobjet}
+
+\subsection{Graduer les observations}
+
+Toutes les observations n'ont pas le même poids. Le cours retient trois
+niveaux de gravité, à déclarer dans le plan d'audit.
+
+\begin{tableaucours}{L{2.6cm}L{5.2cm}L{4.4cm}}{%
+    \tableauHeader{Gravité} &
+    \tableauHeader{Critère} &
+    \tableauHeader{Exemple chez LiZbiZ}
+}
+Majeure & Risque résiduel intolérable, ou indice de fraude, ou manquement
+légal & Ajustements de stock sans pièce~; TRANSLOG SERVICES \\
+Significative & Contrôle inefficace sur un risque à traiter dans l'année &
+D.2.1, cinq comptes d'agents partis actifs \\
+Mineure & Défaut de forme, sans effet direct sur un risque & Compte rendu
+de revue non daté \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.6. Les niveaux de gravité des
+observations (convention du cours)}\end{center}
+
+\subsection{Écrire une recommandation}
+
+Une bonne recommandation traite la cause, pas le symptôme~; elle est
+réalisable, vérifiable et attribuée.
+
+\begin{tableaucours}{L{5.6cm}L{6.6cm}}{%
+    \tableauHeader{Mal écrite} &
+    \tableauHeader{Bien écrite}
+}
+Renforcer la sécurité des accès & Mettre en place une notification
+automatique des départs des ressources humaines vers l'informatique, avant
+le 31~août~2026 (responsable~: DRH) \\
+Désactiver les comptes inutiles & Désactiver sous 48~heures les cinq
+comptes d'agents partis identifiés (annexe~C), puis revoir chaque trimestre
+les comptes actifs (responsable~: RSSI) \\
+Licencier M.~FOUDA & (Hors du rôle de l'auditeur~: sanctionner relève de
+la direction, après enquête.) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~11.7. Écrire une recommandation}\end{center}
+
+% ============================================================================
+\section{Le Rapport}
+\label{sec:c11-rapport}
+% ============================================================================
+
+\subsection{La structure}
+
+\begin{boxprocedure}
+\textbf{Le plan du rapport d'audit}
+\begin{enumerate}
+    \item \textbf{Synthèse} (une page)~: l'objectif, la conclusion par
+          domaine, les observations majeures, ce qui reste inconnu.
+    \item \textbf{Mandat et méthode}~: rappel de la lettre de mission,
+          périmètre, référentiels, méthode (instrument \OUI{}, \NON{},
+          \NEK{}, seuils du quadrant), limites et zones non auditées.
+    \item \textbf{Lecture des domaines}~: pour chacun, $\mu$, $U$, $H$, la
+          région du quadrant et la conclusion.
+    \item \textbf{Observations}~: en sept éléments, classées par gravité.
+    \item \textbf{Recommandations}~: hiérarchisées, avec responsable et
+          échéance proposés.
+    \item \textbf{Annexes}~: réponses écrites des audités, liste des
+          documents reçus et manquants, méthode d'échantillonnage,
+          manifeste des empreintes.
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{La synthèse de LiZbiZ}
+
+\begin{boxscenario}{Opération LIZBIZ. La synthèse du rapport (extrait)}
+\textit{« La mission a évalué cinq domaines du système d'information de
+LiZbiZ sur la période de janvier à avril~2026. La gouvernance (A) et les
+sauvegardes (B) sont conformes, avec une réserve pour les restaurations de
+l'agence de Garoua. La gestion des stocks (C) n'est pas conforme~: les
+ajustements ne sont ni validés ni justifiés, pour 148~millions FCFA à
+l'entrepôt de Douala. Le contrôle d'accès (D) et l'exploitation (E) ne
+peuvent pas être jugés conformes~: un quart et un tiers des réponses
+relèvent d'une connaissance insuffisante, faute de pièces~; la mission
+recommande en priorité d'établir ces faits. Deux observations majeures
+ont été portées à la connaissance du directeur général par note du
+12~juin, conformément à la lettre de mission. La continuité d'activité n'a
+pas été auditée. »}
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Taire, dans la synthèse, les domaines opaques,
+pour ne présenter que les non-conformités établies.
+
+\smallskip
+\textbf{Règle~:} ce que l'auditeur ne sait pas fait partie de sa conclusion.
+Un domaine opaque est signalé comme tel, avec ce qu'il faudrait pour lever
+l'incertitude.
+\end{boxalert}
+
+\subsection{Hiérarchiser les recommandations}
+
+La région du quadrant donne l'ordre~: d'abord les observations majeures,
+quelle que soit leur région~; puis les domaines en conformité opaque (où le
+danger est caché)~; puis les non-conformités claires (où le correctif est
+connu)~; enfin les améliorations des domaines conformes.
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Relire le rapport avant signature}
+\begin{enumerate}
+    \item Chaque chiffre renvoie-t-il à un papier de travail~?
+    \item Chaque observation a-t-elle ses sept éléments, dont la réponse de
+          l'audité~?
+    \item La synthèse dit-elle ce qui n'est pas connu, et ce qui n'a pas été
+          audité~?
+    \item Le rapport contient-il une qualification pénale, un nom présenté
+          comme coupable, une recommandation de sanction~? (Si oui, les
+          retirer.)
+    \item Les seuils du quadrant et de gravité sont-ils ceux du plan
+          d'audit~?
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Intégrer les conclusions de l'audit}
+\begin{enumerate}
+    \item Reporter les non-conformités claires dans le registre des risques,
+          comme risques dont les contrôles sont inefficaces.
+    \item Traiter les domaines opaques comme un risque en soi~: on ne gère
+          pas ce que l'on ne connaît pas.
+    \item Suivre les recommandations dans le tableau de suivi
+          (Chapitre~\ref{chap:suivi}).
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'article A1~\cite{minka2026nek} propose
+le quadrant et montre, sur des données d'audit, que des domaines jugés
+conformes par une grille binaire se révèlent opaques avec \NEK{}. La
+décomposition de l'entropie de ce chapitre en donne une lecture
+supplémentaire~: elle sépare, dans la dispersion, ce qui relève de
+l'ignorance et ce qui relève du désaccord.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Trois mesures}~: $\mu$ (part des \OUI{}), $U$ (part des
+          \NEK{}), $H$ (dispersion)~; on agrège les réponses pour un domaine.
+    \item \textbf{$H = H_b(U) + (1-U)\,H_b(\mu/(1-U))$}~: l'entropie se
+          décompose en ignorance et désaccord~; deux entropies égales
+          peuvent appeler deux démarches opposées.
+    \item \textbf{Le quadrant} conformité × incertitude distingue
+          conformité et non-conformité, claires ou opaques~; la conformité
+          opaque est l'alerte prioritaire.
+    \item \textbf{La règle de décision}~: $U$ d'abord, $\mu$ ensuite, $H$ pour
+          contrôler~; jamais $H$ seul, jamais de moyenne globale.
+    \item \textbf{L'observation en sept éléments} développe le constat en
+          cinq~; elle est graduée~; la recommandation traite la cause.
+    \item \textbf{Le rapport} dit aussi ce que l'auditeur ne sait pas et ce
+          qu'il n'a pas audité.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: calculer $\mu$, $U$,
+$H$~; démontrer la décomposition de $H$~; placer un domaine dans le
+quadrant~; appliquer la règle de décision~; rédiger une observation
+graduée~; écrire une recommandation qui traite la cause~; rédiger une
+synthèse qui signale l'opacité.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.1. Calculer et situer \niveaubase}]
+Pour chacune des distributions suivantes (20 réponses), calculez $\mu$, $U$
+et $H$, puis situez le domaine dans le quadrant.
+\begin{enumerate}[(a)]
+    \item 15 \OUI{}, 4 \NON{}, 1 \NEK{}.
+    \item 6 \OUI{}, 4 \NON{}, 10 \NEK{}.
+    \item 0 \OUI{}, 0 \NON{}, 20 \NEK{}.
+    \item 3 \OUI{}, 16 \NON{}, 1 \NEK{}.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.2. Décomposer \niveaumoyen}]
+Décomposez l'entropie des distributions (a) et (b) de l'exercice~11.1, et
+dites pour chacune si l'ignorance ou le désaccord domine. Quelle démarche
+en déduisez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.3. Démontrer un cas limite \niveaumoyen}]
+À partir de la décomposition, montrez que $H = 0$ si et seulement si une
+seule réponse est donnée par tous. Montrez ensuite que, pour $U$ fixé, $H$
+est maximale lorsque $\mu = (1-U)/2$.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.4. Appliquer la règle \niveaumoyen}]
+Appliquez la règle de décision aux domaines suivants de la BANQUE SANAGA~:
+(a) changements 0,58/0,17~; (b) DIGICORE 0,50/0,13 avec $H = 1{,}41$~;
+(c) continuité 0,20/0,10. Pour (b), que faites-vous de l'entropie~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.5. Rédiger une observation \niveaumoyen}]
+Rédigez l'observation en sept éléments relative aux ajustements de stock
+de l'entrepôt de Douala (Chapitre~\ref{chap:fraude}), et indiquez sa
+gravité.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.6. Corriger des recommandations \niveaumoyen}]
+Réécrivez~: (a) «~Améliorer la gestion des sauvegardes~»~; (b) «~Former le
+personnel à la sécurité~»~; (c) «~Mettre fin au tableur de Garoua~».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.7. Une note globale \niveaumoyen}]
+Le directeur général de LiZbiZ demande « une note sur 20 » pour son conseil.
+Que lui proposez-vous à la place, et pourquoi~? Rédigez le tableau que vous
+remettez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.8. Relire un rapport \niveaumoyen}]
+La synthèse d'un rapport indique~: « Le contrôle d'accès est globalement
+maîtrisé (65~\% de conformité). M.~KOUNOU porte la responsabilité des
+défaillances. Nous recommandons son remplacement. » Listez les défauts et
+réécrivez la synthèse.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.9. Deux domaines, une entropie \niveauexpert}]
+Construisez deux distributions de 20 réponses qui ont la même entropie (à
+0,02 près) mais des parts d'ignorance très différentes (moins de 20~\%
+pour l'une, plus de 70~\% pour l'autre). Expliquez au comité d'audit, en
+cinq lignes, pourquoi elles n'appellent pas la même action.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~11.10. Le rapport d'AUDIX CONSEIL \niveauexpert}]
+À partir de la lecture des cinq domaines de LiZbiZ et des chapitres
+précédents~:
+\begin{enumerate}[(a)]
+    \item Rédigez le plan détaillé du rapport, section par section.
+    \item Hiérarchisez cinq recommandations en vous appuyant sur la
+          gravité et le quadrant.
+    \item Rédigez la section « Limites et zones non auditées ».
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item A1~\cite{minka2026nek}~: les mesures, le quadrant et leurs cas
+          limites.
+    \item C.~Shannon, \textit{A Mathematical Theory of
+          Communication}~\cite{shannon1948}~: l'origine de l'entropie.
+    \item T.~Cover et J.~Thomas, \textit{Elements of Information
+          Theory}~\cite{cover2006elements}~: la règle de chaînage et la
+          divergence de Kullback-Leibler, avec leurs démonstrations.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Le rapport est remis. Mais l'audit ne s'arrête pas là~:
+les recommandations doivent être suivies, et la mission suivante doit dire
+si le système a changé. Le Chapitre~\ref{chap:suivi} présente le suivi, la
+comparaison des cycles et la maturité.
+\end{boxinfo}

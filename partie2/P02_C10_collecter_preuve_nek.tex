@@ -1,0 +1,758 @@
+% ============================================================================
+% Fichier  : partie2/P02_C10_collecter_preuve_nek.tex
+% Titre    : Collecter la Preuve : l'Instrument OUI/NON/NEK
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C08 (Ω ; ρ = 0,80 - 0,65 = 0,15 ; hiérarchie de fiabilité ;
+% types DOC, ENT, OBS, TEST, MIX ; n ≈ F/t ; D.2.1 31 départs 19/7/5 ;
+% lettre d'extraction GUID 5100 ; MEFOU).
+% Sources : A0, A1 (hal-05701270) ; INTOSAI GUID 5100 ; échantillonnage par
+% attributs : loi binomiale et approximation de Poisson (facteurs de
+% fiabilité 2,31 / 3,89 à 90 %, 3,00 / 4,74 à 95 %) ; échantillonnage en
+% unités monétaires (méthode classique). Exemple chiffré sur les 4 812
+% paiements de 2025 du lab ACSI-LAB-07 : total 6 363 640 000 FCFA, plus
+% gros paiement 22 784 000 FCFA (calcul du 06/11/2026).
+% Corrigés : corriges/Corr_C10.tex.
+% ============================================================================
+
+\chapter[Collecter la Preuve]{Collecter la Preuve : l'Instrument OUI/NON/NEK}
+\label{chap:preuve}
+\chaptermark{Collecter la preuve}
+
+\epigraph{%
+    « Ce qui n'est pas dans le dossier\\
+    n'a pas été audité. »%
+}{Règle des papiers de travail}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise du Chapitre~\ref{chap:decomposition} (gabarit canonique, fiche
+    d'assertion) et du Chapitre~\ref{chap:risque} (risque de détection)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Justifier l'instrument de réponse \OUI{}, \NON{} ou \NEK{} et le
+          distinguer de la réponse « non applicable ».
+    \item Mesurer le biais du choix forcé d'une grille binaire.
+    \item Classer les preuves selon leur source et leur fiabilité.
+    \item Conduire un entretien d'audit à partir des fiches d'assertion.
+    \item Démontrer la formule de taille d'échantillon par attributs,
+          l'appliquer avec ou sans écart attendu, et conclure sur un
+          échantillon.
+    \item Dimensionner un échantillonnage en unités monétaires.
+    \item Garantir l'intégrité des extractions et tenir des papiers de
+          travail jusqu'à la trace.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment savoir qu'on sait~?}
+% ============================================================================
+
+La décomposition du domaine~D est prête (Chapitre~\ref{chap:decomposition}).
+Pour chaque contrôle, une question attend sa réponse. M.~BEYALA pose à son
+équipe une règle simple~: une réponse ne vaut que par la preuve qui
+l'appuie, et l'on a le droit, et même le devoir, de répondre « je ne sais
+pas » quand la preuve manque.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item L'instrument \OUI{}, \NON{}, \NEK{} et le biais du choix forcé
+          (sections~\ref{sec:c10-instrument} et~\ref{sec:c10-biais}).
+    \item Les preuves et leur fiabilité (section~\ref{sec:c10-preuves}).
+    \item Les entretiens (section~\ref{sec:c10-entretiens}).
+    \item Les tests (section~\ref{sec:c10-tests}).
+    \item L'échantillonnage par attributs, démontré
+          (section~\ref{sec:c10-attributs}), et en unités monétaires
+          (section~\ref{sec:c10-mus}).
+    \item Les extractions et les papiers de travail
+          (section~\ref{sec:c10-papiers}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{L'Instrument OUI / NON / NEK}
+\label{sec:c10-instrument}
+% ============================================================================
+
+\subsection{Trois réponses}
+
+L'auditologie établit, à partir de ses axiomes d'observabilité partielle, de
+cognition limitée, de mesurabilité et d'interaction stratégique, que tout
+instrument de réponse d'audit valide doit comporter une modalité explicite
+de connaissance insuffisante~\cite{minka2026auditologie}. L'article A1 en
+construit l'instrument et en étudie les propriétés~\cite{minka2026nek}.
+
+\begin{boxdef}
+\termecle{Espace de réponse trichotomique}\index{espace de réponse
+trichotomique}~: ensemble $\Omega = \{\OUI, \NON, \NEK\}$ des réponses
+admises à une question d'audit.
+\begin{itemize}
+    \item \OUI{}~: le critère est satisfait, et une preuve l'établit.
+    \item \NON{}~: le critère n'est pas satisfait, et une preuve l'établit.
+    \item \NEK{} (\textit{Not Enough Knowledge})~: l'information disponible
+          ne permet pas de conclure, malgré des diligences normales.
+\end{itemize}
+\end{boxdef}
+
+\subsection{Deux usages}
+
+L'instrument sert à deux moments de la mission.
+\begin{enumerate}
+    \item \textbf{Auprès des répondants}~: une même question est posée à
+          plusieurs interlocuteurs (entretiens, questionnaires). Pour chaque
+          question~$q$, on obtient une distribution de réponses, dont l'article
+          A1 tire trois mesures~: $\mu_q$, la part des \OUI{}~; $U_q$, la part
+          des \NEK{}~; $H_q$, l'entropie~\cite{minka2026nek}.
+    \item \textbf{Par l'auditeur}~: après ses tests, l'auditeur cote chaque
+          contrôle \OUI{}, \NON{} ou \NEK{}, preuve à l'appui. C'est la cote
+          qui entre dans le rapport.
+\end{enumerate}
+Les deux usages se répondent~: une question où les répondants divergent
+(entropie élevée) appelle des tests~; les tests permettent ensuite à
+l'auditeur de coter avec preuve.
+
+\subsection{NEK n'est pas « non applicable »}
+
+\begin{boxalert}
+\textbf{Violation typique.} Coter \NEK{} un contrôle qui ne s'applique pas au
+périmètre (par exemple, la double authentification d'un service qui n'est
+pas exposé à Internet).
+
+\smallskip
+\textbf{Règle~:} un contrôle sans objet dans le périmètre est \emph{non
+applicable}~: il sort de la décomposition, avec la raison écrite. \NEK{} est
+réservé à un contrôle applicable dont on ne peut pas établir l'état. Les
+confondre fausse le taux d'incertitude~$U$.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Biais du Choix Forcé}
+\label{sec:c10-biais}
+% ============================================================================
+
+Une grille binaire force le répondant qui ne sait pas à choisir. Il choisit
+le plus souvent la réponse attendue, ou la plus confortable~: le \OUI{}. La
+grille binaire \emph{surestime} donc la conformité. L'article A1 mesure cette
+surestimation par un indice de réduction du biais~\cite{minka2026nek}~:
+\[
+    \rho_q = \hat{\mu}_q^{B} - \mu_q^{T},
+\]
+où $\hat{\mu}_q^{B}$ est la part des \OUI{} obtenue avec l'instrument binaire et
+$\mu_q^{T}$ celle obtenue avec l'instrument trichotomique, sur les mêmes
+questions.
+
+\begin{boxlecture}{Domaine D, binaire puis trichotomique}
+Lors de la première mission, les quatre interlocuteurs avaient répondu aux
+cinq questions du domaine~D avec une grille binaire~: 16~\OUI{} sur 20
+réponses. Au second passage, avec \NEK{}~: 13~\OUI{}, 2~\NON{}, 5~\NEK{}.
+
+\medskip
+\textbf{Constatation.} $\hat{\mu}^{B} = 16/20 = 0{,}80$~; $\mu^{T} = 13/20 =
+0{,}65$~; $\rho = 0{,}15$.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). La grille binaire surestimait la
+conformité du domaine de quinze points~: trois répondants qui ne savaient
+pas avaient répondu \OUI{}. C'est ainsi que le premier rapport a pu conclure
+à un domaine «~globalement maîtrisé~».
+
+\medskip
+\hfill\lecture{0{,}65}{0{,}25}{1{,}24}
+\end{boxlecture}
+
+% ============================================================================
+\section{Les Preuves et leur Fiabilité}
+\label{sec:c10-preuves}
+% ============================================================================
+
+\subsection{Suffisante et appropriée}
+
+\begin{boxdef}
+\termecle{Preuve d'audit}\index{preuve d'audit}~: information sur laquelle
+l'auditeur fonde sa cotation et ses conclusions. Elle doit être
+\emph{suffisante} (en quantité, au regard du risque) et \emph{appropriée}
+(pertinente pour le critère, et fiable).
+\end{boxdef}
+
+\subsection{Une hiérarchie de fiabilité}
+
+\begin{tableaucours}{cL{4.2cm}L{4.4cm}L{2.8cm}}{%
+    \tableauHeader{Rang} &
+    \tableauHeader{Source} &
+    \tableauHeader{Exemple} &
+    \tableauHeader{Fiabilité}
+}
+1 & Trace produite par le système, extraite par l'auditeur & Journal des
+désactivations extrait en sa présence & La plus élevée \\
+2 & Document externe & Relevé bancaire, attestation d'un prestataire &
+Élevée \\
+3 & Document interne approuvé & Compte rendu de revue signé & Moyenne \\
+4 & Observation directe & L'auditeur voit le magasinier saisir une
+réception & Ponctuelle \\
+5 & Déclaration orale & « Les comptes sont revus chaque trimestre » & La
+plus faible \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.1. Fiabilité des preuves selon leur
+source}\end{center}
+
+Une déclaration orale ne suffit jamais à coter \OUI{}~: elle oriente la
+recherche de la preuve. Lorsque l'auditeur ne dispose que d'une
+déclaration, la cote est \NEK{}, et la question devient «~où est la
+preuve~?~».
+
+\subsection{La corroboration}
+
+Deux preuves indépendantes qui concordent valent plus que la plus fiable
+des deux prise seule. L'auditeur cherche donc, pour les contrôles
+importants, une seconde source~: une revue signée (rang~3) recoupée avec les
+dates de modification des droits dans le journal (rang~1). Si les deux
+sources se contredisent sans qu'on puisse les départager, la cote est
+\NEK{}, et l'écart lui-même devient un objet d'investigation.
+
+% ============================================================================
+\section{Les Entretiens}
+\label{sec:c10-entretiens}
+% ============================================================================
+
+Le guide d'entretien (outil~O5) dérive des fiches d'assertion~: chaque
+question de fiche devient une question d'entretien, classée par
+interlocuteur. L'entretien d'audit, à la différence de l'entretien de prise
+de connaissance (Chapitre~\ref{chap:planifier}), recueille des réponses
+cotables~; il obéit à des règles.
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Conduire un entretien d'audit}
+\begin{enumerate}
+    \item Annoncer l'objet, la durée, et que la réponse \NEK{} est admise.
+    \item Commencer par des questions ouvertes («~Comment se passe le départ
+          d'un agent~?~»), puis passer aux questions de la fiche.
+    \item Ne pas suggérer la réponse attendue~: «~Les comptes sont-ils
+          désactivés sous 48~heures~?~» plutôt que «~Vous désactivez bien
+          les comptes, n'est-ce pas~?~».
+    \item Demander, pour chaque réponse affirmative, la pièce qui l'établit.
+    \item Mener l'entretien à deux, l'un interrogeant, l'autre notant.
+    \item Rédiger le compte rendu le jour même et le faire valider par
+          l'interlocuteur.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boiteRemarque}{Le répondant peut-il se cacher derrière NEK~?}
+Oui~: le Chapitre~\ref{chap:fraude} l'a montré, le taux de \NEK{} peut
+augmenter avec l'enjeu. C'est pourquoi l'auditeur note le contexte de
+chaque réponse (entretien formel, questionnaire, auto-évaluation) et
+compare les contextes. Un \NEK{} n'est jamais une fin~: il appelle un test
+qui cherche la preuve directement dans le système.
+\end{boiteRemarque}
+
+% ============================================================================
+\section{Tester}
+\label{sec:c10-tests}
+% ============================================================================
+
+\begin{tableaucours}{cL{3.0cm}L{4.4cm}L{3.6cm}}{%
+    \tableauHeader{Code} &
+    \tableauHeader{Type} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Exemple (domaine D)}
+}
+DOC & Revue documentaire & Lire une procédure, un compte rendu, un contrat
+& Lire la procédure de départ \\
+ENT & Entretien & Recueillir une déclaration, à confirmer & Interroger le
+responsable RH \\
+OBS & Observation & Voir le contrôle s'exécuter & Assister à une revue des
+comptes \\
+TEST & Test technique & Ré-exécuter le contrôle ou analyser les données &
+Rapprocher départs et comptes actifs \\
+MIX & Combinaison & Plusieurs types sur un même contrôle & Revue, puis
+test \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.2. Les types de tests du plan de
+tests (outil O7)}\end{center}
+
+Un test peut viser la \emph{conception} d'un contrôle (test de cheminement
+sur un cas), son \emph{efficacité} (échantillon sur la période) ou
+directement les \emph{données} (tests substantifs,
+Chapitre~\ref{chap:audit-applications}).
+
+\begin{boxscenario}{Opération LIZBIZ. Tester D.2.1}
+\textbf{Contrôle.} Désactivation des comptes des agents partis sous
+48~heures (fiche du prologue).
+
+\medskip
+\textbf{Choix.} Les départs sont peu nombreux (31 sur la période)~: AUDIX
+CONSEIL teste la population entière plutôt qu'un échantillon, par un
+rapprochement entre la liste des départs des ressources humaines et le
+journal des désactivations.
+
+\medskip
+\textbf{Constatation.} 31~départs~; 19 comptes désactivés sous 48~heures,
+7 désactivés plus tard, 5 encore actifs.
+
+\medskip
+\textbf{Cotation.} \NON{}~: le critère n'est pas satisfait, et la preuve est
+établie sur la population entière.
+\end{boxscenario}
+
+\begin{boxoutils}{Le rapprochement de D.2.1}
+\begin{lstlisting}[language=SQL]
+-- departs(matricule, date_depart) : ressources humaines
+-- comptes(login, matricule, date_desactivation) : application
+SELECT d.matricule, d.date_depart, c.login, c.date_desactivation,
+  CASE
+    WHEN c.date_desactivation IS NULL THEN 'ACTIF'
+    WHEN julianday(c.date_desactivation)
+         - julianday(d.date_depart) <= 2 THEN 'SOUS 48 H'
+    ELSE 'EN RETARD'
+  END AS statut
+FROM departs d LEFT JOIN comptes c ON c.matricule = d.matricule;
+\end{lstlisting}
+Sur la période, la requête classe les 31~départs en 19 « sous 48~h »,
+7 « en retard » et 5 « actif ». La jointure externe (\texttt{LEFT JOIN})
+fait aussi apparaître un départ sans compte, à examiner à part.
+\end{boxoutils}
+
+% ============================================================================
+\section{L'Échantillonnage par Attributs}
+\label{sec:c10-attributs}
+% ============================================================================
+
+\subsection{Trois méthodes}
+
+On ne teste pas toutes les exécutions d'un contrôle~: on en tire un
+\termecle{échantillon}\index{échantillon}. Trois méthodes coexistent.
+\begin{itemize}
+    \item \textbf{Par jugement}~: l'auditeur choisit les cas les plus risqués
+          (les plus gros montants, les dernières semaines de la période). Il
+          ne peut pas extrapoler, mais il cible.
+    \item \textbf{Aléatoire}~: chaque élément a la même chance d'être tiré~;
+          l'auditeur conserve la méthode et la graine du tirage pour pouvoir
+          le refaire.
+    \item \textbf{Statistique par attributs}~: on fixe un niveau de confiance
+          et un taux d'écart tolérable, et l'on en déduit la taille de
+          l'échantillon.
+\end{itemize}
+
+\subsection{La formule, démontrée}
+
+Soit une population où une proportion $p$ des exécutions du contrôle sont
+en écart (le contrôle n'a pas fonctionné). On tire au hasard $n$
+exécutions. Si la population est grande, le nombre d'écarts dans
+l'échantillon suit une loi binomiale de paramètres $n$ et $p$~; la
+probabilité de ne trouver \emph{aucun} écart est
+\[
+    P(0) = (1 - p)^n.
+\]
+L'auditeur veut pouvoir conclure, s'il ne trouve aucun écart, que $p$ ne
+dépasse pas un taux tolérable $t$, avec un risque $\beta$ de se tromper
+(par exemple $\beta = 5~\%$ pour une confiance de 95~\%). Il faut donc que,
+si le vrai taux valait $t$, la probabilité de ne rien trouver soit au plus
+$\beta$~:
+\[
+    (1 - t)^n \le \beta
+    \quad\Longleftrightarrow\quad
+    n \ge \frac{\ln \beta}{\ln(1 - t)}.
+\]
+Pour $t$ petit, $\ln(1 - t) \approx -t$, d'où l'approximation
+\[
+    n \approx \frac{-\ln \beta}{t} = \frac{F}{t},
+    \qquad F = \ln\frac{1}{\beta},
+\]
+avec $F = \ln 10 \approx 2{,}30$ à 90~\% et $F = \ln 20 \approx 3{,}00$ à
+95~\%. C'est l'approximation de Poisson~: le nombre d'écarts d'un grand
+échantillon où $p$ est petit suit approximativement une loi de Poisson de
+moyenne $np$.
+
+\begin{boxinfo}
+\textbf{Exact ou approché~?} Pour $t = 5~\%$ et 95~\% de confiance, la
+formule exacte donne $n \ge \ln 0{,}05 / \ln 0{,}95 \approx 58{,}4$, soit
+59~exécutions~; l'approximation donne $3{,}00 / 0{,}05 = 60$. Pour $t =
+1~\%$ et un risque de 10~\%, $n \ge \ln 0{,}1 / \ln 0{,}99 \approx 229{,}1$,
+soit les 230~éléments évoqués au Chapitre~\ref{chap:audit-auditologie}.
+L'approximation est légèrement prudente~; elle suffit en pratique.
+\end{boxinfo}
+
+\subsection{Si l'on accepte un écart}
+
+Lorsque l'auditeur accepte de trouver un ou deux écarts sans conclure à
+l'inefficacité, le facteur $F$ augmente. Il se lit dans la table de la loi
+de Poisson~: c'est la plus grande moyenne $\lambda$ telle que la
+probabilité d'observer au plus $k$ écarts soit encore égale à $\beta$.
+
+\begin{tableaucours}{L{4.2cm}ccc}{%
+    \tableauHeader{Écarts acceptés $k$} &
+    \tableauHeader{0} & \tableauHeader{1} & \tableauHeader{2}
+}
+$F$ à 90~\% de confiance & 2,31 & 3,89 & 5,33 \\
+$F$ à 95~\% de confiance & 3,00 & 4,74 & 6,30 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.3. Facteurs de fiabilité (loi de
+Poisson)}\end{center}
+
+\begin{tableaucours}{L{4.0cm}cccc}{%
+    \tableauHeader{Taux tolérable $t$} &
+    \tableauHeader{90~\%, $k=0$} & \tableauHeader{95~\%, $k=0$} &
+    \tableauHeader{90~\%, $k=1$} & \tableauHeader{95~\%, $k=1$}
+}
+10~\% & 23 & 30 & 39 & 47 \\
+5~\% & 46 & 60 & 78 & 95 \\
+2~\% & 116 & 150 & 195 & 237 \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~10.4. Tailles d'échantillon $n =
+F/t$, arrondies à l'entier le plus proche}\end{center}
+
+\subsection{Conclure sur l'échantillon}
+
+Après le test, l'auditeur calcule la \textbf{borne supérieure} du taux
+d'écart~: $p_{\max} = F_k / n$, où $k$ est le nombre d'écarts trouvés. Il la
+compare au taux tolérable~: si $p_{\max} \le t$, le contrôle est efficace
+au niveau de confiance choisi~; sinon, il ne l'est pas.
+
+\begin{boxscenario}{Opération LIZBIZ. Les validations de paiements}
+\textbf{Test.} Le contrôle « validation par le DAF de tout paiement » est
+testé sur 60~paiements tirés au hasard (95~\%, $t = 5~\%$, aucun écart
+attendu). Un paiement de l'échantillon n'a pas de validation.
+
+\medskip
+\textbf{Calcul.} $p_{\max} = F_1 / n = 4{,}74 / 60 \approx 7{,}9~\%$, plus
+que les 5~\% tolérables.
+
+\medskip
+\textbf{Cotation.} \NON{}~: on ne peut pas conclure, avec 95~\% de
+confiance, que le taux d'écart est inférieur à 5~\%. Pour conclure à
+l'efficacité malgré cet écart, il aurait fallu un échantillon de 95
+(Tableau~10.4) sans nouvel écart.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Trouver un écart, le qualifier « d'isolé » et
+conclure que le contrôle est efficace.
+
+\smallskip
+\textbf{Règle~:} la taille d'échantillon a été calculée pour zéro écart~;
+un écart invalide la conclusion prévue. L'auditeur élargit l'échantillon
+selon le Tableau~10.4, ou conclut à l'inefficacité. Il recherche aussi la
+cause de l'écart~: un écart intentionnel n'est jamais isolé.
+\end{boxalert}
+
+Lorsque les données sont extractibles, il vaut souvent mieux tester
+l'ensemble de la population, ce qui supprime le risque d'échantillonnage
+(Chapitre~\ref{chap:audit-continu}).
+
+% ============================================================================
+\section{L'Échantillonnage en Unités Monétaires}
+\label{sec:c10-mus}
+% ============================================================================
+
+\subsection{Le principe}
+
+Pour tester l'exactitude de montants (une population de paiements, de
+factures), on tire non pas des opérations, mais des \emph{francs}~: chaque
+franc a la même chance d'être tiré, et l'opération qui le contient est
+examinée. Les grosses opérations ont donc plus de chances d'être retenues,
+ce qui concentre l'effort là où l'enjeu est le plus élevé.
+
+\begin{boxdef}
+\termecle{Échantillonnage en unités monétaires}\index{échantillonnage en
+unités monétaires}~: méthode qui tire un échantillon d'unités monétaires
+dans une population de valeur comptable $V$, avec
+\[
+    n = \frac{V \times F}{S}, \qquad J = \frac{V}{n},
+\]
+où $S$ est l'anomalie tolérable (seuil de signification retenu pour le
+test), $F$ le facteur de fiabilité (Tableau~10.3) et $J$ l'intervalle de
+tirage. Toute opération de montant supérieur à $J$ est retenue d'office.
+\end{boxdef}
+
+\begin{boxscenario}{Opération LIZBIZ. Les paiements de 2025}
+\textbf{Données.} 4~812~paiements, pour une valeur totale de
+6~363~640~000~FCFA~; le plus gros paiement vaut 22~784~000~FCFA.
+
+\medskip
+\textbf{Paramètres.} Anomalie tolérable $S = 63{,}6$~millions (1~\% de la
+valeur), confiance 95~\%, aucune anomalie attendue ($F = 3{,}00$).
+
+\medskip
+\textbf{Calcul.}
+\[
+n = \frac{6~363{,}64 \times 3{,}00}{63{,}6} \approx 300,
+\qquad J = \frac{6~363{,}64}{300} \approx 21{,}2~\text{millions FCFA}.
+\]
+Les paiements supérieurs à 21,2~millions (dont celui de 22,8~millions)
+sont retenus d'office~; les autres sont tirés en parcourant la population
+cumulée par pas de 21,2~millions, à partir d'un point de départ aléatoire.
+
+\medskip
+\textbf{Ce que la méthode ne voit pas.} Les 23~paiements de 4,9~millions
+de TRANSLOG SERVICES ont chacun une probabilité d'environ $4{,}9/21{,}2
+\approx 23~\%$ d'être tirés~: on en attend environ cinq dans
+l'échantillon. Mais ces paiements sont \emph{exacts}~: leur montant
+correspond à la facture. L'échantillonnage monétaire teste l'exactitude,
+pas la réalité de la prestation~; la fraude du fournisseur fictif se
+détecte par les requêtes du Chapitre~\ref{chap:fraude}.
+\end{boxscenario}
+
+% ============================================================================
+\section{Extractions et Papiers de Travail}
+\label{sec:c10-papiers}
+% ============================================================================
+
+\subsection{Garantir l'intégrité des extractions}
+
+Une extraction de données remise par l'audité n'est une preuve que si l'on
+peut établir d'où elle vient et qu'elle n'a pas été modifiée. Le GUID~5100
+de l'INTOSAI recommande qu'elle soit accompagnée d'une lettre qui en
+précise la source, l'horodatage, l'empreinte numérique, les paramètres
+d'extraction et l'environnement d'origine~\cite{intosai2019guid5100}.
+
+\begin{boxoutils}{Calculer et vérifier une empreinte}
+\textbf{Calculer l'empreinte d'une extraction} (Linux, ou terminal de
+NDAP SUKULU)~:
+
+\texttt{sha256sum comptes\_actifs\_2026-04-30.csv > comptes.sha256}
+
+\medskip
+\textbf{Vérifier plus tard qu'elle n'a pas changé}~:
+
+\texttt{sha256sum -c comptes.sha256}
+
+\medskip
+Résultat attendu~: \texttt{comptes\_actifs\_2026-04-30.csv: OK}. Toute
+modification du fichier, même d'un caractère, change l'empreinte. Sous
+Windows, la commande \texttt{certutil -hashfile fichier SHA256} donne le
+même résultat.
+\end{boxoutils}
+
+\begin{boxscenario}{Opération MEFOU. La lettre d'extraction}
+\textbf{Faits.} La Chambre des comptes reçoit de l'ANPP l'extraction des
+comptes du système de paiement.
+
+\medskip
+\textbf{Contenu de la lettre} signée par la cheffe de la division
+informatique~: base de production, requête utilisée, date et heure
+d'extraction, nombre de lignes, empreinte SHA-256 du fichier.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le magistrat peut prouver que les écarts
+qu'il relèvera proviennent bien des données de l'agence, et non d'un fichier
+retouché~: la constatation devient opposable.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Ouvrir l'extraction dans un tableur, la trier,
+l'enregistrer sous le même nom, puis calculer l'empreinte.
+
+\smallskip
+\textbf{Règle~:} l'empreinte se calcule sur le fichier reçu, avant toute
+ouverture~; l'auditeur travaille sur une copie. L'original et son empreinte
+restent intacts dans le dossier.
+\end{boxalert}
+
+\subsection{Le papier de travail d'un test}
+
+\begin{boxprocedure}
+\textbf{Le papier de travail d'un test.} Pour qu'un tiers puisse refaire le
+test et aboutir à la même cotation, chaque papier de travail indique~:
+\begin{itemize}
+    \item sa référence, et celle du contrôle dans la décomposition (par
+          exemple PT-14, contrôle D.2.1)~;
+    \item l'objectif du test, le critère et la population ou l'échantillon,
+          avec sa méthode de sélection (et la graine, si le tirage est
+          aléatoire)~;
+    \item les preuves examinées, avec leur source et leur empreinte, et les
+          traces correspondantes~;
+    \item les résultats, les écarts relevés, la borne supérieure du taux
+          d'écart s'il y a échantillonnage, et la cotation justifiée~;
+    \item le nom de l'auditeur, la date, et le visa du réviseur.
+\end{itemize}
+\end{boxprocedure}
+
+\begin{boxinfo}
+\textbf{Le commissaire aux comptes.} Le commissaire aux comptes de LiZbiZ
+peut utiliser les travaux d'AUDIX CONSEIL sur le contrôle d'accès pour
+fonder sa propre opinion sur les comptes. Il ne le fera que si les papiers
+de travail lui permettent d'apprécier la qualité des preuves~: méthode
+d'échantillonnage, intégrité des extractions, cotations justifiées. Un
+\NEK{} documenté lui est plus utile qu'un \OUI{} sans preuve.
+\end{boxinfo}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Extraire soi-même, ou faire extraire devant soi.} Pour les
+journaux de sécurité, l'auditeur de sécurité fournit la commande ou la
+requête, assiste à l'extraction, calcule l'empreinte sur place et la fait
+contresigner par l'administrateur. Une extraction remise plus tard par
+courriel n'a que la valeur d'un document interne.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'article A1~\cite{minka2026nek} montre
+que l'ajout de \NEK{} ne fait pas qu'ajouter une case~: il change ce que
+mesure l'instrument, en séparant l'ignorance ($U$) de la non-conformité.
+L'échantillonnage statistique fait la même chose pour l'auditeur~: la borne
+supérieure $p_{\max}$ dit ce que l'échantillon permet d'affirmer, et rien de
+plus.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Trois réponses}~: \OUI{} et \NON{} s'appuient sur une
+          preuve~; \NEK{} déclare une connaissance insuffisante~; « non
+          applicable » sort du périmètre et n'est pas \NEK{}.
+    \item \textbf{Le choix forcé surestime la conformité}~: l'indice
+          $\rho = \hat{\mu}^{B} - \mu^{T}$ mesure ce biais.
+    \item \textbf{Les preuves n'ont pas la même fiabilité}~: la trace extraite
+          par l'auditeur l'emporte sur la déclaration orale, qui ne suffit
+          jamais à coter \OUI{}~; deux preuves concordantes valent plus
+          qu'une.
+    \item \textbf{L'entretien} suit les fiches d'assertion, sans suggérer la
+          réponse, et demande la pièce.
+    \item \textbf{L'échantillonnage par attributs} repose sur $(1-t)^n \le
+          \beta$, d'où $n \approx F/t$~; un écart trouvé change $F$ et peut
+          invalider la conclusion.
+    \item \textbf{L'échantillonnage monétaire} concentre l'effort sur les
+          gros montants et teste l'exactitude, pas la réalité.
+    \item \textbf{L'intégrité des extractions} se prouve par leur empreinte~;
+          les papiers de travail permettent à un tiers de refaire chaque test.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer \NEK{} et non
+applicable~; calculer $\rho$~; classer une preuve~; démontrer $n \approx
+F/t$~; calculer une borne $p_{\max}$~; dimensionner un échantillon
+monétaire~; calculer une empreinte SHA-256.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.1. OUI, NON, NEK ou non applicable~? \niveaubase}]
+Cotez chaque situation et justifiez.
+\begin{enumerate}[(a)]
+    \item Le responsable informatique affirme que les journaux sont revus
+          chaque semaine, sans pouvoir le montrer.
+    \item Le journal des désactivations montre que tous les départs du
+          trimestre ont été traités sous 48~heures.
+    \item Le contrôle de la double authentification à distance, alors
+          qu'aucun accès à distance n'existe.
+    \item Le journal de revue des anomalies existe, mais il est vide pour
+          les trois derniers mois, alors que la procédure exige une revue
+          hebdomadaire.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.2. Le biais \niveaubase}]
+Sur une question posée à dix répondants, la grille binaire donnait
+8~\OUI{}~; la grille trichotomique donne 5~\OUI{}, 1~\NON{}, 4~\NEK{}.
+Calculez $\rho$, $U$ et $H$, et interprétez.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.3. Classer des preuves \niveaubase}]
+Classez par fiabilité décroissante, pour le contrôle D.4.2~: (a) le
+compte rendu signé de la revue du premier trimestre~; (b) l'affirmation du
+RSSI~; (c) l'extraction des comptes d'administration faite devant
+l'auditeur~; (d) un courriel du DSI disant «~revue faite~». Quelle
+combinaison vous permettrait de coter \OUI{}~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.4. Démontrer \niveaumoyen}]
+\begin{enumerate}[(a)]
+    \item Calculez la taille exacte et la taille approchée de l'échantillon
+          pour $t = 10~\%$ et 90~\% de confiance.
+    \item Montrez que $\ln(1-t) \approx -t$ en utilisant le développement
+          $\ln(1-t) = -t - t^2/2 - \dots$ et expliquez pourquoi
+          l'approximation est prudente.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.5. Dimensionner et conclure \niveaumoyen}]
+\begin{enumerate}[(a)]
+    \item Quelle taille d'échantillon retenir pour tester, avec une confiance
+          de 95~\% et un taux d'écart tolérable de 5~\%, la validation des
+          ajustements de stock de LiZbiZ~?
+    \item Le test ne révèle aucun écart. Calculez la borne supérieure du
+          taux d'écart et concluez.
+    \item Le test révèle deux écarts. Calculez la borne et concluez. Que
+          doit faire l'auditeur~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.6. Échantillonnage monétaire \niveaumoyen}]
+La paie de l'ANPP compte 12~400~versements pour 18,6~milliards de FCFA en
+2025. Le magistrat retient une anomalie tolérable de 186~millions et une
+confiance de 90~\%, sans anomalie attendue.
+\begin{enumerate}[(a)]
+    \item Calculez $n$ et l'intervalle de tirage $J$.
+    \item Un versement de 410~millions figure dans la population. Que
+          devient-il~?
+    \item Pourquoi cette méthode ne détecterait-elle pas un salarié fantôme
+          payé correctement chaque mois~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.7. La requête de D.2.1 \niveaumoyen}]
+Modifiez la requête du chapitre pour qu'elle affiche aussi les comptes
+\emph{utilisés} après la date de départ (table
+\texttt{connexions(login, horodatage)}). Pourquoi cette information
+change-t-elle la gravité du constat~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.8. L'empreinte \niveaubase}]
+Un auditeur reçoit \texttt{droits.csv} par courriel, l'ouvre, supprime deux
+colonnes inutiles, l'enregistre, puis calcule l'empreinte. Qu'a-t-il
+prouvé~? Décrivez la bonne séquence.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.9. Le plan de tests du sous-domaine D.4 \niveauexpert}]
+\begin{enumerate}[(a)]
+    \item À partir de la fiche d'assertion D.4.2 (Chapitre~\ref{chap:decomposition}),
+          rédigez trois tests de types différents.
+    \item Pour chacun, précisez la preuve attendue, sa fiabilité et la trace
+          recherchée.
+    \item Rédigez trois questions du guide d'entretien destinées au
+          responsable de la sécurité.
+    \item Rédigez la lettre d'extraction que vous demanderez pour la liste
+          des comptes d'administration.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~10.10. Population ou échantillon~? \niveauexpert}]
+Pour chacun des contrôles suivants, dites si vous testez la population ou
+un échantillon, et justifiez par le coût, le risque et la disponibilité des
+données~: (a) revue trimestrielle des droits~; (b) validation de
+4~812~paiements~; (c) inventaire de 3~000~références dans quatre
+entrepôts~; (d) 18~340~expéditions rapprochées des factures.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item A1, \textit{Modelling Epistemic Uncertainty in IS
+          Audit}~\cite{minka2026nek}~: l'instrument \OUI{}, \NON{}, \NEK{}
+          et ses mesures.
+    \item INTOSAI, GUID~5100~\cite{intosai2019guid5100}~: les preuves et
+          l'intégrité des données dans l'audit des SI.
+    \item IAASB, ISA~315 révisée~\cite{iaasb2019isa315}~: l'appréciation des
+          risques qui fixe l'étendue des travaux.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les réponses et les preuves sont collectées. Il faut
+maintenant conclure~: calculer les mesures de chaque domaine, décider ce
+qu'elles permettent d'affirmer, et rédiger les observations et le rapport.
+C'est l'objet du Chapitre~\ref{chap:conclure}.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C29
+Chapitre 29 : De l'audit à la preuve judiciaire
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. À qui est destinée la preuve judiciaire ?
+      a) Au juge et aux parties au procès
+      b) Au commanditaire
+      c) Au DSI
+      d) Au comité d'audit seul
+
+ 2. Quel défaut peut faire écarter une pièce en justice ?
+      a) Une police de caractères
+      b) Une rupture dans la chaîne de conservation
+      c) Un rapport trop long
+      d) Une signature électronique
+
+ 3. Quelle norme donne les lignes directrices du traitement de la preuve numérique ?
+      a) ISO/IEC 27001
+      b) ISO 19011
+      c) ISO/IEC 27037
+      d) ISO 31000
+
+ 4. Quelles sont les quatre étapes de l'ISO/IEC 27037 ?
+      a) Planifier, faire, vérifier, agir
+      b) Scan, attaque, rapport, suivi
+      c) Cadrage, sources, scénarios, traitement
+      d) Identification, collecte, acquisition, préservation
+
+ 5. Calculer l'empreinte d'une copie relève de quelle étape ?
+      a) Acquisition
+      b) Identification
+      c) Collecte
+      d) Préservation
+
+ 6. Placer l'original sur un support scellé relève de quelle étape ?
+      a) Identification
+      b) Préservation
+      c) Collecte
+      d) Acquisition
+
+ 7. Quelle étape l'auditeur ne pratique-t-il pas, en principe ?
+      a) L'identification
+      b) L'acquisition
+      c) La collecte de supports physiques
+      d) La préservation
+
+ 8. Que retrace la chaîne de conservation ?
+      a) Le prix de la pièce
+      b) Le nom de l'auditeur seulement
+      c) La date du rapport
+      d) Qui a détenu la pièce, quand, où et pour quoi faire
+
+ 9. Que manque-t-il souvent au dossier de l'auditeur selon le chapitre ?
+      a) Le registre des accès
+      b) L'empreinte
+      c) La lettre d'extraction
+      d) Le papier de travail
+
+10. Un auditeur ouvre l'original « pour vérifier une ligne » sans le consigner. Qu'est-ce que c'est ?
+      a) Une bonne pratique
+      b) Une brèche dans la chaîne de conservation
+      c) Une acquisition
+      d) Rien
+
+11. Quel article permet aux OPJ et agents habilités de demander la communication des documents professionnels et d'en prendre copie ?
+      a) Article 13
+      b) Article 69
+      c) Article 52, alinéa 3
+      d) Article 86
+
+12. Sur quoi l'article 53 dit-il que les perquisitions peuvent porter ?
+      a) Sur les domiciles seulement
+      b) Sur les comptes bancaires
+      c) Sur les contrats
+      d) Sur des données, supports physiques ou copies réalisées en présence des personnes qui assistent
+
+13. Quel article permet de requérir une personne qualifiée pour rendre lisibles des données chiffrées ?
+      a) Article 55
+      b) Article 32
+      c) Article 61
+      d) Article 70
+
+14. Quelle est la première étape de la procédure de remise à l'autorité judiciaire ?
+      a) Remettre
+      b) Geler
+      c) Tenir le registre
+      d) Qualifier les faits
+
+15. Comment se fait la remise ?
+      a) Par courriel au juge
+      b) Par téléphone
+      c) Contre récépissé, sans commentaire qualifiant les faits
+      d) Avec une opinion sur la culpabilité
+
+16. Pourquoi AUDIX CONSEIL ne remet-il pas le brouillon qui parlait de « fraude » comme pièce de la mission ?
+      a) Il est trop long
+      b) Le DG l'interdit
+      c) Il est en anglais
+      d) Ce n'est pas une pièce de la mission et il qualifiait les faits sans droit
+
+17. Qui décide de ce qui est remis à l'autorité ?
+      a) L'associé, avec le conseil juridique, de façon documentée
+      b) L'auditeur junior seul
+      c) Le DG de l'audité
+      d) Le prestataire
+
+18. Qui recherche et constate les infractions ?
+      a) L'auditeur
+      b) L'enquêteur, sous l'autorité judiciaire
+      c) L'expert
+      d) Le commanditaire
+
+19. À qui répond l'expert judiciaire ?
+      a) Au commanditaire
+      b) Au DG
+      c) Au juge
+      d) Au comité d'audit
+
+20. M. BEYALA peut-il être expert judiciaire dans l'affaire LiZbiZ qu'il a auditée ?
+      a) Oui, il connaît le dossier
+      b) Oui, si le DG l'accepte
+      c) Oui, s'il est certifié
+      d) Non, il y aurait un problème d'indépendance
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Les règles de l'audit suffisent toujours pour une procédure judiciaire.
+      Vrai / Faux
+
+22. Une preuve judiciaire est discutée par une partie qui a intérêt à l'écarter.
+      Vrai / Faux
+
+23. On ne travaille que sur des copies ; l'original n'est ouvert que pour en vérifier l'empreinte.
+      Vrai / Faux
+
+24. Une brèche déclarée et vérifiée vaut mieux qu'une brèche découverte par la défense.
+      Vrai / Faux
+
+25. L'auditeur complète le dossier en interrogeant les suspects.
+      Vrai / Faux
+
+26. L'auditeur préserve et remet ; il n'enquête pas.
+      Vrai / Faux
+
+27. L'article 52 permet l'accès aux domiciles privés.
+      Vrai / Faux
+
+28. Un auditeur peut être entendu comme témoin des constatations de sa mission.
+      Vrai / Faux
+
+29. L'expert judiciaire répond au commanditaire de l'audit.
+      Vrai / Faux
+
+30. Ce qui est remis et ce qui ne l'est pas, avec le motif, doit être documenté.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La norme de la preuve numérique est l'ISO/IEC ______.
+
+32. La suite des enregistrements qui retrace la détention d'une pièce est la chaîne de ______.
+
+33. La remise se fait contre ______.
+
+34. La première étape de la remise consiste à ______ les fichiers.
+
+35. L'intégrité d'une extraction se prouve par son ______ SHA-256.
+
+36. Les officiers de police judiciaire ont pour sigle ______.
+
+37. La personne désignée par le juge pour répondre à des questions techniques est l'______ judiciaire.
+
+38. Produire une copie fidèle, vérifiable par empreinte, est l'______.
+
+39. L'extraction remise au ministère public porte la référence PT-______.
+
+40. L'investigation numérique proprement dite est approfondie dans les UE SEC4031 et SEC______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

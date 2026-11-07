@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C07
+Chapitre 7 : La mission d'audit : principes et cycle
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Combien de principes l'ISO 19011:2018 énonce-t-elle ?
+      a) Six
+      b) Sept
+      c) Cinq
+      d) Huit
+
+ 2. Quel principe l'édition 2018 de l'ISO 19011 a-t-elle ajouté ?
+      a) L'intégrité
+      b) La confidentialité
+      c) L'approche par les risques
+      d) L'indépendance
+
+ 3. Quel principe est méconnu quand un constat repose sur un « ouï-dire » ?
+      a) L'approche fondée sur la preuve
+      b) La confidentialité
+      c) L'intégrité
+      d) L'approche par les risques
+
+ 4. Quel principe est méconnu quand l'auditeur évoque les failles d'un client lors d'un dîner ?
+      a) L'indépendance
+      b) L'approche par les risques
+      c) La présentation impartiale
+      d) La confidentialité
+
+ 5. Selon l'auditologie, de quels axiomes se déduit l'indépendance de l'auditeur ?
+      a) Observabilité et mesurabilité
+      b) Interaction stratégique et opposabilité
+      c) Cognition limitée et individuation temporelle
+      d) Mesurabilité et opposabilité
+
+ 6. Qui doit approuver la charte d'audit ?
+      a) La direction auditée
+      b) Le DSI
+      c) L'organe de gouvernance
+      d) Le commissaire aux comptes
+
+ 7. Que fixe la charte d'audit ?
+      a) La mission, les pouvoirs, le rattachement, l'indépendance et les responsabilités de l'audit
+      b) Le budget informatique
+      c) Le plan de continuité
+      d) La politique de sécurité
+
+ 8. Scénario. Le plan d'audit interne est approuvé par le directeur général, dont relèvent les directions auditées. Que faut-il corriger ?
+      a) Rien
+      b) Le faire approuver par le DSI
+      c) Le faire approuver par l'audité principal
+      d) Le faire approuver par l'organe de gouvernance
+
+ 9. Combien de phases compte le cycle de la mission présenté dans le cours ?
+      a) Trois
+      b) Cinq
+      c) Quatre
+      d) Sept
+
+10. Quel est le livrable principal de la phase de planification ?
+      a) Les termes de référence
+      b) Le tableau de suivi
+      c) Le plan d'audit
+      d) Le rapport final
+
+11. Quelle phase prépare la mission suivante ?
+      a) Le suivi
+      b) La préparation
+      c) L'exécution
+      d) Le rapport
+
+12. Quel axiome de l'auditologie fonde la dimension temporelle de l'audit ?
+      a) L'axiome 1, observabilité partielle
+      b) L'axiome 6, opposabilité
+      c) L'axiome 3, mesurabilité
+      d) L'axiome 5, individuation temporelle
+
+13. Quel outil est central dans la méthode ?
+      a) O1, la fiche technique
+      b) O4, le classeur d'aide à l'audit
+      c) O0, l'aide-mémoire
+      d) O9, le suivi des documents
+
+14. Quel outil porte la liste des documents sollicités ?
+      a) O2
+      b) O5
+      c) O3
+      d) O7
+
+15. Quel outil contient les observations en sept éléments soumises au contradictoire ?
+      a) O8, projets d'observation
+      b) O6, plan d'audit
+      c) O7, plan de tests
+      d) O5, guide d'entretien
+
+16. Quel outil contient les tests codifiés et les preuves attendues ?
+      a) O2
+      b) O3
+      c) O4
+      d) O7
+
+17. Laquelle de ces fonctions n'est PAS une fonction du contradictoire ?
+      a) Corriger les erreurs de l'auditeur
+      b) Remplacer les preuves par les déclarations de l'audité
+      c) Rendre les conclusions opposables
+      d) Réduire l'incertitude
+
+18. Scénario. Après la restitution, combien de NEK du domaine B sont levés chez LiZbiZ ?
+      a) Un
+      b) Deux
+      c) Trois
+      d) Quatre
+
+19. Scénario. Comment évolue le taux d'incertitude U du domaine B avec le contradictoire ?
+      a) De 0,33 à 0,08
+      b) De 0,08 à 0,33
+      c) De 0,50 à 0,25
+      d) Il reste stable
+
+20. Au contradictoire, que peut faire au mieux une affirmation de l'audité sans pièce ?
+      a) Changer un NON en OUI
+      b) Supprimer le constat
+      c) Valider le contrôle
+      d) Changer un NON en NEK, en attendant la pièce
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un support qui annonce six principes d'audit se réfère à l'édition 2011 de l'ISO 19011.
+      Vrai / Faux
+
+22. L'approche par les risques invite à concentrer l'effort sur ce qui compte pour les objectifs.
+      Vrai / Faux
+
+23. Sans charte, l'auditeur dépend du bon vouloir de ceux qu'il audite.
+      Vrai / Faux
+
+24. La mission se termine avec la remise du rapport.
+      Vrai / Faux
+
+25. Le calendrier d'AUDIX CONSEIL réserve trois semaines au rapport et au contradictoire.
+      Vrai / Faux
+
+26. Le classeur O4 utilise la grille O/N/PAS et la maturité CMMI comme seules mesures.
+      Vrai / Faux
+
+27. Le contradictoire est une simple politesse envers l'audité.
+      Vrai / Faux
+
+28. Le dossier doit conserver la réponse écrite de l'audité au projet d'observation.
+      Vrai / Faux
+
+29. Le contradictoire peut réduire l'ignorance sans lever les non-conformités.
+      Vrai / Faux
+
+30. Un document non remis par l'audité est coté OUI par défaut.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La norme qui donne les lignes directrices pour l'audit des systèmes de management est l'ISO ______.
+
+32. Le principe qui impose de baser les conclusions sur des faits vérifiables est l'approche fondée sur la ______.
+
+33. Le document qui fonde les pouvoirs et l'indépendance de l'audit est la ______ d'audit.
+
+34. Chaque mission est fondée sur une lettre de ______.
+
+35. La phase 0 de la mission s'appelle la ______.
+
+36. La phase qui produit le plan d'audit est la ______.
+
+37. Les outils de la méthode sont numérotés de O0 à O______.
+
+38. Le principe selon lequel l'audité peut répondre aux constats avant le rapport s'appelle le ______.
+
+39. Un constat discuté et maintenu est plus difficile à contester : il est ______.
+
+40. Le premier papier de travail d'une mission est le compte rendu de la réunion d'______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

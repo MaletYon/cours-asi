@@ -1,0 +1,755 @@
+% ============================================================================
+% Fichier  : partie1/P01_C04_risque_notions_mesure.tex
+% Titre    : Le Risque, Notions et Mesure
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C03 (registre LiZbiZ R1 à R8 et appétence repris à
+% l'identique ; lecture de la gestion des risques 2/3/5 ; RD ≈ 0,07).
+% Sources : ISO 31000:2018 ; IAASB ISA 315 révisée (risque d'anomalies
+% significatives) ; INTOSAI GUID 5100 (trois risques d'audit) ; Cox (2008)
+% sur les limites des matrices de risque ; Hubbard et Seiersen (2016) pour la
+% mesure quantitative ; articles A0 et A1 (incertitude épistémique, NEK).
+% Échelles de cotation : convention du cours.
+% Corrigés : corriges/Corr_C04.tex.
+% ============================================================================
+
+\chapter{Le Risque, Notions et Mesure}
+\label{chap:risque}
+\chaptermark{Le risque}
+
+\epigraph{%
+    « On ne maîtrise pas un risque qu'on n'a pas nommé,\\
+    ni un risque qu'on ne sait pas comparer aux autres. »%
+}{Principe du gestionnaire de risques}
+
+\niveauChapitre{Fondamental}{%
+    Maîtrise du Chapitre~\ref{chap:controle-interne} (contrôle interne,
+    matrice des risques et des contrôles)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir le risque, la menace, la vulnérabilité, le risque inhérent,
+          le risque résiduel, l'appétence et la tolérance.
+    \item Distinguer le risque, qui porte sur les objectifs de
+          l'organisation, de l'incertitude épistémique, qui porte sur ce que
+          l'auditeur sait.
+    \item Coter un risque en probabilité et en impact sur une échelle
+          commune, et connaître les limites d'une matrice de risque.
+    \item Mesurer un risque en valeur monétaire (perte unitaire, fréquence
+          annuelle, perte annuelle attendue) et comparer le coût d'un
+          contrôle au risque qu'il réduit.
+    \item Appliquer le modèle du risque d'audit pour dimensionner les
+          travaux, et l'inverser pour en déduire le risque de détection
+          admissible.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : lequel est le plus grave~?}
+% ============================================================================
+
+Le comité de direction de LiZbiZ a reçu, en un mois, trois alertes~: un écart
+de stock de 186~millions FCFA, des comptes d'agents partis encore actifs,
+et une coupure de courant de douze heures au centre de données de Garoua.
+Chaque responsable réclame la priorité pour son dossier. M.~ETEME demande à
+Mme~NKENG, la contrôleuse interne~: «~Lequel est le plus grave~?~»
+
+Elle ne peut pas répondre~: LiZbiZ n'a ni liste de ses risques, ni échelle
+pour les comparer. Ce chapitre donne les notions et les mesures~; le
+Chapitre~\ref{chap:gestion-risques} donnera les méthodes d'analyse et le
+processus de gestion.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les notions~: risque, composantes, inhérent et résiduel,
+          appétence (section~\ref{sec:c04-definir}).
+    \item Le risque et l'incertitude de l'auditeur
+          (section~\ref{sec:c04-incertitude}).
+    \item La mesure qualitative et le registre de LiZbiZ
+          (section~\ref{sec:c04-qualitatif}).
+    \item Les limites des matrices de risque
+          (section~\ref{sec:c04-limites}).
+    \item La mesure quantitative (section~\ref{sec:c04-quantitatif}).
+    \item Les risques de l'audit (section~\ref{sec:c04-audit}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Définir le Risque}
+\label{sec:c04-definir}
+% ============================================================================
+
+\subsection{Effet de l'incertitude sur les objectifs}
+
+\begin{boxdef}
+\termecle{Risque}\index{risque}~: effet de l'incertitude sur les objectifs.
+L'effet est un écart, positif ou négatif, par rapport à ce qui est attendu.
+On décrit un risque par ses sources, les événements possibles, leurs
+conséquences et leur vraisemblance~\cite{iso31000_2018}.
+\end{boxdef}
+{\small\itshape Définition reformulée d'après l'ISO~31000:2018.}
+
+\medskip
+
+Cette définition a deux conséquences pratiques. D'abord, un risque se
+rattache toujours à un \emph{objectif}~: « le centre de Garoua tombe en
+panne » n'est un risque qu'au regard d'un objectif, par exemple « suivre
+les expéditions du Nord en continu ». Ensuite, un risque peut être aussi
+une opportunité~; en audit, on s'intéresse surtout aux écarts défavorables.
+
+\subsection{Écrire un risque}
+
+Un risque mal écrit ne peut être ni coté ni traité. « Le risque
+informatique » n'est pas un risque~; « la sécurité » non plus. Le cours
+adopte une formulation en trois parties.
+
+\begin{boxprocedure}
+\textbf{Formuler un risque~: cause, événement, conséquence}
+
+\textit{En raison de} [cause, vulnérabilité], \textit{il est possible que}
+[événement], \textit{ce qui entraînerait} [conséquence sur un objectif].
+
+\medskip
+\textbf{Exemple (R3 de LiZbiZ).} En raison de l'absence de procédure de
+retrait des comptes au départ d'un salarié, il est possible qu'un ancien
+agent utilise son compte encore actif, ce qui entraînerait des opérations
+frauduleuses non imputables et une perte financière.
+\end{boxprocedure}
+
+\subsection{Les composantes d'un risque informatique}
+
+\begin{boxdef}
+\termecle{Menace}\index{menace}~: cause potentielle d'un incident (un employé
+malveillant, une panne électrique, un rançongiciel).
+
+\medskip
+\termecle{Vulnérabilité}\index{vulnérabilité}~: faiblesse qu'une menace peut
+exploiter (un compte non désactivé, l'absence de groupe électrogène).
+
+\medskip
+\termecle{Vraisemblance}\index{vraisemblance} ou probabilité~: chance que
+l'événement se produise sur une période donnée.
+
+\medskip
+\termecle{Impact}\index{impact}~: ampleur des conséquences sur les
+objectifs, en argent, en durée d'interruption, en sanction ou en image.
+\end{boxdef}
+
+Une menace sans vulnérabilité ne produit rien~: un rançongiciel contre un
+système dont les sauvegardes sont hors ligne et testées cause une
+interruption, pas une perte de données. Une vulnérabilité sans menace non
+plus~: un compte actif d'un ancien salarié qui a quitté le pays présente
+peu de risque d'usage par lui-même, mais beaucoup d'usage par un autre.
+
+\subsection{Inhérent, résiduel, appétence, tolérance}
+
+\begin{boxdef}
+\termecle{Risque inhérent}\index{risque inhérent}~: niveau du risque avant
+la prise en compte des contrôles.
+
+\medskip
+\termecle{Risque résiduel}\index{risque résiduel}~: niveau du risque qui
+subsiste compte tenu des contrôles réellement en place et efficaces.
+
+\medskip
+\termecle{Appétence au risque}\index{appétence au risque}~: niveau de risque
+que l'organisation accepte de prendre pour atteindre ses objectifs. Elle est
+fixée par l'organe de gouvernance, et non par les opérationnels.
+
+\medskip
+\termecle{Tolérance}\index{tolérance au risque}~: écart acceptable autour
+d'un objectif précis (par exemple, une disponibilité du système de
+facturation d'au moins 99,5~\% par mois). La tolérance traduit
+l'appétence en seuils mesurables.
+\end{boxdef}
+
+\begin{boxalert}
+\textbf{Violation typique.} Calculer le risque résiduel en tenant compte
+d'un contrôle décrit dans la procédure, mais jamais testé.
+
+\smallskip
+\textbf{Règle~:} on ne réduit le risque que du fait des contrôles dont
+l'efficacité est établie. Un contrôle non évalué ne réduit rien~; sa cotation
+est \NEK{} tant qu'on ne l'a pas testé (Chapitre~\ref{chap:controle-interne}).
+\end{boxalert}
+
+% ============================================================================
+\section{Risque et Incertitude de l'Auditeur}
+\label{sec:c04-incertitude}
+% ============================================================================
+
+Le mot « incertitude » apparaît dans la définition du risque comme dans
+celle de l'auditologie (Chapitre~\ref{chap:audit-auditologie}). Il ne
+désigne pas la même chose.
+
+\begin{tableaucours}{L{3.2cm}L{4.6cm}L{4.4cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Risque} &
+    \tableauHeader{Incertitude épistémique}
+}
+Porte sur & Les événements futurs qui affectent les objectifs de
+l'organisation & Ce que l'auditeur (ou l'organisation) sait de l'état
+actuel du système \\
+Nature & En partie aléatoire~: même parfaitement informé, on ne sait pas si
+la panne aura lieu & Réductible~: plus de preuves réduisent l'ignorance \\
+Se mesure par & Probabilité et impact & Taux d'incertitude $U$ et
+entropie $H$ des réponses \\
+Exemple chez LiZbiZ & Le centre de Garoua peut tomber en panne & Personne
+ne sait si le groupe électrogène a été testé \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.1. Risque et incertitude
+épistémique}\end{center}
+
+La distinction entre composantes aléatoire et épistémique de l'incertitude
+est l'une des thématiques du programme de
+l'auditologie~\cite{minka2026auditologie}. Elle a une conséquence directe~:
+une cotation de risque n'est fiable que si l'on sait ce que valent les
+informations qui l'alimentent. L'auditeur cote donc aussi \emph{sa
+connaissance} des risques.
+
+\begin{boxlecture}{Gestion des risques de LiZbiZ}
+AUDIX CONSEIL pose dix questions sur le dispositif de gestion des risques
+(existence d'une liste, d'une échelle, d'un responsable, d'un suivi…) à la
+direction et aux responsables de site~: 2~\OUI{}, 3~\NON{}, 5~\NEK{}.
+
+\medskip
+\textbf{Constatation.} $\mu = 0{,}20$~; $U = 0{,}50$~; $H \approx 1{,}49$~bit.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La moitié des réponses déclare ne pas
+savoir~: l'organisation ignore largement comment ses risques sont gérés.
+Avant de coter quoi que ce soit, il faut établir qui est responsable de
+quel risque. C'est une non-conformité inconnue.
+
+\medskip
+\hfill\lecture{0{,}20}{0{,}50}{1{,}49}
+\end{boxlecture}
+
+% ============================================================================
+\section{La Mesure Qualitative}
+\label{sec:c04-qualitatif}
+% ============================================================================
+
+\subsection{Une échelle commune}
+
+Pour comparer des risques de natures différentes, on les cote sur une même
+échelle. Le cours retient une convention à quatre niveaux, courante en
+pratique~; chaque organisation fixe la sienne.
+
+\begin{tableaucours}{cL{3.6cm}L{8.0cm}}{%
+    \tableauHeader{Niv.} &
+    \tableauHeader{Probabilité (sur un an)} &
+    \tableauHeader{Impact}
+}
+1 & Rare & Mineur~: perte inférieure à 5~millions FCFA, interruption de
+moins de 4~heures \\
+2 & Possible & Modéré~: de 5 à 50~millions FCFA, interruption de moins de
+24~heures \\
+3 & Probable & Majeur~: de 50 à 500~millions FCFA, interruption de 1 à
+3~jours, réserve du commissaire aux comptes \\
+4 & Quasi certain & Critique~: plus de 500~millions FCFA, interruption de
+plus de 3~jours, sanction d'un régulateur \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.2. Échelles de cotation (convention
+du cours)}\end{center}
+
+Le \termecle{score}\index{score de risque} d'un risque est le produit
+$\text{probabilité} \times \text{impact}$, de 1 à 16. Le risque résiduel se
+calcule de la même façon, en abaissant la probabilité (ou l'impact) du
+seul effet des contrôles efficaces.
+
+\begin{boxinfo}
+\textbf{Ancrer les niveaux de probabilité.} « Probable » ne dit rien tant
+qu'on ne l'a pas chiffré. Le cours propose~: rare, moins d'une fois en dix
+ans (moins de 10~\% par an)~; possible, une fois en trois à dix ans (10 à
+30~\%)~; probable, une fois en un à trois ans (30 à 70~\%)~; quasi certain,
+au moins une fois par an (plus de 70~\%). Sans ces ancrages, deux personnes
+donnent au même risque deux cotes différentes.
+\end{boxinfo}
+
+\subsection{Le registre de LiZbiZ}
+
+\begin{boxscenario}{Opération LIZBIZ. Huit risques cotés}
+Mme~NKENG réunit les responsables et établit le registre suivant. La colonne
+« Maîtrise » indique de combien de niveaux les contrôles \emph{testés}
+abaissent la probabilité.
+
+\medskip
+\begin{tableaucours}{cL{4.6cm}ccccc}{%
+    \tableauHeader{Réf.} &
+    \tableauHeader{Risque} &
+    \tableauHeader{P} & \tableauHeader{I} & \tableauHeader{Inh.} &
+    \tableauHeader{Maîtr.} & \tableauHeader{Rés.}
+}
+R1 & Ajustement frauduleux du stock (cumul réception et ajustement) & 4 & 3
+& 12 & 0 & 12 \\
+R2 & Paiement de fournisseurs fictifs & 3 & 3 & 9 & 0 & 9 \\
+R3 & Usage du compte d'un agent parti & 3 & 3 & 9 & 0 & 9 \\
+R4 & Arrêt prolongé du centre de Garoua & 2 & 4 & 8 & 1 & 4 \\
+R5 & Perte de données faute de sauvegarde restaurable & 2 & 4 & 8 & 0 & 8 \\
+R6 & Fuite de données personnelles des clients & 2 & 3 & 6 & 1 & 3 \\
+R7 & Erreurs de facturation & 3 & 2 & 6 & 1 & 4 \\
+R8 & Chiffrement des serveurs par un rançongiciel & 2 & 4 & 8 & 0 & 8 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Appétence fixée par le conseil.} Un score résiduel de 9 ou plus est
+intolérable et doit être traité sans délai~; de 5 à 8, il est traité dans
+l'année~; de 1 à 4, il est accepté sous surveillance.
+
+\medskip
+\textbf{Constatation.} Trois risques sont intolérables (R1, R2, R3), deux sont
+à traiter dans l'année (R5, R8), trois sont acceptés (R4, R6, R7).
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Les trois risques intolérables
+relèvent tous du contrôle interne (séparation des tâches, gestion des
+comptes), pas de la technique~: ils confirment le diagnostic du
+Chapitre~\ref{chap:controle-interne}. La coupure de Garoua, qui inquiétait
+le plus le comité, est en réalité le risque le mieux maîtrisé.
+\end{boxscenario}
+
+\subsection{Coter avec plusieurs évaluateurs}
+
+Une cote est un jugement. Pour réduire la part d'arbitraire, AUDIX
+CONSEIL fait coter chaque risque séparément par trois personnes, puis
+compare. Lorsque les trois cotes de probabilité diffèrent de plus d'un
+niveau, la cote n'est pas retenue~: on cherche l'information qui manque.
+
+\begin{boxscenario}{Opération LIZBIZ. Trois évaluateurs pour R8}
+\textbf{Faits.} Pour R8 (rançongiciel), M.~KOUNOU cote la probabilité~1
+(«~nous avons un antivirus~»), Mme~NKENG~3, le consultant d'AUDIX CONSEIL~2.
+
+\medskip
+\textbf{Analyse.} L'écart (de 1 à 3) révèle une incertitude épistémique sur
+la vulnérabilité, pas un désaccord d'opinion~: personne ne sait si les
+sauvegardes sont isolées du réseau. La cote~2 est retenue provisoirement,
+avec la mention~: \emph{cotation à confirmer par le test des sauvegardes}
+(Chapitre~\ref{chap:audit-continuite}).
+\end{boxscenario}
+
+% ============================================================================
+\section{Les Limites des Matrices de Risque}
+\label{sec:c04-limites}
+% ============================================================================
+
+La matrice probabilité × impact est l'outil le plus répandu. Elle a des
+défauts connus, que l'auditeur doit savoir nommer lorsqu'il évalue la
+cartographie d'une organisation~\cite{cox2008matrices}.
+
+\begin{tableaucours}{L{3.6cm}L{8.6cm}}{%
+    \tableauHeader{Limite} &
+    \tableauHeader{Illustration}
+}
+Résolution faible & Un risque à 6~millions et un risque à 49~millions ont
+le même impact~2~; leurs scores ne disent pas leur écart \\
+Inversion possible & Deux risques de même score (8) peuvent avoir des
+pertes attendues très différentes~: P2 × I4 et P4 × I2 ne représentent pas
+la même chose \\
+Échelle ordinale & Le produit de deux rangs (2 × 4) n'est pas une
+grandeur~: un score de 8 n'est pas « deux fois » un score de 4 \\
+Corrélations ignorées & Deux risques notés séparément peuvent se réaliser
+ensemble (le rançongiciel et la perte des sauvegardes) \\
+Biais des évaluateurs & Optimisme du propriétaire du risque, ancrage sur
+le dernier incident \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.3. Cinq limites des matrices de
+risque}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Additionner les scores des risques d'un domaine
+pour en déduire un « risque global » (« le domaine informatique totalise
+45~points »).
+
+\smallskip
+\textbf{Règle~:} les scores ordinaux ne s'additionnent pas. Pour agréger,
+on compte les risques par zone de l'appétence, ou l'on passe à une mesure
+en valeur (section~\ref{sec:c04-quantitatif}).
+\end{boxalert}
+
+% ============================================================================
+\section{La Mesure Quantitative}
+\label{sec:c04-quantitatif}
+% ============================================================================
+
+\subsection{Perte unitaire, fréquence, perte annuelle attendue}
+
+Lorsque l'organisation dispose de données (coût horaire d'une interruption,
+fréquence des incidents passés), le risque se mesure en valeur. Le modèle
+élémentaire, largement enseigné, repose sur trois grandeurs.
+
+\begin{boxdef}
+\termecle{Perte unitaire}\index{perte unitaire} (\textit{single loss
+expectancy}, SLE)~: perte causée par une occurrence de l'événement,
+$\text{SLE} = \text{valeur de l'actif} \times \text{facteur d'exposition}$.
+
+\medskip
+\termecle{Fréquence annuelle}\index{fréquence annuelle}
+(\textit{annualized rate of occurrence}, ARO)~: nombre moyen d'occurrences
+par an (0,25 signifie une fois en quatre ans).
+
+\medskip
+\termecle{Perte annuelle attendue}\index{perte annuelle attendue}
+(\textit{annualized loss expectancy}, ALE)~:
+$\text{ALE} = \text{SLE} \times \text{ARO}$.
+\end{boxdef}
+
+\begin{boxscenario}{Opération LIZBIZ. Le centre de Garoua en chiffres}
+\textbf{Données} (DAF et DSI)~: le centre de Garoua traite les expéditions
+du Nord, qui génèrent une marge de 6~millions FCFA par heure d'activité. Un
+arrêt prolongé type dure 4~jours (96~heures) faute de pièces de rechange~;
+on retient un facteur d'exposition de 1 (toute la marge est perdue pendant
+l'arrêt). Sans groupe électrogène testé, la DSI estime un tel arrêt
+possible une fois en trois ans environ (ARO~$\approx 0{,}3$).
+
+\medskip
+\textbf{Calcul.}
+\begin{align*}
+\text{SLE} &= 96 \times 6 = 576~\text{millions FCFA}, \\
+\text{ALE}_{\text{avant}} &= 576 \times 0{,}3 \approx 173~\text{millions FCFA par an}.
+\end{align*}
+Le groupe électrogène, une fois testé chaque mois, ramène l'ARO à 0,1~:
+$\text{ALE}_{\text{après}} \approx 58$~millions FCFA par an.
+
+\medskip
+\textbf{Analyse.} La réduction de la perte attendue, environ 115~millions
+par an, justifie un contrôle (groupe électrogène, contrat de maintenance,
+test mensuel) coûtant jusqu'à ce montant. La cote qualitative d'impact~4
+est confirmée (plus de 500~millions par occurrence).
+\end{boxscenario}
+
+\subsection{Le coût d'un contrôle}
+
+Le calcul précédent donne une règle de décision simple, qu'on appelle
+parfois valeur de la mesure de sécurité~:
+\[
+    \text{valeur du contrôle} = \text{ALE}_{\text{avant}}
+    - \text{ALE}_{\text{après}} - \text{coût annuel du contrôle}.
+\]
+Un contrôle de valeur négative coûte plus qu'il ne rapporte~: l'organisation
+peut décider d'accepter le risque, par une décision écrite.
+
+\subsection{Raisonner en intervalles}
+
+Les valeurs ponctuelles (6~millions par heure, 0,3 par an) cachent leur
+imprécision. La pratique recommandée est d'estimer chaque grandeur par un
+intervalle de confiance à 90~\%, dont on est sûr à 90~\% qu'il contient la
+vraie valeur~\cite{hubbard2016cyber}. Le
+Chapitre~\ref{chap:gestion-risques} combinera ces intervalles par
+simulation de Monte-Carlo (méthode FAIR).
+
+\begin{boxinfo}
+\textbf{Un exercice de calibration.} Les évaluateurs non entraînés donnent
+des intervalles trop étroits~: ils sont trop sûrs d'eux. On les calibre en
+leur posant des questions dont on connaît la réponse (la population de
+Douala, la date de création de la CEMAC) et en leur montrant combien de
+leurs intervalles contiennent la bonne réponse. Un évaluateur calibré à
+90~\% voit environ neuf intervalles justes sur dix.
+\end{boxinfo}
+
+\subsection{Qualitatif ou quantitatif~?}
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{4.8cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Qualitatif} &
+    \tableauHeader{Quantitatif}
+}
+Données requises & Jugements d'experts & Coûts, fréquences, durées \\
+Résultat & Rangs, zones de couleur & Montants, distributions de pertes \\
+Agrégation & Impossible au sens strict & Possible (somme des pertes
+attendues, simulation) \\
+Usage & Premier tri, dialogue avec les métiers & Arbitrage budgétaire,
+décision sur un contrôle coûteux \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.4. Mesure qualitative et mesure
+quantitative}\end{center}
+
+Les deux ne s'opposent pas~: on trie avec la matrice, on chiffre les
+risques qui demandent une décision d'investissement.
+
+% ============================================================================
+\section{Les Risques de l'Audit}
+\label{sec:c04-audit}
+% ============================================================================
+
+\subsection{Le modèle du risque d'audit}
+
+L'auditeur court lui-même un risque~: conclure qu'une situation est
+satisfaisante alors qu'elle ne l'est pas. La profession décompose ce
+\termecle{risque d'audit}\index{risque d'audit} en trois éléments, que le
+GUID~5100 de l'INTOSAI reprend pour l'audit des SI~\cite{intosai2019guid5100}.
+
+\begin{boxdef}
+\termecle{Risque inhérent}~(en audit)~: probabilité qu'une anomalie
+significative existe, du fait de la nature même de l'activité ou du système.
+
+\medskip
+\termecle{Risque de contrôle}\index{risque de contrôle}~: probabilité que le
+contrôle interne ne prévienne pas ou ne détecte pas cette anomalie.
+
+\medskip
+\termecle{Risque de détection}\index{risque de détection}~: probabilité que
+les travaux de l'auditeur ne la détectent pas.
+\end{boxdef}
+
+Le modèle classique relie les trois~:
+\[
+    \text{RA} = \text{RI} \times \text{RC} \times \text{RD}.
+\]
+L'auditeur ne choisit ni le risque inhérent ni le risque de contrôle~: il
+les évalue. Leur produit est ce que la norme ISA~315 révisée appelle le
+risque d'anomalies significatives~\cite{iaasb2019isa315}. L'auditeur
+choisit en revanche le risque de détection, en dimensionnant ses tests,
+pour que le risque d'audit reste au niveau qu'il accepte. On inverse donc
+le modèle~:
+\[
+    \text{RD} = \frac{\text{RA}}{\text{RI} \times \text{RC}}.
+\]
+
+\begin{boxscenario}{Opération LIZBIZ. Dimensionner les tests sur les stocks}
+\textbf{Évaluation.} Risque inhérent élevé (stock de forte valeur, écart
+déjà constaté), estimé à 0,9~; risque de contrôle élevé (contrôles de stock
+inefficaces, Chapitre~\ref{chap:controle-interne}), estimé à 0,8. Risque
+d'audit accepté~: 5~\%.
+
+\medskip
+\textbf{Calcul.} $\text{RD} = 0{,}05 / (0{,}9 \times 0{,}8) \approx 0{,}07$.
+
+\medskip
+\textbf{Analyse.} Le risque de détection doit être très faible~: AUDIX
+CONSEIL ne peut pas se contenter de tester les contrôles. Il doit réaliser
+des tests directs et étendus sur les données de stock
+(Chapitre~\ref{chap:audit-applications}).
+\end{boxscenario}
+
+\subsection{Du risque de détection à l'étendue des tests}
+
+Le Tableau~4.5 traduit le niveau du risque de détection admissible en
+nature des travaux. C'est une grille de raisonnement, pas un barème.
+
+\begin{tableaucours}{L{2.8cm}L{4.4cm}L{5.0cm}}{%
+    \tableauHeader{RD admissible} &
+    \tableauHeader{Nature des travaux} &
+    \tableauHeader{Étendue}
+}
+Élevé (plus de 0,5) & Tests des contrôles, procédures analytiques &
+Échantillons réduits, revue globale \\
+Moyen (0,2 à 0,5) & Tests des contrôles et tests directs ciblés &
+Échantillons standards (Chapitre~\ref{chap:preuve}) \\
+Faible (moins de 0,2) & Tests directs étendus, analyse de toute la
+population & Extraction complète, requêtes sur toutes les opérations \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~4.5. Du risque de détection aux
+travaux}\end{center}
+
+\begin{boiteRemarque}{Des probabilités vraiment mesurables~?}
+Rarement. Les valeurs 0,9 ou 0,8 traduisent un jugement, pas une mesure.
+Le modèle sert surtout à raisonner~: plus le risque inhérent et le risque de
+contrôle sont élevés, plus les tests doivent être étendus. L'auditologie
+propose d'aller plus loin en mesurant ce que l'auditeur sait réellement,
+par $U$ et $H$, plutôt que de l'estimer (Chapitre~\ref{chap:conclure}).
+\end{boiteRemarque}
+
+\subsection{Un audit fondé sur les risques}
+
+La cartographie des risques de l'organisation oriente le plan d'audit~:
+on audite d'abord ce qui est le plus risqué et le moins bien connu. Deux
+dimensions guident donc le choix des zones d'audit~: le score résiduel
+(section~\ref{sec:c04-qualitatif}) et l'incertitude sur ce score
+(section~\ref{sec:c04-incertitude}). Un risque coté~8 avec une forte
+incertitude, comme R8, peut passer avant un risque coté~9 bien documenté. Le
+Chapitre~\ref{chap:planifier} montrera comment passer de la cartographie
+au plan d'audit.
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Tenir une cotation défendable}
+\begin{enumerate}
+    \item Faire approuver l'échelle et ses ancrages chiffrés par le conseil.
+    \item Écrire chaque risque en trois parties (cause, événement,
+          conséquence).
+    \item Faire coter par plusieurs personnes et investiguer les écarts.
+    \item Ne réduire le résiduel que sur la base de contrôles testés.
+    \item Chiffrer en valeur les risques qui appellent un investissement.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Auditer la cotation, pas seulement la cartographie.} L'auditeur
+demande, pour chaque risque rouge, la justification de la probabilité et de
+l'impact, et le rapport de test des contrôles qui ont réduit le résiduel.
+Une cotation sans justification se cote \NEK{}.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'article A0~\cite{minka2026auditologie}
+sépare l'incertitude aléatoire (ce qui arrivera) et l'incertitude
+épistémique (ce que l'on sait). L'article A1~\cite{minka2026nek} en tire
+la mesure $U$ de la seconde. Ce chapitre applique la distinction au
+registre~: une cote est un fait sur le risque \emph{et} un fait sur la
+connaissance de celui qui cote.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Le risque est l'effet de l'incertitude sur les objectifs}~:
+          on l'écrit en trois parties (cause, événement, conséquence).
+    \item \textbf{Inhérent, résiduel, appétence, tolérance}~: le résiduel ne
+          tient compte que des contrôles testés~; l'appétence est fixée par
+          la gouvernance et traduite en tolérances.
+    \item \textbf{Risque et incertitude épistémique} ne se confondent pas.
+    \item \textbf{La mesure qualitative} trie~; elle a des limites (faible
+          résolution, échelle ordinale, corrélations ignorées)~; ses scores
+          ne s'additionnent pas.
+    \item \textbf{La mesure quantitative} (SLE, ARO, ALE) chiffre le risque
+          et la valeur d'un contrôle~; on estime par intervalles.
+    \item \textbf{Le risque d'audit} = inhérent × contrôle × détection~;
+          l'auditeur en déduit le risque de détection admissible et
+          l'étendue de ses tests.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: écrire un risque en trois
+parties~; coter sur l'échelle du cours~; nommer trois limites des
+matrices~; calculer SLE, ARO, ALE~; inverser le modèle du risque d'audit.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.1. Menace, vulnérabilité, impact \niveaubase}]
+Pour chacun des risques R3, R5 et R8 du registre de LiZbiZ, identifiez la
+menace, la vulnérabilité et l'objectif menacé, puis justifiez la cotation
+d'impact au regard du Tableau~4.2.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.2. Écrire un risque \niveaubase}]
+Réécrivez en trois parties (cause, événement, conséquence) les risques
+suivants, formulés par les responsables de LiZbiZ~: (a) «~Le réseau~»~;
+(b) «~Les mots de passe~»~; (c) «~Le prestataire de Garoua~».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.3. Après les contrôles \niveaumoyen}]
+LiZbiZ met en place les contrôles proposés au Chapitre~\ref{chap:controle-interne}.
+Les tests montrent qu'ils abaissent de deux niveaux la probabilité de R1 et
+de R3, et d'un niveau celle de R2.
+\begin{enumerate}[(a)]
+    \item Recalculez les scores résiduels de R1, R2 et R3.
+    \item Quels risques restent à traiter dans l'année~?
+    \item Pourquoi faut-il attendre les tests avant de mettre à jour le
+          registre~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.4. Deux risques de score 8 \niveaumoyen}]
+R4 (P2, I4) et un risque fictif R9 (P4, I2) ont le même score inhérent.
+\begin{enumerate}[(a)]
+    \item En prenant le milieu de chaque tranche de l'échelle (probabilité
+          et perte), estimez la perte annuelle attendue de chacun.
+    \item Qu'en concluez-vous sur le score~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.5. La valeur d'un contrôle \niveaumoyen}]
+Reprenez le centre de Garoua. Le groupe électrogène, son contrat de
+maintenance et le test mensuel coûtent 40~millions FCFA par an.
+\begin{enumerate}[(a)]
+    \item Calculez la valeur du contrôle.
+    \item À partir de quelle marge horaire le contrôle cesse-t-il d'être
+          rentable, toutes choses égales par ailleurs~?
+    \item Une solution de secours en nuage ramènerait la durée d'un arrêt
+          à 8~heures, pour 70~millions par an, sans changer l'ARO initial
+          de 0,3. Est-elle préférable~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.6. Trois évaluateurs \niveaumoyen}]
+Pour R5, les trois cotes de probabilité sont 1, 2 et 4. Que faites-vous~?
+Quelle information cherchez-vous, et auprès de qui~? Comment le registre
+doit-il présenter R5 en attendant~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.7. Inverser le modèle \niveaumoyen}]
+Pour l'audit des paiements de LiZbiZ, AUDIX CONSEIL estime RI~=~0,7 et,
+après test des contrôles, RC~=~0,3. Le risque d'audit accepté est de
+5~\%.
+\begin{enumerate}[(a)]
+    \item Calculez le risque de détection admissible.
+    \item Quelle nature et quelle étendue de travaux le Tableau~4.5
+          suggère-t-il~?
+    \item Comparez avec les stocks. Pourquoi les deux zones ne reçoivent-
+          elles pas le même effort~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.8. Additionner des scores \niveaumoyen}]
+Le rapport annuel de la DSI de la BANQUE SANAGA indique~: «~Le risque
+informatique global est passé de 52 à 47~points, soit une amélioration de
+10~\%.~» Rédigez la remarque de l'auditeur.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.9. Une échelle commune pour la BANQUE SANAGA \niveauexpert}]
+\begin{enumerate}[(a)]
+    \item Proposez une échelle d'impact commune aux risques bancaires et
+          informatiques, exprimée en FCFA et en durée d'interruption.
+    \item Cotez sur cette échelle le risque « échec d'une migration du
+          système central ».
+    \item Évaluez le risque inhérent et le risque de contrôle d'un audit de
+          la gestion des changements de la banque, et déduisez-en l'étendue
+          des tests.
+    \item Expliquez pourquoi une réponse \NEK{} sur l'existence d'un plan de
+          retour arrière doit être signalée au conseil.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~4.10. Intervalles et perte attendue \niveauexpert}]
+Pour R8 (rançongiciel), la DSI estime la perte unitaire entre 100 et
+900~millions FCFA (intervalle à 90~\%) et la fréquence entre 0,05 et 0,4
+par an.
+\begin{enumerate}[(a)]
+    \item Calculez une perte annuelle attendue «~basse~» et «~haute~» en
+          combinant les bornes. Pourquoi cet encadrement est-il trop
+          large~?
+    \item Expliquez pourquoi une simulation donnerait une réponse plus
+          utile (Chapitre~\ref{chap:gestion-risques}).
+    \item Quelle information réduirait le plus l'incertitude~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item ISO~31000:2018~\cite{iso31000_2018}~: le vocabulaire et les
+          principes, en quelques pages.
+    \item L.~A.~Cox, \textit{What's Wrong with Risk
+          Matrices?}~\cite{cox2008matrices}~: la démonstration des
+          limites des matrices.
+    \item D.~Hubbard et R.~Seiersen, \textit{How to Measure Anything in
+          Cybersecurity Risk}~\cite{hubbard2016cyber}~: la mesure par
+          intervalles et la calibration.
+    \item IAASB, ISA~315 révisée~\cite{iaasb2019isa315}~: le risque
+          d'anomalies significatives dans l'audit des comptes.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les notions et les mesures sont en place. Le
+Chapitre~\ref{chap:gestion-risques} les assemble dans un processus de
+gestion des risques et présente les méthodes d'analyse utilisées en
+pratique (EBIOS Risk Manager, MEHARI, OCTAVE, FAIR).
+\end{boxinfo}

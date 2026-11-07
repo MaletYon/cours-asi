@@ -1,0 +1,552 @@
+% ============================================================================
+% Fichier  : partie4/P04_C18_cas_integrateurs.tex
+% Titre    : Études de Cas Intégratrices
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C18, repris et développé pour INF3226
+% ============================================================================
+% Chapitre-cas. Aucune notion nouvelle. Reprend les chiffres établis dans
+% les chapitres 9 à 17 (LiZbiZ : domaines A à E de mai 2026, cycle
+% achats-paiements, infrastructure ; SANAGA : conflit d'intérêts, COSO,
+% HORIZON, continuité, contrat DIGICORE ; ANPP : paiements, portefeuille).
+% Second cycle de LiZbiZ (novembre 2026) : domaine D repris du chapitre 9
+% (18/1/1) ; domaines A, B, C et E construits pour ce chapitre. Structure
+% inspirée du chapitre-cas du cours GCI (brief, investigation, révélations,
+% synthèse, grille d'erreurs, simulation d'examen).
+% ============================================================================
+
+\chapter{Études de Cas Intégratrices}
+\label{chap:cas-integrateurs}
+
+\epigraph{%
+    « Un audit ne se juge pas à la longueur du rapport,\\
+    mais à ce que l'organisation sait de plus le lendemain. »%
+}{Adage des comités d'audit}
+
+\niveauChapitre{Expert}{%
+    Maîtrise des Chapitres~\ref{chap:audit-gouvernance}
+    à~\ref{chap:audit-continuite}, et de la méthode des
+    Chapitres~\ref{chap:mission} à~\ref{chap:conclure}%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Conduire trois missions complètes~: LiZbiZ, la BANQUE SANAGA et
+          l'ANPP.
+    \item Positionner chaque domaine selon $\mu$, $U$ et $H$, et en déduire
+          le type de recommandation.
+    \item Lire une mission dans le temps~: second cycle, divergence entre
+          cycles, risque de régression.
+    \item Reconnaître les erreurs d'audit les plus fréquentes, et préparer
+          l'examen.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Mode d'emploi du chapitre}
+% ============================================================================
+
+Ce chapitre ne présente aucune notion nouvelle. Il réunit les constats
+établis domaine par domaine dans la Partie~\ref{part:pratique}, et pose
+pour chaque organisation la question du commanditaire~: \emph{que
+sait-on, que ne sait-on pas, et que faut-il faire d'abord~?}
+
+Chaque cas suit quatre temps. Le \textbf{brief} donne la demande.
+L'\textbf{investigation guidée} renvoie aux chapitres utiles. Les
+\textbf{révélations} apportent des faits nouveaux qui obligent à réviser le
+premier jugement. La \textbf{synthèse} donne une réponse de référence.
+Travaillez chaque cas avant de lire sa synthèse. Le ACSI-LAB-10 de NDAP SUKULU
+reprend la démarche sur les trois dossiers.
+
+\separateur
+
+% ============================================================================
+\section{La Méthode Commune}
+\label{sec:c26-methode}
+% ============================================================================
+
+\subsection{Du quadrant à la recommandation}
+
+La région d'un domaine dans le quadrant du Chapitre~\ref{chap:conclure}
+dit quel \emph{type} de recommandation il appelle. L'auditeur ne
+recommande pas la même chose devant une non-conformité connue et devant
+une ignorance.
+
+\begin{tableaucours}{L{3.2cm}L{4.2cm}L{4.8cm}}{%
+    \tableauHeader{Région} &
+    \tableauHeader{Type de recommandation} &
+    \tableauHeader{Exemple}
+}
+Conformité claire & Maintenir, surveiller~; traiter les quelques \NON{} &
+LiZbiZ, domaine~A \\
+Non-conformité claire & Corriger~: plan d'action, responsables,
+échéances & SANAGA, continuité du système central \\
+Conformité opaque & Établir la preuve avant de conclure~; alerte
+prioritaire, car la grille binaire y aurait vu une conformité & LiZbiZ,
+domaine~D en mai~2026 \\
+Non-conformité opaque & Établir la preuve \emph{et} prendre des mesures
+conservatoires sur ce qui est déjà connu & LiZbiZ, domaine~E \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~26.1. Région du quadrant et type de
+recommandation}\end{center}
+
+Deux règles complètent ce tableau. Une entropie élevée avec un $U$ faible
+signale un désaccord entre \OUI{} et \NON{}~: on cherche alors le
+sous-domaine ou le site qui s'écarte, avant de recommander pour tout le
+domaine. Et une recommandation traite la cause, établie dans l'analyse de
+l'observation, jamais le seul symptôme.
+
+\subsection{Prioriser}
+
+\begin{boxprocedure}
+\textbf{Prioriser les recommandations d'une mission.}
+\begin{enumerate}
+    \item Classer les domaines par région du quadrant.
+    \item Dans chaque région, classer par gravité du risque (registre du
+          Chapitre~\ref{chap:risque}).
+    \item Placer en tête les non-conformités claires sur des risques
+          intolérables~: elles sont connues, et leurs effets sont
+          certains.
+    \item Placer juste après les domaines opaques à fort enjeu~: chaque
+          \NEK{} levé peut révéler un risque intolérable.
+    \item Pour chaque recommandation, nommer un responsable, une échéance
+          et la preuve qui en établira l'exécution.
+\end{enumerate}
+\end{boxprocedure}
+
+% ============================================================================
+\section{Cas 1 : LiZbiZ, Deux Cycles d'Audit}
+\label{sec:c26-lizbiz}
+% ============================================================================
+
+\subsection{Brief initial}
+
+\begin{boxscenario}{Opération LIZBIZ. Le conseil de juin 2026}
+Le conseil d'administration de LiZbiZ reçoit le rapport d'AUDIX CONSEIL. Il
+demande trois choses~: une vue d'ensemble en une page, la liste des cinq
+actions prioritaires, et le calendrier de l'audit de suivi.
+\end{boxscenario}
+
+\subsection{Investigation guidée}
+
+\begin{enumerate}[(a)]
+    \item Rassemblez les mesures des cinq domaines
+          (Chapitre~\ref{chap:conclure}) et situez-les dans le quadrant.
+    \item Ajoutez les deux audits de la Partie~\ref{part:pratique}~: le
+          cycle achats-paiements (Chapitre~\ref{chap:audit-applications})
+          et l'infrastructure (Chapitre~\ref{chap:audit-technique}).
+    \item Pour chaque ensemble, déduisez le type de recommandation.
+    \item Reliez les constats qui ont une cause commune.
+\end{enumerate}
+
+\begin{boxlecture}{LiZbiZ, mai 2026}
+\begin{tableaucours}{L{4.6cm}cccL{3.2cm}}{%
+    \tableauHeader{Ensemble} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$} &
+    \tableauHeader{Région}
+}
+A. Gouvernance du SI & 0,80 & 0,05 & 0,88 & Conformité claire \\
+B. Sauvegardes & 0,67 & 0,08 & 1,19 & Conformité claire, $H$ élevé \\
+C. Stocks & 0,08 & 0,08 & 0,82 & Non-conformité claire \\
+D. Contrôle d'accès & 0,65 & 0,25 & 1,24 & Conformité opaque \\
+E. Exploitation & 0,40 & 0,30 & 1,57 & Non-conformité opaque \\
+Achats-paiements (après tests) & 0,70 & 0,00 & 0,88 & Conformité claire \\
+Infrastructure (4 centres) & 0,40 & 0,15 & 1,46 & Non-conformité claire \\
+\end{tableaucours}
+
+\medskip
+\textbf{Analyse} (confiance moyenne). Trois constats ont une cause
+commune~: un seul agent, M.~KOUNOU, détient tous les droits de
+l'application (Chapitre~\ref{chap:controle-interne}), la gouvernance dépend
+de lui (sous-domaine A.5), et les centres de Garoua et de Bafoussam
+échappent à la configuration de référence. Le domaine~C est connu et
+défaillant~; les domaines~D et~E sont d'abord mal connus.
+
+\medskip
+\hfill\lecture{0{,}65}{0{,}25}{1{,}24}
+\end{boxlecture}
+
+\subsection{Révélations progressives}
+
+\begin{boxscenario}{Opération LIZBIZ. Première révélation}
+Le directeur général demande de retirer du rapport les ajustements de
+stock de M.~FOUDA et le fractionnement de TRANSLOG SERVICES. Le
+Chapitre~\ref{chap:droit} répond~: AUDIX CONSEIL ne retire pas un constat
+établi, et le commissaire aux comptes, s'il en a connaissance, reste tenu
+de ses obligations.
+\end{boxscenario}
+
+\begin{boxscenario}{Opération LIZBIZ. Deuxième révélation}
+En novembre~2026, six mois plus tard, AUDIX CONSEIL repasse les mêmes
+questions. Le
+responsable informatique a perdu ses droits de gestion~; un nouveau
+prestataire exploite les centres de Garoua et de Bafoussam depuis
+septembre.
+
+\medskip
+\begin{tableaucours}{L{2.6cm}ccccc}{%
+    \tableauHeader{Domaine} &
+    \tableauHeader{Mai} & \tableauHeader{Nov.} &
+    \tableauHeader{$\mu$ nov.} & \tableauHeader{$U$ nov.} &
+    \tableauHeader{$H$ nov.}
+}
+A (20) & 16/3/1 & 17/2/1 & 0,85 & 0,05 & 0,75 \\
+B (12) & 8/3/1 & 9/2/1 & 0,75 & 0,08 & 1,04 \\
+C (12) & 1/10/1 & 7/3/2 & 0,58 & 0,17 & 1,38 \\
+D (20) & 13/2/5 & 18/1/1 & 0,90 & 0,05 & 0,57 \\
+E (20) & 8/6/6 & 8/4/8 & 0,40 & 0,40 & 1,52 \\
+\end{tableaucours}
+\end{boxscenario}
+
+\begin{boxlecture}{Le second cycle}
+\textbf{Constatation.} Les domaines A à D progressent~; le domaine~D passe
+de la conformité opaque à la conformité claire, et la divergence entre
+cycles y vaut environ 0,26~bit (Chapitre~\ref{chap:conclure}). Le
+domaine~C change profondément~: la divergence y atteint environ 1,37~bit.
+Le domaine~E, lui, reste à $\mu = 0{,}40$, mais $U$ passe de 0,30 à 0,40~:
+deux \NON{} sont devenus des \NEK{}, et la divergence ne vaut qu'environ
+0,05~bit.
+
+\medskip
+\textbf{Analyse} (confiance moyenne). La faible divergence du domaine~E
+masque une \emph{régression de la connaissance}~: le nouveau prestataire ne
+remet pas les comptes rendus d'exploitation, et ce que l'on savait
+défaillant n'est plus observable. La divergence ne dit pas dans quel sens
+l'état change~; il faut lire $U$ avec elle. Le risque de régression est
+réel~: un défaut que l'on ne voit plus n'est pas un défaut corrigé.
+
+\medskip
+\hfill\lecture{0{,}40}{0{,}40}{1{,}52}
+\end{boxlecture}
+
+\subsection{Synthèse et rapport}
+
+\begin{boxscenario}{Opération LIZBIZ. Cinq priorités}
+\begin{enumerate}
+    \item \textbf{Stocks (C, non-conformité claire)}~: inventaire
+          contradictoire des quatre entrepôts~; séparation de la réception
+          et de l'ajustement~; suivi des 38~millions non rattachés.
+    \item \textbf{Droits (D, conformité opaque)}~: retrait des droits de
+          gestion du responsable informatique~; revue complète des comptes
+          avec les pièces des ressources humaines.
+    \item \textbf{Exploitation (E, non-conformité opaque)}~: obtenir les
+          comptes rendus des traitements de nuit avant de conclure~;
+          mesures conservatoires sur les traitements de fin de mois.
+    \item \textbf{Infrastructure}~: configuration de référence imposée à
+          Garoua et Bafoussam, vérifiée avant toute nouvelle mise en
+          service.
+    \item \textbf{Achats-paiements}~: contrôle des doublons élargi,
+          surveillance de la zone sous le seuil de 5~millions.
+\end{enumerate}
+\textbf{Audit de suivi}~: novembre~2026, mêmes questions, mêmes critères,
+pour que la divergence entre cycles soit interprétable.
+\end{boxscenario}
+
+% ============================================================================
+\section{Cas 2 : la BANQUE SANAGA devant la COBAC}
+\label{sec:c26-sanaga}
+% ============================================================================
+
+\subsection{Brief initial}
+
+\begin{boxscenario}{Opération SANAGA. Le rapport à la COBAC}
+Le comité d'audit doit transmettre à la COBAC l'évaluation du contrôle
+interne et l'analyse de la panne. Il demande à Mme~EKAMBI une synthèse de
+ses travaux, et une réponse claire~: le dispositif était-il capable
+d'éviter la panne, ou d'en limiter les effets~?
+\end{boxscenario}
+
+\subsection{Investigation guidée}
+
+\begin{enumerate}[(a)]
+    \item L'auditrice est-elle indépendante sur tous les sujets~?
+          (Chapitre~\ref{chap:normes})
+    \item Le contrôle interne est-il efficace au sens du COSO~?
+          (Chapitre~\ref{chap:referentiels})
+    \item Les organes ont-ils été informés~? (Chapitre~\ref{chap:audit-gouvernance})
+    \item La mise en production a-t-elle été décidée selon les règles~?
+          (Chapitre~\ref{chap:audit-projets})
+    \item La continuité pouvait-elle tenir ses objectifs~? Le prestataire
+          est-il auditable~? (Chapitre~\ref{chap:audit-continuite})
+\end{enumerate}
+
+\begin{boxlecture}{BANQUE SANAGA, avril 2026}
+\begin{tableaucours}{L{4.6cm}cccL{3.2cm}}{%
+    \tableauHeader{Ensemble} &
+    \tableauHeader{$\mu$} & \tableauHeader{$U$} & \tableauHeader{$H$} &
+    \tableauHeader{Région}
+}
+Changements (après revue par un tiers) & 0,58 & 0,17 & 1,38 & Conformité
+claire \\
+COSO, 17 principes & 0,71 & 0,12 & 1,16 & Conformité claire, mais non
+efficace (COSO) \\
+Projet HORIZON & 0,35 & 0,10 & 1,34 & Non-conformité claire \\
+Continuité du système central & 0,20 & 0,10 & 1,16 & Non-conformité
+claire \\
+Contrat DIGICORE (8 clauses) & 0,50 & 0,13 & 1,41 & Conformité claire, à
+la limite \\
+\end{tableaucours}
+
+\medskip
+\textbf{Analyse} (confiance élevée). Les mesures ne racontent pas toute
+l'histoire. Le COSO conclut à l'inefficacité malgré $\mu = 0{,}71$, parce
+que trois principes sont défaillants (9, 11 et~14), dont deux portent
+directement sur les changements. La panne relie trois défaillances~:
+une décision de bascule prise hors du comité de pilotage, une recette
+incomplète, une continuité incapable de reprendre. Aucune n'est technique
+au premier chef.
+
+\medskip
+\hfill\lecture{0{,}20}{0{,}10}{1{,}16}
+\end{boxlecture}
+
+\subsection{Révélations progressives}
+
+\begin{boxscenario}{Opération SANAGA. Première révélation}
+Le commissaire aux comptes indique que le rapport ISAE~3402 de DIGICORE
+AFRIQUE est de type~1. Pour 2026, les contrôles du prestataire sont donc
+\NEK{} (Chapitre~\ref{chap:normes})~; sans droit d'audit au contrat, la
+banque ne peut pas lever cette incertitude seule.
+\end{boxscenario}
+
+\begin{boxscenario}{Opération SANAGA. Deuxième révélation}
+La note de report de la DSI du 20~février a été transmise au directeur
+général, mais jamais au comité des risques. Le circuit de remontée, et
+non le comité, est en défaut (Chapitre~\ref{chap:audit-gouvernance}).
+\end{boxscenario}
+
+\subsection{Synthèse et rapport}
+
+\begin{boxscenario}{Opération SANAGA. Réponse au comité d'audit}
+\textbf{Réponse.} Non~: le dispositif ne pouvait ni éviter la panne, ni en
+limiter les effets. La décision de bascule a échappé à l'organe
+compétent~; la continuité décrivait l'ancien système.
+
+\medskip
+\textbf{Priorités.}
+\begin{enumerate}
+    \item Grille de passage obligatoire et information du comité d'audit
+          avant toute bascule d'un système critique.
+    \item Mise à jour du plan de continuité et du site de secours,
+          puis test réel avant la fin de l'année.
+    \item Avenant au contrat de DIGICORE AFRIQUE~: droit d'audit,
+          réversibilité, rapport de type~2.
+    \item Échelle commune de cotation des risques, et remontée des risques
+          informatiques au comité des risques.
+\end{enumerate}
+\textbf{Indépendance.} La revue des contrôles de conception de la
+procédure des changements reste confiée à un tiers.
+\end{boxscenario}
+
+% ============================================================================
+\section{Cas 3 : l'ANPP devant la Chambre des Comptes}
+\label{sec:c26-anpp}
+% ============================================================================
+
+\subsection{Brief initial}
+
+\begin{boxscenario}{Opération MEFOU. Le rapport provisoire}
+M.~NJOYA doit rédiger le rapport provisoire de la Chambre des comptes sur
+l'ANPP, et le soumettre à la contradiction du directeur général,
+M.~ESSOMBA. Deux sujets dominent~: la régularité des paiements, et la
+dérive du schéma directeur.
+\end{boxscenario}
+
+\subsection{Investigation guidée}
+
+\begin{enumerate}[(a)]
+    \item Quels critères fondent l'audit de conformité~? (Chapitres~\ref{chap:normes}
+          et~\ref{chap:droit})
+    \item Que montre l'échantillon de 40~paiements, avant et après le délai
+          accordé~? (Chapitre~\ref{chap:droit}, ACSI-LAB-06)
+    \item Que dit la valeur acquise des trois projets~?
+          (Chapitre~\ref{chap:audit-projets})
+    \item Quel lien entre les paiements à des agents partis et le contrôle
+          d'accès~? (Chapitre~\ref{chap:preuve})
+\end{enumerate}
+
+\begin{boxlecture}{ANPP, paiements}
+\begin{tableaucours}{L{4.6cm}cccc}{%
+    \tableauHeader{Moment} &
+    \tableauHeader{O/N/K} & \tableauHeader{$\mu$} & \tableauHeader{$U$} &
+    \tableauHeader{$H$}
+}
+Avant le délai & 29/6/5 & 0,73 & 0,13 & 1,12 \\
+Après le délai & 32/8/0 & 0,80 & 0,00 & 0,72 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le délai a levé l'incertitude~: trois
+pièces produites, deux absences confirmées. Le taux de conformité monte,
+et les non-conformités passent de six à huit, comme au
+Chapitre~\ref{chap:audit-applications}. Quatre paiements à des agents
+partis relient la régularité de la dépense au contrôle d'accès~: c'est le
+même défaut vu de deux côtés.
+
+\medskip
+\hfill\lecture{0{,}80}{0{,}00}{0{,}72}
+\end{boxlecture}
+
+\subsection{Révélations progressives}
+
+\begin{boxscenario}{Opération MEFOU. Première révélation}
+Les taux d'avancement des trois projets sont déclarés par la maîtrise
+d'ouvrage, sans livrables recettés. L'IPC de 0,55 est donc lui-même une
+affirmation~: le rapport présente une fourchette, et cote \NEK{}
+l'avancement non prouvé (Chapitre~\ref{chap:audit-projets}).
+\end{boxscenario}
+
+\begin{boxscenario}{Opération MEFOU. Deuxième révélation}
+En réponse, le directeur général conteste le mot « irréguliers » et
+demande qu'on écrive « en cours de régularisation ». Le magistrat
+maintient le constat d'écart au critère, cite la réponse dans le rapport,
+et laisse à la juridiction les suites éventuelles
+(Chapitre~\ref{chap:droit}).
+\end{boxscenario}
+
+\subsection{Synthèse et rapport}
+
+\begin{boxscenario}{Opération MEFOU. Observations retenues}
+\begin{enumerate}
+    \item \textbf{Paiements}~: huit paiements non conformes sur quarante,
+          dont quatre à des agents partis pour 1~424~000~FCFA~;
+          rapprochement mensuel du fichier de paie et du fichier du
+          personnel.
+    \item \textbf{Comptes}~: désactivation des comptes des agents partis
+          dès la notification du départ.
+    \item \textbf{Schéma directeur}~: trois projets à IPC inférieur à 1,
+          coût final estimé à environ 17,4~milliards~; arbitrage du
+          conseil d'administration sur les six autres projets.
+\end{enumerate}
+\end{boxscenario}
+
+% ============================================================================
+\section{Grille des Erreurs d'Audit}
+\label{sec:c26-erreurs}
+% ============================================================================
+
+\begin{tableaucours}{L{5.0cm}L{2.2cm}L{5.0cm}}{%
+    \tableauHeader{Erreur} &
+    \tableauHeader{Chapitre} &
+    \tableauHeader{Antidote}
+}
+Conclure sur le seul taux de conformité & \ref{chap:conclure} & $U$
+d'abord, $\mu$ ensuite, $H$ pour contrôler \\
+Confondre \NEK{}, \NON{} et non applicable & \ref{chap:preuve} & Absence
+confirmée~: \NON{}~; inconnu~: \NEK{}~; sans objet~: écarté \\
+Coter \OUI{} sur une déclaration orale & \ref{chap:preuve} & Pas de pièce,
+pas de \OUI{} \\
+Agréger sans lire les sous-domaines ni les sites & \ref{chap:decomposition},
+\ref{chap:audit-technique} & Coter par sous-domaine et par site avant
+d'agréger \\
+Juger une sauvegarde sur son journal & \ref{chap:audit-continuite} & Exiger
+une restauration récente \\
+Reprendre un indicateur sans le recalculer & \ref{chap:audit-gouvernance}
+& Reproduire à partir des données sources \\
+Auditer son propre travail & \ref{chap:normes} & Déclarer, faire revoir
+par un tiers, coter \NEK{} entre-temps \\
+Citer un texte de loi non lu & \ref{chap:droit} & Citer seulement ce qui
+est lu, signaler le reste \\
+Qualifier pénalement un constat & \ref{chap:droit} & Constater l'écart au
+critère \\
+Changer de référentiel en cours de mission & \ref{chap:referentiels} &
+Accord écrit du commanditaire \\
+Tester un système sans autorisation & \ref{chap:audit-technique} & Note
+d'autorisation signée avant tout test \\
+Recommander sur le symptôme & \ref{chap:conclure} & Traiter la cause
+établie dans l'analyse \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~26.2. Douze erreurs d'audit et leur
+antidote}\end{center}
+
+% ============================================================================
+\section{Simulation d'Examen}
+\label{sec:c26-examen}
+% ============================================================================
+
+\begin{boxinfo}
+\textbf{Sujet type.} \emph{Durée~: 3~heures. Documents autorisés~: aucun.
+Calculatrice autorisée.}
+
+\medskip
+\textbf{Cas} \textit{(fictif, construit pour l'examen)}. La COOPÉRATIVE
+CAFÉIÈRE DE L'OUEST, à Dschang, achète le café de 4~000~planteurs et le
+paie par virement. Son application de collecte et de paiement est
+maintenue par un prestataire. Un auditeur a coté le domaine « paiements
+aux planteurs » (20~contrôles)~: 9~\OUI{}, 3~\NON{}, 8~\NEK{}. Les \NEK{}
+portent sur des pièces que le prestataire n'a pas remises. Le directeur
+financier, qui a conçu la procédure de paiement, a lui-même rempli la
+grille d'auto-évaluation~: 19~\OUI{}, 1~\NON{}.
+
+\medskip
+\begin{enumerate}
+    \item \textbf{(4~points)} Calculez $\mu$, $U$ et $H$ du domaine selon la
+          cotation de l'auditeur, et situez-le dans le quadrant. Calculez
+          l'indice $\rho$ entre l'auto-évaluation et la cotation de
+          l'auditeur, et interprétez-le.
+    \item \textbf{(4~points)} Que vous inspire l'auto-évaluation, au regard
+          de l'indépendance et de l'axiome~4~?
+    \item \textbf{(4~points)} Décomposez le domaine en sous-domaines selon le
+          modèle entrées-traitements-sorties, et rédigez la fiche
+          d'assertion du contrôle « aucun planteur n'est payé deux fois
+          pour la même livraison ».
+    \item \textbf{(4~points)} Proposez trois tests sur les données, avec la
+          requête ou la formule de chacun.
+    \item \textbf{(4~points)} Rédigez une observation en sept éléments sur
+          l'absence de droit d'audit chez le prestataire, et une
+          recommandation priorisée.
+\end{enumerate}
+\end{boxinfo}
+
+\begin{boxalert}
+\textbf{Ce que le correcteur attend.} Des calculs justes et commentés~; un
+quadrant lu avec $U$ d'abord~; la distinction entre conformité affichée et
+connaissance établie~; des fiches d'assertion atomiques~; des constats
+séparés des analyses~; des recommandations qui traitent la cause. Une
+copie qui conclut « le domaine est conforme à 45~\% » sans parler des huit
+\NEK{} n'obtient pas la moyenne.
+\end{boxalert}
+
+% ============================================================================
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{La région du quadrant} dicte le type de recommandation~:
+          maintenir, corriger, établir la preuve, ou les deux.
+    \item \textbf{Prioriser}~: d'abord les non-conformités claires sur des
+          risques intolérables, puis les domaines opaques à fort enjeu.
+    \item \textbf{Lire dans le temps}~: la divergence entre cycles dit qu'un
+          domaine a changé, $U$ dit si l'on en sait plus ou moins~; un
+          défaut que l'on ne voit plus n'est pas un défaut corrigé.
+    \item \textbf{Les mesures ne remplacent pas les règles des
+          référentiels}~: le COSO peut conclure à l'inefficacité d'un
+          domaine en conformité claire.
+    \item \textbf{Douze erreurs} reviennent d'un cas à l'autre~; chacune a
+          son antidote dans le cours.
+\end{itemize}
+\end{boxresume}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: passer d'une région du
+quadrant à un type de recommandation~; prioriser des observations~;
+conduire une mission complète sur l'un des trois cas~; repérer les erreurs
+d'audit de la grille~; composer en temps limité.
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~\ref{part:pratique} a mis la méthode à
+l'épreuve des trois cas. La Partie~\ref{part:avance} aborde trois défis~:
+l'audit continu et l'analyse de données à grande échelle
+(Chapitre~\ref{chap:audit-continu}), l'audit des systèmes d'intelligence
+artificielle (Chapitre~\ref{chap:audit-ia}), et le passage de l'audit à la
+preuve judiciaire (Chapitre~\ref{chap:audit-preuve}).
+\end{boxinfo}

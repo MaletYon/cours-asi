@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C02
+Chapitre 2 : Grandes défaillances et naissance de l'audit des SI
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Combien de questions compte la grille de lecture d'une affaire ?
+      a) Six
+      b) Trois
+      c) Quatre
+      d) Dix
+
+ 2. Laquelle de ces questions fait partie de la grille de lecture ?
+      a) Quel était le cours de bourse ?
+      b) Quel contrôle a manqué ?
+      c) Qui était le président ?
+      d) Combien de salariés ?
+
+ 3. Qu'est-ce qu'une source primaire ?
+      a) Un article de presse
+      b) Une encyclopédie en ligne
+      c) Un document produit par l'acteur ou l'autorité qui a établi le fait
+      d) Un ouvrage de vulgarisation
+
+ 4. Comment qualifier un rapport produit par l'entreprise mise en cause ?
+      a) Source secondaire neutre
+      b) Source anonyme
+      c) Source sans valeur
+      d) Source partie
+
+ 5. Que fait-on d'un chiffre lu seulement dans la presse ?
+      a) On écrit « selon la presse » ou « à vérifier »
+      b) On le cite comme établi
+      c) On le supprime toujours
+      d) On l'arrondit
+
+ 6. Quelle loi a suivi l'affaire Enron ?
+      a) Le RGPD
+      b) La loi Sarbanes-Oxley
+      c) La loi n° 2010/012
+      d) Bâle III
+
+ 7. Qu'impose la section 404 de la loi Sarbanes-Oxley ?
+      a) La rotation annuelle des auditeurs
+      b) La publication des salaires
+      c) Un rapport sur le contrôle interne de l'information financière
+      d) Un audit fiscal
+
+ 8. Quel cabinet auditait les comptes d'Enron ?
+      a) KPMG
+      b) EY
+      c) Deloitte
+      d) Arthur Andersen
+
+ 9. Pourquoi la section 404 a-t-elle fait des contrôles informatiques un objet d'audit ?
+      a) Parce que l'information financière est produite par des systèmes d'information
+      b) Parce que la loi cite des logiciels
+      c) Parce qu'Enron était une société informatique
+      d) Parce que la SEC l'exigeait avant 2001
+
+10. Quelle perte la Société Générale a-t-elle annoncée en janvier 2008 ?
+      a) 125 millions d'euros
+      b) 4,9 milliards d'euros
+      c) 1,4 milliard d'euros
+      d) 50 milliards d'euros
+
+11. Quel contrôle a principalement manqué dans l'affaire de la Société Générale ?
+      a) Le chiffrement des données
+      b) La sauvegarde
+      c) Le traitement des alertes
+      d) La paie
+
+12. Un trader explique une alerte par une erreur de saisie corrigée. Que doit coter l'auditeur tant que la contrepartie n'a pas confirmé ?
+      a) OUI
+      b) NON
+      c) Sans objet
+      d) NEK
+
+13. Quelle vulnérabilité est à l'origine de l'intrusion chez Equifax ?
+      a) Une vulnérabilité du cadriciel Apache Struts non corrigée
+      b) Un mot de passe par défaut d'un routeur
+      c) Une clé USB perdue
+      d) Une erreur de paie
+
+14. Combien de temps l'intrusion d'Equifax est-elle restée inaperçue, environ ?
+      a) Quelques heures
+      b) 76 jours
+      c) Deux ans
+      d) Sept jours
+
+15. Quelle leçon d'audit tire-t-on d'Equifax ?
+      a) Un contrôle conçu fonctionne toujours
+      b) La surveillance est inutile
+      c) Un contrôle conçu peut ne pas fonctionner
+      d) Les correctifs sont facultatifs
+
+16. Qu'est-ce qui manquait dans l'affaire Wirecard ?
+      a) Un logiciel comptable
+      b) Un commissaire aux comptes
+      c) Une filiale en Asie
+      d) Une confirmation directe de la trésorerie par des tiers
+
+17. LiZbiZ remet un relevé bancaire en PDF envoyé par le comptable de l'agence. Quelle cote, tant que la banque n'a pas confirmé ?
+      a) NEK
+      b) OUI
+      c) NON
+      d) Sans objet
+
+18. Quel axiome d'A0 illustre le fait que l'audité a intérêt à la réponse ?
+      a) L'observabilité partielle
+      b) L'interaction stratégique
+      c) L'individuation temporelle
+      d) La mesurabilité
+
+19. Quel axiome illustre le fait qu'une trace absente ne dit pas que tout va bien ?
+      a) L'opposabilité
+      b) L'interaction stratégique
+      c) L'observabilité partielle
+      d) La cognition limitée
+
+20. Dans les quatre affaires, quelle erreur de cotation revient ?
+      a) Un NON coté OUI par excès de prudence
+      b) Un OUI coté NEK
+      c) Aucune erreur
+      d) Un NEK traité comme un OUI
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une affaire se lit avec la même grille, quelle qu'elle soit.
+      Vrai / Faux
+
+22. Une divergence entre deux sources se tranche en silence par l'auteur.
+      Vrai / Faux
+
+23. Une source primaire peut être une source partie.
+      Vrai / Faux
+
+24. La section 404 confie l'évaluation du contrôle interne à la direction, attestée par l'auditeur.
+      Vrai / Faux
+
+25. Une alerte close sur une explication non prouvée équivaut de fait à un OUI.
+      Vrai / Faux
+
+26. Chez Equifax, l'outil de surveillance du trafic chiffré fonctionnait normalement pendant l'intrusion.
+      Vrai / Faux
+
+27. Une copie électronique remise par l'audité authentifie un solde bancaire.
+      Vrai / Faux
+
+28. Les mêmes schémas se retrouvent dans le cas LiZbiZ.
+      Vrai / Faux
+
+29. Le cours cite des affaires africaines dont les sources primaires ne sont pas accessibles.
+      Vrai / Faux
+
+30. La Société Générale a été sanctionnée pour des carences de son contrôle interne.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La section ______ de la loi Sarbanes-Oxley impose un rapport sur le contrôle interne.
+
+32. Un document qui rapporte ou commente une source primaire est une source ______.
+
+33. Le cadriciel vulnérable chez Equifax s'appelle Apache ______.
+
+34. Les positions non autorisées ont été débouclées en ______ jours.
+
+35. Chez Wirecard, la ______ déclarée n'existait pas.
+
+36. Le contrôle qui a manqué, le signal ignoré et le défaut d'______ font partie de la grille.
+
+37. Le contrôle de second niveau qui signale une opération anormale produit une ______.
+
+38. Un contrôle peut être bien conçu sans être efficace en ______.
+
+39. Pour un solde bancaire, la preuve attendue est une ______ directe de la banque.
+
+40. Une réponse invérifiable doit être cotée ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

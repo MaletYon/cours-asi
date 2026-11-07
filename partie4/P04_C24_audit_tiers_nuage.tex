@@ -1,0 +1,483 @@
+% ============================================================================
+% Fichier  : partie4/P04_C24_audit_tiers_nuage.tex
+% Titre    : Auditer les Tiers et le Nuage
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C17 (section prestataires et nuage ; contrat DIGICORE, huit
+% clauses 4/3/1) et ACSI C10 (rapport ISAE 3402 de type 1 de DIGICORE :
+% 12 contrôles cotés NEK, µ 0, U 1, H 0).
+% Sources : IAASB ISAE 3402 ; NIST SP 800-145 (définition de
+% l'informatique en nuage) ; ISO/IEC 27017:2015 et 27018:2019 (mesures pour
+% le nuage et les données personnelles dans le nuage) ; Cloud Security
+% Alliance, Cloud Controls Matrix v4 ; loi n° 2024/017 (données
+% personnelles, à vérifier au Journal officiel) ; COBAC R-2016/04.
+% Faits nouveaux (LiZbiZ) : prestataire d'exploitation de Garoua et
+% Bafoussam depuis septembre 2026 (cause de la hausse de U du domaine E).
+% Corrigés : corriges/Corr_C24.tex.
+% ============================================================================
+
+\chapter{Auditer les Tiers et le Nuage}
+\label{chap:audit-tiers}
+\chaptermark{Tiers et nuage}
+
+\epigraph{%
+    « On externalise une activité.\\
+    On n'externalise jamais sa responsabilité. »%
+}{Principe de l'externalisation}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise des Chapitres~\ref{chap:normes} (ISAE~3402),
+    \ref{chap:audit-smsi} (SMSI) et~\ref{chap:audit-continuite}
+    (continuité)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Identifier les prestataires critiques et évaluer la dépendance.
+    \item Auditer un contrat de prestation clause par clause.
+    \item Utiliser un rapport ISAE~3402 de type~1 ou~2, et ses contrôles
+          complémentaires.
+    \item Définir les modèles de service en nuage et répartir les
+          responsabilités entre fournisseur et client.
+    \item Vérifier la localisation des données et la réversibilité.
+    \item Tenir un registre des prestataires critiques.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : comment auditer ce qu'on ne voit pas~?}
+% ============================================================================
+
+Le système central de la BANQUE SANAGA est exploité par DIGICORE AFRIQUE.
+Sa messagerie est un service en nuage depuis 2025. Chez LiZbiZ, les centres
+de Garoua et de Bafoussam sont exploités depuis septembre~2026 par un
+prestataire local, et l'incertitude du domaine Exploitation a augmenté
+d'autant (Chapitre~\ref{chap:suivi}). Dans les trois cas, l'auditeur ne peut
+pas entrer dans les locaux du prestataire, et ne lit pas ses journaux.
+Comment conclure~?
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les prestataires critiques et la dépendance
+          (section~\ref{sec:c24-critiques}).
+    \item Auditer un contrat (section~\ref{sec:c24-contrat}).
+    \item Les rapports d'assurance (section~\ref{sec:c24-isae}).
+    \item Le nuage et la responsabilité partagée (section~\ref{sec:c24-nuage}).
+    \item La localisation des données et la réversibilité
+          (section~\ref{sec:c24-donnees}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Prestataires Critiques}
+\label{sec:c24-critiques}
+% ============================================================================
+
+\subsection{Identifier}
+
+\begin{boxdef}
+\termecle{Prestataire critique}\index{prestataire critique}~: prestataire
+dont la défaillance interromprait un service critique de l'organisation,
+ou exposerait des données sensibles, au-delà de l'appétence au risque.
+\end{boxdef}
+
+Pour une banque de la CEMAC, l'externalisation d'une activité essentielle
+reste couverte par le dispositif de contrôle interne exigé par la
+COBAC~\cite{cobac2016r04}~: le risque opérationnel d'un prestataire est un
+risque de la banque.
+
+\subsection{Évaluer la dépendance}
+
+\begin{tableaucours}{L{3.2cm}L{4.8cm}L{4.2cm}}{%
+    \tableauHeader{Question} &
+    \tableauHeader{Ce qu'elle révèle} &
+    \tableauHeader{Exemple (SANAGA)}
+}
+Quel service en dépend~? & L'impact d'une défaillance & Système central~:
+toute l'activité \\
+Existe-t-il une alternative~? & La possibilité de changer & Aucune
+alternative connue \\
+En combien de temps~? & La durée de la dépendance & Plus de 12~mois pour
+un nouveau prestataire \\
+Le prestataire sous-traite-t-il~? & La chaîne réelle des acteurs & Inconnu
+(clause absente) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~24.1. Évaluer la dépendance à un
+prestataire}\end{center}
+
+% ============================================================================
+\section{Auditer un Contrat}
+\label{sec:c24-contrat}
+% ============================================================================
+
+\subsection{Les clauses}
+
+\begin{tableaucours}{L{4.0cm}L{8.2cm}}{%
+    \tableauHeader{Clause} &
+    \tableauHeader{Ce que l'auditeur vérifie}
+}
+Niveaux de service & Disponibilité, délais, RTO et RPO alignés sur ceux de
+l'organisation~; mesure définie~; pénalités appliquées \\
+Droit d'audit & L'organisation, son auditeur et son régulateur peuvent
+auditer le prestataire, ou obtiennent un rapport d'assurance équivalent \\
+Sécurité et incidents & Mesures exigées~; notification des incidents dans
+un délai fixé \\
+Localisation des données & Lieu de stockage connu, compatible avec la loi
+sur les données personnelles (Chapitre~\ref{chap:droit}) \\
+Sous-traitance ultérieure & Recours à d'autres prestataires soumis à
+accord \\
+Réversibilité & Restitution des données dans un format exploitable, et
+assistance à la sortie \\
+Continuité du prestataire & Plan de continuité testé, dont les résultats
+sont communiqués \\
+Confidentialité & Engagement du prestataire et de son personnel \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~24.2. Clauses à auditer dans un
+contrat de prestation ou de service en nuage}\end{center}
+
+\begin{boxscenario}{Opération SANAGA. Le contrat de DIGICORE AFRIQUE}
+\textbf{Faits.} Mme~EKAMBI lit le contrat de maintenance du système central
+conclu avec DIGICORE AFRIQUE. Il prévoit des niveaux de service et des
+pénalités, une clause de confidentialité, la localisation des données à
+Douala et un plan de continuité du prestataire. Il ne prévoit ni droit
+d'audit, ni réversibilité, ni encadrement de la sous-traitance ultérieure.
+L'annexe sur la notification des incidents, citée par le contrat, n'a pas
+été remise.
+
+\medskip
+\textbf{Cotation} des huit clauses~: 4~\OUI{}, 3~\NON{}, 1~\NEK{}.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Sans droit d'audit, la banque dépend du
+rapport que le prestataire choisit de produire~: un type~1
+(section~\ref{sec:c24-isae}). Sans réversibilité, elle ne peut pas changer de
+prestataire sans risque. La recommandation porte sur un avenant, à
+négocier avant le renouvellement.
+\end{boxscenario}
+
+\begin{boxalert}
+\textbf{Violation typique.} Coter \OUI{} la clause de niveaux de service
+parce qu'elle existe, sans vérifier que les pénalités ont été appliquées
+lors de la panne.
+
+\smallskip
+\textbf{Règle~:} une clause se juge sur sa conception (existe-t-elle,
+est-elle mesurable~?) puis sur son exécution (a-t-elle été appliquée quand
+elle devait l'être~?). Après 72,5~heures de panne, l'absence de pénalité
+réclamée est un constat.
+\end{boxalert}
+
+% ============================================================================
+\section{Les Rapports d'Assurance}
+\label{sec:c24-isae}
+% ============================================================================
+
+\subsection{Type 1 et type 2}
+
+Un prestataire qui sert de nombreux clients ne peut pas accueillir
+l'auditeur de chacun. Il fait réaliser, par un auditeur indépendant, un
+rapport sur ses propres contrôles, selon la norme ISAE~3402~\cite{iaasb2011isae3402}
+(Chapitre~\ref{chap:normes}).
+
+\begin{tableaucours}{L{2.4cm}L{5.0cm}L{4.8cm}}{%
+    \tableauHeader{Type} &
+    \tableauHeader{Ce qu'il atteste} &
+    \tableauHeader{Usage pour l'auditeur du client}
+}
+Type~1 & La description des contrôles et leur conception, à une date &
+Comprendre le dispositif~; ne permet pas de coter l'efficacité \\
+Type~2 & Conception et efficacité des contrôles sur une période (souvent
+6 à 12 mois) & Coter l'efficacité sur la période couverte, sous réserve des
+écarts signalés \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~24.3. Rapports ISAE~3402 de type~1 et
+de type~2}\end{center}
+
+\begin{boxlecture}{Le rapport de type 1 de DIGICORE AFRIQUE}
+Le rapport décrit douze contrôles et atteste leur conception à la date du
+31~décembre~2025. Il ne teste aucune exécution.
+
+\medskip
+\textbf{Constatation.} Pour la question « le contrôle a-t-il fonctionné en
+2026~? », les douze contrôles sont \NEK{}~: $\mu = 0$~; $U = 1$~; $H = 0$.
+
+\medskip
+\textbf{Analyse} (confiance élevée). C'est le cas limite de l'ignorance
+unanime (Chapitre~\ref{chap:conclure})~: l'entropie nulle ne traduit
+aucune certitude, mais l'absence complète d'information sur l'efficacité.
+La banque doit obtenir un rapport de type~2, ou un droit d'audit.
+
+\medskip
+\hfill\lecture{0{,}00}{1{,}00}{0{,}00}
+\end{boxlecture}
+
+\subsection{Les contrôles complémentaires}
+
+Tout rapport ISAE~3402 suppose que le client exerce certains contrôles de
+son côté~: par exemple, revoir chaque trimestre la liste des comptes que
+le prestataire a ouverts à ses agents. Ces \termecle{contrôles
+complémentaires}\index{contrôles complémentaires} restent à tester chez le
+client~; sans eux, le rapport le plus favorable ne couvre pas le risque.
+
+% ============================================================================
+\section{Le Nuage et la Responsabilité Partagée}
+\label{sec:c24-nuage}
+% ============================================================================
+
+\subsection{Trois modèles de service}
+
+Le NIST définit l'informatique en nuage par cinq caractéristiques
+(service à la demande, accès par le réseau, mutualisation des ressources,
+élasticité, service mesuré) et trois modèles de service~\cite{nist2011sp800145}.
+
+\begin{tableaucours}{L{2.4cm}L{4.4cm}L{5.4cm}}{%
+    \tableauHeader{Modèle} &
+    \tableauHeader{Le fournisseur gère} &
+    \tableauHeader{Le client reste responsable de}
+}
+IaaS (infrastructure) & Matériel, réseau, virtualisation & Systèmes,
+applications, données, comptes, configuration de sécurité \\
+PaaS (plateforme) & En plus~: systèmes et intergiciels & Applications,
+données, comptes, paramètres \\
+SaaS (logiciel) & En plus~: l'application & Données, comptes et droits,
+paramètres de sécurité de l'application \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~24.4. Les modèles de service et la
+responsabilité partagée}\end{center}
+
+Quel que soit le modèle, le client reste responsable de ses données, de
+ses comptes et de leurs droits. L'auditeur établit, pour chaque contrôle,
+qui en est responsable~; un contrôle que chacun croit à la charge de
+l'autre n'est assuré par personne.
+
+\subsection{Les référentiels du nuage}
+
+L'ISO/IEC~27017 complète l'ISO/IEC~27002 par des mesures propres au
+nuage~\cite{iso27017_2015}~; l'ISO/IEC~27018 traite de la protection des
+données personnelles chez un fournisseur de nuage public~\cite{iso27018_2019}.
+La Cloud Security Alliance publie une matrice de contrôles, la \emph{Cloud
+Controls Matrix}, qui précise pour chaque contrôle la répartition entre
+fournisseur et client~\cite{csa2021ccm}.
+
+\begin{boxscenario}{Opération SANAGA. La messagerie dans le nuage}
+\textbf{Faits.} La messagerie de la banque est un service en nuage (SaaS)
+depuis 2025. Le fournisseur produit un rapport de type~2 sur son
+infrastructure. La banque n'a jamais activé la double authentification
+pour ses comptes, ni configuré la conservation des journaux d'accès.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Le rapport du fournisseur est
+favorable, mais il ne couvre pas ce qui relève de la banque~: la gestion
+des comptes et la configuration. Les deux contrôles sont \NON{}, et ils
+sont de la responsabilité de la banque.
+\end{boxscenario}
+
+% ============================================================================
+\section{Localisation des Données et Réversibilité}
+\label{sec:c24-donnees}
+% ============================================================================
+
+\subsection{Où sont les données~?}
+
+La loi n°~2024/017 encadre le traitement et le transfert des données
+personnelles~; les conditions d'un transfert hors du Cameroun sont à
+vérifier dans le texte publié au Journal officiel. L'auditeur vérifie que
+le contrat indique le lieu de stockage et de traitement, que ce lieu est
+compatible avec la loi, et que le prestataire ne peut pas le changer sans
+accord.
+
+\subsection{Peut-on partir~?}
+
+\begin{boxprocedure}
+\textbf{Auditer la réversibilité}
+\begin{enumerate}
+    \item Le contrat prévoit-il la restitution de toutes les données, dans
+          un format documenté et exploitable, dans un délai fixé~?
+    \item Prévoit-il une assistance à la reprise par un autre prestataire,
+          et son coût~?
+    \item La destruction des données chez le prestataire, après
+          restitution, est-elle prévue et attestée~?
+    \item Un plan de réversibilité existe-t-il, et a-t-il été testé, au
+          moins par une restitution partielle~?
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{Le registre des prestataires critiques}
+
+\begin{boxmetier}{Gestionnaire de risques}
+\textbf{Tenir le registre des prestataires critiques}
+\begin{enumerate}
+    \item Recenser les prestataires dont dépend un service critique, et
+          le service concerné.
+    \item Pour chacun, noter les clauses présentes, le dernier rapport
+          d'assurance reçu, son type et sa période.
+    \item Évaluer la dépendance~: existe-t-il une solution de remplacement,
+          en combien de temps~?
+    \item Porter au registre des risques tout prestataire critique sans
+          droit d'audit ni réversibilité.
+    \item Revoir le registre chaque année, et avant chaque renouvellement
+          de contrat.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Vérifier les transferts de données.} Le responsable de la
+conformité tient la liste des traitements confiés à des prestataires, avec
+le lieu de stockage et le fondement du transfert. Un prestataire en nuage
+qui ne peut pas dire où sont les données est un risque de conformité, quel
+que soit son niveau de sécurité.
+\end{boxmetier}
+
+\begin{boxscenario}{Opération LIZBIZ. Le prestataire de Garoua}
+\textbf{Faits.} Depuis septembre~2026, un prestataire exploite les centres
+de Garoua et de Bafoussam. Le contrat, de trois pages, ne prévoit ni
+rapport d'activité, ni droit d'audit, ni notification des incidents.
+
+\medskip
+\textbf{Analyse} (confiance élevée). La hausse de l'incertitude du domaine
+Exploitation (de 0,30 à 0,40, Chapitre~\ref{chap:suivi}) a ici sa cause~:
+LiZbiZ a externalisé l'exploitation sans se donner les moyens d'en savoir
+quelque chose. La recommandation~: un avenant (rapport mensuel, droit
+d'audit, notification des incidents sous 24~heures), et un interlocuteur
+interne chargé de suivre le prestataire.
+\end{boxscenario}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} Le premier axiome d'A0, l'observabilité
+partielle~\cite{minka2026auditologie}, est ici à son extrême~: l'auditeur
+du client n'observe le prestataire qu'à travers ce que le contrat lui donne
+le droit de voir. Le taux $U$ mesure directement la qualité de ce droit~:
+un contrat sans droit d'audit produit mécaniquement des \NEK{}.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{On externalise une activité, pas sa responsabilité}~; un
+          prestataire critique se recense et sa dépendance s'évalue.
+    \item \textbf{Un contrat s'audite clause par clause}, en conception
+          puis en exécution.
+    \item \textbf{Un rapport ISAE~3402 de type~1} ne dit rien de
+          l'efficacité~; le type~2 couvre une période~; les contrôles
+          complémentaires restent à tester chez le client.
+    \item \textbf{Dans le nuage}, la responsabilité est partagée selon le
+          modèle (IaaS, PaaS, SaaS)~; le client reste responsable de ses
+          données, de ses comptes et de sa configuration.
+    \item \textbf{La localisation des données et la réversibilité} se
+          vérifient dans le contrat et, pour la réversibilité, par un test.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: identifier un prestataire
+critique~; auditer les huit clauses d'un contrat~; dire ce que vaut un
+rapport de type~1 ou~2~; répartir les responsabilités selon le modèle de
+nuage~; auditer la réversibilité~; tenir un registre des prestataires.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.1. Critique ou non~? \niveaubase}]
+Classez comme critiques ou non, en justifiant~: (a) le fournisseur de
+fournitures de bureau de LiZbiZ~; (b) l'hébergeur du portail de suivi des
+expéditions~; (c) le prestataire de nettoyage du centre de données~; (d)
+l'éditeur de l'application intégrée.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.2. Coter un contrat \niveaumoyen}]
+Cotez les huit clauses du Tableau~24.2 pour le contrat du prestataire de
+Garoua (scénario de la section~\ref{sec:c24-donnees}), calculez $\mu$,
+$U$ et $H$, et rédigez la recommandation principale.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.3. Type 1 ou type 2 \niveaubase}]
+Un rapport ISAE~3402 de type~2 couvre la période du 1\textsuperscript{er}
+avril au 30~septembre~2026 et signale un écart sur la gestion des
+changements. Que pouvez-vous coter pour 2026, et que manque-t-il~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.4. Les contrôles complémentaires \niveaumoyen}]
+Le rapport de type~2 du fournisseur de messagerie liste trois contrôles
+complémentaires attendus du client~: revue des comptes, activation de la
+double authentification, conservation des journaux. Comment les testez-vous
+à la banque, et quelle cote leur donnez-vous d'après le scénario de la
+section~\ref{sec:c24-nuage}~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.5. Qui est responsable~? \niveaumoyen}]
+Pour un service PaaS qui héberge l'application de paie de l'ANPP, dites
+qui est responsable de~: les correctifs du système d'exploitation~; les
+droits des agents de l'ANPP~; le chiffrement des données au repos (selon le
+contrat)~; la sauvegarde de la base~; le code de l'application.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.6. L'ignorance unanime \niveaumoyen}]
+Expliquez au comité d'audit, en cinq lignes, pourquoi la lecture du
+rapport de type~1 de DIGICORE ($H = 0$) ne signifie pas que « tout est
+clair ».
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.7. Les pénalités \niveaumoyen}]
+Le contrat de DIGICORE prévoit une pénalité de 2~\% de la redevance
+mensuelle par heure d'indisponibilité au-delà de 4~heures, plafonnée à
+30~\%. Calculez la pénalité due pour la panne de mars~2026, et dites ce que
+signifie, pour l'auditeur, le fait qu'elle n'ait pas été réclamée.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.8. La réversibilité \niveaumoyen}]
+Rédigez la clause de réversibilité que vous recommandez pour l'avenant au
+contrat de DIGICORE, et le test qui permettrait de vérifier qu'elle est
+applicable.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.9. Un nuage pour l'ANPP \niveauexpert}]
+L'ANPP envisage d'héberger le portail de consultation des bulletins de paie
+chez un fournisseur de service en nuage.
+\begin{enumerate}[(a)]
+    \item Dressez la liste des contrôles et, pour chacun, dites s'il
+          relève du fournisseur ou de l'ANPP.
+    \item Quelles clauses le contrat doit-il contenir~? Lesquelles sont
+          liées au droit camerounais~?
+    \item Le fournisseur propose un rapport ISAE~3402 de type~1. Que
+          demandez-vous, et pourquoi~?
+    \item Comment la Chambre des comptes pourra-t-elle auditer ce service~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~24.10. Le registre de la BANQUE SANAGA \niveauexpert}]
+Construisez le registre des prestataires critiques de la BANQUE SANAGA pour
+trois prestataires (DIGICORE, messagerie, monétique), avec les colonnes de
+la procédure, et proposez les deux risques à porter au registre des
+risques.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item IAASB, ISAE~3402~\cite{iaasb2011isae3402}.
+    \item NIST, SP~800-145~\cite{nist2011sp800145}~: la définition du nuage.
+    \item ISO/IEC~27017~\cite{iso27017_2015} et
+          ISO/IEC~27018~\cite{iso27018_2019}.
+    \item Cloud Security Alliance, \textit{Cloud Controls Matrix}~\cite{csa2021ccm}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les tiers posent souvent une question de conformité~:
+où sont les données, et la loi est-elle respectée~? Le
+Chapitre~\ref{chap:audit-conformite} présente l'audit de conformité,
+méthode complète, du registre des obligations au rapport.
+\end{boxinfo}

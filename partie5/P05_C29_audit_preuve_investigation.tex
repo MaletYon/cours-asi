@@ -1,0 +1,419 @@
+% ============================================================================
+% Fichier  : partie5/P05_C29_audit_preuve_investigation.tex
+% Titre    : De l'Audit à la Preuve Judiciaire
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C20, section « Du constat d'audit à la preuve judiciaire »
+% (procédure en cinq étapes ; dossier des ajustements PT-17 remis au
+% ministère public, brouillon « fraude » non remis).
+% Sources : ISO/IEC 27037:2012 (identification, collecte, acquisition,
+% préservation) ; loi n° 2010/012, art. 52 (3), 53 (1) et (3), 55 (1), texte
+% officiel lu le 06/11/2026 ; UE SEC4031 et SEC4052 (investigation
+% numérique) pour l'approfondissement.
+% Corrigés : corriges/Corr_C29.tex.
+% ============================================================================
+
+\chapter{De l'Audit à la Preuve Judiciaire}
+\label{chap:audit-preuve}
+\chaptermark{De l'audit à la preuve}
+
+\epigraph{%
+    « L'auditeur constate pour son commanditaire.\\
+    Le juge tranche sur des pièces que d'autres ont préservées. »%
+}{Principe de la frontière}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise des Chapitres~\ref{chap:fraude} (conduite à tenir devant des
+    indices), \ref{chap:preuve} (intégrité des extractions) et
+    \ref{chap:droit} (constater n'est pas qualifier)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer la preuve d'audit et la preuve judiciaire, et leurs
+          exigences.
+    \item Décrire les quatre étapes de traitement d'une preuve numérique
+          selon l'ISO/IEC~27037.
+    \item Tenir une chaîne de conservation et un registre des accès.
+    \item Connaître les dispositions de procédure de la loi n°~2010/012
+          qui concernent l'auditeur.
+    \item Remettre un dossier à une autorité judiciaire, et savoir ce
+          qu'il ne faut pas remettre.
+    \item Situer le rôle de l'expert judiciaire et celui de l'enquêteur.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : le dossier d'audit tiendra-t-il devant un juge~?}
+% ============================================================================
+
+Les constats d'AUDIX CONSEIL sur les ajustements de stock de Douala et les
+paiements de TRANSLOG SERVICES ont été transmis au conseil, puis, par le
+commissaire aux comptes, au ministère public. Un officier de police
+judiciaire demande au cabinet ses pièces. M.~BEYALA sait que son dossier a
+été construit pour un audit, pas pour un procès~: il doit savoir ce qu'il
+vaut, comment le remettre, et où s'arrête son rôle.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Preuve d'audit et preuve judiciaire (section~\ref{sec:c29-deux}).
+    \item Les quatre étapes de l'ISO/IEC~27037 (section~\ref{sec:c29-27037}).
+    \item La chaîne de conservation (section~\ref{sec:c29-chaine}).
+    \item Ce que dit la loi n°~2010/012 (section~\ref{sec:c29-loi}).
+    \item Remettre un dossier (section~\ref{sec:c29-remettre}).
+    \item Auditeur, enquêteur, expert (section~\ref{sec:c29-roles}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Preuve d'Audit et Preuve Judiciaire}
+\label{sec:c29-deux}
+% ============================================================================
+
+\begin{tableaucours}{L{3.0cm}L{4.6cm}L{4.6cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Preuve d'audit} &
+    \tableauHeader{Preuve judiciaire}
+}
+Destinataire & Le commanditaire, le comité d'audit & Le juge, les parties
+au procès \\
+Exigence & Suffisante et appropriée pour une conclusion (Chapitre~\ref{chap:preuve})
+& Recevable, intègre, de provenance établie, discutée contradictoirement \\
+Contestation & Le contradictoire de la mission & La défense, qui a intérêt à
+écarter la pièce \\
+Défaut fatal & Une preuve insuffisante affaiblit la conclusion & Une rupture
+dans la chaîne de conservation peut faire écarter la pièce \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~29.1. Preuve d'audit et preuve
+judiciaire}\end{center}
+
+Un constat d'audit est opposable s'il peut être défendu devant un tiers
+(axiome~6). Une preuve judiciaire doit en outre convaincre un juge que la
+pièce n'a pas été altérée depuis sa collecte, face à une partie qui a
+intérêt à le contester. Les règles de l'audit (empreintes, lettres
+d'extraction, papiers de travail) sont une bonne base~; elles ne suffisent
+pas toujours.
+
+% ============================================================================
+\section{Les Quatre Étapes de l'ISO/IEC 27037}
+\label{sec:c29-27037}
+% ============================================================================
+
+L'ISO/IEC~27037 donne les lignes directrices pour traiter une preuve
+numérique en quatre étapes~\cite{iso27037_2012}.
+
+\begin{tableaucours}{L{2.6cm}L{5.0cm}L{4.6cm}}{%
+    \tableauHeader{Étape} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Chez AUDIX CONSEIL}
+}
+Identification & Reconnaître les supports et les données qui peuvent
+constituer une preuve & Extraction des ajustements, journaux, courriels \\
+Collecte & Prendre les supports physiques, quand c'est possible et
+légitime & Non applicable~: l'auditeur ne saisit pas de supports \\
+Acquisition & Produire une copie fidèle, vérifiable par empreinte & Lettre
+d'extraction, empreinte SHA-256 à la réception \\
+Préservation & Protéger la copie contre toute altération, et tracer chaque
+accès & Copie de travail, original scellé, registre \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~29.2. Les quatre étapes de l'ISO/IEC~27037}\end{center}
+
+\begin{boxinfo}
+\textbf{Ce que l'auditeur fait déjà.} La lettre d'extraction et
+l'empreinte du Chapitre~\ref{chap:preuve} couvrent l'acquisition~; la règle
+« travailler sur une copie » couvre une partie de la préservation. Ce qui
+manque souvent~: le registre des accès, qui prouve que personne n'a touché
+à l'original depuis l'extraction.
+\end{boxinfo}
+
+% ============================================================================
+\section{La Chaîne de Conservation}
+\label{sec:c29-chaine}
+% ============================================================================
+
+\begin{boxdef}
+\termecle{Chaîne de conservation}\index{chaîne de conservation}~: suite
+ininterrompue d'enregistrements qui retrace, pour chaque pièce, qui l'a
+détenue, quand, où et pour quoi faire, depuis sa collecte ou son
+acquisition jusqu'à sa production en justice.
+\end{boxdef}
+
+\begin{boxprocedure}
+\textbf{Le registre de conservation d'une pièce}
+\begin{itemize}
+    \item Identifiant de la pièce, description, source, date et heure
+          d'acquisition, empreinte initiale~;
+    \item lieu de conservation de l'original et de ses copies~;
+    \item chaque accès~: date, heure, personne, motif, empreinte vérifiée
+          avant et après~;
+    \item chaque remise~: destinataire, qualité, récépissé.
+\end{itemize}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Ouvrir l'original d'une extraction « juste pour
+vérifier une ligne », sans le consigner.
+
+\smallskip
+\textbf{Règle~:} on ne travaille que sur des copies~; l'original n'est
+ouvert que pour en vérifier l'empreinte, et chaque ouverture est inscrite au
+registre. Une ouverture non tracée est une brèche que la défense
+exploitera.
+\end{boxalert}
+
+% ============================================================================
+\section{Ce que Dit la Loi n° 2010/012}
+\label{sec:c29-loi}
+% ============================================================================
+
+\begin{boxjuris}
+\textbf{\loicam{n°~2010/012}} (texte officiel)
+
+\medskip
+\textbf{Article~52, alinéa~3}~: \textit{« Les Officiers de Police Judiciaire
+et les agents habilités de l'Agence peuvent, lors des investigations,
+accéder aux moyens de transport, à tout local à usage professionnel, à
+l'exclusion des domiciles privés, en vue de rechercher, de constater les
+infractions, de demander la communication de tous les documents
+professionnels et en prendre copie, recueillir, sur convocation ou sur
+place, les renseignements et justifications. »}
+
+\medskip
+\textbf{Article~53, alinéa~1}~: \textit{« Les perquisitions en matière de
+cybercriminalité sont susceptibles de porter sur des données qui peuvent
+être des supports physiques ou des copies réalisées en présence des
+personnes qui assistent à la perquisition. »}
+
+\medskip
+\textbf{Analyse.} La loi confie l'enquête aux officiers de police
+judiciaire et aux agents habilités~; elle prévoit qu'ils demandent la
+communication des documents professionnels et en prennent copie. Un
+cabinet d'audit qui reçoit une telle demande y répond dans le cadre fixé
+par la procédure (forme de la demande, secret professionnel, conseil
+juridique~: Chapitre~\ref{chap:droit}). L'article~55 permet en outre aux
+autorités judiciaires de requérir une personne qualifiée pour rendre
+lisibles des données chiffrées~: c'est une mission d'expertise, distincte
+de l'audit.
+\end{boxjuris}
+
+% ============================================================================
+\section{Remettre un Dossier}
+\label{sec:c29-remettre}
+% ============================================================================
+
+L'auditeur n'enquête pas~: il préserve ce qu'il a, et le remet. Un
+auditeur qui « complète » le dossier en interrogeant des suspects ou en
+extrayant de nouvelles données hors de sa mission fragilise la procédure.
+
+\begin{boxprocedure}
+\textbf{Remettre un constat à l'autorité judiciaire}
+\begin{enumerate}
+    \item \textbf{Geler}~: ne plus modifier les fichiers concernés~; en
+          faire une copie de travail, l'original restant intact.
+    \item \textbf{Prouver l'intégrité}~: empreinte de chaque fichier,
+          vérifiée et consignée (Chapitre~\ref{chap:preuve}).
+    \item \textbf{Documenter la provenance}~: lettre d'extraction (source,
+          date, requête, paramètres), papiers de travail, observation.
+    \item \textbf{Tenir le registre}~: chaque remise, chaque accès, avec la
+          date, la personne et l'empreinte vérifiée.
+    \item \textbf{Remettre}~: à l'autorité qui le demande, contre récépissé,
+          sans commentaire qualifiant les faits (Chapitre~\ref{chap:droit}).
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxscenario}{Opération LIZBIZ. Le dossier des ajustements}
+Le ministère public demande les pièces relatives aux ajustements de stock
+de Douala. AUDIX CONSEIL remet l'extraction PT-17 et son empreinte, la
+lettre d'extraction, le papier de travail du test et l'observation, avec
+un registre qui retrace chaque accès depuis l'extraction. Il ne remet pas
+le brouillon de l'auditeur junior qui parlait de « fraude »~: ce n'est
+pas une pièce de la mission, et il qualifiait les faits sans en avoir
+le droit.
+\end{boxscenario}
+
+\begin{boxinfo}
+\textbf{Et si l'autorité demande tout~?} La remise relève d'une décision
+juridique, prise avec le conseil du cabinet~: l'auditeur ne choisit pas
+seul ce qu'il retient. Le principe du cours est de documenter précisément
+ce qui est remis, ce qui ne l'est pas et pourquoi, pour que la décision
+puisse être revue.
+\end{boxinfo}
+
+% ============================================================================
+\section{Auditeur, Enquêteur, Expert}
+\label{sec:c29-roles}
+% ============================================================================
+
+\begin{tableaucours}{L{2.6cm}L{3.6cm}L{3.0cm}L{3.0cm}}{%
+    \tableauHeader{Rôle} &
+    \tableauHeader{Mission} &
+    \tableauHeader{Mandant} &
+    \tableauHeader{Pouvoirs}
+}
+Auditeur & Évaluer et conclure sur un objet, selon des critères & Le
+commanditaire de la mission & Ceux de la lettre de mission \\
+Enquêteur & Rechercher et constater les infractions & L'autorité
+judiciaire & Ceux du code de procédure pénale et de la loi
+n°~2010/012 \\
+Expert judiciaire & Répondre aux questions techniques du juge & Le juge &
+Ceux que lui donne la décision qui le désigne \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~29.3. Trois rôles distincts}\end{center}
+
+Une même personne peut exercer ces rôles à des moments différents, jamais
+dans la même affaire sans que la procédure le permette~: un auditeur qui
+deviendrait l'expert judiciaire d'un dossier qu'il a audité poserait un
+problème d'indépendance (Chapitre~\ref{chap:deontologie}). L'investigation
+numérique proprement dite (acquisition de supports, analyse de mémoire,
+reconstitution de chronologies) fait l'objet des UE~SEC4031 et SEC4052.
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Construire un dossier qui pourra servir}
+\begin{enumerate}
+    \item Calculer l'empreinte de toute extraction à la réception, et la
+          noter dans la lettre d'extraction.
+    \item Travailler sur des copies~; sceller l'original.
+    \item Tenir un registre des accès dès qu'un constat touche à une
+          irrégularité possible.
+    \item Séparer constatation et analyse, sans qualification pénale.
+    \item Se retirer de l'enquête~: remettre, ne pas enquêter.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Organiser la réponse aux autorités.} Le responsable de la
+conformité désigne qui reçoit les demandes des autorités, qui décide de la
+remise (avec le conseil juridique), et comment elle est tracée. Une
+demande reçue par un agent isolé, sans procédure, est un risque pour
+l'organisation et pour la preuve.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'axiome d'opposabilité d'A0 trouve ici
+son épreuve la plus dure~: une partie qui a intérêt à écarter la pièce, et
+un juge qui en apprécie la valeur~\cite{minka2026auditologie}. La
+discipline de l'audit (empreinte, provenance, séparation des faits et de
+l'analyse) prépare à cette épreuve, sans dispenser des règles propres à la
+procédure.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{La preuve judiciaire} ajoute à la preuve d'audit la
+          recevabilité, la provenance établie et la discussion par une
+          partie adverse.
+    \item \textbf{L'ISO/IEC~27037}~: identification, collecte, acquisition,
+          préservation.
+    \item \textbf{La chaîne de conservation} trace chaque accès et chaque
+          remise~; une brèche peut faire écarter la pièce.
+    \item \textbf{La loi n°~2010/012} confie l'enquête aux officiers de
+          police judiciaire et aux agents habilités~; l'auditeur répond dans
+          le cadre de la procédure, avec un conseil juridique.
+    \item \textbf{L'auditeur préserve et remet, il n'enquête pas}~;
+          l'expert judiciaire répond au juge, dans une autre mission.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer preuve d'audit
+et preuve judiciaire~; nommer les quatre étapes de l'ISO/IEC~27037~; tenir
+un registre de conservation~; citer les articles~52 et~53~; remettre un
+dossier en cinq étapes~; distinguer auditeur, enquêteur et expert.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.1. Audit ou justice~? \niveaubase}]
+Pour chaque pièce, dites si elle suffit pour une conclusion d'audit, et ce
+qu'il lui manque pour une procédure judiciaire~: (a) une extraction reçue
+par courriel, avec une empreinte calculée trois jours plus tard~; (b) une
+capture d'écran d'un journal~; (c) une extraction faite devant l'auditeur,
+avec lettre d'extraction et empreinte immédiate.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.2. Les étapes \niveaubase}]
+Rangez dans les étapes de l'ISO/IEC~27037~: (a) calculer l'empreinte d'une
+copie~; (b) repérer qu'un serveur de messagerie contient des échanges
+utiles~; (c) placer l'original sur un support scellé~; (d) emporter un
+ordinateur portable sous scellé.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.3. Le registre \niveaumoyen}]
+Rédigez les cinq premières lignes du registre de conservation de
+l'extraction PT-17, de son acquisition à sa remise au ministère public.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.4. Une brèche \niveaumoyen}]
+L'auditeur junior a ouvert l'original de PT-17 dans un tableur pour
+« vérifier une ligne », puis l'a refermé sans l'enregistrer. Le registre
+n'en dit rien. Quelles conséquences, et que faire maintenant~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.5. Ce qu'on ne remet pas \niveaumoyen}]
+Justifiez, pièce par pièce, la remise ou non~: le papier de travail du
+test~; le brouillon qui parle de « fraude »~; les courriels internes de
+l'équipe~; l'observation après contradictoire~; la note au commanditaire du
+12~juin.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.6. Article 52 \niveaumoyen}]
+Un agent se présente au cabinet et demande « tous les documents » sur
+LiZbiZ, sans écrit. Que vérifie l'associé avant de répondre, au regard de
+l'article~52 et de la procédure~? Que consigne-t-il~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.7. Trois rôles \niveaubase}]
+M.~BEYALA est sollicité pour être expert judiciaire dans l'affaire LiZbiZ.
+Peut-il accepter~? Justifiez par le Tableau~29.3 et le
+Chapitre~\ref{chap:deontologie}.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.8. Un dossier qui servira \niveaumoyen}]
+Pour l'audit de la BANQUE SANAGA, Mme~EKAMBI découvre qu'un agent a modifié
+un virement après sa validation. Que fait-elle, dès cet instant, pour que
+ses pièces puissent servir si une plainte est déposée~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.9. La défense attaque \niveauexpert}]
+L'avocat de la défense soutient que l'extraction PT-17 a pu être modifiée,
+puisqu'elle a été produite par l'entreprise elle-même. Rédigez la réponse
+que permettent les pièces du dossier d'AUDIX CONSEIL, et dites ce qui la
+renforcerait.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~29.10. Une procédure interne \niveauexpert}]
+Rédigez pour AUDIX CONSEIL une procédure interne d'une page~: « Que faire
+quand une mission révèle des indices d'infraction~? », de la détection à la
+remise, en distinguant les rôles de l'auditeur, du chef de mission, de
+l'associé et du conseil juridique.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item ISO/IEC~27037:2012~\cite{iso27037_2012}.
+    \item Loi n°~2010/012~\cite{loi2010012}, articles~52 à~59.
+    \item Les UE~SEC4031 (Introduction à l'investigation numérique) et
+          SEC4052 (Investigation numérique avancée) de l'ENSPY.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~\ref{part:avance} a montré les défis de
+l'audit d'aujourd'hui. La Partie~\ref{part:recherche} revient aux
+fondements~: le programme de recherche de l'auditologie, puis la mesure de
+l'incertitude et de la stratégie.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C23
+Chapitre 23 : Auditer la production et la continuité
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel sous-domaine couvre les sauvegardes et les restaurations ?
+      a) PX.1
+      b) PX.2
+      c) PX.3
+      d) PX.4
+
+ 2. Quel objectif de COBIT 2019 couvre les demandes de service et les incidents ?
+      a) DSS01
+      b) DSS04
+      c) DSS02
+      d) BAI09
+
+ 3. À quel sous-domaine appartient l'inventaire des licences ?
+      a) PX.4
+      b) PX.1
+      c) PX.3
+      d) PX.5
+
+ 4. Que prouve un journal de sauvegarde ?
+      a) Qu'on sait restaurer
+      b) Que la copie est complète
+      c) Que le RTO est tenu
+      d) Qu'une copie a été écrite
+
+ 5. Sans test de restauration, comment coter « on sait restaurer » ?
+      a) OUI
+      b) NEK
+      c) NON
+      d) Non applicable
+
+ 6. Selon le guide du CHAI, sur quoi l'auditeur des sauvegardes doit-il se focaliser ?
+      a) La marque des supports
+      b) Le coût des sauvegardes
+      c) La restauration
+      d) La vitesse du réseau
+
+ 7. Comment le RTO doit-il se situer par rapport à la DMIA ?
+      a) Il lui est inférieur
+      b) Il lui est supérieur
+      c) Il est égal au RPO
+      d) Il est fixé par le prestataire
+
+ 8. Qu'impose un RPO de 15 minutes ?
+      a) Un test annuel
+      b) Une restauration trimestrielle
+      c) Un site de secours froid
+      d) Une réplication ou une sauvegarde au moins toutes les 15 minutes
+
+ 9. Scénario. Quel est le RTO du système central de la BANQUE SANAGA ?
+      a) 8 heures
+      b) 4 heures
+      c) 15 minutes
+      d) 72,5 heures
+
+10. Scénario. Combien de temps le service a-t-il été indisponible lors de la panne de mars 2026 ?
+      a) 4 heures
+      b) 8 heures
+      c) 72,5 heures
+      d) 48 heures
+
+11. Scénario. Qu'en est-il du plan de continuité de la BANQUE SANAGA ?
+      a) Approuvé en 2022, jamais testé
+      b) Testé chaque année
+      c) Inexistant
+      d) Testé en 2025
+
+12. Scénario. Qu'hébergeait le site de secours de la banque ?
+      a) Rien
+      b) La version en production
+      c) Les données de 2025
+      d) L'ancien système central
+
+13. Scénario. Quel est le taux de réussite des sauvegardes du premier trimestre 2026 ?
+      a) 98 %
+      b) 93 %
+      c) 84 %
+      d) 90 %
+
+14. Scénario. Comment les dix contrôles de continuité sont-ils cotés ?
+      a) 7 / 2 / 1
+      b) 4 / 3 / 1
+      c) 2 / 7 / 1
+      d) 8 / 9 / 3
+
+15. Lors d'un test de restauration auquel il assiste, qui choisit la sauvegarde à restaurer ?
+      a) L'auditeur
+      b) L'exploitant
+      c) Le prestataire
+      d) Le directeur général
+
+16. Qu'externalise-t-on en confiant une activité à un prestataire ?
+      a) La responsabilité
+      b) Le risque
+      c) La conformité
+      d) L'activité, mais pas sa responsabilité
+
+17. Quelle clause permet à l'organisation et à son régulateur d'auditer le prestataire ?
+      a) La réversibilité
+      b) Le droit d'audit
+      c) Les niveaux de service
+      d) La confidentialité
+
+18. Dans le nuage, que devient un contrôle que chacun croit à la charge de l'autre ?
+      a) Il est doublement assuré
+      b) Il est assuré par le fournisseur
+      c) Il n'est assuré par personne
+      d) Il est assuré par le client
+
+19. Scénario. Comment les huit clauses du contrat de DIGICORE AFRIQUE sont-elles cotées ?
+      a) 4 / 3 / 1
+      b) 8 / 0 / 0
+      c) 2 / 7 / 1
+      d) 3 / 4 / 1
+
+20. Quel rapport permet de conclure sur l'efficacité des contrôles d'un prestataire sur une période ?
+      a) ISAE 3402 de type 1
+      b) Un certificat ISO/IEC 27001
+      c) Un contrat de niveau de service
+      d) ISAE 3402 de type 2
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un journal qui affiche « succès » chaque nuit suffit à conclure que les sauvegardes sont efficaces.
+      Vrai / Faux
+
+22. Un plan de continuité se met à jour à chaque changement majeur.
+      Vrai / Faux
+
+23. Un exercice sur table prouve que le RTO est tenu.
+      Vrai / Faux
+
+24. Une bascule réelle sur le site de secours prouve que le RTO et le RPO sont tenus.
+      Vrai / Faux
+
+25. Les supports de sauvegarde de la BANQUE SANAGA sont externalisés.
+      Vrai / Faux
+
+26. La BANQUE SANAGA a réalisé les quatre tests de restauration prévus en 2025.
+      Vrai / Faux
+
+27. Les contrôles complémentaires d'un rapport ISAE 3402 restent à tester chez le client.
+      Vrai / Faux
+
+28. La localisation des données d'un service en nuage est sans rapport avec le droit des données personnelles.
+      Vrai / Faux
+
+29. Sans clause de réversibilité, changer de prestataire est sans risque.
+      Vrai / Faux
+
+30. Le domaine E de LiZbiZ, opaque, appelle d'abord la recherche des preuves manquantes.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. L'objectif de COBIT 2019 consacré à la continuité est DSS______.
+
+32. La norme des systèmes de management de la continuité est l'ISO ______.
+
+33. La durée maximale d'interruption admissible a pour sigle ______.
+
+34. L'objectif de durée de reprise a pour sigle anglais ______.
+
+35. La perte de données maximale admissible a pour sigle anglais ______.
+
+36. Le RTO du système central de la BANQUE SANAGA est de ______ heures.
+
+37. Sur les 90 jours du premier trimestre 2026, ______ sauvegardes ont réussi.
+
+38. Une sauvegarde jamais restaurée est une ______, pas une sauvegarde.
+
+39. Dans un service en nuage, les responsabilités sont ______.
+
+40. Le prestataire de maintenance du système central est DIGICORE ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

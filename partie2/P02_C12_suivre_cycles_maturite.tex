@@ -1,0 +1,561 @@
+% ============================================================================
+% Fichier  : partie2/P02_C12_suivre_cycles_maturite.tex
+% Titre    : Suivre : Recommandations, Cycles et Maturité
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Base : ACSI C09 (D_KL, maturité CMMI, seuils 0,90/0,75/0,55/0,35, niveau
+% indéterminé si U ≥ 0,20) et ACSI C18 (second cycle de LiZbiZ en novembre
+% 2026 : A 17/2/1, B 9/2/1, C 7/3/2 D_KL ≈ 1,37, D 18/1/1 D_KL ≈ 0,26,
+% E 8/4/8, U 0,30 → 0,40, D_KL ≈ 0,05, nouveau prestataire à Garoua et
+% Bafoussam depuis septembre 2026).
+% Valeurs de premier cycle retenues pour A et E : A 16/3/1, E 8/6/6
+% (cohérentes avec µ, U, H d'ACSI C09).
+% Sources : A1 (D_KL entre cycles) ; Kullback et Leibler (1951) ; Cover et
+% Thomas (2006) ; lissage de Laplace (ajout d'une unité) ; CMMI pour
+% l'échelle à cinq niveaux ; IIA (2024) pour le suivi des recommandations.
+% Calculs du 06/11/2026 (script de vérification) : D_KL brutes A 0,016,
+% B 0,030, C 1,37, D 0,256, E 0,049 ; lissées (+1) A 0,010, B 0,018,
+% C 0,794, D 0,175, E 0,036.
+% Décision du 06/11/2026 : aucun renvoi à des travaux non publiés (A2).
+% Corrigés : corriges/Corr_C12.tex.
+% ============================================================================
+
+\chapter[Suivre]{Suivre : Recommandations, Cycles et Maturité}
+\label{chap:suivi}
+\chaptermark{Suivre, cycles, maturité}
+
+\epigraph{%
+    « Une recommandation non suivie\\
+    est une assurance perdue. »%
+}{Règle du suivi}
+
+\niveauChapitre{Intermédiaire}{%
+    Maîtrise du Chapitre~\ref{chap:conclure} (mesures, quadrant,
+    observation, rapport)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Organiser le suivi des recommandations~: états, preuves,
+          indicateurs, audit de suivi.
+    \item Traiter une recommandation refusée comme un risque accepté.
+    \item Comparer deux cycles d'audit par la divergence de
+          Kullback-Leibler, connaître ses propriétés et la lisser lorsqu'une
+          réponse est absente d'un cycle.
+    \item Lire la trajectoire d'un domaine dans le quadrant, et reconnaître
+          une régression de la connaissance.
+    \item Convertir un taux de conformité en niveau de maturité, et le
+          distinguer de la capacité COBIT.
+    \item Conduire le second cycle d'audit de LiZbiZ.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : six mois après, qu'est-ce qui a changé~?}
+% ============================================================================
+
+En novembre~2026, AUDIX CONSEIL revient chez LiZbiZ. Le directeur général
+affirme que « tout a été corrigé ». Le tableau de suivi de Mme~NKENG
+indique 14 recommandations sur 18 « mises en œuvre ». M.~BEYALA a deux
+questions~: ces recommandations sont-elles réellement mises en œuvre, et le
+système a-t-il changé~? La première relève du suivi~; la seconde, de la
+comparaison des cycles.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Le suivi des recommandations (section~\ref{sec:c12-suivi}).
+    \item Comparer deux cycles~: la divergence de Kullback-Leibler
+          (section~\ref{sec:c12-dkl}).
+    \item Le lissage (section~\ref{sec:c12-lissage}).
+    \item Le second cycle de LiZbiZ (section~\ref{sec:c12-lizbiz}).
+    \item La maturité (section~\ref{sec:c12-maturite}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Le Suivi des Recommandations}
+\label{sec:c12-suivi}
+% ============================================================================
+
+\subsection{Le tableau de suivi}
+
+Le tableau de suivi indique, pour chaque recommandation, sa priorité, son
+responsable, son échéance, son état et la pièce qui prouve sa mise en
+œuvre. Les Normes mondiales de l'IIA font du suivi une responsabilité de la
+fonction d'audit, qui doit s'assurer que les mesures ont été prises ou que
+la direction a accepté le risque de ne pas agir~\cite{iia2024gias}.
+
+\begin{tableaucours}{L{2.8cm}L{5.0cm}L{4.4cm}}{%
+    \tableauHeader{État} &
+    \tableauHeader{Définition} &
+    \tableauHeader{Preuve exigée}
+}
+Non commencée & Aucune action engagée & Aucune \\
+En cours & Action engagée, non achevée & Plan daté, premiers livrables \\
+Déclarée mise en œuvre & Le responsable affirme l'avoir achevée & Sa
+déclaration écrite \\
+Vérifiée & L'auditeur a constaté la mise en œuvre et son effet & Test de
+l'auditeur, papier de travail \\
+Risque accepté & La direction renonce à agir, par écrit & Décision de
+l'instance compétente \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~12.1. Les états d'une
+recommandation}\end{center}
+
+\begin{boxalert}
+\textbf{Violation typique.} Compter comme « mises en œuvre » les
+recommandations que leurs responsables déclarent achevées.
+
+\smallskip
+\textbf{Règle~:} une déclaration de mise en œuvre est une déclaration~: elle
+vaut \NEK{} tant que l'auditeur n'a pas testé. Le tableau distingue
+« déclarée » et « vérifiée ».
+\end{boxalert}
+
+\begin{boxscenario}{Opération LIZBIZ. Le tableau de Mme~NKENG}
+\textbf{Faits.} Sur 18~recommandations, le tableau en donne 14
+« mises en œuvre ». AUDIX CONSEIL teste les 14~: 9 sont vérifiées, 3 sont
+partiellement mises en œuvre (par exemple, la revue trimestrielle des
+comptes a été faite une fois, puis abandonnée), 2 n'ont pas de pièce.
+
+\medskip
+\textbf{Constatation.} Taux de mise en œuvre déclaré~: $14/18 \approx
+78~\%$~; taux vérifié~: $9/18 = 50~\%$.
+
+\medskip
+\textbf{Analyse} (confiance élevée). L'écart de 28~points est l'équivalent,
+pour le suivi, du biais du choix forcé (Chapitre~\ref{chap:preuve})~: une
+déclaration non vérifiée surestime l'avancement.
+\end{boxscenario}
+
+\subsection{L'audit de suivi}
+
+\begin{boxprocedure}
+\textbf{Tester une recommandation déclarée mise en œuvre}
+\begin{enumerate}
+    \item Relire l'observation d'origine~: la cause, pas seulement le
+          symptôme.
+    \item Obtenir la pièce de mise en œuvre (procédure, paramétrage,
+          compte rendu).
+    \item Tester l'efficacité sur la période écoulée depuis la mise en
+          œuvre, comme un contrôle nouveau (Chapitre~\ref{chap:preuve}).
+    \item Vérifier que la cause a disparu~: la recommandation de D.2.1
+          visait la notification des départs, pas seulement la
+          désactivation des cinq comptes.
+    \item Mettre à jour l'état (vérifiée, partielle, non vérifiée) et la
+          cote du contrôle concerné.
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{Une recommandation refusée}
+
+La direction peut refuser une recommandation~: c'est son droit. Mais le
+refus doit être écrit, motivé, et pris par l'instance qui fixe l'appétence
+(Chapitre~\ref{chap:risque}). Il devient une décision d'accepter un risque~;
+il est inscrit au registre et présenté au comité d'audit. L'auditeur ne
+« ferme » pas une recommandation refusée sans cette trace.
+
+% ============================================================================
+\section{Comparer Deux Cycles}
+\label{sec:c12-dkl}
+% ============================================================================
+
+\subsection{Pourquoi le taux de conformité ne suffit pas}
+
+Un audit ne s'arrête pas au rapport~: le système évolue, et la mission
+suivante doit dire s'il s'est amélioré. Le taux de conformité seul peut
+rester stable alors que l'état de connaissance change. Il faut comparer des
+\emph{distributions} de réponses.
+
+\subsection{La divergence de Kullback-Leibler}
+
+\begin{boxdef}
+\termecle{Divergence de Kullback-Leibler}\index{divergence de
+Kullback-Leibler}~: pour deux distributions $p$ (cycle $t+1$) et $q$ (cycle
+$t$) sur les réponses $\{\OUI, \NON, \NEK\}$~\cite{kullback1951,minka2026nek},
+\[
+    D_{\mathrm{KL}}(p \,\|\, q) =
+    \sum_{m} p(m) \log_2 \frac{p(m)}{q(m)}.
+\]
+\end{boxdef}
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Propriété} &
+    \tableauHeader{Conséquence pour l'auditeur}
+}
+Positive ou nulle & $D_{\mathrm{KL}} \ge 0$, nulle si et seulement si les
+deux distributions sont identiques (inégalité de
+Gibbs~\cite{cover2006elements}) \\
+Non symétrique & $D_{\mathrm{KL}}(p\|q) \ne D_{\mathrm{KL}}(q\|p)$ en
+général~: le cours mesure toujours le nouveau cycle par rapport à
+l'ancien \\
+Indéfinie si $q(m) = 0 < p(m)$ & Une réponse absente au premier cycle et
+présente au second rend la divergence infinie~: on lisse
+(section~\ref{sec:c12-lissage}) \\
+En bits & Avec $\log_2$, elle s'exprime en bits, comme l'entropie \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~12.2. Les propriétés de la
+divergence}\end{center}
+
+\begin{boxscenario}{Opération LIZBIZ. Le domaine D six mois plus tard}
+\textbf{Faits.} En mai~2026, le domaine~D donnait 13~\OUI{}, 2~\NON{},
+5~\NEK{}. En novembre~2026, après les corrections, les mêmes questions donnent
+18~\OUI{}, 1~\NON{}, 1~\NEK{}.
+
+\medskip
+\textbf{Calcul.} $H$ passe d'environ 1,24 à 0,57~bit, ce qui rejoint la valeur
+d'environ 0,6~bit que rapporte l'article A0. La divergence entre les deux
+cycles vaut
+\[
+    0{,}90\log_2\frac{0{,}90}{0{,}65} + 0{,}05\log_2\frac{0{,}05}{0{,}10} +
+    0{,}05\log_2\frac{0{,}05}{0{,}25} \approx 0{,}423 - 0{,}050 - 0{,}116
+    \approx 0{,}26~\text{bit}.
+\]
+
+\textbf{Analyse} (confiance moyenne). Le domaine a changé de région~: de la
+conformité opaque à la conformité claire. La divergence le confirme.
+\end{boxscenario}
+
+\begin{boiteRemarque}{Et si la conformité ne bouge pas~?}
+Supposons une question dont la conformité reste à 0,60 sur deux cycles,
+mais dont les \NEK{} passent de 0,30 à 0,05 au profit des \NON{} (de 0,10
+à 0,35). Le taux de conformité ne voit rien~; la divergence, elle, vaut
+environ 0,50~bit. L'organisation sait désormais ce qu'elle ignorait~:
+c'est un progrès réel, même s'il révèle des non-conformités.
+\end{boiteRemarque}
+
+\begin{boxoutils}{Calculer la divergence}
+\begin{lstlisting}[language=Python]
+from math import log2
+def dkl(nouveau, ancien, lissage=0):
+    a = [x + lissage for x in nouveau]
+    b = [x + lissage for x in ancien]
+    p = [x / sum(a) for x in a]
+    q = [x / sum(b) for x in b]
+    return sum(pi * log2(pi / qi) for pi, qi in zip(p, q) if pi > 0)
+
+print(round(dkl([18, 1, 1], [13, 2, 5]), 3))     # 0.256
+print(round(dkl([18, 1, 1], [13, 2, 5], 1), 3))  # 0.175 (lissée)
+\end{lstlisting}
+\end{boxoutils}
+
+% ============================================================================
+\section{Le Lissage}
+\label{sec:c12-lissage}
+% ============================================================================
+
+\subsection{Le problème du zéro}
+
+Au premier cycle, une question a reçu 8~\OUI{}, 0~\NON{}, 4~\NEK{}~; au
+second, 10~\OUI{}, 2~\NON{}, 0~\NEK{}. Le terme des \NON{} vaut
+$p(\NON)\log_2(p(\NON)/0)$~: la divergence est infinie. Ce n'est pas que le
+changement soit infini~; c'est que l'échantillon du premier cycle, petit,
+n'a observé aucun \NON{} alors qu'il était possible.
+
+\subsection{Le lissage de Laplace}
+
+On ajoute une unité fictive à chaque réponse des deux cycles avant de
+calculer les proportions~: $(8+1, 0+1, 4+1)$ et $(10+1, 2+1, 0+1)$. La
+divergence devient finie (environ 0,38~bit). Le lissage réduit un peu toutes
+les divergences (D passe de 0,256 à 0,175~bit), d'autant plus que les
+effectifs sont petits~; c'est le prix de la comparabilité.
+
+\begin{boxalert}
+\textbf{Violation typique.} Lisser certaines comparaisons et pas d'autres,
+puis classer les domaines par divergence.
+
+\smallskip
+\textbf{Règle~:} on applique le même lissage à toutes les comparaisons
+d'une mission, et on l'écrit dans le plan d'audit (onglet PARAMÈTRES du
+classeur O4). Sinon, les divergences ne sont pas comparables.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Second Cycle de LiZbiZ}
+\label{sec:c12-lizbiz}
+% ============================================================================
+
+\begin{boxlecture}{Cinq domaines, deux cycles}
+\begin{tableaucours}{L{2.8cm}cccccc}{%
+    \tableauHeader{Domaine} &
+    \tableauHeader{Mai} & \tableauHeader{Nov.} &
+    \tableauHeader{$U$ mai} & \tableauHeader{$U$ nov.} &
+    \tableauHeader{$D_{\mathrm{KL}}$} & \tableauHeader{Lissée}
+}
+A. Gouvernance & 16/3/1 & 17/2/1 & 0,05 & 0,05 & 0,016 & 0,010 \\
+B. Sauvegardes & 8/3/1 & 9/2/1 & 0,08 & 0,08 & 0,030 & 0,018 \\
+C. Stocks & 1/10/1 & 7/3/2 & 0,08 & 0,17 & 1,370 & 0,794 \\
+D. Accès & 13/2/5 & 18/1/1 & 0,25 & 0,05 & 0,256 & 0,175 \\
+E. Exploitation & 8/6/6 & 8/4/8 & 0,30 & 0,40 & 0,049 & 0,036 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Constatations.}
+\begin{itemize}
+    \item \emph{C} a le plus changé~: de la non-conformité claire
+          ($\mu = 0{,}08$) à la conformité claire ($\mu \approx 0{,}58$,
+          $U \approx 0{,}17$). Les correctifs des stocks ont produit un effet
+          mesurable.
+    \item \emph{D} passe de la conformité opaque à la conformité claire.
+    \item \emph{E} a peu changé en divergence (0,05), mais son
+          incertitude a \emph{augmenté}~: $U$ passe de 0,30 à 0,40. Un
+          nouveau prestataire assure l'exploitation à Garoua et à Bafoussam
+          depuis septembre~2026, et les responsables de site ne savent plus
+          ce qu'il fait.
+    \item \emph{A} et \emph{B} sont stables.
+\end{itemize}
+
+\medskip
+\textbf{Analyse} (confiance moyenne). La divergence faible de E ne signifie
+pas « rien n'a changé »~: elle masque une \textbf{régression de la
+connaissance}, que seul $U$ montre. On ne lit pas plus $D_{\mathrm{KL}}$
+seule qu'on ne lit $H$ seule.
+\end{boxlecture}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\fill[green!18] (3,0) rectangle (6,2);
+\fill[red!15] (0,0) rectangle (3,2);
+\fill[orange!25] (3,2) rectangle (6,5);
+\fill[orange!15] (0,2) rectangle (3,5);
+\draw[thick, color=CouleurPrimaire] (0,0) rectangle (6,5);
+\draw[dashed] (3,0) -- (3,5); \draw[dashed] (0,2) -- (6,2);
+\draw[-{Stealth}, very thick, CouleurAccent] (0.5,0.8) -- (3.5,1.7) node[above, font=\scriptsize\bfseries] {C};
+\draw[-{Stealth}, very thick, CouleurAccent] (3.9,2.5) -- (5.4,0.5) node[right, font=\scriptsize\bfseries] {D};
+\draw[-{Stealth}, very thick, red!70!black] (2.4,3.0) -- (2.4,4.0) node[above, font=\scriptsize\bfseries] {E};
+\node[font=\small] at (3,-0.5) {Taux de conformité $\mu$ (0 à 1)};
+\node[font=\small, rotate=90] at (-0.5,2.5) {$U \times 10$};
+\end{tikzpicture}
+\end{center}
+\vspace{-0.4em}
+\begin{center}{\small\itshape Figure~12.1. Trajectoires de trois domaines
+entre mai et novembre~2026}\end{center}
+\end{minipage}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Préparer un second cycle}
+\begin{enumerate}
+    \item Reprendre la même décomposition et les mêmes questions~: sans
+          cela, les distributions ne sont pas comparables.
+    \item Interroger autant que possible les mêmes répondants, et noter
+          ceux qui ont changé.
+    \item Fixer le lissage avant le terrain.
+    \item Lire chaque domaine par $\mu$, $U$, $H$ et $D_{\mathrm{KL}}$, et
+          tracer sa trajectoire dans le quadrant.
+    \item Signaler toute hausse de $U$~: c'est une perte de connaissance,
+          souvent due à un changement d'organisation ou de prestataire.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Maturité et Capacité}
+\label{sec:c12-maturite}
+% ============================================================================
+
+Les directions aiment résumer un domaine par un niveau de 1 à 5. Le cours
+propose une conversion du taux de conformité en niveau de maturité, sur
+l'échelle à cinq niveaux du modèle CMMI. C'est une \textbf{règle
+pédagogique déclarée}, et non une norme.
+
+\begin{tableaucours}{L{2.8cm}cL{3.0cm}L{4.6cm}}{%
+    \tableauHeader{$\mu$} &
+    \tableauHeader{Niveau} &
+    \tableauHeader{Désignation} &
+    \tableauHeader{Descripteur}
+}
+0,90 et plus & 5 & Optimisé & Amélioration continue systématique \\
+0,75 à 0,90 & 4 & Quantitatif & Processus mesurés par des indicateurs \\
+0,55 à 0,75 & 3 & Défini & Processus standardisés et diffusés \\
+0,35 à 0,55 & 2 & Géré & Pratiques documentées et répétables \\
+Moins de 0,35 & 1 & Initial & Pratiques ponctuelles, dépendant des
+personnes \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~12.3. Conversion du taux de conformité
+en niveau de maturité (convention du cours)}\end{center}
+
+Deux règles encadrent cette conversion~:
+\begin{itemize}
+    \item \textbf{Pas de niveau pour un domaine opaque.} Si $U \geq 0{,}20$, le
+          niveau est \emph{indéterminé}~: un niveau calculé sur des réponses
+          inconnues serait trompeur. En mai, chez LiZbiZ, les domaines D et E
+          n'ont pas de niveau~; A est au niveau~4, B au niveau~3, C au
+          niveau~1. En novembre, D passe au niveau~5, C au niveau~3, A au
+          niveau~4, B au niveau~4 ($\mu = 0{,}75$)~; E reste indéterminé.
+    \item \textbf{Ce n'est pas la capacité COBIT.} Le cours GCI
+          (MSN-2S3-MSI03) évalue la \emph{capacité} d'un processus COBIT par
+          niveaux d'activités, avec l'échelle F/L/P/N et la règle de
+          l'ISO/IEC~33000. Le niveau de maturité de ce cours mesure la
+          conformité constatée d'un domaine. Les deux échelles répondent à des
+          questions différentes et ne se convertissent pas l'une dans l'autre.
+\end{itemize}
+
+\begin{boxalert}
+\textbf{Violation typique.} Annoncer au conseil que « le contrôle d'accès
+est passé du niveau 3 au niveau 5 » sans dire qu'en mai le niveau était
+indéterminé.
+
+\smallskip
+\textbf{Règle~:} une progression de niveau n'a de sens que si les deux
+niveaux sont déterminés. En mai, D était opaque~: on dit qu'il est passé de
+«~indéterminé~» à «~5~».
+\end{boxalert}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Tenir le suivi entre deux audits.} Mme~NKENG distingue désormais,
+dans son tableau, les recommandations « déclarées » et « vérifiées ». Elle
+teste elle-même un échantillon des déclarations chaque trimestre, et
+présente au comité d'audit les deux taux.
+\end{boxmetier}
+
+\begin{boxmetier}{Responsable de la conformité}
+\textbf{Suivre les recommandations à portée légale.} Les recommandations
+liées à la loi n°~2024/017 (protection des données) ou au règlement COBAC
+ont une échéance qui ne dépend pas de la direction. Le responsable de la
+conformité les isole dans le tableau et alerte dès qu'une échéance légale
+est menacée.
+\end{boxmetier}
+
+\begin{boxinfo}
+\textbf{Ce que dit la recherche.} L'article A1~\cite{minka2026nek} propose la
+divergence de Kullback-Leibler pour comparer deux cycles d'audit, et l'axiome
+d'individuation temporelle d'A0~\cite{minka2026auditologie} pose que l'état
+du système à un cycle dépend des interventions du cycle précédent. L'étude
+statistique de trajectoires sur de nombreux cycles reste ouverte~; ce
+chapitre se limite à la comparaison de deux cycles, qui repose sur des
+résultats établis~\cite{kullback1951,cover2006elements}.
+\end{boxinfo}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Le suivi} distingue les recommandations déclarées et
+          vérifiées~; une déclaration vaut \NEK{} tant qu'elle n'est pas
+          testée~; un refus est un risque accepté par écrit.
+    \item \textbf{La divergence de Kullback-Leibler} compare deux cycles~;
+          elle est positive, non symétrique, et infinie si une réponse
+          absente apparaît~: on lisse, toujours de la même façon.
+    \item \textbf{La trajectoire dans le quadrant} dit plus qu'un chiffre~:
+          une divergence faible peut cacher une régression de la
+          connaissance, que seul $U$ révèle.
+    \item \textbf{Le niveau de maturité} est une convention déclarée,
+          indéterminé pour un domaine opaque, et distinct de la capacité
+          COBIT.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: distinguer « déclarée »
+et « vérifiée »~; calculer une divergence, avec et sans lissage~; expliquer
+pourquoi elle peut être infinie~; tracer une trajectoire dans le quadrant~;
+attribuer un niveau de maturité ou le déclarer indéterminé.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.1. Les états \niveaubase}]
+Attribuez un état du Tableau~12.1 à chacune des recommandations suivantes~:
+(a) la DRH écrit que la notification des départs est en place~; (b)
+l'auditeur a testé la notification sur les 12 départs d'octobre, tous
+traités sous 48~heures~; (c) le conseil a décidé par écrit de ne pas
+financer le site de secours de Garoua~; (d) aucun document n'existe sur
+l'inventaire tournant.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.2. Les deux taux \niveaubase}]
+Sur 25~recommandations, 20 sont déclarées mises en œuvre~; l'auditeur en
+vérifie 12, en trouve 4 partielles et 4 sans pièce. Calculez les deux taux
+et rédigez la phrase du rapport de suivi.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.3. Une divergence \niveaumoyen}]
+Sur le domaine « gestion des changements », l'audit interne de la BANQUE
+SANAGA obtient 8~\OUI{}, 4~\NON{}, 8~\NEK{} en 2026, puis 12~\OUI{},
+6~\NON{}, 2~\NEK{} en 2027.
+\begin{enumerate}[(a)]
+    \item Calculez $\mu$, $U$ et $H$ pour les deux cycles, et situez le
+          domaine dans le quadrant à chaque cycle.
+    \item Calculez la divergence de Kullback-Leibler (posez le calcul).
+    \item Le domaine s'est-il amélioré~? Argumentez sans vous limiter au
+          taux de conformité.
+    \item Quel niveau de maturité attribuer en 2026 et en 2027~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.4. Non symétrique \niveaumoyen}]
+Calculez $D_{\mathrm{KL}}$ du domaine~D dans les deux sens (novembre par
+rapport à mai, et mai par rapport à novembre). Pourquoi le cours fixe-t-il un
+sens~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.5. Le zéro \niveaumoyen}]
+Reprenez l'exemple de la section~\ref{sec:c12-lissage} (8/0/4 puis
+10/2/0). Calculez la divergence lissée (ajout d'une unité) en posant le
+calcul. Que deviendrait-elle avec un lissage de 0,5~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.6. La régression \niveaumoyen}]
+Expliquez au directeur général de LiZbiZ, en cinq lignes, pourquoi le
+domaine~E « n'a pas bougé » selon la divergence mais s'est dégradé selon
+l'auditeur. Quelle recommandation formulez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.7. Constance sans progrès~? \niveaumoyen}]
+Vérifiez par le calcul l'exemple de la remarque « Et si la conformité ne
+bouge pas~? » ($0{,}60/0{,}10/0{,}30$ puis $0{,}60/0{,}35/0{,}05$).
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.8. La maturité \niveaubase}]
+Attribuez un niveau de maturité, ou déclarez-le indéterminé, pour~: (a)
+$\mu = 0{,}82$, $U = 0{,}10$~; (b) $\mu = 0{,}82$, $U = 0{,}25$~; (c)
+$\mu = 0{,}30$, $U = 0{,}05$. Pourquoi (b) n'a-t-il pas de niveau, alors que
+sa conformité est la même que (a)~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.9. L'audit de suivi \niveauexpert}]
+La recommandation « revue trimestrielle des comptes à privilèges » est
+déclarée mise en œuvre. Rédigez le papier de travail de l'audit de suivi~:
+objectif, période, test, preuve, critère de vérification, cote, et ce qui
+change dans la fiche D.4.2.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~12.10. Le rapport du second cycle \niveauexpert}]
+Rédigez la synthèse d'une page du rapport du second cycle de LiZbiZ~:
+évolution par domaine (région, niveau de maturité, divergence), taux de
+mise en œuvre vérifié, signalement de la régression du domaine~E, nouvelles
+priorités.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item S.~Kullback et R.~Leibler, \textit{On Information and
+          Sufficiency}~\cite{kullback1951}~: l'article qui définit la
+          divergence.
+    \item T.~Cover et J.~Thomas, \textit{Elements of Information
+          Theory}~\cite{cover2006elements}~: les propriétés de la
+          divergence, démontrées.
+    \item IIA, Normes mondiales d'audit interne~\cite{iia2024gias}~: le
+          suivi des recommandations.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} La Partie~\ref{part:methode} a donné la méthode, de la
+préparation au suivi. La Partie~\ref{part:normatif} en présente le cadre~:
+les normes professionnelles qui l'encadrent, les référentiels qui lui
+fournissent ses critères, le droit camerounais et africain, et la
+déontologie. Le Chapitre~\ref{chap:normes} ouvre cette partie.
+\end{boxinfo}

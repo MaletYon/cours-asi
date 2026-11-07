@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C21
+Chapitre 21 : Auditer la sécurité technique de l'infrastructure
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. À qui le rapport de l'audit de sécurité légal est-il adressé ?
+      a) Il est publié par l'ANTIC
+      b) Au Ministre chargé des Télécommunications
+      c) Au directeur général
+      d) À l'organisme de certification
+
+ 2. Quelle norme guide l'auditeur d'un SMSI clause par clause ?
+      a) ISO/IEC 27001
+      b) ISO/IEC 27002
+      c) ISO/IEC 27007
+      d) ISO/IEC 27006
+
+ 3. Quelle clause de l'ISO/IEC 27001 prévoit l'audit interne du SMSI ?
+      a) 9.2
+      b) 4.1
+      c) 6.1
+      d) 10.2
+
+ 4. Comment coter une mesure retenue dans la déclaration d'applicabilité, sans preuve de fonctionnement ?
+      a) OUI
+      b) NON
+      c) Non applicable
+      d) NEK
+
+ 5. Sur quoi porte la clause 4 de l'ISO/IEC 27001 ?
+      a) L'amélioration
+      b) Le contexte de l'organisation
+      c) Le support
+      d) Le leadership
+
+ 6. Quel sous-domaine couvre les comptes par défaut ?
+      a) IN.1
+      b) IN.3
+      c) IN.2
+      d) IN.5
+
+ 7. Quel sous-domaine couvre la segmentation entre zones ?
+      a) IN.1
+      b) IN.2
+      c) IN.4
+      d) IN.5
+
+ 8. Les preuves du sous-domaine IN.5 rejoignent :
+      a) L'article 13 de la loi
+      b) L'article 69 de la loi
+      c) Le sous-domaine D.2
+      d) L'article 29 de la loi et le sous-domaine D.5
+
+ 9. Comment prouve-t-on la segmentation ?
+      a) En comparant deux audits
+      b) En comparant les flux autorisés et les flux observés
+      c) En comparant deux centres
+      d) En comparant deux normes
+
+10. Pourquoi un flux ouvert des postes vers la base de données (port 1433) est-il grave ?
+      a) Il ralentit le réseau
+      b) Il coûte cher
+      c) Il permet de contourner l'application et d'attaquer la base
+      d) Il est hors périmètre
+
+11. Scénario. Quels centres de LiZbiZ n'appliquent pratiquement pas la politique ?
+      a) Garoua et Bafoussam
+      b) Douala et Yaoundé
+      c) Douala et Garoua
+      d) Yaoundé et Bafoussam
+
+12. Scénario. Comment l'ensemble des quatre centres est-il coté ?
+      a) 4 / 1 / 0
+      b) 0 / 4 / 1
+      c) 14 / 6 / 0
+      d) 8 / 9 / 3
+
+13. Scénario. Que vaut U pour l'ensemble des quatre centres ?
+      a) 0,40
+      b) 0,15
+      c) 0,45
+      d) 0,25
+
+14. Pourquoi coter par site avant d'agréger ?
+      a) C'est plus rapide
+      b) La loi l'exige
+      c) Une moyenne peut cacher des sites hors politique
+      d) Pour réduire U
+
+15. Quel article de la loi n° 2010/012 réprime l'accès sans droit à un système d'information ?
+      a) L'article 69
+      b) L'article 61
+      c) L'article 29
+      d) L'article 13
+
+16. Quel article réprime l'attaque d'une ressource par saturation ?
+      a) L'article 69
+      b) L'article 32
+      c) L'article 14
+      d) L'article 70
+
+17. Qui signe la note d'autorisation d'un test technique ?
+      a) L'auditeur
+      b) Une personne habilitée à engager l'organisation sur les systèmes visés, avec l'accord de l'hébergeur
+      c) Un stagiaire de la DSI
+      d) L'ANTIC
+
+18. Que faire des tests de déni de service ?
+      a) Les autoriser toujours
+      b) Les rendre obligatoires
+      c) Les exclure, sauf autorisation expresse et environnement dédié
+      d) Les réaliser la nuit
+
+19. Comment conserver les sorties des outils de test ?
+      a) Brutes, horodatées, avec une empreinte
+      b) Résumées
+      c) Imprimées seulement
+      d) Supprimées après lecture
+
+20. Lequel de ces protocoles d'administration circule en clair ?
+      a) SSH
+      b) HTTPS
+      c) SFTP
+      d) Telnet
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. L'audit d'un SMSI vérifie que l'organisation gère sa sécurité ; l'audit technique vérifie que les mesures sont en place.
+      Vrai / Faux
+
+22. Un scan lancé la veille de la signature de la note d'autorisation est acceptable s'il est rapide.
+      Vrai / Faux
+
+23. Un constat obtenu sans droit est opposable.
+      Vrai / Faux
+
+24. Le RSSI prévient les équipes de surveillance avant un scan autorisé.
+      Vrai / Faux
+
+25. À Garoua et à Bafoussam, l'état des correctifs a pu être établi.
+      Vrai / Faux
+
+26. La déclaration d'applicabilité justifie chaque exclusion de mesure.
+      Vrai / Faux
+
+27. Les exports de configuration du LAB-08 proviennent de scans réels.
+      Vrai / Faux
+
+28. Selon le guide du CHAI, le dispositif de sécurité doit être justifié par les actifs qu'il protège.
+      Vrai / Faux
+
+29. Un flux ouvert de la DMZ vers les postes permettrait à un serveur web compromis d'atteindre les utilisateurs.
+      Vrai / Faux
+
+30. Un certificat ISO/IEC 27001 rend inutile l'audit technique.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le système de management de la sécurité de l'information a pour sigle ______.
+
+32. L'entité choisit ses mesures dans sa déclaration d'______.
+
+33. Le protocole Telnet utilise le port ______.
+
+34. Le port de base de données observé entre les postes et l'applicatif est le ______.
+
+35. La régularité des audits de sécurité légaux est contrôlée par l'______.
+
+36. Aucun test technique ne commence avant la signature de la note d'______.
+
+37. La zone démilitarisée a pour sigle ______.
+
+38. Le protocole chiffré d'administration à distance est ______.
+
+39. LiZbiZ exploite ______ centres de données.
+
+40. Avant d'agréger les résultats, on cote chaque ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

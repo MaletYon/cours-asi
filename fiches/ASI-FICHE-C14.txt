@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C14
+Chapitre 14 : Les référentiels de contrôle
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Pour conclure à l'efficacité selon le COSO, chaque principe pertinent doit être :
+      a) Documenté et signé
+      b) Présent et fonctionnel
+      c) Audité et certifié
+      d) Connu et accepté
+
+ 2. Un principe pertinent qui n'est pas présent et fonctionnel constitue :
+      a) Une observation mineure
+      b) Un risque résiduel
+      c) Une déficience majeure
+      d) Un NEK
+
+ 3. Scénario. Les 17 principes de la BANQUE SANAGA sont cotés 12 OUI, 3 NON, 2 NEK. Que vaut µ ?
+      a) Environ 0,71
+      b) Environ 0,12
+      c) Environ 0,18
+      d) Environ 0,50
+
+ 4. Scénario. Selon le COSO, le dispositif de la BANQUE SANAGA est :
+      a) Efficace, car µ dépasse 0,5
+      b) Efficace sous réserve
+      c) Indéterminé
+      d) Non efficace
+
+ 5. Combien d'objectifs de gouvernance et de gestion compte COBIT 2019 ?
+      a) 34
+      b) 40
+      c) 37
+      d) 17
+
+ 6. Quel domaine de COBIT 2019 compte quatorze objectifs ?
+      a) EDM
+      b) BAI
+      c) APO
+      d) MEA
+
+ 7. Quel objectif de COBIT 2019 traite de la gestion des changements ?
+      a) BAI06
+      b) DSS05
+      c) APO13
+      d) MEA02
+
+ 8. Quel niveau de COBIT convient le mieux pour un critère d'audit ?
+      a) Le domaine
+      b) L'objectif
+      c) La composante
+      d) La pratique de gestion
+
+ 9. Que comptait COBIT 4.1 ?
+      a) 40 objectifs en 5 domaines
+      b) 34 processus en 4 domaines
+      c) 93 mesures en 4 thèmes
+      d) 17 principes en 5 composantes
+
+10. À quel objectif de COBIT 2019 correspond le processus AI6 de COBIT 4.1 ?
+      a) DSS04
+      b) MEA02
+      c) BAI06
+      d) APO13
+
+11. Combien de mesures compte l'annexe A de l'ISO/IEC 27001:2022 ?
+      a) 93
+      b) 114
+      c) 133
+      d) 20
+
+12. En combien de thèmes ces mesures sont-elles réparties ?
+      a) 14
+      b) 5
+      c) 20
+      d) 4
+
+13. Dans quel document l'entité justifie-t-elle l'exclusion de mesures de l'annexe A ?
+      a) La politique de sécurité
+      b) La déclaration d'applicabilité
+      c) La charte d'audit
+      d) Le plan d'audit
+
+14. En combien de familles se répartissent les mesures de la SP 800-53 révision 5 ?
+      a) 14
+      b) 17
+      c) 20
+      d) 93
+
+15. Quelle publication du NIST donne les procédures d'évaluation des mesures ?
+      a) SP 800-53A
+      b) SP 800-53B
+      c) SP 800-145
+      d) AI 100-1
+
+16. Quelles sont les trois méthodes d'évaluation de la SP 800-53A ?
+      a) Planifier, faire, vérifier
+      b) Observer, décider, agir
+      c) Documenter, coter, conclure
+      d) Examiner, interroger, tester
+
+17. Comment le guide d'audit des SI du CHAI est-il organisé ?
+      a) Par processus COBIT
+      b) Par thèmes d'audit
+      c) Par familles NIST
+      d) Par principes COSO
+
+18. Quel est le premier critère de choix d'un référentiel ?
+      a) Ce que juge l'auditeur
+      b) Ce que demande le commanditaire
+      c) Ce qui s'impose : loi, règlement, régulateur
+      d) Le référentiel le moins coûteux
+
+19. Scénario. Avec des critères tirés de l'ISO/IEC 27002, le sous-domaine D.3 passe de 4 OUI à 2 OUI et 2 NON. Que devient µ ?
+      a) 0,50
+      b) 0,25
+      c) 0,75
+      d) 0
+
+20. Selon l'article A0, choisir un référentiel, c'est choisir :
+      a) Un axiome
+      b) Une méthode d'échantillonnage
+      c) Un niveau de maturité
+      d) Une fonction objectif
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Un taux de conformité de 0,71 suffit à conclure à l'efficacité selon le COSO.
+      Vrai / Faux
+
+22. Les cinq composantes du COSO doivent agir ensemble, de manière intégrée.
+      Vrai / Faux
+
+23. La capacité COBIT se convertit directement en niveau de maturité du cours.
+      Vrai / Faux
+
+24. L'édition 2013 de l'annexe A comptait 114 mesures en quatorze domaines.
+      Vrai / Faux
+
+25. Recopier les 93 mesures de l'annexe A en autant de questions donne une bonne grille d'audit.
+      Vrai / Faux
+
+26. Les attributs des mesures de l'édition 2022 permettent de filtrer le catalogue.
+      Vrai / Faux
+
+27. Avec les mêmes preuves, changer de référentiel change le taux d'incertitude U.
+      Vrai / Faux
+
+28. L'auditeur peut changer de référentiel en cours de mission sans l'accord du commanditaire.
+      Vrai / Faux
+
+29. Un contrôle commun peut être relié à plusieurs référentiels et testé une seule fois.
+      Vrai / Faux
+
+30. Les trois méthodes de la SP 800-53A correspondent aux tests DOC, ENT et TEST du cours.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le COSO 2013 compte ______ principes.
+
+32. Le domaine « Délivrer, servir et soutenir » de COBIT a pour code ______.
+
+33. L'objectif de COBIT 2019 qui traite du contrôle interne est MEA______.
+
+34. La mesure 8.13 de l'ISO/IEC 27002:2022 traite des ______.
+
+35. La famille AC de la SP 800-53 traite du contrôle d'______.
+
+36. La mesure de l'ISO/IEC 27002:2022 sur les droits d'accès porte le numéro 5.______.
+
+37. Le comité auteur du guide d'audit des SI de 2014 a pour sigle ______.
+
+38. L'entité choisit ses mesures dans sa déclaration d'______.
+
+39. Avec les mêmes preuves, le référentiel déplace µ, mais pas ______.
+
+40. Le gestionnaire de risques relie les référentiels dans une table de ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

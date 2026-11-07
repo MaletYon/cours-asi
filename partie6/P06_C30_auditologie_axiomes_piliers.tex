@@ -1,0 +1,549 @@
+% ============================================================================
+% Fichier  : partie6/P06_C21_auditologie_axiomes_piliers.tex
+% Titre    : L'Auditologie : Objet, Axiomes et Piliers
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C21, repris et développé pour INF3226
+% ============================================================================
+% Source unique pour le cadre : article A0 (hal-05701007, prépublication du
+% 22/07/2026), version française : définitions de la mission et de
+% l'auditologie, six axiomes ontologiques (énoncés repris, numérotation et
+% intitulés d'A0), « ce qui n'est pas un axiome », quatre propositions,
+% cinq piliers et leurs prédictions falsifiables, interactions entre
+% piliers, science du design, engagement lakatossien (septième axiome,
+% méthodologique), matrice de falsifiabilité, « ce que l'auditologie n'est
+% pas », mini-cas LizbiZ (H ≈ 1,2 ; 5 × 5 ; usage stratégique de NEK ;
+% 35 % de probabilité de régression à 18 mois ; H ≈ 0,6 six mois plus
+% tard). Références classiques recopiées de la bibliographie d'A0.
+% Environnement axiome : compteur global, utilisé ici seulement, de sorte
+% que la numérotation 1 à 7 coïncide avec celle d'A0.
+% ============================================================================
+
+\chapter{L'Auditologie : Objet, Axiomes et Piliers}
+\label{chap:auditologie}
+\chaptermark{L'auditologie}
+
+\epigraph{%
+    « Le métier dit comment auditer.\\
+    La science cherche pourquoi cela marche, ou échoue. »%
+}{D'après l'article A0}
+
+\niveauChapitre{Recherche}{%
+    Maîtrise du Chapitre~\ref{chap:conclure} (mesures $\mu$, $U$, $H$,
+    divergence) et du Chapitre~\ref{chap:decomposition} (gabarit
+    canonique)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Définir la mission auditologique
+          $\langle \mathcal{S}, \mathcal{A}, \mathcal{I}, \mathcal{G},
+          \mathcal{T} \rangle$ et l'auditologie.
+    \item Énoncer les six axiomes ontologiques, et ce qui n'est pas un
+          axiome.
+    \item Présenter les cinq piliers et leurs prédictions falsifiables.
+    \item Situer la méthode du cours comme instanciation opérationnelle du
+          programme, dans un cadre de science du design et de
+          falsifiabilité lakatossienne.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : pourquoi cette méthode~?}
+% ============================================================================
+
+Tout au long du cours, AUDIX CONSEIL a fait des choix qui n'allaient pas de
+soi~: admettre la réponse \NEK{}, décomposer chaque domaine sous la borne de
+sept, lire trois mesures au lieu d'un taux, comparer deux cycles,
+considérer l'indépendance comme une condition de l'opposabilité. Le
+Chapitre~\ref{chap:audit-auditologie} annonçait que ces choix découlaient
+d'axiomes. Ce chapitre les présente pour eux-mêmes, tels que l'article A0
+les formule~\cite{minka2026auditologie}.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item L'objet~: la mission auditologique (section~\ref{sec:c30-objet}).
+    \item Six axiomes ontologiques (section~\ref{sec:c30-axiomes}).
+    \item Quatre conséquences, quatre pratiques (section~\ref{sec:c30-propositions}).
+    \item Les cinq piliers (section~\ref{sec:c30-piliers}).
+    \item La méthode~: science du design et falsifiabilité (section~\ref{sec:c30-methode}).
+\end{enumerate}
+
+\begin{boiteRemarque}{Ce que ce chapitre est, et n'est pas}
+Il expose un programme de recherche déposé en prépublication, non un
+savoir établi. Les axiomes et les piliers forment un cadre~; les
+prédictions qui en découlent restent à tester. Le
+Chapitre~\ref{chap:incertitude} distingue ce qui est établi par des travaux
+publiés, ce qui est déposé en prépublication, et ce qui reste à valider.
+\end{boiteRemarque}
+
+\separateur
+
+% ============================================================================
+\section{L'Objet : la Mission Auditologique}
+\label{sec:c30-objet}
+% ============================================================================
+
+L'article A0 part d'un constat~: l'audit des SI dispose de méthodes,
+de référentiels et d'une littérature instrumentale, mais d'aucun socle
+axiomatique ni d'aucun espace de mesure unifié pour son objet central, la
+réduction de l'incertitude. Il propose de le reconstituer en
+\emph{auditologie}.
+
+\begin{boxdef}
+\termecle{Mission auditologique}\index{mission auditologique} (A0)~:
+quintuplet
+$\mathcal{M} = \langle \mathcal{S}, \mathcal{A}, \mathcal{I},
+\mathcal{G}, \mathcal{T} \rangle$, où
+\begin{itemize}
+    \item $\mathcal{S}$ est le \emph{système audité}, ensemble
+          sociotechnique d'agents, d'artefacts, de flux d'information et de
+          dispositifs institutionnels~;
+    \item $\mathcal{A}$ est l'\emph{architecture cognitive} de l'auditeur
+          ou du collectif d'audit, soumise à des contraintes de traitement,
+          de mémoire et d'attention~;
+    \item $\mathcal{I}$ est le \emph{canal d'information} par lequel les
+          preuves sur $\mathcal{S}$ parviennent à $\mathcal{A}$~;
+    \item $\mathcal{G}$ est la \emph{structure stratégique} de
+          l'interaction entre l'auditeur, l'audité et les tiers~;
+    \item $\mathcal{T}$ est la \emph{trajectoire temporelle} du système
+          au fil des missions successives.
+\end{itemize}
+
+\medskip
+\termecle{Auditologie}\index{auditologie}~: science appliquée de la
+réduction de l'incertitude sur les missions auditologiques.
+\end{boxdef}
+
+\begin{tableaucours}{cL{4.0cm}L{8.0cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Composante} &
+    \tableauHeader{Dans la mission de LiZbiZ}
+}
+$\mathcal{S}$ & Système audité & LiZbiZ~: quatre centres de données, douze
+agences, l'application intégrée, ses agents et ses procédures \\
+$\mathcal{A}$ & Architecture cognitive & L'équipe d'AUDIX CONSEIL, sa
+méthode, ses outils O0 à O9 \\
+$\mathcal{I}$ & Canal d'information & Entretiens, documents sollicités,
+extractions, tests~; ce qui passe et ce qui ne passe pas \\
+$\mathcal{G}$ & Structure stratégique & Direction générale, responsable
+informatique, magasinier, commissaire aux comptes, auditeurs \\
+$\mathcal{T}$ & Trajectoire & Mai~2026, novembre~2026, et les cycles
+suivants \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~30.1. La mission de LiZbiZ comme
+mission auditologique}\end{center}
+
+% ============================================================================
+\section{Six Axiomes Ontologiques}
+\label{sec:c30-axiomes}
+% ============================================================================
+
+L'article A0 pose six axiomes qui contraignent toute mission
+auditologique. Leur numérotation est celle de l'article, et le cours l'a
+suivie depuis le Chapitre~\ref{chap:audit-auditologie}. Les énoncés
+ci-dessous reprennent ceux d'A0.
+
+\begin{axiome}[Observabilité partielle]
+Pour tout système audité $\mathcal{S}$ non dégénéré, l'auditeur n'a accès
+qu'à un sous-ensemble strict des états pertinents de $\mathcal{S}$, et ce
+sous-ensemble est lui-même partiellement opaque.
+\end{axiome}
+
+\begin{axiome}[Cognition limitée des agents]
+L'auditeur et l'audité sont des agents cognitivement limités, au sens de
+Simon, de Miller et de Kahneman~\cite{simon1957,miller1956,kahneman2011}.
+\end{axiome}
+
+\begin{axiome}[Mesurabilité de l'incertitude épistémique]
+L'incertitude épistémique de $\mathcal{A}$ concernant des propositions
+spécifiques sur $\mathcal{S}$ admet une mesure quantitative, définissable
+par l'entropie informationnelle et ses généralisations.
+\end{axiome}
+
+\begin{axiome}[Interaction stratégique]
+L'auditeur et l'audité ont des fonctions d'utilité distinctes, et leurs
+actions sont, en général, mieux modélisées comme des mouvements dans un jeu
+à information imparfaite et asymétrique.
+\end{axiome}
+
+\begin{axiome}[Individuation temporelle]
+Le système audité $\mathcal{S}$ évolue dans le temps, et sa trajectoire est
+dépendante du chemin~: l'état à la mission $n+1$ dépend de l'état à $n$ et
+des interventions déclenchées par cette mission antérieure.
+\end{axiome}
+
+\begin{axiome}[Opposabilité]
+Toute conclusion produite par une mission auditologique doit, en principe,
+pouvoir être défendue devant un tiers disposant de l'autorité légitime pour
+la contester.
+\end{axiome}
+
+\subsection{Ce qui n'est pas un axiome}
+
+A0 écarte explicitement trois candidats. Le cours les a rencontrés.
+\begin{itemize}
+    \item \textbf{L'indépendance} n'est pas un axiome, mais un théorème,
+          dérivable des axiomes~4 et~6 (Chapitre~\ref{chap:normes}).
+    \item \textbf{La conformité à un référentiel} (COBIT, ISO/IEC~27001) est
+          un choix de fonction objectif (Chapitre~\ref{chap:referentiels}).
+    \item \textbf{La matérialité} est un paramètre dérivé de l'opposabilité.
+\end{itemize}
+
+% ============================================================================
+\section{Quatre Conséquences, Quatre Pratiques}
+\label{sec:c30-propositions}
+% ============================================================================
+
+A0 en tire quatre propositions. Chacune fonde une pratique du cours.
+
+\begin{proposition}[Modalité d'ignorance explicite]
+Sous les axiomes~1, 2, 3 et~4, tout instrument de réponse d'audit valide
+doit inclure une modalité explicite pour «~connaissance insuffisante~»
+(\NEK{}), distincte de \OUI{} et de \NON{}.
+\end{proposition}
+
+\begin{proposition}[Décomposition hiérarchique]
+Sous les axiomes~2 et~6, tout instrument couvrant un espace d'audit non
+trivial doit être organisé en décomposition hiérarchique, dont la
+profondeur est calibrée sur la mémoire de travail de l'auditeur (borne
+$7 \pm 2$).
+\end{proposition}
+
+\begin{proposition}[Métriques longitudinales]
+Sous l'axiome~5 et l'engagement de falsifiabilité, les conclusions d'une
+mission ne peuvent être testées empiriquement que par observation
+longitudinale.
+\end{proposition}
+
+\begin{proposition}[Réflexivité]
+Sous les axiomes~4 et~6, l'acte d'audit est lui-même un constituant de la
+trajectoire du système audité, et ne peut être modélisé comme une
+observation externe.
+\end{proposition}
+
+\begin{tableaucours}{L{3.4cm}L{2.4cm}L{6.4cm}}{%
+    \tableauHeader{Proposition} &
+    \tableauHeader{Axiomes} &
+    \tableauHeader{Dans le cours}
+}
+Modalité \NEK{} & 1, 2, 3, 4 & Instrument \OUI{}/\NON{}/\NEK{}
+(Chapitre~\ref{chap:preuve}), mesures $\mu$, $U$, $H$
+(Chapitre~\ref{chap:conclure}) \\
+Décomposition & 2, 6 & Gabarit canonique et fiche d'assertion
+(Chapitre~\ref{chap:decomposition}) \\
+Longitudinal & 5, et falsifiabilité & Divergence entre cycles, second
+cycle de LiZbiZ (Chapitres~\ref{chap:conclure}
+et~\ref{chap:cas-integrateurs}) \\
+Réflexivité & 4, 6 & Le suivi des recommandations modifie le système
+(Chapitre~\ref{chap:mission})~; le domaine~E change d'observabilité
+quand le prestataire change \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~30.2. Des axiomes aux pratiques du
+cours}\end{center}
+
+% ============================================================================
+\section{Les Cinq Piliers}
+\label{sec:c30-piliers}
+% ============================================================================
+
+Les axiomes disent ce qu'est une mission~; les piliers apportent les
+théories qui permettent de la modéliser. A0 en retient cinq, chacun avec
+un formalisme et une prédiction falsifiable.
+
+\begin{tableaucours}{L{2.4cm}L{3.0cm}L{3.2cm}L{3.6cm}}{%
+    \tableauHeader{Pilier} &
+    \tableauHeader{Ancrage} &
+    \tableauHeader{Formalisme} &
+    \tableauHeader{Prédiction falsifiable}
+}
+1. Cognition limitée & Miller, Simon, Kahneman~\cite{miller1956,simon1957,kahneman2011}
+& $\mathcal{A} = \langle K, W, \tau \rangle$, $|W| \le k \approx 7$ & Les
+grilles de plus de neuf dimensions simultanées produisent plus
+d'incohérences et d'oublis \\
+2. Théorie de l'information & Shannon~; Kullback et
+Leibler~\cite{shannon1948,kullback1951} & Entropie $H \le \log_2 3$~;
+information mutuelle $I(X;Y)$ & Le diagnostic conformité et entropie
+prédit mieux que le seul taux de conformité \\
+3. Théorie des jeux & von~Neumann, Nash,
+Harsanyi~\cite{vonneumann1944,nash1951,harsanyi1967} & Jeu bayésien
+$\langle N, (A_i), (\Theta_i), (u_i), p \rangle$ & Les instruments
+compatibles avec les incitations réduisent la dissimulation \\
+4. Systèmes dynamiques & Chaînes de Markov~\cite{norris1998}, analyse
+topologique des données & Niveaux $m_n \in \{1, \dots, 5\}^D$, matrice
+de transition $P$ & Les prévisions par matrice de transition battent la
+persistance naïve à 12--24 mois \\
+5. Ontologie critique-réaliste & Bhaskar, Simondon,
+Latour~\cite{bhaskar1975,simondon1958,latour2005} & Strates du réel, de
+l'actuel, de l'empirique & Les cadres socio-matériels obtiennent plus de
+recommandations mises en œuvre \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~30.3. Les cinq piliers de
+l'auditologie (d'après A0)}\end{center}
+
+\begin{boxinfo}
+\textbf{Ce que le cours a utilisé de chaque pilier.} La borne de sept et la
+décomposition (pilier~1)~; $H$, $U$ et la divergence (pilier~2)~; l'indice
+$\rho$, l'usage stratégique de \NEK{} et l'indépendance (pilier~3)~; la
+lecture en cycles et le risque de régression (pilier~4)~; la place des
+personnes, des procédures et des artefacts dans chaque constat, par
+exemple le compte partagé du magasin de Garoua (pilier~5).
+\end{boxinfo}
+
+Les piliers ne sont pas indépendants. Selon A0, la théorie de
+l'information présuppose la cognition limitée, la théorie des jeux
+présuppose la mesure informationnelle, les systèmes dynamiques
+présupposent des équilibres indexés dans le temps, et l'ontologie
+sous-tend les quatre autres. Chaque pilier est nécessaire~; leur
+suffisance conjointe est une hypothèse de travail. A0 signale aussi une
+limite pratique du pilier~4~: l'analyse topologique devient impraticable
+au-delà d'une dizaine de dimensions, d'où des premières applications
+limitées à huit dimensions au plus.
+
+% ============================================================================
+\section{La Méthode : Science du Design et Falsifiabilité}
+\label{sec:c30-methode}
+% ============================================================================
+
+\subsection{Une science du design}
+
+L'auditologie produit des artefacts~: instruments, métriques, grilles,
+logiciels. A0 l'inscrit dans la recherche en science du design~: on
+construit un artefact, on l'évalue dans son environnement (cycle de
+pertinence), on l'appuie sur la base de connaissances (cycle de rigueur),
+et l'on recommence~\cite{hevner2004design}. La méthode de ce cours est
+l'\emph{instanciation opérationnelle, pour le praticien,} de ce programme~:
+l'instrument \OUI{}/\NON{}/\NEK{}, le gabarit canonique, le classeur O4 et
+les labs de NDAP SUKULU sont des artefacts, et chaque promotion
+d'étudiants participe à leur évaluation.
+
+\subsection{Un noyau dur et une ceinture protectrice}
+
+A0 adopte le falsificationnisme sophistiqué de Lakatos~\cite{lakatos1970}.
+Les six axiomes et les cinq piliers forment un \emph{noyau dur}, qui n'est
+pas directement testé. Les hypothèses auxiliaires, les procédures de
+mesure et les prédictions forment la \emph{ceinture protectrice}, qui l'est.
+
+\begin{axiome}[Falsifiabilité comme engagement méthodologique]
+Toute affirmation spécifique engendrée par l'auditologie doit être énoncée
+sous une forme telle que des résultats empiriques puissent, en principe, la
+réfuter. La réfutation d'une assertion de la ceinture protectrice n'emporte
+pas la réfutation du noyau dur~; elle déclenche une révision de la
+ceinture.
+\end{axiome}
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{4.8cm}}{%
+    \tableauHeader{Pilier} &
+    \tableauHeader{Prédiction testable} &
+    \tableauHeader{Condition de réfutation}
+}
+Cognition limitée & Les grilles au-delà de la borne produisent plus
+d'erreurs & Aucune différence significative en expérience contrôlée \\
+Information & Conformité et entropie prédisent mieux que la conformité
+seule & Validité prédictive égale ou inférieure \\
+Jeux & Les instruments compatibles avec les incitations réduisent la
+dissimulation & Aucune baisse de l'indice d'usage stratégique \\
+Dynamique & La matrice de transition bat la persistance naïve & Aucun
+avantage prédictif \\
+Réalisme critique & Les cadres socio-matériels font mieux appliquer les
+recommandations & Aucune différence observable \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~30.4. Matrice de falsifiabilité
+(d'après A0)}\end{center}
+
+\subsection{Ce que l'auditologie n'est pas}
+
+A0 précise quatre refus~: l'auditologie n'est pas \emph{normative} (elle
+ne prescrit pas le «~bon audit~»), ni \emph{critique} (elle n'invalide pas
+les cadres existants), ni \emph{un référentiel de plus} (ses piliers sont
+théoriques), ni \emph{une idéologie} (ses propositions sont falsifiables).
+C'est pourquoi ce cours a enseigné ensemble les normes du métier
+(Partie~\ref{part:normatif}) et leur lecture auditologique.
+
+\begin{boxlecture}{LiZbiZ, prédiction et constat}
+Le mini-cas d'A0 décrit le domaine~D de LiZbiZ~: entropie d'environ
+1,2~bit, décomposition en $5 \times 5$ sous-éléments, usage stratégique de
+\NEK{} (réponses différentes en entretien formel et en auto-évaluation),
+et, à partir d'une matrice de transition estimée sur trois cycles, une
+probabilité de régression de 35~\% dans les dix-huit mois. Six mois plus
+tard, l'entropie du domaine est d'environ 0,6~bit.
+
+\medskip
+\textbf{Constatation.} Le cours retrouve ces valeurs~: $H \approx 1{,}24$
+en mai~2026, $H \approx 0{,}57$ en novembre (Chapitre~\ref{chap:conclure}).
+
+\medskip
+\textbf{Analyse} (confiance moyenne). L'amélioration est réelle, mais la
+prédiction de régression n'est pas encore testée~: elle le sera par les
+cycles suivants. C'est exactement la forme d'une affirmation de la
+ceinture protectrice~: datée, chiffrée, réfutable. Le domaine~E, qui a
+perdu en observabilité au second cycle (Chapitre~\ref{chap:cas-integrateurs}),
+rappelle que la trajectoire ne se lit pas sur un seul domaine.
+
+\medskip
+\hfill\lecture{0{,}90}{0{,}05}{0{,}57}
+\end{boxlecture}
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Ce que l'auditologie change dès la prochaine mission}
+\begin{enumerate}
+    \item Admettre \NEK{}, et le documenter (axiomes~1 et~3).
+    \item Décomposer avant de questionner (axiome~2).
+    \item Se demander, pour chaque réponse, qui avait intérêt à la donner
+          (axiome~4).
+    \item Prévoir le cycle suivant dès le premier rapport (axiome~5).
+    \item Écrire chaque conclusion comme si un tiers allait la contester
+          (axiome~6).
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{La mission auditologique} est un quintuplet
+          $\langle \mathcal{S}, \mathcal{A}, \mathcal{I}, \mathcal{G},
+          \mathcal{T} \rangle$~; l'auditologie est la science appliquée de
+          la réduction de l'incertitude sur ces missions.
+    \item \textbf{Six axiomes ontologiques}~: observabilité partielle,
+          cognition limitée, mesurabilité, interaction stratégique,
+          individuation temporelle, opposabilité~; un septième,
+          méthodologique~: la falsifiabilité.
+    \item \textbf{Ne sont pas des axiomes}~: l'indépendance (un théorème),
+          la conformité (un choix d'objectif), la matérialité (un
+          paramètre).
+    \item \textbf{Quatre propositions} fondent \NEK{}, la décomposition, les
+          mesures longitudinales et la réflexivité.
+    \item \textbf{Cinq piliers}~: cognition limitée, information, jeux,
+          systèmes dynamiques, ontologie critique-réaliste~; chacun avec une
+          prédiction réfutable.
+    \item \textbf{La méthode du cours} est une instanciation, pour le
+          praticien, d'un programme de science du design.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: énoncer les six axiomes
+et l'axiome de falsifiabilité~; dire pourquoi l'indépendance, la
+conformité et la matérialité n'en sont pas~; relier chaque proposition à
+une pratique du cours~; nommer les cinq piliers et leur prédiction~;
+distinguer noyau dur et ceinture protectrice.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.1. De la pratique à l'axiome \niveaubase}]
+Indiquez l'axiome qui fonde chaque pratique.
+\begin{enumerate}[(a)]
+    \item Coter \NEK{} un document non remis dont on ignore l'existence.
+    \item Tenir le contradictoire et conserver la réponse de l'audité.
+    \item Comparer une auto-évaluation et un entretien formel.
+    \item Prévoir un audit de suivi avec les mêmes questions.
+    \item Limiter à sept le nombre d'enfants d'un élément de la
+          décomposition.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.2. Démontrer une proposition \niveaumoyen}]
+\begin{enumerate}[(a)]
+    \item À l'aide des axiomes~1 à~4, expliquez pourquoi une grille
+          \OUI{}/\NON{} produit un biais du choix forcé, et pourquoi
+          l'indice $\rho$ le mesure (Chapitre~\ref{chap:preuve}).
+    \item Expliquez pourquoi l'indépendance se déduit des axiomes~4 et~6.
+    \item Pourquoi la conformité à un référentiel ne peut-elle pas être un
+          axiome~? Appuyez-vous sur la lecture « Domaine D.3, deux
+          critères » du Chapitre~\ref{chap:referentiels}.
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.3. Formuler une prédiction réfutable \niveauexpert}]
+Vous disposez des deux cycles de LiZbiZ (Chapitre~\ref{chap:cas-integrateurs})
+et pouvez en mener deux autres.
+\begin{enumerate}[(a)]
+    \item Formulez, pour le domaine~E, une prédiction datée et chiffrée,
+          rattachée à un pilier.
+    \item Précisez la condition de réfutation.
+    \item Décrivez le protocole~: questions, critères, calendrier, données
+          à conserver.
+    \item Si la prédiction est réfutée, qu'est-ce qui est révisé~: le noyau
+          dur ou la ceinture protectrice~? Justifiez.
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.4. Ce qui n'est pas un axiome \niveaubase}]
+Pour l'indépendance, la conformité à un référentiel et la matérialité,
+dites ce qu'elles sont selon A0 (théorème, choix d'objectif, paramètre) et
+d'où elles se déduisent.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.5. Reconnaître un pilier \niveaumoyen}]
+Rattachez à un pilier chaque observation de LiZbiZ~: (a) la grille du
+domaine~E est réduite à sept sous-domaines~; (b) le domaine~E passe de
+\NEK{} à \NON{} entre deux cycles~; (c) le prestataire répond \NEK{} sur
+les questions à fort enjeu~; (d) le compte partagé du magasin de Garoua
+mêle une personne, une procédure et un artefact~; (e) le diagnostic utilise
+$H$ en plus de $\mu$.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.6. Noyau dur et ceinture \niveaumoyen}]
+Une étude montre que des grilles de douze dimensions ne produisent pas plus
+d'incohérences que des grilles de sept. Qu'est-ce qui est réfuté~? Que
+révise-t-on, et que garde-t-on~? Appuyez-vous sur Lakatos.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.7. Un artefact de science du design \niveaumoyen}]
+Décrivez le classeur O4 comme un artefact au sens de la science du
+design~: son environnement (cycle de pertinence), sa base de connaissances
+(cycle de rigueur), et son évaluation (cycle de conception).
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.8. La réflexivité \niveaumoyen}]
+Montrez, sur le domaine~E de LiZbiZ, que l'audit du premier cycle a modifié
+le système audité. Quelle conséquence pour l'interprétation de la
+divergence entre les deux cycles~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.9. Est-ce réfutable~? \niveauexpert}]
+Un collègue soutient que l'auditologie n'est pas une science, parce
+qu'aucun résultat ne pourrait réfuter ses axiomes. Répondez en distinguant
+la position de Popper et celle de Lakatos, et en citant une prédiction
+de la ceinture protectrice.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~30.10. Ce que l'auditologie ajoute \niveauexpert}]
+Comparez les normes professionnelles (Chapitre~\ref{chap:normes}) et
+l'auditologie~: que disent les premières, que cherche la seconde~?
+Donnez deux pratiques du cours que les normes n'imposent pas et que
+l'auditologie justifie, et une limite de l'auditologie.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item L'article A0~\cite{minka2026auditologie}.
+    \item I.~Lakatos sur les programmes de recherche~\cite{lakatos1970}.
+    \item A.~Hevner et al. sur la science du design~\cite{hevner2004design}.
+    \item H.~Simon sur la rationalité limitée~\cite{simon1957}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les axiomes demandent de mesurer~; les piliers disent
+avec quoi. Le Chapitre~\ref{chap:incertitude} approfondit l'instrument
+trichotomique et ses métriques, puis le relie à des travaux publiés sur la
+stratégie et sur l'expression de l'incertitude de mesure.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C16
+Chapitre 16 : Déontologie et profession de l'auditeur
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quels sont les trois codes de déontologie présentés ?
+      a) IIA, ISACA, IESBA
+      b) ISO, NIST, COSO
+      c) COBIT, ITIL, ISO
+      d) OHADA, COBAC, CEMAC
+
+ 2. Lequel de ces principes est commun aux trois codes ?
+      a) La rentabilité
+      b) L'objectivité
+      c) La discrétion commerciale
+      d) La neutralité politique
+
+ 3. Pourquoi la déontologie est-elle une condition de la preuve ?
+      a) Parce qu'elle est obligatoire
+      b) Parce qu'elle remplace les tests
+      c) Parce qu'un auditeur dépendant produit des conclusions contestables
+      d) Parce qu'elle est certifiée
+
+ 4. Qu'est-ce que l'indépendance apparente ?
+      a) L'état d'esprit de l'auditeur
+      b) La rotation des associés
+      c) L'absence d'honoraires
+      d) L'absence de circonstances qui conduiraient un tiers informé à douter de l'indépendance de fait
+
+ 5. Un auditeur évalue une procédure qu'il a lui-même rédigée. Quelle menace ?
+      a) Autorévision
+      b) Familiarité
+      c) Intimidation
+      d) Représentation
+
+ 6. Un auditeur défend publiquement la position de son client dans un litige. Quelle menace ?
+      a) Intérêt personnel
+      b) Représentation
+      c) Autorévision
+      d) Familiarité
+
+ 7. Un auditeur audite le même client depuis quinze ans avec les mêmes interlocuteurs. Quelle menace ?
+      a) Intimidation
+      b) Autorévision
+      c) Familiarité
+      d) Représentation
+
+ 8. Du point de vue de qui une menace s'apprécie-t-elle ?
+      a) De l'auditeur
+      b) Du client
+      c) Du régulateur seul
+      d) D'un tiers informé
+
+ 9. Que fait l'auditeur si aucune sauvegarde ne ramène une menace à un niveau acceptable ?
+      a) Il refuse ou quitte la mission
+      b) Il continue en silence
+      c) Il baisse ses honoraires
+      d) Il demande l'accord du client
+
+10. Le DG de LiZbiZ demande le retrait de deux observations majeures. Quelles menaces ?
+      a) Autorévision et familiarité
+      b) Intérêt personnel et intimidation
+      c) Représentation seule
+      d) Aucune
+
+11. Que fait M. BEYALA le jour même de l'appel du DG ?
+      a) Il retire les observations
+      b) Il appelle la presse
+      c) Il consigne l'appel dans une note
+      d) Il démissionne
+
+12. Combien d'étapes compte la méthode de résolution d'un dilemme ?
+      a) Trois
+      b) Quatre
+      c) Dix
+      d) Six
+
+13. Qui est le commanditaire ultime de la mission de LiZbiZ ?
+      a) Le conseil d'administration
+      b) Le DG
+      c) Le DSI
+      d) Le prestataire
+
+14. Quelle est la nature de l'obligation de l'auditeur ?
+      a) Une obligation de résultat
+      b) Une obligation de moyens
+      c) Aucune obligation
+      d) Une obligation de garantie
+
+15. Quand un auditeur est désigné expert par un juge, à qui répond-il ?
+      a) Au client
+      b) Au DG
+      c) Au juge
+      d) À l'ISACA
+
+16. Quelle certification de l'ISACA vise l'audit des systèmes d'information ?
+      a) CIA
+      b) CISSP
+      c) PMP
+      d) CISA
+
+17. Quelle certification délivre l'IIA ?
+      a) CIA
+      b) CISM
+      c) CRISC
+      d) CGEIT
+
+18. Pourquoi la BANQUE SANAGA écarte-t-elle l'offre à 18 millions FCFA ?
+      a) Elle est trop chère
+      b) Six jours de terrain ne permettent que de recueillir des déclarations
+      c) Le cabinet est étranger
+      d) Elle est arrivée en retard
+
+19. Quelle offre la BANQUE SANAGA retient-elle ?
+      a) 18 millions
+      b) 35 millions
+      c) 32 millions
+      d) Aucune
+
+20. Pourquoi la compétence est-elle un principe déontologique ?
+      a) Parce qu'elle augmente les honoraires
+      b) Parce qu'elle remplace l'indépendance
+      c) Parce qu'elle est mesurée par le DSI
+      d) Parce qu'accepter une mission qu'on ne sait pas conduire trompe le commanditaire
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une menace n'existe pas si l'auditeur se sait honnête.
+      Vrai / Faux
+
+22. L'indépendance comprend une dimension de fait et une dimension d'apparence.
+      Vrai / Faux
+
+23. Une sauvegarde doit être écrite.
+      Vrai / Faux
+
+24. La confidentialité figure parmi les exigences communes aux trois codes.
+      Vrai / Faux
+
+25. La promesse de missions futures par le DG crée une menace d'intérêt personnel.
+      Vrai / Faux
+
+26. L'auditeur garantit qu'aucune fraude n'existe dans l'entité auditée.
+      Vrai / Faux
+
+27. Le rapport d'un expert judiciaire devient une pièce de procédure.
+      Vrai / Faux
+
+28. Le prix le plus bas est toujours le meilleur critère de choix d'un auditeur.
+      Vrai / Faux
+
+29. Une certification remplace la compétence sur une mission précise.
+      Vrai / Faux
+
+30. L'IESBA publie un code d'éthique pour les professionnels comptables.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Les cinq menaces sont l'intérêt personnel, l'autorévision, la représentation, la familiarité et l'______.
+
+32. L'indépendance d'état d'esprit est l'indépendance de ______.
+
+33. La certification de l'ISACA pour l'audit des SI porte le sigle ______.
+
+34. L'auditeur a une obligation de ______, pas de résultat.
+
+35. L'organisme qui publie les normes mondiales d'audit interne est l'______.
+
+36. Une mesure qui ramène une menace à un niveau acceptable est une ______.
+
+37. L'appel du DG de LiZbiZ a eu lieu le 12 ______.
+
+38. L'offre la moins chère prévoyait ______ jours de terrain.
+
+39. L'expert judiciaire est désigné par le ______.
+
+40. Le principe qui interdit de taire un fait important est l'______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

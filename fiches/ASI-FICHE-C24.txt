@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C24
+Chapitre 24 : Auditer les tiers et le nuage
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Qu'est-ce qu'un prestataire critique ?
+      a) Un prestataire dont la défaillance interromprait un service critique ou exposerait des données sensibles
+      b) Un prestataire qui coûte cher
+      c) Un prestataire étranger
+      d) Un prestataire nouveau
+
+ 2. Que conserve toujours l'organisation qui externalise une activité ?
+      a) L'exécution
+      b) La responsabilité
+      c) Les salariés du prestataire
+      d) Le matériel
+
+ 3. Comment juge-t-on une clause de contrat ?
+      a) Sur sa longueur
+      b) Sur sa date
+      c) Sur sa conception, puis sur son exécution
+      d) Sur son signataire
+
+ 4. Qu'est-ce qui manque au contrat de DIGICORE AFRIQUE ?
+      a) Les niveaux de service
+      b) La clause de confidentialité
+      c) La localisation des données
+      d) Le droit d'audit, la réversibilité et l'encadrement de la sous-traitance
+
+ 5. L'annexe sur la notification des incidents est citée mais non remise. Quelle cote ?
+      a) NEK
+      b) OUI
+      c) NON
+      d) Sans objet
+
+ 6. Après 72,5 heures de panne, aucune pénalité n'a été réclamée. Qu'est-ce que c'est ?
+      a) Rien de notable
+      b) Un constat sur l'exécution de la clause
+      c) Une fraude
+      d) Une bonne pratique
+
+ 7. Sur quoi porte un rapport ISAE 3402 de type 1 ?
+      a) L'efficacité sur une période
+      b) Les comptes annuels
+      c) La conception des contrôles à une date
+      d) La paie
+
+ 8. Sur quoi porte un rapport ISAE 3402 de type 2 ?
+      a) La conception seule
+      b) Le budget
+      c) La stratégie
+      d) La conception et l'efficacité sur une période
+
+ 9. Le rapport de type 1 de DIGICORE décrit douze contrôles. Pour la question « ont-ils fonctionné en 2026 ? », que donne la lecture ?
+      a) μ = 0, U = 1, H = 0
+      b) μ = 1, U = 0
+      c) μ = 0,5, U = 0,5
+      d) H = 1,58
+
+10. Que signifie ici H = 0 ?
+      a) Une certitude complète
+      b) Une ignorance unanime, sans aucune information
+      c) Une conformité totale
+      d) Une erreur de calcul
+
+11. Que reste-t-il à tester chez le client malgré un bon rapport du prestataire ?
+      a) Rien
+      b) Le capital du prestataire
+      c) Les contrôles complémentaires
+      d) Les salaires
+
+12. Dans quel modèle de service le client gère-t-il le moins de couches ?
+      a) IaaS
+      b) PaaS
+      c) Sur site
+      d) SaaS
+
+13. Dans tous les modèles de service, que reste-t-il généralement au client ?
+      a) La gestion des comptes et des données
+      b) Le centre de données
+      c) Le réseau du fournisseur
+      d) L'alimentation électrique
+
+14. La messagerie de la BANQUE SANAGA est en SaaS. Quel contrôle relève de la banque ?
+      a) L'infrastructure du fournisseur
+      b) L'activation de la double authentification de ses comptes
+      c) Le refroidissement des serveurs
+      d) Le rapport de type 2 du fournisseur
+
+15. Quel référentiel de la CSA sert à évaluer un fournisseur de nuage ?
+      a) Le COSO
+      b) L'ITAF
+      c) Le CCM
+      d) Le CVSS
+
+16. Quelle question de l'audit porte sur la réversibilité ?
+      a) Où sont les données ?
+      b) Combien coûte le service ?
+      c) Qui est le DG du fournisseur ?
+      d) Peut-on partir, et récupérer ses données dans un format utilisable ?
+
+17. Depuis quand un prestataire exploite-t-il les centres de Garoua et de Bafoussam de LiZbiZ ?
+      a) Septembre 2026
+      b) Janvier 2025
+      c) Mars 2026
+      d) Juin 2024
+
+18. Que devient l'incertitude du domaine Exploitation de LiZbiZ après l'externalisation ?
+      a) Elle passe de 0,40 à 0,30
+      b) Elle passe de 0,30 à 0,40
+      c) Elle reste à 0
+      d) Elle devient 1
+
+19. Quelle recommandation pour le prestataire de Garoua ?
+      a) Résilier immédiatement
+      b) Ne rien faire
+      c) Un avenant qui prévoit rapport d'activité, droit d'audit et notification des incidents
+      d) Changer de DG
+
+20. Quel axiome d'A0 est à son extrême avec un prestataire sans droit d'audit ?
+      a) L'opposabilité
+      b) L'individuation temporelle
+      c) La falsifiabilité
+      d) L'observabilité partielle
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. On externalise une activité, pas sa responsabilité.
+      Vrai / Faux
+
+22. Une clause de niveaux de service se cote OUI dès qu'elle existe.
+      Vrai / Faux
+
+23. Un rapport de type 1 atteste l'efficacité des contrôles sur l'année.
+      Vrai / Faux
+
+24. Un rapport de type 2 couvre une période.
+      Vrai / Faux
+
+25. Un rapport favorable du fournisseur couvre la configuration faite par le client.
+      Vrai / Faux
+
+26. La BANQUE SANAGA n'avait pas configuré la conservation des journaux d'accès de sa messagerie.
+      Vrai / Faux
+
+27. Le contrat de DIGICORE prévoit la localisation des données à Douala.
+      Vrai / Faux
+
+28. Un contrat sans droit d'audit produit mécaniquement des NEK.
+      Vrai / Faux
+
+29. Le contrat du prestataire de Garoua prévoit la notification des incidents.
+      Vrai / Faux
+
+30. La localisation des données est sans intérêt pour l'audit.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La norme des rapports d'assurance sur les contrôles d'une société de services est l'ISAE ______.
+
+32. Le modèle où le fournisseur livre une application complète est le ______.
+
+33. La répartition des contrôles entre fournisseur et client s'appelle la responsabilité ______.
+
+34. La capacité de quitter un fournisseur en récupérant ses données s'appelle la ______.
+
+35. Le prestataire du système central de la BANQUE SANAGA s'appelle DIGICORE ______.
+
+36. On tient un ______ des prestataires critiques.
+
+37. La clause qui permet au client de contrôler le prestataire est le droit d'______.
+
+38. Le référentiel de la CSA porte le sigle ______.
+
+39. La panne de la BANQUE SANAGA a duré 72,5 ______.
+
+40. Les contrôles que le client doit tenir pour que ceux du prestataire suffisent sont les contrôles ______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

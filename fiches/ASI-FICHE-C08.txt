@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C08
+Chapitre 8 : Préparer et planifier la mission
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Que produit la phase de préparation ?
+      a) Le rapport
+      b) La lettre de mission
+      c) Les papiers de travail
+      d) Le tableau de suivi
+
+ 2. Que fait la planification de la lettre de mission ?
+      a) Elle la rédige
+      b) Elle l'annule
+      c) Elle l'exploite
+      d) Elle la remplace
+
+ 3. Quelles sont les quatre questions des termes de référence ?
+      a) Quand, comment, par qui, avec quoi
+      b) Qui, quoi, où, pourquoi
+      c) Combien, quand, où, comment
+      d) Pourquoi, pour qui, quand, combien
+
+ 4. À quelle question répondent les profils requis et l'absence de conflit d'intérêts ?
+      a) Quand ?
+      b) Comment ?
+      c) Avec quoi ?
+      d) Par qui ?
+
+ 5. À quelle strate appartient la politique de sécurité ?
+      a) Organisationnelle
+      b) Stratégique
+      c) Opérationnelle
+      d) Technique
+
+ 6. À quelle strate appartient le journal des sauvegardes ?
+      a) Stratégique
+      b) Organisationnelle
+      c) Opérationnelle
+      d) Juridique
+
+ 7. Que révèle la confrontation des strates documentaires ?
+      a) L'écart entre l'affiché et le pratiqué
+      b) Le coût de la mission
+      c) Le niveau de maturité
+      d) La liste des auditeurs
+
+ 8. Comment coter un document non remis malgré une relance, sans savoir s'il existe ?
+      a) OUI
+      b) NON
+      c) Non applicable
+      d) NEK
+
+ 9. Comment coter un document que l'audité déclare par écrit inexistant, alors que le critère l'exige ?
+      a) NEK
+      b) NON
+      c) OUI
+      d) Non applicable
+
+10. Comment coter un plan de continuité remis mais périmé et non approuvé ?
+      a) OUI
+      b) NEK
+      c) NON
+      d) Non applicable
+
+11. Scénario. Sur 21 documents sollicités, 12 sont conformes, 3 périmés, 6 non remis. Quel est U ?
+      a) Environ 0,29
+      b) Environ 0,57
+      c) Environ 0,14
+      d) Environ 0,43
+
+12. Dans quel ordre l'auditeur lit-il les couches du SI ?
+      a) Des données vers l'infrastructure
+      b) Au hasard
+      c) Des applications vers l'infrastructure
+      d) De l'infrastructure vers les données et les accès
+
+13. Quel signal d'alerte révèle un entretien avec la direction générale ?
+      a) Un utilisateur qui contourne l'application
+      b) Le dirigeant ignore le rapport d'audit précédent
+      c) Un journal d'incidents vide
+      d) Un serveur obsolète
+
+14. Quel signal d'alerte révèle un entretien avec les métiers ?
+      a) Le DSI connaît ses problèmes
+      b) La politique de sécurité est approuvée
+      c) Un fichier tableur qui double l'application
+      d) Le schéma directeur est à jour
+
+15. Que demande-t-on à chaque interlocuteur pour repérer les risques les plus sérieux ?
+      a) Les problèmes connus non résolus
+      b) Son salaire
+      c) Son ancienneté
+      d) Le budget de son service
+
+16. Que faire d'un contrôle jugé absent ou mal conçu lors de l'évaluation a priori ?
+      a) Le tester en efficacité
+      b) L'ignorer
+      c) Le noter conforme
+      d) Le traiter comme un constat et porter les tests directement sur les données
+
+17. Qu'audite-t-on en priorité selon le cours ?
+      a) Ce qui est le moins coûteux
+      b) Ce qui est le plus risqué et le moins bien connu
+      c) Ce que demande le DSI
+      d) Ce qui a été audité l'an dernier
+
+18. Scénario. Quelle zone AUDIX CONSEIL reporte-t-elle à une mission ultérieure ?
+      a) Les stocks
+      b) Le domaine D
+      c) La continuité
+      d) L'agence de Garoua
+
+19. Quelle taille d'échantillon le tableau indicatif retient-il pour un contrôle annuel ?
+      a) 1
+      b) 2
+      c) 5
+      d) 20
+
+20. À quoi sert le plan d'audit ?
+      a) À remplacer la lettre de mission
+      b) À rédiger les observations
+      c) À calculer µ, U et H
+      d) À servir de feuille de route du terrain, approuvée par le commanditaire
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Les acteurs de la préparation et de la planification sont exactement les mêmes.
+      Vrai / Faux
+
+22. L'absence d'un document de strate 1 est en soi un signal d'audit.
+      Vrai / Faux
+
+23. On peut conclure sur un contrôle dont la preuve principale manque.
+      Vrai / Faux
+
+24. La prise de connaissance est bornée par le périmètre de la lettre de mission.
+      Vrai / Faux
+
+25. Les entretiens de prise de connaissance servent à recueillir les preuves définitives.
+      Vrai / Faux
+
+26. Un auditeur peut juger une application sans comprendre l'infrastructure qui la porte.
+      Vrai / Faux
+
+27. Les ordres de grandeur d'échantillonnage du cours sont des exigences normatives.
+      Vrai / Faux
+
+28. On retient le haut de la fourchette lorsque le risque est élevé.
+      Vrai / Faux
+
+29. Le plan d'audit peut évoluer, à condition que la modification soit écrite, motivée et approuvée.
+      Vrai / Faux
+
+30. Le plan d'audit indique les zones écartées et la raison de leur exclusion.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le sigle des termes de référence est ______.
+
+32. Les documents se classent en trois ______.
+
+33. Le schéma directeur appartient à la strate ______.
+
+34. Le suivi, sur le terrain, de la liste des documents sollicités se fait avec l'outil O______.
+
+35. Le livrable actionnable de la prise de connaissance est la ______ préliminaire des risques.
+
+36. La première couche lue par l'auditeur est l'______.
+
+37. Pour un contrôle trimestriel, le tableau indicatif retient un échantillon de ______.
+
+38. Pour un contrôle quotidien, le tableau indicatif retient de 20 à ______ cas.
+
+39. Le plan d'audit est aussi appelé rapport d'______.
+
+40. Le plan d'audit est l'outil O______ de la méthode.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C10
+Chapitre 10 : Collecter la preuve : l'instrument OUI/NON/NEK
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Quel ensemble de réponses l'instrument trichotomique admet-il ?
+      a) OUI, NON
+      b) OUI, NON, NEK
+      c) OUI, NON, N/A
+      d) OUI, PEUT-ÊTRE, NON
+
+ 2. Dans quel article l'instrument OUI/NON/NEK et ses métriques sont-ils construits ?
+      a) La norme ISO 19011
+      b) Le COSO 2013
+      c) A1, Modelling Epistemic Uncertainty
+      d) L'ITAF de l'ISACA
+
+ 3. Comment traiter un contrôle sans objet dans le périmètre ?
+      a) Comme non applicable, qui sort de la décomposition avec la raison écrite
+      b) Le coter NEK
+      c) Le coter OUI
+      d) Le coter NON
+
+ 4. Que mesure µq pour une question ?
+      a) La part des NEK
+      b) La part des NON
+      c) La dispersion
+      d) La part des OUI
+
+ 5. Que fait en général une grille binaire au taux de conformité ?
+      a) Elle le sous-estime
+      b) Elle le surestime
+      c) Elle ne le change pas
+      d) Elle l'annule
+
+ 6. Comment se calcule l'indice de réduction du biais ρ ?
+      a) µ trichotomique − µ binaire
+      b) U binaire − U trichotomique
+      c) µ binaire − µ trichotomique
+      d) H binaire − H trichotomique
+
+ 7. Scénario. Au domaine D, la grille binaire donnait 16 OUI sur 20, la grille trichotomique 13 OUI sur 20. Que vaut ρ ?
+      a) 0,15
+      b) 0,65
+      c) 0,80
+      d) 0,25
+
+ 8. Quelles deux qualités une preuve d'audit doit-elle réunir ?
+      a) Rapide et peu coûteuse
+      b) Écrite et signée
+      c) Récente et numérique
+      d) Suffisante et appropriée
+
+ 9. Quelle source de preuve est la plus fiable ?
+      a) La déclaration orale
+      b) La trace produite par le système, extraite par l'auditeur
+      c) Le document interne
+      d) L'observation directe
+
+10. Comment coter un contrôle pour lequel l'auditeur ne dispose que d'une déclaration orale ?
+      a) OUI
+      b) NON
+      c) NEK
+      d) Non applicable
+
+11. De quoi dérive le guide d'entretien O5 ?
+      a) Des questions des fiches d'assertion
+      b) Du budget de la mission
+      c) Du rapport précédent
+      d) Des normes ISO
+
+12. Laquelle de ces pratiques est proscrite en entretien d'audit ?
+      a) Annoncer que NEK est admis
+      b) Demander la pièce
+      c) Mener l'entretien à deux
+      d) Suggérer la réponse attendue
+
+13. Quel code désigne le test qui ré-exécute un contrôle ou analyse les données ?
+      a) DOC
+      b) TEST
+      c) OBS
+      d) ENT
+
+14. Quel code désigne une revue documentaire ?
+      a) OBS
+      b) ENT
+      c) DOC
+      d) MIX
+
+15. Quelle méthode d'échantillonnage permet de cibler les cas les plus risqués, sans extrapoler ?
+      a) Par jugement
+      b) Aléatoire
+      c) Statistique par attributs
+      d) Exhaustive
+
+16. Selon l'approximation du cours, quelle taille d'échantillon pour 95 % de confiance et 5 % d'écart tolérable ?
+      a) 23
+      b) 30
+      c) 46
+      d) 60
+
+17. Que faire si l'échantillon révèle un écart ?
+      a) Ignorer l'écart
+      b) Élargir l'échantillon ou conclure que le contrôle n'est pas efficace
+      c) Coter OUI
+      d) Supprimer l'écart du dossier
+
+18. Scénario. Pourquoi AUDIX CONSEIL teste-t-il la population entière des départs ?
+      a) Parce que la loi l'impose
+      b) Parce que le DG l'exige
+      c) Parce que les départs sont peu nombreux et les données extractibles
+      d) Parce que l'échantillon serait trop petit pour être aléatoire
+
+19. Scénario. Sur 31 départs, combien de comptes sont encore actifs ?
+      a) 5
+      b) 7
+      c) 19
+      d) 31
+
+20. Selon le GUID 5100, que doit préciser la lettre accompagnant une extraction ?
+      a) Le nom du DSI seulement
+      b) Le coût de l'extraction
+      c) L'avis de l'auditeur
+      d) La source, l'horodatage, l'empreinte, les paramètres et l'environnement
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. NEK est réservé à un contrôle applicable dont on ne peut pas établir l'état.
+      Vrai / Faux
+
+22. Confondre NEK et non applicable fausse le taux d'incertitude U.
+      Vrai / Faux
+
+23. Une déclaration orale suffit à coter OUI si l'interlocuteur est le responsable du processus.
+      Vrai / Faux
+
+24. Le compte rendu d'entretien doit être validé par l'interlocuteur.
+      Vrai / Faux
+
+25. Un répondant ne peut jamais utiliser NEK pour se cacher.
+      Vrai / Faux
+
+26. Un test de cheminement sur un cas vise la conception d'un contrôle.
+      Vrai / Faux
+
+27. L'auditeur qui tire un échantillon aléatoire doit conserver la méthode et la graine du tirage.
+      Vrai / Faux
+
+28. Tester la population entière supprime le risque d'échantillonnage.
+      Vrai / Faux
+
+29. Modifier un caractère d'un fichier ne change pas son empreinte SHA-256.
+      Vrai / Faux
+
+30. Un NEK documenté est plus utile au commissaire aux comptes qu'un OUI sans preuve.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. Le sigle NEK signifie Not Enough ______.
+
+32. L'indice ρ mesure le biais du choix ______.
+
+33. Une preuve doit être suffisante et ______.
+
+34. Le guide d'entretien est l'outil O______.
+
+35. Le plan de tests est l'outil O______.
+
+36. L'échantillonnage qui fixe un niveau de confiance et un taux d'écart tolérable est l'échantillonnage statistique par ______.
+
+37. Dans l'approximation n ≈ F/t, F vaut environ 3,0 pour une confiance de ______ %.
+
+38. La commande qui calcule une empreinte SHA-256 sous Linux est ______.
+
+39. Le guide de l'INTOSAI pour la vérification des SI est le GUID ______.
+
+40. Les documents qui retracent les travaux, les preuves et le raisonnement de l'auditeur sont les ______ de travail.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

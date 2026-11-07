@@ -1,0 +1,522 @@
+% ============================================================================
+% Fichier  : partie5/P05_C27_audit_continu_outils.tex
+% Titre    : Audit Continu, Analyse de Données et Outils
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% Base   : ACSI C19, repris et développé pour INF3226
+% ============================================================================
+% Sources : annexe « outils d'automatisation et d'assistance à l'audit »
+% du cours Audit_SI de l'auteur (six critères de choix, familles d'outils,
+% arbre de décision), reprise et allégée des noms commerciaux (offres et
+% éditeurs à vérifier au moment du choix) ; GUID 5100 de l'INTOSAI ;
+% article A0 (hal-05701007), thématique T5 « instrumentation adaptative »
+% et statut de l'IA générative ; décision du 06/11/2026 : aucun renvoi à
+% un outil ou un article non publié (ARKAN retiré).
+% en bibliographie. Loi de Benford : résultat classique, présenté comme
+% test de détection, sans valeur de preuve.
+% ============================================================================
+
+\chapter{Audit Continu, Analyse de Données et Outils}
+\label{chap:audit-continu}
+\chaptermark{Audit continu et outils}
+
+\epigraph{%
+    « L'outil élargit ce que l'auditeur peut regarder.\\
+    Il ne lui dit pas ce qu'il faut voir. »%
+}{Adage des analystes de données}
+
+\niveauChapitre{Expert}{%
+    Maîtrise du Chapitre~\ref{chap:audit-applications} (tests sur les
+    données) et du Chapitre~\ref{chap:preuve} (extractions et preuves)%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Appliquer les techniques d'audit assistées par ordinateur, de
+          façon reproductible.
+    \item Choisir un outil selon six critères, dont l'adaptation au
+          contexte africain.
+    \item Distinguer contrôle continu et audit continu, et concevoir un
+          dispositif pour LiZbiZ.
+    \item Présenter les grilles d'audit adaptatives de la thématique T5 de
+          l'auditologie.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : faut-il attendre la prochaine mission~?}
+% ============================================================================
+
+Au Chapitre~\ref{chap:audit-applications}, AUDIX CONSEIL a découvert, sur
+les données de 2025, six doublons, un fractionnement et quatorze
+expéditions non facturées. Le conseil de LiZbiZ pose une question
+légitime~: « Pourquoi l'apprendre une fois par an~? Ne peut-on pas le voir
+chaque mois~? »
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Les techniques d'audit assistées par ordinateur (section~\ref{sec:c27-taao}).
+    \item Choisir un outil (section~\ref{sec:c27-outils}).
+    \item Du contrôle continu à l'audit continu (section~\ref{sec:c27-continu}).
+    \item Un tableau de bord de contrôle en Python (section~\ref{sec:c27-code}).
+    \item Les grilles d'audit adaptatives (section~\ref{sec:c27-adaptatif}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Les Techniques d'Audit Assistées par Ordinateur}
+\label{sec:c27-taao}
+% ============================================================================
+
+\subsection{Une population entière, une procédure reproductible}
+
+Les techniques d'audit assistées par ordinateur (\sigle{TAAO}, en anglais
+\textit{CAATs}) appliquent des tests à des fichiers de données~: tri,
+filtre, jointure, regroupement, recherche de doublons, de trous de
+séquence, d'écarts entre fichiers. Le GUID~5100 de l'INTOSAI (§~6.10) en
+énumère les usages (analyse des journaux, rapports d'exception,
+comparaison de fichiers, stratification, échantillonnage, doublons,
+écarts) et trois avantages~: l'analyse de grands volumes, la répétabilité
+des tests, et la documentation horodatée des tests et de leurs
+résultats~\cite{intosai2019guid5100}.
+
+\begin{tableaucours}{L{3.6cm}L{4.6cm}L{4.0cm}}{%
+    \tableauHeader{Test} &
+    \tableauHeader{Ce qu'il cherche} &
+    \tableauHeader{Dans ce cours}
+}
+Doublons & Une même opération enregistrée deux fois & Paiements de
+LiZbiZ (Chapitre~\ref{chap:audit-applications}, ACSI-LAB-07) \\
+Trous et séquences & Numéros manquants ou répétés & Factures, pièces
+comptables \\
+Rapprochement de fichiers & Un élément présent dans un fichier, absent de
+l'autre & Départs et comptes actifs (D.2.1)~; paie et personnel (ACSI-LAB-06) \\
+Zones sous un seuil & Concentration juste sous une limite de validation &
+TRANSLOG SERVICES (Chapitre~\ref{chap:fraude}) \\
+Stratification & Répartition des montants par tranches & Choix d'un
+échantillon ciblé \\
+Premier chiffre & Écart à la distribution attendue des premiers chiffres &
+Montants saisis à la main \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~27.1. Tests de base des TAAO}\end{center}
+
+\subsection{Le test du premier chiffre}
+
+Dans beaucoup d'ensembles de montants naturels, qui couvrent plusieurs
+ordres de grandeur, le premier chiffre significatif $d$ n'est pas
+uniforme~: il suit approximativement la loi de Benford,
+\[
+    P(d) = \log_{10}\!\left(1 + \frac{1}{d}\right),
+    \qquad P(1) \approx 30{,}1~\%, \quad P(9) \approx 4{,}6~\%.
+\]
+Un excès marqué de montants commençant par 4, comme les 4,9~millions de
+TRANSLOG SERVICES, attire l'attention. Le test oriente la recherche~; il
+ne prouve rien. Il ne s'applique pas aux montants fixés par une règle
+(salaires d'une grille, tarifs), ni aux petits ensembles.
+
+\subsection{Rendre une analyse reproductible}
+
+Une analyse de données n'est une preuve que si un tiers peut la refaire et
+retrouver le même résultat (axiome~6). L'auditeur conserve donc la chaîne
+complète~: l'extraction et son empreinte (Chapitre~\ref{chap:preuve}), le
+script ou la suite d'étapes, la version de l'outil, et le résultat.
+
+\begin{boxmetier}{Auditeur SI}
+\textbf{Rendre une analyse de données reproductible}
+\begin{enumerate}
+    \item Ne jamais travailler sur l'extraction d'origine~: en faire une
+          copie, et vérifier son empreinte avant chaque séance.
+    \item Écrire les traitements dans un script, ou les consigner étape
+          par étape, plutôt que de modifier les données à la main.
+    \item Noter la version de l'outil, et les paramètres de chaque test
+          (seuils, clés de rapprochement, normalisations).
+    \item Conserver le résultat avec son empreinte et la date d'exécution.
+    \item Faire refaire un test par un collègue avant de rédiger
+          l'observation.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Choisir un Outil}
+\label{sec:c27-outils}
+% ============================================================================
+
+\subsection{Six critères}
+
+\begin{tableaucours}{L{3.4cm}L{8.8cm}}{%
+    \tableauHeader{Critère} &
+    \tableauHeader{Questions}
+}
+1. Périmètre & Analyse de données, gestion de la mission et papiers de
+travail, gouvernance et risques, contrôle continu, extraction de formats
+difficiles~: lesquels faut-il couvrir~? \\
+2. Référentiels & L'outil intègre-t-il les cadres utilisés (COSO, COBIT,
+ISO/IEC~27001), ou faut-il les paramétrer~? \\
+3. Apprentissage & L'équipe sera-t-elle autonome rapidement~? Outil
+individuel ou plateforme institutionnelle~? \\
+4. Coût & Licences, formation, maintenance~; existe-t-il une offre
+académique ou publique~? \\
+5. Capacités TAAO & Formats importés, tests disponibles, et surtout
+journal des traitements pour la reproductibilité \\
+6. Contexte africain & Fonctionnement hors ligne, lecture des exports des
+progiciels locaux (par exemple les systèmes de paie publics), coût par
+poste soutenable pour une institution publique \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~27.2. Six critères de choix d'un
+outil d'audit}\end{center}
+
+\subsection{Trois familles}
+
+\begin{itemize}
+    \item \textbf{Les logiciels d'analyse de données pour auditeurs}, comme
+          ACL ou IDEA~: interface sans programmation, journal des
+          traitements, tests intégrés~; coût par poste élevé.
+    \item \textbf{Les outils libres}~: SQL, tableur, Python avec ses
+          bibliothèques d'analyse~; coût nul, grande souplesse, mais
+          compétences de programmation et discipline de documentation.
+    \item \textbf{Les plateformes de gouvernance, risques et conformité}~:
+          cartographie des risques, auto-évaluations, suivi des
+          recommandations~; elles servent à piloter, moins à analyser.
+\end{itemize}
+Les éditeurs et les offres évoluent vite~: les noms cités ici sont des
+exemples, à vérifier au moment du choix.
+
+\begin{boxinfo}
+\textbf{Un choix raisonné pour une institution publique africaine.} Pour
+une équipe sans budget de licences, la combinaison d'un tableur, de SQL et
+d'un langage de script couvre les tests du Tableau~27.1, fonctionne hors
+ligne et lit les exports en texte. Le ACSI-LAB-07 l'a montré sur
+4~812~paiements avec un simple tableur. L'investissement porte alors sur la
+formation et sur la discipline de reproductibilité, non sur les licences.
+\end{boxinfo}
+
+% ============================================================================
+\section{Du Contrôle Continu à l'Audit Continu}
+\label{sec:c27-continu}
+% ============================================================================
+
+\subsection{Deux dispositifs, deux responsables}
+
+\begin{tableaucours}{L{2.8cm}L{4.6cm}L{4.8cm}}{%
+    \tableauHeader{} &
+    \tableauHeader{Contrôle continu} &
+    \tableauHeader{Audit continu}
+}
+Qui & Le management, le contrôle interne (première et deuxième lignes) &
+L'audit interne (troisième ligne) \\
+Objet & Détecter et corriger les anomalies des opérations & Donner une
+assurance sur le fonctionnement des contrôles, en continu \\
+Exemple & Chaque mois, la comptabilité examine les doublons potentiels &
+Chaque mois, l'audit vérifie que l'examen des doublons a eu lieu, et le
+refait sur un échantillon \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~27.3. Contrôle continu et audit
+continu}\end{center}
+
+L'audit continu ne remplace pas le contrôle continu~: si l'audit est seul
+à surveiller les opérations, il devient lui-même un contrôle, et perd son
+indépendance (Chapitre~\ref{chap:normes}).
+
+\subsection{Le dispositif de LiZbiZ}
+
+\begin{boxscenario}{Opération LIZBIZ. Le tableau de bord mensuel}
+\textbf{Proposition d'AUDIX CONSEIL}, à partir des tests de la mission~:
+\begin{itemize}
+    \item \emph{Doublons potentiels} (fournisseur, montant, référence
+          normalisée)~: contrôle interne, chaque mois~; alerte dès un cas.
+    \item \emph{Paiements entre 4,5 et 5~millions}~: trésorerie et contrôle
+          interne, chaque mois~; alerte au-delà de trois pour un même
+          fournisseur.
+    \item \emph{Expéditions livrées sans facture}~: direction commerciale,
+          chaque semaine~; alerte dès un cas de plus de sept jours.
+    \item \emph{Comptes actifs d'agents partis}~: DSI et ressources humaines,
+          chaque semaine~; alerte dès un cas.
+\end{itemize}
+\textbf{Rôle de l'audit interne}~: chaque trimestre, vérifier que chaque
+alerte a reçu une suite tracée, et refaire un test sur un mois tiré au
+sort.
+\end{boxscenario}
+
+\begin{boxmetier}{Contrôleur interne}
+\textbf{Tenir un indicateur de contrôle continu}
+\begin{enumerate}
+    \item Écrire la règle de l'indicateur~: données, test, seuil d'alerte,
+          fréquence.
+    \item Exécuter le test à la date prévue, même quand rien n'est attendu.
+    \item Traiter chaque alerte~: explication, correction ou escalade, avec
+          sa date.
+    \item Conserver l'historique des exécutions et des suites données~:
+          c'est la preuve que l'auditeur demandera.
+\end{enumerate}
+\end{boxmetier}
+
+% ============================================================================
+\section{Un Tableau de Bord de Contrôle en Python}
+\label{sec:c27-code}
+% ============================================================================
+
+Un contrôle continu est un programme qui s'exécute chaque mois sur les
+données du mois, applique les tests des chapitres précédents et produit
+une liste d'anomalies, revue par une personne. Le programme suivant réunit
+trois tests sur les paiements~; il s'exécute sur l'extraction mensuelle,
+dont il vérifie d'abord l'empreinte.
+
+\begin{boxoutils}{Trois tests mensuels sur les paiements}
+\begin{lstlisting}[language=Python]
+import hashlib, re, pandas as pd
+
+def empreinte(chemin):
+    return hashlib.sha256(open(chemin, "rb").read()).hexdigest()
+
+def controle_mensuel(chemin, empreinte_attendue, seuil=5_000_000):
+    assert empreinte(chemin) == empreinte_attendue, "extraction modifiée"
+    p = pd.read_csv(chemin, sep=";")
+    p["ref"] = p["ref_facture"].str.upper().map(
+        lambda s: re.sub(r"[^A-Z0-9]", "", s))
+    anomalies = []
+    # 1. doublons après normalisation
+    d = p[p.duplicated(["id_fournisseur", "ref", "montant_fcfa"], keep=False)]
+    anomalies += [("doublon", r.id_paiement) for r in d.itertuples()]
+    # 2. paiements juste sous le seuil, au moins 3 par fournisseur
+    s = p[(p.montant_fcfa >= 0.9 * seuil) & (p.montant_fcfa < seuil)]
+    for f, g in s.groupby("id_fournisseur"):
+        if len(g) >= 3:
+            anomalies += [("sous_seuil", i) for i in g.id_paiement]
+    # 3. paiement saisi et validé par la même personne
+    m = p[p.saisi_par == p.valide_par]
+    anomalies += [("auto_validation", i) for i in m.id_paiement]
+    return pd.DataFrame(anomalies, columns=["test", "id_paiement"])
+\end{lstlisting}
+\end{boxoutils}
+
+\begin{boxalert}
+\textbf{Violation typique.} Laisser tourner un contrôle continu dont
+personne ne lit la sortie, ou dont les alertes sont « fermées » sans
+analyse.
+
+\smallskip
+\textbf{Règle~:} un contrôle continu est un contrôle semi-automatisé
+(Chapitre~\ref{chap:controle-interne})~: la liste est automatique, l'examen
+est humain et tracé. L'auditeur teste les deux~: le programme (est-il
+celui qui a été validé~?) et la revue (chaque alerte a-t-elle une suite~?).
+\end{boxalert}
+
+% ============================================================================
+\section{Les Grilles d'Audit Adaptatives}
+\label{sec:c27-adaptatif}
+% ============================================================================
+
+\subsection{La thématique T5 de l'auditologie}
+
+L'article A0 décrit six thématiques de recherche. La cinquième,
+l'\emph{instrumentation adaptative}, vise un outil qui produit des grilles
+d'audit adaptées au profil de l'organisation, intègre les mesures du
+cours ($\mu$, $U$, $H$, divergence entre cycles) et s'interface avec les
+référentiels~\cite{minka2026auditologie}. Sa question de recherche est
+directe~: comment concevoir un audit qui s'adapte aux réponses qu'il
+reçoit~? Le cours en présente le principe, qui s'appuie sur des techniques
+établies~: le questionnaire adaptatif, qui choisit la question suivante
+selon les réponses déjà reçues, est un procédé ancien de la mesure en
+psychométrie et en éducation~\cite{wainer2000cat}.
+
+\begin{boxdef}
+\termecle{Grille adaptative}\index{grille adaptative}~: grille dont les
+questions suivantes dépendent des réponses déjà obtenues~: l'effort
+d'audit se déplace vers les sous-domaines où l'incertitude reste la plus
+forte, au lieu de se répartir également.
+\end{boxdef}
+
+\subsection{Une illustration}
+
+\begin{boxlecture}{Domaine D, grille adaptée}
+Au Chapitre~\ref{chap:decomposition}, les vingt questions du domaine~D se
+répartissaient également~: quatre par sous-domaine. Pour le cycle
+suivant, AUDIX CONSEIL applique une règle simple, à titre
+d'illustration~: deux questions au moins par sous-domaine, et les dix
+restantes réparties selon le taux d'incertitude constaté.
+
+\medskip
+\begin{tableaucours}{L{3.6cm}cccc}{%
+    \tableauHeader{Sous-domaine} &
+    \tableauHeader{O/N/K} & \tableauHeader{$U$} & \tableauHeader{$H$} &
+    \tableauHeader{Questions}
+}
+D.1 Politique & 4/0/0 & 0,00 & 0,00 & 2 \\
+D.2 Cycle de vie & 1/1/2 & 0,50 & 1,50 & 2 + 4 = 6 \\
+D.3 Authentification & 4/0/0 & 0,00 & 0,00 & 2 \\
+D.4 Privilèges & 2/0/2 & 0,50 & 1,00 & 2 + 4 = 6 \\
+D.5 Journalisation & 2/1/1 & 0,25 & 1,50 & 2 + 2 = 4 \\
+Total & & & & 20 \\
+\end{tableaucours}
+
+\medskip
+\textbf{Analyse} (confiance moyenne). À effort constant, la grille interroge
+trois fois plus D.2 et D.4 que D.1 et D.3, où rien ne restait incertain.
+Le minimum de deux questions par sous-domaine évite qu'un domaine stable
+ne cesse d'être observé~: c'est le risque de régression du
+Chapitre~\ref{chap:cas-integrateurs}. La règle elle-même est une
+hypothèse à tester~: l'auditologie demande de vérifier, sur plusieurs
+cycles, qu'elle réduit l'incertitude plus vite qu'une grille fixe.
+
+\medskip
+\hfill\lecture{0{,}65}{0{,}25}{1{,}24}
+\end{boxlecture}
+
+\begin{boxalert}
+\textbf{Violation typique.} Laisser un outil choisir seul les questions
+d'une mission, sans que l'auditeur puisse expliquer pourquoi un
+sous-domaine a été délaissé.
+
+\smallskip
+\textbf{Règle~:} la règle d'adaptation est écrite dans le plan d'audit,
+discutée avec le commanditaire, et chaque sous-domaine garde un minimum
+d'observation. Une grille que l'auditeur ne sait pas expliquer n'est pas
+opposable.
+\end{boxalert}
+
+% ============================================================================
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Les TAAO} travaillent sur des populations entières~:
+          doublons, séquences, rapprochements, seuils, stratification,
+          premier chiffre.
+    \item \textbf{Une analyse n'est une preuve que reproductible}~:
+          extraction et empreinte, script, version, résultat.
+    \item \textbf{Six critères} guident le choix d'un outil~; les outils
+          libres couvrent les tests de base, à condition de rigueur.
+    \item \textbf{Le contrôle continu} appartient au management~;
+          \textbf{l'audit continu} vérifie qu'il fonctionne, sans s'y
+          substituer.
+    \item \textbf{Une grille adaptative} déplace l'effort vers
+          l'incertitude~; sa règle est écrite, expliquée, et garde un
+          minimum d'observation partout.
+    \item \textbf{Un contrôle continu} est un programme validé, qui vérifie l'empreinte de ses données, et une revue humaine tracée.
+\end{itemize}
+\end{boxresume}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.1. Quel test~? \niveaubase}]
+Indiquez le test du Tableau~27.1 adapté à chaque question.
+\begin{enumerate}[(a)]
+    \item Des factures de vente ont-elles été supprimées~?
+    \item Des agents partis sont-ils encore payés~?
+    \item Un fournisseur reçoit-il de nombreux paiements juste sous le seuil
+          de double validation~?
+    \item Les montants des notes de frais saisies à la main paraissent-ils
+          naturels~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.2. Choisir un outil pour l'ANPP \niveaumoyen}]
+La Chambre des comptes veut équiper trois magistrats pour auditer les
+fichiers de paie de l'ANPP, exportés en texte, dans des locaux où la
+connexion est intermittente.
+\begin{enumerate}[(a)]
+    \item Appliquez les six critères et proposez une solution.
+    \item Quelles règles de reproductibilité imposez-vous aux magistrats~?
+    \item Quel test de l'outil retenu reprend le ACSI-LAB-06~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.3. Une grille adaptative pour le domaine E \niveauexpert}]
+Le domaine~E de LiZbiZ (exploitation) compte quatre sous-domaines de cinq
+questions, cotés en novembre~2026~: E.1 5/0/0~; E.2 1/2/2~; E.3 1/1/3~;
+E.4 1/1/3.
+\begin{enumerate}[(a)]
+    \item Calculez $U$ et $H$ de chaque sous-domaine.
+    \item Répartissez vingt questions pour le cycle suivant, avec la règle
+          de la lecture « Domaine D, grille adaptée ».
+    \item Proposez une autre règle, fondée sur $H$, et comparez.
+    \item Comment vérifieriez-vous, sur plusieurs cycles, qu'une règle est
+          meilleure que l'autre~?
+\end{enumerate}
+\end{boxexo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.4. Contrôle ou audit continu~? \niveaubase}]
+Pour chacun des dispositifs, dites s'il s'agit de contrôle continu ou
+d'audit continu, et qui en est responsable~: (a) la DAF reçoit chaque lundi
+la liste des paiements sous le seuil~; (b) l'audit interne analyse chaque
+trimestre toutes les écritures de clôture~; (c) le RSSI reçoit une alerte à
+chaque création de compte d'administration.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.5. Lire le programme \niveaumoyen}]
+Dans le programme de la section~\ref{sec:c27-code}, à quoi sert la
+première ligne de la fonction~? Que se passe-t-il si un agent modifie
+l'extraction avant son traitement~? Quelle faiblesse reste-t-il si
+l'empreinte attendue est fournie par la même personne qui produit
+l'extraction~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.6. Ajouter un test \niveaumoyen}]
+Ajoutez au programme un quatrième test~: les paiements à un fournisseur
+créé depuis moins de 30~jours. Écrivez le code, en supposant une table
+\texttt{fournisseurs} avec une colonne \texttt{date\_creation}.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.7. Auditer un contrôle continu \niveaumoyen}]
+Rédigez la fiche d'assertion du contrôle « les alertes du contrôle
+mensuel des paiements sont analysées et closes avec justification », et
+le test de l'auditeur.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.8. Benford en continu \niveaumoyen}]
+La DAF propose d'ajouter un test de Benford mensuel sur les paiements. Avec
+environ 400~paiements par mois, que vaut ce test (Chapitre~\ref{chap:fraude})~?
+Que proposez-vous à la place~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.9. Le choix d'un outil \niveauexpert}]
+La BANQUE SANAGA hésite entre un logiciel commercial d'analyse de données,
+un développement interne en Python et le tableur. Appliquez les six
+critères du chapitre et recommandez une solution pour l'audit interne.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~27.10. Une grille adaptative \niveauexpert}]
+Pour le domaine~E de LiZbiZ ($U = 0{,}40$ au second cycle), répartissez
+20~questions entre les cinq sous-domaines avec la règle du chapitre
+(au moins deux par sous-domaine, les autres selon $U$), à partir des taux
+$U$ suivants~: 0,10~; 0,60~; 0,50~; 0,20~; 0,60. Justifiez.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: définir une technique
+d'audit assistée par ordinateur~; rendre une analyse reproductible~;
+choisir un outil selon six critères~; distinguer contrôle continu et audit
+continu~; lire et compléter un programme de contrôle mensuel~; répartir
+une grille adaptative.
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item INTOSAI, GUID~5100~\cite{intosai2019guid5100}.
+    \item M.~Nigrini~\cite{nigrini2012benford}~: l'analyse de données pour
+          l'audit et la détection de fraude.
+    \item H.~Wainer (dir.), \textit{Computerized Adaptive
+          Testing}~\cite{wainer2000cat}~: le questionnaire adaptatif.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Les outils d'analyse s'enrichissent aujourd'hui de
+modèles d'intelligence artificielle, et les organisations en déploient
+dans leurs propres processus. Le Chapitre~\ref{chap:audit-ia} traite des
+deux faces de la question~: auditer l'IA, et auditer avec elle.
+\end{boxinfo}

@@ -1,0 +1,233 @@
+NDAP SUKULU · ASI · fiche ASI-FICHE-C11
+Chapitre 11 : Conclure et rédiger : mesures, quadrant, observation, rapport
+
+Version papier, à utiliser en attendant l'ouverture du portail NDAP SUKULU.
+La fiche complète compte 40 questions. Répondez sur la grille en fin de fiche.
+Durée indicative : 60 minutes. Seuil de réussite : 60 %.
+Les corrections figurent dans le livret de correction du cours.
+
+========================================================================
+Questions à choix multiple (une seule bonne réponse)
+========================================================================
+
+ 1. Que mesure U ?
+      a) La part des OUI
+      b) La part des NEK
+      c) La dispersion des réponses
+      d) La part des NON
+
+ 2. Quelle est l'entropie maximale d'une réponse à trois modalités ?
+      a) 1 bit
+      b) 3 bits
+      c) Environ 1,585 bit
+      d) 0,5 bit
+
+ 3. Que vaut le triplet (µ, U, H) quand tous les répondants répondent NEK ?
+      a) µ = 0, U = 1, H = 0
+      b) µ = 1, U = 0, H = 0
+      c) µ = 0, U = 0, H = 1
+      d) µ = 1/3, U = 1/3, H = 1,585
+
+ 4. Comment le cours calcule-t-il les mesures d'un domaine ?
+      a) En faisant la moyenne des entropies
+      b) En retenant la question la plus risquée
+      c) En prenant la médiane
+      d) En agrégeant les réponses de toutes ses questions
+
+ 5. Quels seuils le cours retient-il, par convention, pour le quadrant ?
+      a) µ 0,8 et U 0,5
+      b) µ 0,5 et U 0,20
+      c) µ 0,35 et U 0,10
+      d) µ 0,9 et U 0,05
+
+ 6. Quelle région du quadrant est l'alerte prioritaire ?
+      a) Conformité claire
+      b) Non-conformité claire
+      c) Conformité opaque
+      d) Non-conformité opaque
+
+ 7. Quelle action appelle une non-conformité claire ?
+      a) Des correctifs
+      b) Rechercher la preuve avant tout
+      c) Une validation courante
+      d) Aucune action
+
+ 8. À quoi correspond la « non-conformité inconnue » de l'article A0 ?
+      a) À la conformité claire
+      b) À la non-conformité claire
+      c) Aux domaines non applicables
+      d) Aux deux régions opaques du quadrant
+
+ 9. Quelle mesure examine-t-on en premier selon la règle de décision du cours ?
+      a) H
+      b) U
+      c) µ
+      d) D_KL
+
+10. Que signale une entropie élevée avec un U faible ?
+      a) Une ignorance unanime
+      b) Une conformité certaine
+      c) Un désaccord entre OUI et NON : le domaine n'est pas homogène
+      d) Une erreur de calcul
+
+11. Sur quoi repose la conclusion d'un domaine, en dernier ressort ?
+      a) Sur les contrôles cotés par l'auditeur, preuve à l'appui
+      b) Sur les réponses des répondants
+      c) Sur l'avis du DSI
+      d) Sur le niveau de maturité
+
+12. Scénario. Le domaine D de LiZbiZ (µ 0,65, U 0,25) se situe dans quelle région ?
+      a) Conformité claire
+      b) Non-conformité claire
+      c) Non-conformité opaque
+      d) Conformité opaque
+
+13. Scénario. Le domaine C (stocks, µ 0,08, U 0,08) se situe dans quelle région ?
+      a) Conformité opaque
+      b) Non-conformité claire
+      c) Non-conformité opaque
+      d) Conformité claire
+
+14. Que compare la divergence de Kullback-Leibler ?
+      a) Deux auditeurs
+      b) Deux référentiels
+      c) Les distributions de réponses de deux cycles d'audit
+      d) Deux domaines
+
+15. Scénario. Entre mai et novembre 2026, comment évolue l'entropie du domaine D ?
+      a) De 1,24 à 0,57 bit
+      b) De 0,57 à 1,24 bit
+      c) Elle reste stable
+      d) De 1,585 à 0
+
+16. Que montre une divergence non nulle alors que µ reste stable ?
+      a) Une erreur de mesure
+      b) Rien d'utile
+      c) Une baisse de conformité
+      d) Un changement de l'état de connaissance que µ ne voit pas
+
+17. Quel niveau de maturité correspond, selon le cours, à µ entre 0,55 et 0,75 ?
+      a) 2
+      b) 3
+      c) 4
+      d) 5
+
+18. Quel niveau de maturité attribue-t-on à un domaine opaque (U ≥ 0,20) ?
+      a) 1
+      b) 5
+      c) Indéterminé
+      d) 3
+
+19. Quel élément de l'observation en sept éléments correspond à la « cause » du constat en cinq ?
+      a) L'analyse
+      b) La norme
+      c) La conclusion
+      d) Le contradictoire
+
+20. Que doit faire la synthèse du rapport des domaines opaques ?
+      a) Les taire
+      b) Les noter conformes
+      c) Les reporter à l'annexe
+      d) Les signaler, avec ce qu'il faudrait pour lever l'incertitude
+
+========================================================================
+Vrai ou faux
+========================================================================
+
+21. Une entropie nulle signifie toujours une certitude.
+      Vrai / Faux
+
+22. Une grille binaire confond la conformité opaque avec la conformité claire.
+      Vrai / Faux
+
+23. Les seuils du quadrant peuvent être fixés par chaque mission, s'ils sont écrits dans le plan d'audit.
+      Vrai / Faux
+
+24. Si U ≥ 0,20, on peut conclure à la conformité dès que µ ≥ 0,5.
+      Vrai / Faux
+
+25. Le taux de conformité suffit à comparer deux cycles d'audit.
+      Vrai / Faux
+
+26. Le niveau de maturité du cours se convertit directement en capacité COBIT.
+      Vrai / Faux
+
+27. La conversion du taux de conformité en niveau de maturité est une convention pédagogique déclarée.
+      Vrai / Faux
+
+28. L'observation en sept éléments contredit le constat en cinq éléments du cours GCI.
+      Vrai / Faux
+
+29. L'observation comporte un élément consacré au contradictoire.
+      Vrai / Faux
+
+30. Une recommandation non suivie est une assurance perdue.
+      Vrai / Faux
+
+========================================================================
+Textes à trous
+========================================================================
+
+31. La part des réponses OUI s'appelle le taux de ______.
+
+32. Une conformité apparente avec beaucoup de NEK est une conformité ______.
+
+33. Le quadrant croise le taux de conformité et le taux d'______.
+
+34. La divergence entre deux cycles porte le nom de Kullback-______.
+
+35. La divergence du domaine D entre mai et novembre 2026 vaut environ 0,______ bit.
+
+36. Le niveau 1 de l'échelle de maturité s'appelle ______.
+
+37. L'échelle de maturité du cours reprend les cinq niveaux du modèle ______.
+
+38. L'observation compte ______ éléments.
+
+39. Le premier élément de l'observation est la ______.
+
+40. Les projets d'observation sont l'outil O______.
+
+========================================================================
+Grille de réponses   Nom : ............................  Matricule : ............
+========================================================================
+ 1. ............................................
+ 2. ............................................
+ 3. ............................................
+ 4. ............................................
+ 5. ............................................
+ 6. ............................................
+ 7. ............................................
+ 8. ............................................
+ 9. ............................................
+10. ............................................
+11. ............................................
+12. ............................................
+13. ............................................
+14. ............................................
+15. ............................................
+16. ............................................
+17. ............................................
+18. ............................................
+19. ............................................
+20. ............................................
+21. ............................................
+22. ............................................
+23. ............................................
+24. ............................................
+25. ............................................
+26. ............................................
+27. ............................................
+28. ............................................
+29. ............................................
+30. ............................................
+31. ............................................
+32. ............................................
+33. ............................................
+34. ............................................
+35. ............................................
+36. ............................................
+37. ............................................
+38. ............................................
+39. ............................................
+40. ............................................

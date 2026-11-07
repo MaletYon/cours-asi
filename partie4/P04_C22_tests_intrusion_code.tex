@@ -1,0 +1,603 @@
+% ============================================================================
+% Fichier  : partie4/P04_C22_tests_intrusion_code.tex
+% Titre    : Tests d'Intrusion et Audit de Code
+% Auteur   : MINKA MI NGUIDJOÏ Thierry Emmanuel
+% Version  : 1.0 -- novembre 2026
+% ============================================================================
+% Chapitre propre à INF3226 (ACSI C16 ne traite que la note d'autorisation).
+% Sources : loi n° 2010/012, art. 65 (2), 69, 70 et 86 (1), texte officiel
+% lu le 06/11/2026 (fichier loi_2010-012_cybersecurite_cybercriminalite.pdf) ;
+% NIST SP 800-115 (phases d'un test) ; OWASP Top 10 (2021) ; OWASP ASVS
+% 4.0.3 (2021) ; OWASP Web Security Testing Guide ; FIRST CVSS v3.1.
+% Faits nouveaux (LiZbiZ) : portail de suivi des expéditions exposé en 443 ;
+% test d'intrusion en boîte grise du 8 au 12 juin 2026 ; 1 critique
+% (injection SQL), 2 élevées, 4 moyennes, 3 faibles. Base du lab
+% ASI-LAB-12 (cible vulnérable isolée).
+% Corrigés : corriges/Corr_C22.tex.
+% ============================================================================
+
+\chapter{Tests d'Intrusion et Audit de Code}
+\label{chap:intrusion}
+\chaptermark{Intrusion et audit de code}
+
+\epigraph{%
+    « Le testeur et l'attaquant font les mêmes gestes.\\
+    Seule l'autorisation écrite les sépare. »%
+}{Règle des tests d'intrusion}
+
+\niveauChapitre{Expert}{%
+    Maîtrise du Chapitre~\ref{chap:audit-technique} (infrastructure) et du
+    Chapitre~\ref{chap:droit} (loi n°~2010/012)~; notions de
+    programmation web%
+}
+
+\begin{boxobjectifs}
+\begin{itemize}
+    \item Distinguer le scan de vulnérabilités, le test d'intrusion et
+          l'audit de code.
+    \item Connaître les articles de la loi n°~2010/012 qui rendent
+          l'autorisation écrite indispensable, et rédiger une note
+          d'autorisation.
+    \item Décrire les phases d'un test d'intrusion et ses modalités (boîte
+          noire, grise, blanche).
+    \item Utiliser l'OWASP Top~10 et l'OWASP ASVS comme référentiels
+          d'audit d'une application web.
+    \item Distinguer l'analyse statique, l'analyse dynamique et la revue
+          manuelle du code.
+    \item Lire et auditer un rapport de test d'intrusion, et en tirer les
+          cotes des fiches d'assertion.
+\end{itemize}
+\end{boxobjectifs}
+
+\bigskip
+
+% ============================================================================
+\section*{Question directrice : un attaquant pourrait-il entrer~?}
+% ============================================================================
+
+LiZbiZ expose sur Internet un portail qui permet à ses clients de suivre
+leurs expéditions. L'audit des configurations (Chapitre~\ref{chap:audit-technique})
+a montré des règles de pare-feu permissives dans deux centres. Le conseil
+pose une question plus directe~: un attaquant extérieur pourrait-il, par ce
+portail, atteindre les données des clients~?
+
+Pour répondre, il faut tenter de le faire, comme un attaquant, mais avec
+une autorisation, un périmètre et des règles. C'est l'objet du test
+d'intrusion.
+
+\medskip
+\textbf{Plan du chapitre.}
+\begin{enumerate}
+    \item Trois techniques (section~\ref{sec:c22-trois}).
+    \item Le cadre légal et l'autorisation (section~\ref{sec:c22-droit}).
+    \item Conduire un test d'intrusion (section~\ref{sec:c22-conduire}).
+    \item Les référentiels de l'OWASP (section~\ref{sec:c22-owasp}).
+    \item L'audit de code (section~\ref{sec:c22-code}).
+    \item Le rapport et son audit (section~\ref{sec:c22-rapport}).
+\end{enumerate}
+
+\separateur
+
+% ============================================================================
+\section{Trois Techniques}
+\label{sec:c22-trois}
+% ============================================================================
+
+\begin{tableaucours}{L{2.8cm}L{4.4cm}L{2.6cm}L{2.4cm}}{%
+    \tableauHeader{Technique} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Ce qu'elle établit} &
+    \tableauHeader{Limite}
+}
+Scan de vulnérabilités & Outil automatique qui compare les versions et
+configurations à une base de failles connues & Une liste de faiblesses
+probables & Faux positifs~; ne prouve pas l'exploitation \\
+Test d'intrusion & Un testeur exploite les faiblesses, les enchaîne, et
+mesure jusqu'où il va & Un chemin d'attaque démontré & Ponctuel~; limité
+au périmètre et au temps \\
+Audit de code & Lecture du code source, outillée ou manuelle & Les
+défauts à la source, y compris ceux qu'un test ne voit pas & Demande le
+code et des compétences de développeur \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.1. Scan, test d'intrusion, audit de
+code}\end{center}
+
+Les trois se complètent~: le scan trie, le test démontre, l'audit de code
+explique et corrige à la source. Le guide du NIST sur l'évaluation
+technique de la sécurité les classe parmi les techniques de revue,
+d'identification des cibles et de validation des
+vulnérabilités~\cite{nist2008sp800115}.
+
+% ============================================================================
+\section{Le Cadre Légal et l'Autorisation}
+\label{sec:c22-droit}
+% ============================================================================
+
+\subsection{Ce que la loi réprime}
+
+Un testeur accomplit matériellement des actes que la loi réprime
+lorsqu'ils sont faits sans droit.
+
+\begin{boxjuris}
+\textbf{\loicam{n°~2010/012}} (texte officiel)
+
+\medskip
+\textbf{Article~65, alinéa~2}~: \textit{« Est puni des peines prévues à
+l'alinéa 1 ci-dessus, tout accès non autorisé, à l'ensemble ou à une
+partie d'un réseau de communications électroniques ou d'un système
+d'information ou d'un équipement terminal. »}
+
+\medskip
+\textbf{Article~69}~: \textit{« Est puni d'un emprisonnement de cinq (05) à
+dix (10) ans et d'une amende de 10.000.000 (dix millions) à 100.000.000
+(cent millions) F CFA ou de l'une de ces deux peines seulement, celui qui
+accède sans droit, et en violation des mesures de sécurité, à l'ensemble
+ou à une partie d'un réseau de communications électroniques, d'un système
+d'information ou d'un équipement terminal, afin d'obtenir des informations
+ou des données, en relation avec un système d'information connecté à un
+autre système d'information. »}
+
+\medskip
+\textbf{Article~70}~: \textit{« Est puni d'une amende de 1.000.000 (un
+million) à 5.000.000 (cinq millions) F CFA, celui qui provoque par
+saturation, l'attaque d'une ressource de réseau de communications
+électroniques ou d'un système d'information dans le but de l'effondrer en
+empêchant la réalisation des services attendus. »}
+
+\medskip
+\textbf{Article~86, alinéa~1}~: \textit{« Est puni des peines prévues
+l'article 71 ci-dessus, celui qui importe, détient, offre, cède, vend ou
+met à disposition, sous quelle que forme que ce soit, un programme
+informatique, un mot de passe, un code d'accès ou toutes données
+informatiques similaires conçus et ou spécialement adaptés, pour permettre
+d'accéder, à tout ou partie d'un réseau de communications électroniques ou
+d'un système d'information. »}
+
+\medskip
+\textbf{Analyse.} L'autorisation écrite du responsable du système est ce
+qui donne au testeur le « droit » d'accéder~: sans elle, l'accès tombe sous
+l'article~65 ou~69. Un test de charge non encadré peut produire l'effet visé
+par l'article~70. L'article~86 vise la détention d'outils « spécialement
+adaptés » pour accéder~: le cabinet documente l'usage professionnel de ses
+outils (mission, autorisation) et les conserve sous contrôle. La portée
+exacte de ces articles pour un professionnel autorisé relève de
+l'interprétation du juge~; la prudence impose de ne jamais agir sans
+autorisation écrite.
+\end{boxjuris}
+
+\subsection{La note d'autorisation}
+
+\begin{boxprocedure}
+\textbf{Contenu de la note d'autorisation d'un test technique}
+\begin{enumerate}
+    \item \textbf{Signataire}~: une personne habilitée à engager
+          l'organisation sur les systèmes visés, et, pour un système
+          hébergé, l'accord écrit de l'hébergeur.
+    \item \textbf{Périmètre}~: adresses, systèmes et applications inclus~;
+          systèmes explicitement exclus.
+    \item \textbf{Méthodes}~: lecture de configuration, scan de ports, scan
+          de vulnérabilités, test d'intrusion~; ce qui est interdit (déni
+          de service, modification ou suppression de données, accès aux
+          données réelles au-delà de la preuve).
+    \item \textbf{Fenêtres}~: dates et heures autorisées, hors des périodes
+          critiques.
+    \item \textbf{Contacts}~: un interlocuteur joignable pendant les tests,
+          et une procédure d'arrêt immédiat.
+    \item \textbf{Résultats}~: confidentialité, conservation, destruction
+          à la fin de la mission (secret des experts, art.~14).
+\end{enumerate}
+\end{boxprocedure}
+
+\begin{boxalert}
+\textbf{Violation typique.} Lancer un scan « rapide » du réseau de Garoua
+depuis le portable de l'auditeur, la veille de la signature de la note
+d'autorisation, « pour gagner du temps ».
+
+\smallskip
+\textbf{Règle~:} aucun test avant la signature, aucun test hors du
+périmètre ni de la fenêtre. Un constat obtenu sans droit n'est pas
+opposable, et il expose l'auditeur.
+\end{boxalert}
+
+% ============================================================================
+\section{Conduire un Test d'Intrusion}
+\label{sec:c22-conduire}
+% ============================================================================
+
+\subsection{Quatre phases}
+
+Le guide du NIST décrit un test en quatre phases~\cite{nist2008sp800115}.
+
+\begin{tableaucours}{L{2.8cm}L{5.0cm}L{4.4cm}}{%
+    \tableauHeader{Phase} &
+    \tableauHeader{Activités} &
+    \tableauHeader{Trace à conserver}
+}
+Planification & Périmètre, règles d'engagement, autorisation, contacts &
+Note d'autorisation signée \\
+Découverte & Recensement des cibles, des services, des versions~; analyse
+des vulnérabilités & Sorties d'outils brutes, horodatées, avec empreintes \\
+Attaque & Exploitation contrôlée, élévation de privilèges, rebond vers
+d'autres systèmes, dans le périmètre & Journal de bord minute par minute,
+captures \\
+Rapport & Constats, preuves, gravité, recommandations & Rapport, annexes,
+destruction des données obtenues \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.2. Les phases d'un test d'intrusion
+(d'après le NIST SP~800-115)}\end{center}
+
+\subsection{Boîte noire, grise ou blanche}
+
+\begin{tableaucours}{L{2.4cm}L{5.2cm}L{4.6cm}}{%
+    \tableauHeader{Modalité} &
+    \tableauHeader{Ce que sait le testeur} &
+    \tableauHeader{Usage}
+}
+Boîte noire & Rien, sinon l'adresse publique & Simuler un attaquant
+extérieur sans information \\
+Boîte grise & Un compte utilisateur, la documentation fonctionnelle &
+Simuler un client ou un agent malveillant~; le meilleur rapport
+coût-couverture \\
+Boîte blanche & Le code, l'architecture, les comptes & Couverture maximale,
+proche de l'audit de code \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.3. Les modalités d'un test}\end{center}
+
+\begin{boxscenario}{Opération LIZBIZ. Le test du portail de suivi}
+\textbf{Cadre.} Test en boîte grise du portail de suivi des expéditions
+(un compte client de test), du 8 au 12~juin~2026, de 20~h à 6~h, sur une
+copie de production isolée~; note signée par le directeur général et par
+l'hébergeur~; déni de service exclu.
+
+\medskip
+\textbf{Constatations} (rapport du testeur, preuves en annexe).
+\begin{itemize}
+    \item \textbf{Critique}~: injection SQL dans le paramètre de numéro de
+          suivi~; extraction démontrée de dix enregistrements fictifs de
+          la table des clients (CVSS~9,8).
+    \item \textbf{Élevées} (2)~: un client peut afficher l'expédition d'un
+          autre en modifiant l'identifiant dans l'adresse~; mots de passe
+          stockés avec une fonction de hachage obsolète, sans sel.
+    \item \textbf{Moyennes} (4)~: en-têtes de sécurité absents, messages
+          d'erreur détaillés, cookie de session sans attribut sécurisé,
+          bibliothèque JavaScript obsolète.
+    \item \textbf{Faibles} (3)~: informations de version exposées.
+\end{itemize}
+
+\textbf{Analyse} (confiance élevée). La réponse au conseil est oui~: un
+attaquant extérieur avec un compte client gratuit peut atteindre les
+données des clients. Le flux de la DMZ vers la base, ouvert à Douala
+(Chapitre~\ref{chap:audit-technique}), aurait permis d'aller plus loin~;
+le testeur s'est arrêté à la preuve, conformément à la note.
+\end{boxscenario}
+
+% ============================================================================
+\section{Les Référentiels de l'OWASP}
+\label{sec:c22-owasp}
+% ============================================================================
+
+\subsection{L'OWASP Top 10}
+
+L'OWASP (\textit{Open Worldwide Application Security Project}) publie
+une liste des dix catégories de risques les plus critiques pour les
+applications web~\cite{owasp2021top10}.
+
+\begin{tableaucours}{cL{5.0cm}L{6.0cm}}{%
+    \tableauHeader{Rang} &
+    \tableauHeader{Catégorie (2021)} &
+    \tableauHeader{Exemple au portail de LiZbiZ}
+}
+A01 & Contrôle d'accès défaillant & Voir l'expédition d'un autre client \\
+A02 & Défaillances cryptographiques & Hachage obsolète sans sel \\
+A03 & Injection & Injection SQL sur le numéro de suivi \\
+A04 & Conception non sécurisée & Absence de modèle de menace \\
+A05 & Mauvaise configuration de sécurité & Messages d'erreur détaillés \\
+A06 & Composants vulnérables et obsolètes & Bibliothèque JavaScript
+obsolète \\
+A07 & Identification et authentification défaillantes & Pas de
+verrouillage après échecs \\
+A08 & Intégrité des logiciels et des données & Mises à jour non signées \\
+A09 & Journalisation et surveillance défaillantes & Tentatives d'injection
+non détectées \\
+A10 & Falsification de requête côté serveur & (non constaté) \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.4. L'OWASP Top~10 (2021) et le
+portail de LiZbiZ}\end{center}
+
+\begin{boxinfo}
+\textbf{Le Top~10 n'est pas une norme.} C'est un document de
+sensibilisation. Pour un audit, on utilise un référentiel d'exigences
+vérifiables~: l'ASVS.
+\end{boxinfo}
+
+\subsection{L'OWASP ASVS}
+
+L'\emph{Application Security Verification Standard} (version 4.0.3)
+énumère plusieurs centaines d'exigences de sécurité vérifiables, réparties
+en chapitres (architecture, authentification, sessions, contrôle d'accès,
+validation des entrées, cryptographie, journalisation\ldots) et en trois
+niveaux~\cite{owasp2021asvs}.
+
+\begin{tableaucours}{cL{4.6cm}L{6.4cm}}{%
+    \tableauHeader{Niveau} &
+    \tableauHeader{Pour qui} &
+    \tableauHeader{Vérification}
+}
+1 & Toute application & Exigences vérifiables par des tests extérieurs \\
+2 & Applications qui traitent des données sensibles & La plupart des
+exigences, dont celles qui demandent l'accès au code ou à la conception \\
+3 & Applications critiques (paiement, santé, infrastructures) & Toutes les
+exigences, revue approfondie \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.5. Les niveaux de l'OWASP
+ASVS}\end{center}
+
+Pour l'auditeur, l'ASVS fournit des critères atomiques, prêts à entrer dans
+une fiche d'assertion~: « toutes les requêtes à la base utilisent des
+requêtes paramétrées » est une exigence de l'ASVS, et un critère.
+
+% ============================================================================
+\section{L'Audit de Code}
+\label{sec:c22-code}
+% ============================================================================
+
+\subsection{Trois approches}
+
+\begin{tableaucours}{L{3.0cm}L{4.8cm}L{4.4cm}}{%
+    \tableauHeader{Approche} &
+    \tableauHeader{Principe} &
+    \tableauHeader{Forces et limites}
+}
+Analyse statique (SAST) & Un outil lit le code sans l'exécuter et signale
+les motifs dangereux & Exhaustive, rapide~; beaucoup de faux positifs \\
+Analyse dynamique (DAST) & Un outil teste l'application en fonctionnement,
+de l'extérieur & Trouve ce qui est exploitable~; ne dit pas où est le
+défaut \\
+Revue manuelle & Un développeur expérimenté lit les parties sensibles
+(authentification, accès, requêtes) & Comprend la logique métier~; coûteuse \\
+\end{tableaucours}
+\vspace{-0.8em}
+\begin{center}{\small\itshape Tableau~22.6. Trois approches de l'audit de
+code}\end{center}
+
+\subsection{Ce que montre le code}
+
+\begin{boxoutils}{L'injection du portail, à la source}
+\begin{lstlisting}[language=Python]
+# code vulnérable : la saisie est concaténée à la requête
+def suivi(numero):
+    sql = "SELECT * FROM expeditions WHERE numero = '" + numero + "'"
+    return db.execute(sql)
+
+# code corrigé : requête paramétrée, la saisie n'est jamais du SQL
+def suivi(numero, client_id):
+    sql = "SELECT * FROM expeditions WHERE numero = ? AND client_id = ?"
+    return db.execute(sql, (numero, client_id))
+\end{lstlisting}
+La correction traite deux constats à la fois~: l'injection (A03), par la
+requête paramétrée, et le contrôle d'accès (A01), par le filtre sur le
+client connecté.
+\end{boxoutils}
+
+\begin{boxalert}
+\textbf{Violation typique.} Corriger l'injection en filtrant les apostrophes
+dans le numéro de suivi.
+
+\smallskip
+\textbf{Règle~:} une liste de caractères interdits se contourne. La
+correction attendue est structurelle (requête paramétrée), et l'auditeur la
+vérifie dans le code, pas seulement par un nouveau test.
+\end{boxalert}
+
+% ============================================================================
+\section{Le Rapport et son Audit}
+\label{sec:c22-rapport}
+% ============================================================================
+
+\subsection{Ce qu'un rapport doit contenir}
+
+\begin{boxprocedure}
+\textbf{Le rapport de test d'intrusion}
+\begin{enumerate}
+    \item Une synthèse pour la direction~: ce qu'un attaquant peut faire,
+          en une page.
+    \item Le cadre~: autorisation, périmètre, modalité, fenêtres, outils et
+          versions.
+    \item Les constats, classés par gravité (CVSS), chacun avec sa preuve
+          (requête, réponse, capture), ses conditions de reproduction et sa
+          recommandation.
+    \item Les chemins d'attaque~: comment les faiblesses s'enchaînent.
+    \item Ce qui n'a pas été testé, et pourquoi.
+    \item L'attestation de destruction des données obtenues.
+\end{enumerate}
+\end{boxprocedure}
+
+\subsection{Du rapport aux fiches d'assertion}
+
+L'auditeur SI qui reçoit un rapport de test d'intrusion ne le recopie pas.
+Il en tire des cotes pour les fiches d'assertion concernées. Une faille
+critique démontrée est un \NON{} établi sur le contrôle correspondant~;
+l'absence de faille trouvée n'est pas un \OUI{}~: c'est l'absence de preuve
+contraire dans un périmètre et un temps limités.
+
+\begin{boxlecture}{Le portail de LiZbiZ après le test}
+AUDIX CONSEIL cote huit exigences de l'ASVS (niveau~2) sur le portail, à
+partir du rapport et d'une revue du code des fonctions de suivi.
+
+\medskip
+\textbf{Constatation.} 3~\OUI{} (en-têtes de transport chiffré, séparation
+des environnements, absence de compte par défaut), 4~\NON{} (requêtes
+paramétrées, contrôle d'accès par objet, stockage des mots de passe,
+composants à jour), 1~\NEK{} (journalisation des attaques, aucun journal
+remis)~: $\mu \approx 0{,}38$~; $U \approx 0{,}13$~; $H \approx 1{,}41$~bit.
+
+\medskip
+\textbf{Analyse} (confiance élevée). Non-conformité claire~: le portail ne
+satisfait pas les exigences de base. La priorité est la faille critique,
+corrigée à la source, puis vérifiée par un nouveau test.
+
+\medskip
+\hfill\lecture{0{,}38}{0{,}13}{1{,}41}
+\end{boxlecture}
+
+\begin{boxalert}
+\textbf{Violation typique.} Conclure « l'application est sécurisée » parce
+que le test n'a rien trouvé.
+
+\smallskip
+\textbf{Règle~:} un test ne trouve que ce qu'il a cherché, dans le temps
+qu'il avait. Le rapport dit « aucune vulnérabilité exploitable n'a été
+trouvée dans le périmètre et la durée du test », jamais « l'application est
+sûre ».
+\end{boxalert}
+
+\begin{boxmetier}{Auditeur de sécurité}
+\textbf{Conduire un test d'intrusion}
+\begin{enumerate}
+    \item Ne rien faire avant la note signée~; la garder sur soi pendant
+          le test.
+    \item Tenir un journal de bord minute par minute.
+    \item S'arrêter à la preuve~: démontrer l'accès, ne pas exploiter les
+          données.
+    \item Signaler immédiatement une faille critique au contact désigné,
+          sans attendre le rapport.
+    \item Détruire les données obtenues et l'attester.
+\end{enumerate}
+\end{boxmetier}
+
+\begin{boxmetier}{RSSI}
+\textbf{Faire tester sans subir.} Le RSSI prévient la surveillance
+(pour qu'un test autorisé ne déclenche pas une réponse à incident), prévoit
+une copie de production lorsque c'est possible, fait corriger à la source
+et commande un test de vérification après correction.
+\end{boxmetier}
+
+\separateur
+
+\begin{boxresume}
+\textbf{Ce qu'il faut retenir de ce chapitre~:}
+\begin{itemize}
+    \item \textbf{Scan, test d'intrusion, audit de code}~: trier, démontrer,
+          expliquer à la source.
+    \item \textbf{La loi n°~2010/012} (art.~65, 69, 70, 86) rend
+          l'autorisation écrite indispensable~; aucun test sans elle,
+          aucun test hors périmètre.
+    \item \textbf{Un test} suit quatre phases (planification, découverte,
+          attaque, rapport), en boîte noire, grise ou blanche.
+    \item \textbf{L'OWASP Top~10} sensibilise~; \textbf{l'ASVS} fournit
+          des exigences vérifiables, en trois niveaux.
+    \item \textbf{L'audit de code} combine analyse statique, dynamique et
+          revue manuelle~; une correction se vérifie à la source.
+    \item \textbf{Un rapport de test} donne des \NON{} établis~; l'absence
+          de faille trouvée n'est pas un \OUI{}.
+\end{itemize}
+\end{boxresume}
+
+\begin{boxinfo}
+\textbf{Points de contrôle de l'élève.} Je sais~: citer les articles 65,
+69, 70 et 86 et leur rôle~; rédiger une note d'autorisation~; nommer les
+quatre phases et les trois modalités~; associer un constat à une catégorie
+du Top~10~; choisir un niveau ASVS~; corriger une injection par une
+requête paramétrée~; tirer des cotes d'un rapport.
+\end{boxinfo}
+
+\bigskip
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.1. Quelle technique~? \niveaubase}]
+Pour chaque besoin, choisissez la technique (Tableau~22.1)~: (a) savoir si
+les 300~serveurs de la banque ont des versions vulnérables~; (b) savoir si
+un employé malveillant peut devenir administrateur du domaine~; (c) savoir
+pourquoi le module de paiement accepte des montants négatifs.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.2. La note d'autorisation \niveaumoyen}]
+AUDIX CONSEIL doit réaliser un scan de vulnérabilités des quatre centres de
+LiZbiZ. Le centre de Garoua est hébergé par un prestataire local.
+\begin{enumerate}[(a)]
+    \item Rédigez la note d'autorisation.
+    \item Qui doit la signer pour Garoua, et pourquoi~?
+    \item Le DSI propose d'ajouter un « test de charge » de l'application.
+          Que répondez-vous, au regard de l'article~70~?
+\end{enumerate}
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.3. Boîte noire ou grise~? \niveaubase}]
+Le conseil de la BANQUE SANAGA hésite entre un test en boîte noire de
+l'application mobile et un test en boîte grise. Avec un budget de dix
+jours, que recommandez-vous, et pourquoi~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.4. Classer selon le Top 10 \niveaubase}]
+Classez selon l'OWASP Top~10~: (a) une page d'administration accessible sans
+connexion~; (b) une version de serveur web vieille de cinq ans~; (c)
+l'absence de journal des connexions échouées~; (d) un mot de passe
+transmis en HTTP.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.5. Une exigence ASVS \niveaumoyen}]
+Transformez l'exigence « les requêtes à la base utilisent des requêtes
+paramétrées » en fiche d'assertion complète pour le portail de LiZbiZ~:
+objectif, critère, question, risque, conséquence, test, preuve, trace.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.6. Corriger le code \niveaumoyen}]
+Une fonction de connexion construit la requête
+\texttt{"SELECT * FROM users WHERE login='" + l + "' AND pwd='" + p + "'"}.
+Expliquez l'attaque possible, et écrivez la version corrigée (requête
+paramétrée, et vérification d'un hachage de mot de passe plutôt qu'une
+comparaison en clair).
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.7. Lire un rapport \niveaumoyen}]
+Un rapport de test conclut~: « Aucune vulnérabilité critique. L'application
+est sécurisée. » Le rapport ne mentionne ni le périmètre, ni la durée, ni
+les comptes utilisés. Que vaut-il pour l'auditeur SI~? Quelles cotes en
+tirez-vous~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.8. Recalculer la lecture \niveaumoyen}]
+Recalculez $\mu$, $U$ et $H$ de la lecture du portail (3/4/1). Après
+correction, un nouveau test et la remise des journaux, la lecture devient
+6/1/1. Recalculez, situez dans le quadrant, et dites ce qui reste à faire.
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.9. La faille trouvée la nuit \niveauexpert}]
+À 2~h du matin, pendant le test, le testeur découvre que l'injection SQL
+permet aussi de lire la table des paiements \emph{de production}, alors
+que la note limitait le test à une copie isolée~: la copie était mal
+isolée. Que doit-il faire, dans quel ordre, et que contient sa
+communication au contact désigné~? Quelles sont les conséquences pour la
+suite de la mission~?
+\end{boxexo}
+
+\begin{boxexo}[title={\ding{45}\quad Exercice~22.10. Un programme de tests \niveauexpert}]
+Proposez à la BANQUE SANAGA un programme annuel de tests techniques
+(scans, tests d'intrusion, audit de code) pour son application mobile, son
+site public et son système central, avec la fréquence, la modalité, le
+niveau ASVS visé et la manière d'utiliser les résultats dans l'audit
+interne.
+\end{boxexo}
+
+\bigskip
+
+\begin{boxinfo}
+\textbf{Pour aller plus loin.}
+\begin{itemize}
+    \item Loi n°~2010/012~\cite{loi2010012}, articles~65 à~72 et~86.
+    \item NIST, SP~800-115~\cite{nist2008sp800115}.
+    \item OWASP, \textit{Top 10:2021}~\cite{owasp2021top10} et
+          \textit{ASVS 4.0.3}~\cite{owasp2021asvs}.
+\end{itemize}
+\end{boxinfo}
+
+\begin{boxinfo}
+\textbf{Transition.} Une infrastructure sûre doit aussi durer. Le
+Chapitre~\ref{chap:audit-continuite} audite la production et la
+continuité~: exploitation, sauvegardes, restaurations, plans de
+continuité.
+\end{boxinfo}
