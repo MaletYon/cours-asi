@@ -14,7 +14,7 @@ ASI = {
     "logo_d": "enspy",
     "n_jours": 30,
     "annee": "2026-2027",
-    "dossier": COURS + r"\INF3226\Présentation",
+    "dossier": COURS + r"\ENSPY\INF3226\Présentation",
     "fil_rouge": "LIZBIZ, SANAGA, MEFOU",
     "parties": [
         ("Prologue", "Quarante-cinq questions", "P00"),
