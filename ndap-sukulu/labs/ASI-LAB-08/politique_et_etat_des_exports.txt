@@ -1,0 +1,31 @@
+LiZbiZ SA - Politique de sécurité de l'infrastructure (extrait)
+
+Centres : DLA Douala, YDE Yaoundé, GRA Garoua, BFS Bafoussam.
+Zones : INTERNET, DMZ, APP (applicatif), USR (utilisateurs), ADM (administration).
+
+IN.1  Seuls les flux de la matrice matrice_flux_autorises.csv sont autorisés
+      (règle « allow »). Une règle « deny » n'ouvre aucun flux.
+IN.2  Aucun compte par défaut ne doit être actif avec son mot de passe
+      d'origine.
+IN.3  Aucun protocole d'administration ou de transfert en clair : telnet,
+      ftp, http-admin sont interdits. Le port 80 du serveur web public est
+      autorisé, uniquement pour rediriger vers https.
+IN.4  Tout correctif CRITIQUE est appliqué au plus tard 30 jours après sa
+      publication. Un correctif critique non encore appliqué n'est en
+      retard que si sa publication date de plus de 30 jours à la date de
+      l'export (15 mai 2026).
+IN.5  Tous les équipements envoient leurs journaux au serveur syslog central.
+
+État des exports remis par la DSI le 15 mai 2026 :
+  - règles des pare-feu, services, comptes : quatre centres ;
+  - correctifs : DLA et YDE seulement ; pour GRA et BFS, « l'outil de
+    gestion des correctifs n'est pas déployé » (déclaration orale du DSI,
+    aucune pièce) ;
+  - journalisation : DLA, YDE et GRA ; pour BFS, aucun export produit.
+
+Règle de cotation de la mission : un contrôle sans export est NEK ; un seul
+écart dans un centre rend le contrôle NON pour ce centre.
+
+Exports figés, établis pour le cours : aucun scan n'est réalisé dans ce lab.
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

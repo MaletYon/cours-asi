@@ -1,0 +1,21 @@
+AUDIX CONSEIL - Mission LiZbiZ SA
+Lettre d'extraction (papier de travail PT-21)
+
+Source      : base de production de l'application intégrée (copie du 15 mai 2026)
+Extraction  : réalisée par la DSI en présence de l'auditeur
+Tables      : PAIEMENT (exercice 2025), ECRITURE (décembre 2025),
+              EXPEDITION (exercice 2025, avec le numéro de facture associé)
+Volumes     : 4 812 paiements ; 18 377 expéditions, dont 37 annulées
+
+Règles de gestion déclarées par la direction financière :
+  R1  une facture ne peut être payée qu'une fois ;
+  R2  tout paiement de 5 000 000 FCFA ou plus porte une seconde signature
+      (colonne second_valideur) ;
+  R3  toute pièce comptable est équilibrée (débit = crédit) ;
+  R4  toute expédition livrée est facturée ; une expédition annulée ne
+      l'est pas.
+
+Le contrôle programmé des doublons compare la référence de facture exacte.
+Les empreintes SHA-256 des fichiers figurent dans MANIFESTE_SHA256.txt.
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

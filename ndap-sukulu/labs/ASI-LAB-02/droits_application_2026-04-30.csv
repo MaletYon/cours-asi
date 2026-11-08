@@ -1,0 +1,16 @@
+identifiant;titulaire;fonction;site;F1;F2;F3;F4;F5;F6
+pkounou;KOUNOU Patrick;Responsable informatique;Douala;X;X;X;X;X;X
+jmbida;MBIDA Jean;Acheteur;Douala;X;X;;;;
+afouda;FOUDA André;Magasinier;Douala;;;X;X;;
+cowona;OWONA Cécile;Comptable;Douala;X;;;;X;
+snanga;NANGA Serge;Chef d'agence;Garoua;;X;X;;;
+cmballa;MBALLA Christelle;Directrice administrative et financière;Douala;;;;;X;
+reyenga;EYENGA Rose;Acheteuse;Yaoundé;;X;;;;
+pndzie;NDZIE Paul;Magasinier;Yaoundé;;;X;;;
+labena;ABENA Laure;Gestionnaire de stock;Douala;;;;X;;
+gtsala;TSALA Guy;Comptable fournisseurs;Douala;X;;;;;
+mngobassa;NGO BASSA Marthe;Cheffe d'agence;Bafoussam;;X;X;X;;
+hessomba;ESSOMBA Hervé;Technicien informatique;Douala;;;;;;X
+tmvondo;MVONDO Thomas;Contrôleur de gestion;Douala;;;;X;X;
+magasin_garoua;;Compte partagé du magasin;Garoua;;;X;X;;
+stagiaire01;BELLA Yves;Stagiaire achats;Douala;;X;;;X;

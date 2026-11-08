@@ -1,0 +1,7 @@
+code;controle;frequence;risque
+T1;Revue des droits de l'application intégrée;trimestrielle;élevé
+T2;Contrôle de bon déroulement des sauvegardes;quotidienne;élevé
+T3;Rapprochement bancaire;mensuelle;élevé
+T4;Revue de la politique de sécurité par le comité de direction;annuelle;faible
+T5;Revue des journaux d'accès à la salle serveur;hebdomadaire;faible
+T6;Validation à deux signatures des paiements fournisseurs;plusieurs fois par jour;élevé

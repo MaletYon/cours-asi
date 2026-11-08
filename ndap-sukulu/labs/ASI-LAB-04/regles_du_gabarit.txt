@@ -1,0 +1,16 @@
+Gabarit canonique de la méthode (chapitre 9)
+
+Huit niveaux, du plus général au plus fin :
+  Domaine > Sous-domaine > Processus > Activité > Contrôle > Test > Preuve > Trace
+Chaque élément est placé exactement un niveau sous son parent.
+
+Conditions de la décomposition :
+  C1  exhaustivité : les enfants couvrent entièrement leur parent ;
+  C2  non-redondance : un même élément n'apparaît qu'une fois ;
+  C3  borne cognitive : sept enfants au plus par élément.
+
+Fiche d'assertion : objectif, critère, question, risque, conséquence ; les
+cinq attributs sont obligatoires. Règle d'atomicité : ni « et » ni « ou »
+dans l'objectif, le critère et la question.
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

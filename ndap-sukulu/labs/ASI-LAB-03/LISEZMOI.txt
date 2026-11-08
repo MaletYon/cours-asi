@@ -1,0 +1,30 @@
+ASI-LAB-03, coter les documents sollicités et dimensionner les échantillons (opération LIZBIZ)
+
+Les pièces du lab se trouvent dans le dossier preuves, en lecture seule, et
+une copie de travail modifiable dans le dossier travail (ouvert au démarrage).
+  documents_sollicites_O3_2026-05-22.csv   état des 22 documents sollicités au 22 mai 2026
+  controles_a_tester.csv                   six contrôles à tester, fréquence et risque
+  regles_de_cotation.txt                   critère, cotation et tableau d'échantillonnage
+  MANIFESTE_SHA256.txt                     empreintes de référence (preuves)
+
+Marche à suivre.
+
+1. Vérifier l'intégrité avant toute analyse. Ouvrez un terminal, puis tapez :
+       cd ~/preuves
+       sha256sum -c MANIFESTE_SHA256.txt
+   Chaque fichier doit afficher OK.
+
+2. Ouvrir les deux fichiers CSV dans LibreOffice Calc (séparateur « ; »).
+
+3. Partie A : coter chaque document OUI, NON ou NEK selon les règles, écarter
+   ce qui est sans objet, puis calculer µ, U et H sur les documents applicables.
+
+4. Partie B : repérer les documents stratégiques manquants et dimensionner
+   l'échantillon de chaque contrôle à tester.
+
+5. Répondre. Saisissez vos réponses dans le volet Points de contrôle de la
+   page du lab, puis enregistrez. Nombres avec un point ou une virgule
+   décimale ; codes et listes comme indiqué dans chaque question. Quand vous
+   avez terminé, cliquez sur Terminer et corriger pour obtenir votre note.
+
+Toute votre activité dans le terminal est journalisée.

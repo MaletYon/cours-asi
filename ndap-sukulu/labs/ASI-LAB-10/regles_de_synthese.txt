@@ -1,0 +1,17 @@
+AUDIX CONSEIL - Règles de synthèse (chapitre 26)
+
+Mesures : µ = OUI / total ; U = NEK / total ; H = − Σ p log2 p.
+Quadrant (seuils du plan d'audit) : µ ≥ 0,5 conformité, sinon
+non-conformité ; U ≥ 0,20 opaque, sinon claire.
+
+Priorisation :
+  1. d'abord les non-conformités claires, par gravité décroissante ;
+  2. ensuite les ensembles opaques, par gravité décroissante ;
+  3. puis les conformités claires.
+La gravité est celle du registre des risques (1 à 16 ; 9 et plus :
+intolérable).
+
+Divergence entre deux cycles :
+  D_KL(nov || mai) = Σ p_nov log2(p_nov / p_mai), sur OUI, NON et NEK.
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

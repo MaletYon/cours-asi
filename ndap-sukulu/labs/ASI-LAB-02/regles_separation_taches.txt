@@ -1,0 +1,23 @@
+LiZbiZ SA - Contrôle interne
+Règles de séparation des tâches de l'application intégrée (version 1, mai 2026)
+
+Fonctions sensibles :
+  F1  Créer ou modifier un fournisseur
+  F2  Saisir une commande d'achat
+  F3  Enregistrer une réception en entrepôt
+  F4  Ajuster le stock après inventaire
+  F5  Valider un paiement fournisseur
+  F6  Administrer les droits des utilisateurs
+
+Paires incompatibles (un même compte ne peut détenir les deux droits) :
+  F1 et F5   créer un fournisseur, puis le payer
+  F2 et F3   commander, puis attester soi-même la réception
+  F3 et F4   enregistrer une réception, puis ajuster le stock
+  F2 et F5   commander, puis payer sa propre commande
+  F6 et toute fonction de gestion F1 à F5 : qui administre les droits ne
+             doit détenir aucun droit de gestion.
+
+Tout compte doit avoir un titulaire nommé, présent dans le fichier du
+personnel. Un compte partagé ou sans titulaire en poste est une anomalie.
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

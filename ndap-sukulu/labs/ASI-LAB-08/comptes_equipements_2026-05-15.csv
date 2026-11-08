@@ -1,0 +1,17 @@
+centre;equipement;compte;compte_par_defaut;mot_de_passe_d_origine;actif
+BFS;bfs-fw01;admin;oui;oui;oui
+BFS;bfs-srv-app;appadmin;non;non;oui
+BFS;bfs-srv-bd;sa;oui;oui;oui
+BFS;bfs-sw01;cisco;oui;oui;oui
+DLA;dla-fw01;admin;oui;non;oui
+DLA;dla-srv-app;appadmin;non;non;oui
+DLA;dla-srv-bd;sa;oui;non;oui
+DLA;dla-sw01;cisco;oui;oui;non
+GRA;gra-fw01;admin;oui;oui;oui
+GRA;gra-srv-app;appadmin;non;non;oui
+GRA;gra-srv-bd;sa;oui;non;oui
+GRA;gra-sw01;cisco;oui;oui;oui
+YDE;yde-fw01;admin;oui;oui;oui
+YDE;yde-srv-app;appadmin;non;non;oui
+YDE;yde-srv-bd;sa;oui;non;oui
+YDE;yde-sw01;cisco;oui;non;non

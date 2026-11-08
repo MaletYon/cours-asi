@@ -1,0 +1,20 @@
+BANQUE SANAGA - Plan de continuité d'activité (version approuvée le 12 mai 2022)
+Extrait relatif au système bancaire central
+
+Objectifs du système central
+  DMIA (durée maximale d'interruption admissible) : 8 heures
+  RTO (durée maximale de reprise)                 : 4 heures
+  RPO (perte de données maximale)                 : 15 minutes
+
+Dispositif
+  - sauvegarde complète chaque nuit, lancée à 23 h 30, une sauvegarde par jour ;
+  - taux de réussite attendu : 98 % au moins sur un trimestre ;
+  - tout échec donne lieu à un ticket d'incident ;
+  - supports externalisés chaque semaine (bordereaux de sortie) ;
+  - réplication vers le site de secours de Bonabéri ;
+  - test de restauration chaque trimestre ; test du plan une fois par an.
+
+Le plan décrit le système central « SIBANK 4 », remplacé le 7 mars 2026
+par le nouveau système du projet HORIZON.
+
+(Document fictif (opération SANAGA) établi pour le cours INF3226. Noms, dates et montants fictifs.)

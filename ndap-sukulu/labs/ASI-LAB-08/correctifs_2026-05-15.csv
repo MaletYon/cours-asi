@@ -1,0 +1,9 @@
+centre;equipement;correctif;criticite;date_publication;date_application
+DLA;dla-srv-web;KB-2026-0311;critique;2026-03-11;2026-03-24
+DLA;dla-fw01;FW-2026-007;critique;2026-02-20;2026-03-22
+DLA;dla-srv-bd;DB-2026-014;importante;2026-01-10;2026-03-12
+DLA;dla-srv-app;KB-2026-0502;critique;2026-05-02;
+YDE;yde-srv-web;KB-2026-0311;critique;2026-03-11;2026-03-30
+YDE;yde-srv-bd;DB-2026-014;importante;2026-01-10;
+YDE;yde-fw01;FW-2026-007;critique;2026-02-20;2026-03-05
+YDE;yde-srv-app;KB-2026-0408;critique;2026-04-08;2026-04-29

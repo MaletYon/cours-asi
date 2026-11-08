@@ -1,0 +1,30 @@
+ASI-LAB-05, mesurer, situer et comparer les domaines de LiZbiZ (opération LIZBIZ)
+
+Les pièces du lab se trouvent dans le dossier preuves, en lecture seule, et
+une copie de travail modifiable dans le dossier travail (ouvert au démarrage).
+  cotations_auditeur_2026-05.csv    cotation de 86 contrôles, cinq domaines, mai 2026
+  cotations_domaine_D_2026-11.csv   cotation du domaine D, novembre 2026
+  conventions_de_lecture.txt        formules, quadrant, maturité
+  MANIFESTE_SHA256.txt              empreintes de référence (preuves)
+
+Marche à suivre.
+
+1. Vérifier l'intégrité avant toute analyse. Ouvrez un terminal, puis tapez :
+       cd ~/preuves
+       sha256sum -c MANIFESTE_SHA256.txt
+   Chaque fichier doit afficher OK.
+
+2. Ouvrir les fichiers CSV dans LibreOffice Calc (séparateur « ; ») et compter
+   les cotes par domaine (tableau croisé dynamique, ou NB.SI.ENS).
+
+3. Partie A : calculer µ, U et H par domaine, puis situer chaque domaine dans
+   le quadrant.
+
+4. Partie B : niveau de maturité, puis comparaison des deux cycles du domaine D.
+
+5. Répondre. Saisissez vos réponses dans le volet Points de contrôle de la
+   page du lab, puis enregistrez. Nombres avec un point ou une virgule
+   décimale ; codes et listes comme indiqué dans chaque question. Quand vous
+   avez terminé, cliquez sur Terminer et corriger pour obtenir votre note.
+
+Toute votre activité dans le terminal est journalisée.

@@ -1,0 +1,23 @@
+AUDIX CONSEIL - Mission LiZbiZ SA
+Conventions de lecture du plan d'audit (chapitre 11)
+
+Mesures par domaine, sur les contrôles applicables (un contrôle SANS OBJET
+sort du calcul) :
+  µ = part des OUI   U = part des NEK   H = − Σ p log2 p (OUI, NON, NEK)
+
+Quadrant : seuils µ = 0,5 et U = 0,20.
+  µ ≥ 0,5 et U < 0,20   conformité claire
+  µ < 0,5 et U < 0,20   non-conformité claire
+  µ ≥ 0,5 et U ≥ 0,20   conformité opaque
+  µ < 0,5 et U ≥ 0,20   non-conformité opaque
+
+Règle de décision : U d'abord, µ ensuite, H pour contrôler. Une entropie
+élevée avec U faible signale un désaccord entre OUI et NON.
+
+Maturité (convention du cours) : µ ≥ 0,90 niveau 5 ; 0,75 à 0,90 niveau 4 ;
+0,55 à 0,75 niveau 3 ; 0,35 à 0,55 niveau 2 ; moins de 0,35 niveau 1 ;
+indéterminé si U ≥ 0,20.
+
+Comparaison de deux cycles : D_KL(p_nov || p_mai) = Σ p_nov log2(p_nov / p_mai).
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

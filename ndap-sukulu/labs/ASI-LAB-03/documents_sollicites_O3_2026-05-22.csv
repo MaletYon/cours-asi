@@ -1,0 +1,23 @@
+code;document;strate;priorite;interlocuteur;remis;date_version;approuve;observation
+D01;Schéma directeur informatique 2025-2028;1;haute;DG;oui;2025-01-15;oui;
+D02;Politique de sécurité du SI;1;haute;DSI;non;;;relancé le 15 mai, sans réponse
+D03;Plan de continuité d'activité;1;haute;DSI;non;;;relancé le 15 mai, sans réponse
+D04;Rapports d'audit précédents (2023, 2024);1;haute;Audit interne;oui;2024-11-30;oui;
+D05;Charte d'utilisation du SI;1;moyenne;DRH;oui;2022-09-01;oui;version de 2022
+D06;Organigramme de la DSI;2;haute;DSI;oui;2026-01-10;oui;
+D07;Cartographie des applications et des interfaces;2;haute;DSI;oui;2025-06-20;oui;
+D08;Matrice des droits de l'application intégrée;2;haute;DSI;oui;2026-04-30;oui;
+D09;Fiches de poste de la DSI;2;moyenne;DRH;oui;2024-06-10;oui;
+D10;Procédure de gestion des habilitations;2;haute;DSI;oui;2025-11-03;non;projet en attente de signature
+D11;Procédure de gestion des changements;2;moyenne;DSI;non;;;"le DSI affirme oralement qu'elle existe ; aucune pièce"
+D12;Contrats et conventions de service des prestataires;2;moyenne;DAF;oui;2025-03-01;oui;
+D13;Contrat d'infogérance du centre de données;2;moyenne;DAF;non;;;sans objet : LiZbiZ n'a aucun contrat d'infogérance (confirmé par écrit, registre des contrats vérifié)
+D14;Inventaire du parc matériel;3;moyenne;DSI;oui;2026-03-31;oui;
+D15;Inventaire des licences;3;moyenne;DSI;oui;2024-03-15;oui;dernière mise à jour en mars 2024
+D16;Journal des sauvegardes (janvier à avril 2026);3;haute;Exploitation;oui;2026-04-30;oui;
+D17;Journal des incidents (2025-2026);3;haute;Exploitation;non;;;relancé le 15 mai, sans réponse
+D18;Journal des traitements de fin de mois;3;moyenne;Exploitation;oui;2026-04-30;oui;
+D19;Liste des comptes à privilèges;3;haute;DSI;oui;2026-04-30;oui;
+D20;Rapports de revue des droits (2025);3;haute;Contrôle interne;non;;;relancé le 15 mai, sans réponse
+D21;Journal d'accès de la salle serveur;3;moyenne;Services généraux;non;;;relancé le 15 mai, sans réponse
+D22;Registre des départs du personnel (2025-2026);3;haute;DRH;oui;2026-04-30;oui;

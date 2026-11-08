@@ -1,0 +1,30 @@
+ASI-LAB-02, analyser la matrice des droits de LiZbiZ (opération LIZBIZ)
+
+Les pièces du lab se trouvent dans le dossier preuves, en lecture seule, et
+une copie de travail modifiable dans le dossier travail (ouvert au démarrage).
+  droits_application_2026-04-30.csv   droits de quinze comptes sur six fonctions
+  personnel_RH_2026-04-30.csv         personnel en poste
+  regles_separation_taches.txt        paires incompatibles
+  MANIFESTE_SHA256.txt                empreintes de référence (preuves)
+
+Marche à suivre.
+
+1. Vérifier l'intégrité avant toute analyse. Ouvrez un terminal, puis tapez :
+       cd ~/preuves
+       sha256sum -c MANIFESTE_SHA256.txt
+   Chaque fichier doit afficher OK.
+
+2. Ouvrir le fichier des droits dans LibreOffice Calc (séparateur « ; »).
+   Un « X » indique que le compte détient le droit.
+
+3. Partie A : repérer les comptes en conflit, au regard des règles.
+
+4. Partie B : compter les paires incompatibles, rapprocher les comptes du
+   fichier du personnel et proposer des retraits de droits.
+
+5. Répondre. Saisissez vos réponses dans le volet Points de contrôle de la
+   page du lab, puis enregistrez. Nombres avec un point ou une virgule
+   décimale ; codes et listes comme indiqué dans chaque question. Quand vous
+   avez terminé, cliquez sur Terminer et corriger pour obtenir votre note.
+
+Toute votre activité dans le terminal est journalisée.

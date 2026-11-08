@@ -1,0 +1,35 @@
+ASI-LAB-08, audit d'infrastructure des quatre centres de LiZbiZ (opération LIZBIZ)
+
+Les pièces du lab se trouvent dans le dossier preuves, en lecture seule, et
+une copie de travail modifiable dans le dossier travail (ouvert au démarrage).
+  matrice_flux_autorises.csv           flux autorisés entre zones
+  regles_parefeu_2026-05-15.csv        règles des pare-feu des quatre centres
+  services_exposes_2026-05-15.csv      services exposés par équipement
+  comptes_equipements_2026-05-15.csv   comptes des équipements
+  correctifs_2026-05-15.csv            correctifs (DLA et YDE)
+  journalisation_2026-05-15.csv        envoi des journaux (DLA, YDE, GRA)
+  politique_et_etat_des_exports.txt    politique IN.1 à IN.5 et état des exports
+  MANIFESTE_SHA256.txt                 empreintes de référence (preuves)
+
+Marche à suivre.
+
+1. Vérifier l'intégrité avant toute analyse. Ouvrez un terminal, puis tapez :
+       cd ~/preuves
+       sha256sum -c MANIFESTE_SHA256.txt
+   Chaque fichier doit afficher OK.
+
+2. Lire la politique, puis ouvrir les fichiers CSV dans LibreOffice Calc
+   (séparateur « ; »). Filtrer par centre.
+
+3. Partie A : comparer les règles « allow » à la matrice, repérer les comptes
+   par défaut, les services en clair et les correctifs en retard.
+
+4. Partie B : coter IN.1 à IN.5 pour chaque centre, puis calculer les
+   mesures de l'ensemble (20 cotes).
+
+5. Répondre. Saisissez vos réponses dans le volet Points de contrôle de la
+   page du lab, puis enregistrez. Nombres avec un point ou une virgule
+   décimale ; codes et listes comme indiqué dans chaque question. Quand vous
+   avez terminé, cliquez sur Terminer et corriger pour obtenir votre note.
+
+Toute votre activité dans le terminal est journalisée.

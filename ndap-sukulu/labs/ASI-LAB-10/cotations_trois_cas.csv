@@ -1,0 +1,14 @@
+code;cas;ensemble;oui;non;nek;gravite_risque
+LZ-A;LiZbiZ;Gouvernance du SI;16;3;1;6
+LZ-B;LiZbiZ;Sauvegardes;8;3;1;8
+LZ-C;LiZbiZ;Stocks;1;10;1;12
+LZ-D;LiZbiZ;Contrôle d'accès;13;2;5;9
+LZ-E;LiZbiZ;Exploitation;8;6;6;8
+LZ-AP;LiZbiZ;Cycle achats-paiements (après tests);14;6;0;9
+LZ-IN;LiZbiZ;Infrastructure, quatre centres;8;9;3;9
+SG-CH;BANQUE SANAGA;Gestion des changements (après revue);7;3;2;9
+SG-COSO;BANQUE SANAGA;COSO, 17 principes;12;3;2;12
+SG-HZ;BANQUE SANAGA;Projet HORIZON;7;11;2;12
+SG-PCA;BANQUE SANAGA;Continuité du système central;2;7;1;16
+SG-DG;BANQUE SANAGA;Contrat DIGICORE AFRIQUE;4;3;1;6
+AN-PAY;ANPP;Paiements (avant le délai);29;6;5;12

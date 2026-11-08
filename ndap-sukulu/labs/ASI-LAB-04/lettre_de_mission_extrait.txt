@@ -1,0 +1,13 @@
+AUDIX CONSEIL - Lettre de mission LiZbiZ SA (extrait)
+
+Domaine D, contrôle d'accès. Le périmètre couvre cinq sous-domaines :
+  D.1  Politique et organisation
+  D.2  Cycle de vie des comptes, y compris les comptes génériques
+  D.3  Authentification
+  D.4  Comptes à privilèges (droits d'administration)
+  D.5  Journalisation et revue des accès
+
+Le compte partagé du magasin de Garoua détient des droits de réception et
+d'ajustement du stock ; il n'a aucun privilège d'administration.
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

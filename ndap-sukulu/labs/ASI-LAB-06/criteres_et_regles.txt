@@ -1,0 +1,24 @@
+Chambre des comptes - Audit de conformité des paiements de l'ANPP
+Critères retenus par le magistrat vérificateur (échantillon aléatoire de 40
+paiements de salaire, mars et avril 2026)
+
+Un paiement est conforme (OUI) s'il satisfait les quatre critères :
+  C1  la pièce justificative est au dossier communiqué ;
+  C2  le bénéficiaire est en activité à la date du paiement (un agent
+      parti peut être payé pour une date antérieure ou égale à son départ) ;
+  C3  l'ordonnateur et le comptable sont deux agents distincts ;
+  C4  le paiement porte le visa du contrôle financier.
+
+Cotation :
+  NON  un critère au moins n'est pas satisfait (C2, C3 ou C4 en échec
+       suffit, même si la pièce manque par ailleurs) ;
+  NEK  C2, C3 et C4 sont satisfaits, mais la pièce n'est pas au dossier
+       et l'agence déclare qu'elle se trouve aux archives : on ne peut pas
+       conclure tant que le délai accordé n'est pas échu ;
+  OUI  les quatre critères sont satisfaits.
+
+Le magistrat accorde un délai écrit de quinze jours pour produire les
+pièces. Une pièce produite et conforme lève le NEK en OUI ; une absence
+confirmée par écrit le transforme en NON.
+
+(Document fictif établi pour le cours INF3226 (opération MEFOU). Noms, dates et montants fictifs.)

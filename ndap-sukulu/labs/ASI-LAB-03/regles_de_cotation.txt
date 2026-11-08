@@ -1,0 +1,27 @@
+AUDIX CONSEIL - Mission LiZbiZ SA, contrôle d'accès et sécurité du SI
+Règles de la mission pour la liste des documents sollicités (outil O3)
+
+Point au 22 mai 2026, après la relance du 15 mai.
+
+Critère commun : le document est remis, approuvé, et sa version est datée de
+moins de 24 mois au 22 mai 2026 (soit le 22 mai 2024 ou après).
+
+  OUI   le document est remis et satisfait le critère ;
+  NON   le document est remis, mais périmé ou non approuvé ; ou l'audité
+        confirme par écrit qu'il n'existe pas alors que le critère l'exige ;
+  NEK   le document n'est pas remis et l'on ne sait pas s'il existe.
+        Une affirmation orale, sans pièce, ne suffit pas à conclure.
+
+Un document sans objet dans le périmètre n'est ni NEK ni NON : il sort de
+la liste, avec la raison écrite, et n'entre pas dans le calcul des mesures.
+
+Échantillonnage indicatif (chapitre 8, section « Rédiger le plan d'audit ») : on retient le haut de
+la fourchette lorsque le risque est élevé, le bas lorsqu'il est faible.
+  annuelle                  1
+  trimestrielle             2
+  mensuelle                 2 à 5
+  hebdomadaire              5 à 15
+  quotidienne               20 à 40
+  plusieurs fois par jour   25 à 60
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)

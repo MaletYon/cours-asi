@@ -1,0 +1,29 @@
+Mission de l'audit interne - Continuité du système central (avril 2026)
+Éléments recueillis par Mme EKAMBI, avec leur pièce
+
+  - Analyse d'impact : document daté de mars 2022, aucune revue depuis.
+  - Objectifs : RTO et RPO figurent au plan, approuvé par le comité de
+    direction du 12 mai 2022 (procès-verbal remis).
+  - Plan : décrit SIBANK 4 ; aucune mise à jour pour le système HORIZON.
+  - Site de secours : héberge SIBANK 4 (constat sur place le 3 avril 2026).
+  - Test du plan : aucun compte rendu de test depuis 2022 ; la DSI confirme
+    par écrit qu'aucun test n'a eu lieu.
+  - Externalisation des supports : 13 bordereaux de sortie au premier
+    trimestre 2026, un par semaine.
+  - Revue après la reprise : le rapport à la COBAC a été transmis ; aucune
+    revue interne formalisée n'a été retrouvée, et la DSI ne sait pas dire
+    si elle a eu lieu.
+
+Contrôles à coter (OUI, NON, NEK) :
+  C1   Analyse d'impact revue depuis 2022
+  C2   RTO et RPO fixés et approuvés
+  C3   Plan à jour du système central actuel
+  C4   Site de secours à la version de production
+  C5   Plan testé dans l'année
+  C6   RTO tenu lors du dernier incident
+  C7   Sauvegardes quotidiennes réussies (seuil 98 %)
+  C8   Supports de sauvegarde externalisés
+  C9   Restauration testée chaque trimestre
+  C10  Revue après la reprise formalisée
+
+(Document fictif (opération SANAGA) établi pour le cours INF3226. Noms, dates et montants fictifs.)

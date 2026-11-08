@@ -1,0 +1,29 @@
+ASI-LAB-04, contrôler une décomposition du domaine D (opération LIZBIZ)
+
+Les pièces du lab se trouvent dans le dossier preuves, en lecture seule, et
+une copie de travail modifiable dans le dossier travail (ouvert au démarrage).
+  O4_decomposition_domaine_D_projet.xlsx   projet de décomposition et huit fiches d'assertion
+  lettre_de_mission_extrait.txt            périmètre du domaine D
+  regles_du_gabarit.txt                    niveaux, conditions et règles des fiches
+  MANIFESTE_SHA256.txt                     empreintes de référence (preuves)
+
+Marche à suivre.
+
+1. Vérifier l'intégrité avant toute analyse. Ouvrez un terminal, puis tapez :
+       cd ~/preuves
+       sha256sum -c MANIFESTE_SHA256.txt
+   Chaque fichier doit afficher OK.
+
+2. Ouvrir le classeur dans LibreOffice Calc : onglets Decomposition et Fiches.
+
+3. Partie A : contrôler l'arbre (niveaux, exhaustivité, doublons, borne de
+   sept, rattachements) au regard de la lettre de mission.
+
+4. Partie B : contrôler les fiches d'assertion (atomicité, complétude).
+
+5. Répondre. Saisissez vos réponses dans le volet Points de contrôle de la
+   page du lab, puis enregistrez. Nombres avec un point ou une virgule
+   décimale ; codes et listes comme indiqué dans chaque question. Quand vous
+   avez terminé, cliquez sur Terminer et corriger pour obtenir votre note.
+
+Toute votre activité dans le terminal est journalisée.

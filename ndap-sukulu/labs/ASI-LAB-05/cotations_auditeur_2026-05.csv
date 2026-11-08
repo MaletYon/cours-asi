@@ -1,0 +1,87 @@
+controle;domaine;libelle_domaine;cote
+A01;A;Gouvernance du SI;OUI
+A02;A;Gouvernance du SI;OUI
+A03;A;Gouvernance du SI;OUI
+A04;A;Gouvernance du SI;OUI
+A05;A;Gouvernance du SI;OUI
+A06;A;Gouvernance du SI;OUI
+A07;A;Gouvernance du SI;OUI
+A08;A;Gouvernance du SI;OUI
+A09;A;Gouvernance du SI;NON
+A10;A;Gouvernance du SI;OUI
+A11;A;Gouvernance du SI;OUI
+A12;A;Gouvernance du SI;OUI
+A13;A;Gouvernance du SI;OUI
+A14;A;Gouvernance du SI;OUI
+A15;A;Gouvernance du SI;OUI
+A16;A;Gouvernance du SI;NEK
+A17;A;Gouvernance du SI;NON
+A18;A;Gouvernance du SI;NON
+A19;A;Gouvernance du SI;OUI
+A20;A;Gouvernance du SI;OUI
+B01;B;Sauvegardes;NON
+B02;B;Sauvegardes;NON
+B03;B;Sauvegardes;NON
+B04;B;Sauvegardes;OUI
+B05;B;Sauvegardes;OUI
+B06;B;Sauvegardes;OUI
+B07;B;Sauvegardes;OUI
+B08;B;Sauvegardes;OUI
+B09;B;Sauvegardes;OUI
+B10;B;Sauvegardes;NEK
+B11;B;Sauvegardes;OUI
+B12;B;Sauvegardes;OUI
+C01;C;Stocks;NEK
+C02;C;Stocks;NON
+C03;C;Stocks;NON
+C04;C;Stocks;NON
+C05;C;Stocks;OUI
+C06;C;Stocks;NON
+C07;C;Stocks;NON
+C08;C;Stocks;NON
+C09;C;Stocks;NON
+C10;C;Stocks;NON
+C11;C;Stocks;NON
+C12;C;Stocks;NON
+D01;D;Contrôle d'accès;NON
+D02;D;Contrôle d'accès;OUI
+D03;D;Contrôle d'accès;NEK
+D04;D;Contrôle d'accès;NEK
+D05;D;Contrôle d'accès;OUI
+D06;D;Contrôle d'accès;NEK
+D07;D;Contrôle d'accès;OUI
+D08;D;Contrôle d'accès;NON
+D09;D;Contrôle d'accès;OUI
+D10;D;Contrôle d'accès;NEK
+D11;D;Contrôle d'accès;OUI
+D12;D;Contrôle d'accès;OUI
+D13;D;Contrôle d'accès;OUI
+D14;D;Contrôle d'accès;OUI
+D15;D;Contrôle d'accès;OUI
+D16;D;Contrôle d'accès;OUI
+D17;D;Contrôle d'accès;OUI
+D18;D;Contrôle d'accès;OUI
+D19;D;Contrôle d'accès;NEK
+D20;D;Contrôle d'accès;OUI
+E01;E;Exploitation;OUI
+E02;E;Exploitation;OUI
+E03;E;Exploitation;SANS OBJET
+E04;E;Exploitation;NEK
+E05;E;Exploitation;NON
+E06;E;Exploitation;OUI
+E07;E;Exploitation;NON
+E08;E;Exploitation;NEK
+E09;E;Exploitation;OUI
+E10;E;Exploitation;OUI
+E11;E;Exploitation;NON
+E12;E;Exploitation;NON
+E13;E;Exploitation;NEK
+E14;E;Exploitation;OUI
+E15;E;Exploitation;NON
+E16;E;Exploitation;OUI
+E17;E;Exploitation;OUI
+E18;E;Exploitation;SANS OBJET
+E19;E;Exploitation;NEK
+E20;E;Exploitation;NEK
+E21;E;Exploitation;NEK
+E22;E;Exploitation;NON

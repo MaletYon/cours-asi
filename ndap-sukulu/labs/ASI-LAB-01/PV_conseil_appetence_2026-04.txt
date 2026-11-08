@@ -1,0 +1,24 @@
+LiZbiZ SA - Douala
+Conseil d'administration - Extrait du procès-verbal de la séance d'avril 2026
+
+Point 3. Appétence au risque et règles de cotation
+
+1. Le score d'un risque est le produit probabilité x impact, chacun noté de 1
+   à 4 selon les échelles annexées (onglet Echelles du registre).
+
+2. Le risque résiduel se calcule en abaissant la probabilité du nombre de
+   niveaux indiqué pour le contrôle, SEULEMENT si ce contrôle a été testé et
+   jugé efficace. Un contrôle documenté mais non testé, ou testé inefficace,
+   ne réduit pas le risque. La probabilité résiduelle ne descend pas sous 1.
+
+3. Appétence :
+     score résiduel de 9 ou plus  : intolérable, traitement sans délai ;
+     score résiduel de 5 à 8      : à traiter dans l'année ;
+     score résiduel de 1 à 4      : accepté sous surveillance.
+
+4. Tout risque accepté dont l'impact vaut 4 fait l'objet d'un suivi trimestriel
+   par le comité d'audit.
+
+Le président du conseil
+
+(Document fictif établi pour le cours INF3226. Noms, dates et montants fictifs.)
